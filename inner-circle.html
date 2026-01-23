@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inner Circle: Exklusiver Zugang zum USP des Deep Tech Stacks für Stakeholder und Investoren.">
+    <title>Inner Circle | ROSARY©®™ PRIME</title>
+    <style>
+        :root {
+            --neon-green: #39ff14;
+            --neon-blue: #00f3ff;
+            --dark-bg: #0a0a0a;
+            --panel-bg: #111;
+            --font-main: 'Courier New', monospace;
+            --font-head: 'Arial Black', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        h1, h2 {
+            font-family: var(--font-head);
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+            text-align: center;
+        }
+
+        p { font-size: 1.2rem; line-height: 1.6; text-align: center; margin-bottom: 20px; }
+
+        .tech-display {
+            background: #000;
+            border: 1px solid var(--neon-green);
+            padding: 20px;
+            font-family: monospace;
+            color: var(--neon-green);
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        .btn {
+            background: var(--neon-green);
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 20px auto;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+            text-align: center;
+        }
+        .btn:hover { background: #fff; transform: scale(1.05); }
+
+        .paywall {
+            background: #111;
+            border: 1px solid red;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .hidden { display: none; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid var(--neon-blue);
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--panel-bg);
+            color: var(--neon-green);
+        }
+
+        /* Responsivität */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Inner Circle: Exklusiver Zugang</h1>
+        <p>Willkommen im Inner Circle – für Eingeweihte nach Uni-Campus-Training. Entdecken Sie den USP des Deep Tech Stacks. Stakeholder erhalten freien Zugang, andere via Paywall mit ID.</p>
+
+        <div class="tech-display">
+            > INITIALIZING SYSTEM...<br>
+            > CONNECTING TO SINONG LLM... [OK]<br>
+            > LOADING ALPHAFOLD PROTEIN STRUCTURES... [OK]<br>
+            > ACCESSING EMERGENT FREEDOM ENGINE... [OK]<br>
+            > STATUS: <span class="blink">OPERATIONAL</span>
+        </div>
+
+        <h2>USP: Unser Unfair Advantage</h2>
+        <p>Der Deep Tech Stack integriert AI, biologische Simulationen (z. B. Dehydrogenase-Aktivität) und spirituelle Pädagogik – exklusiv für Inner Circle-Mitglieder. Keine Steilvorlagen für Konkurrenz wie EMO.</p>
+
+        <!-- Paywall für Premium-Inhalt -->
+        <div class="paywall" id="paywall">
+            <p>Geben Sie Ihren EasyKall Voucher-Code oder SLS-ID ein (nach Kauf des Bundle-Rosary_prime).</p>
+            <input type="text" id="access-code" placeholder="Code eingeben (z.B. VIP2026)">
+            <button onclick="checkAccess()" class="btn">Zugang freischalten</button>
+            <p>Nicht Mitglied? Kaufen Sie Zugang im Shop.</p>
+            <div id="ecwid-shop"></div> <!-- Ecwid-Embed für Produkt -->
+            <script type="text/javascript" src="https://app.ecwid.com/script.js?19370029&lang=de"></script>
+            <script type="text/javascript"> xProductBrowser("id=ecwid-shop");</script>
+        </div>
+
+        <!-- Gated Content (freigeschaltet nach Code) -->
+        <div class="hidden" id="gated-content">
+            <h2>VIP-Ranking Liste</h2>
+            <table id="vip-table">
+                <thead>
+                    <tr>
+                        <th>Rang</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Zugang seit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Demo-Daten; erweitern mit JS/API -->
+                    <tr>
+                        <td>1</td>
+                        <td>Lord Erzbischof Dr. Rosenkranz</td>
+                        <td>Gründer</td>
+                        <td>2026</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Investor A</td>
+                        <td>VIP</td>
+                        <td>2026</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Exklusiver Inhalt: Vollständige Colab-Simulation und Tresorfach via SecureLetter.</p>
+            <a href="https://www.secureletterservice.com/" target="_blank" class="btn">Zu Ihrem SLS-Tresor</a>
+        </div>
+
+        <p style="text-align: center;"><a href="index.html" class="btn">Zurück zur Hauptseite</a></p>
+    </div>
+
+    <script>
+        function checkAccess() {
+            const code = document.getElementById('access-code').value.toLowerCase();
+            if (code === 'vip2026' || code.includes('easykall')) { // Beispiel-Logic; erweitern mit API
+                document.getElementById('paywall').classList.add('hidden');
+                document.getElementById('gated-content').classList.remove('hidden');
+                // Optional: SLS-API-Aufruf für Tresor-Freigabe
+            } else {
+                alert('Falscher Code. Kaufen Sie Zugang oder kontaktieren Sie uns.');
+            }
+        }
+
+        // Demo: VIP-Liste dynamisch erweitern (für echte Kampagne API nutzen)
+        function addVipEntry(rank, name, status, date) {
+            const table = document.getElementById('vip-table').getElementsByTagName('tbody')[0];
+            const row = table.insertRow();
+            row.insertCell(0).innerText = rank;
+            row.insertCell(1).innerText = name;
+            row.insertCell(2).innerText = status;
+            row.insertCell(3).innerText = date;
+        }
+
+        // Beispiel-Entries für Kampagne
+        addVipEntry(3, 'Stakeholder B', 'Member', '2026');
+    </script>
+</body>
+</html>
