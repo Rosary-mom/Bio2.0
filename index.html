@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROSARY©®™2026 ff PRIME | Bio 2.0 Infrastructure</title>
+    <title>ROSARY©®™ PRIME | Bio 2.0 Infrastructure</title>
     <style>
         :root {
             --neon-green: #39ff14;
@@ -13,86 +13,211 @@
             --font-main: 'Courier New', monospace;
             --font-head: 'Arial Black', sans-serif;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--dark-bg); color: #fff; font-family: var(--font-main); overflow-x: hidden; }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+        }
+
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); border-bottom: 2px solid var(--neon-green); }
-        h1 { font-family: var(--font-head); font-size: 4rem; text-transform: uppercase; letter-spacing: -2px; color: #fff; text-shadow: 2px 2px 0px var(--neon-green); margin-bottom: 20px; }
-        .subtitle { font-size: 1.5rem; color: var(--neon-blue); margin-bottom: 40px; }
-        .badge { border: 1px solid var(--neon-green); padding: 10px 20px; color: var(--neon-green); font-weight: bold; text-transform: uppercase; margin-top: 20px; display: inline-block; }
+        
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            border-bottom: 2px solid var(--neon-green);
+        }
+
+        h1 {
+            font-family: var(--font-head);
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            color: #fff;
+            text-shadow: 2px 2px 0px var(--neon-green);
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 40px;
+        }
+
+        .badge {
+            border: 1px solid var(--neon-green);
+            padding: 10px 20px;
+            color: var(--neon-green);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        /* --- SECTIONS --- */
         section { padding: 80px 0; border-bottom: 1px solid #333; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .card { background: var(--panel-bg); border: 1px solid #333; padding: 30px; transition: 0.3s; position: relative; }
-        .card:hover { border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0, 243, 255, 0.2); }
-        .card h3 { color: var(--neon-green); margin-bottom: 15px; font-family: var(--font-head); font-size: 1.5rem; }
-        .tech-display { background: #000; border: 1px solid var(--neon-green); padding: 20px; font-family: monospace; color: var(--neon-green); margin: 20px 0; overflow: hidden; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: var(--panel-bg);
+            border: 1px solid #333;
+            padding: 30px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+
+        .card h3 {
+            color: var(--neon-green);
+            margin-bottom: 15px;
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+        }
+
+        /* --- TECH VISUALS --- */
+        .tech-display {
+            background: #000;
+            border: 1px solid var(--neon-green);
+            padding: 20px;
+            font-family: monospace;
+            color: var(--neon-green);
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
         .blink { animation: blinker 1s linear infinite; }
         @keyframes blinker { 50% { opacity: 0; } }
-        .diplomat-box { border: 2px solid gold; padding: 40px; text-align: center; background: #1a1a00; }
+
+        /* --- DIPLOMAT SECTION --- */
+        .diplomat-box {
+            border: 2px solid gold;
+            padding: 40px;
+            text-align: center;
+            background: #1a1a00;
+        }
+        
         .diplomat-box h2 { color: gold; font-family: var(--font-head); }
-        .btn { background: var(--neon-green); color: #000; padding: 15px 30px; text-decoration: none; font-weight: bold; font-size: 1.2rem; text-transform: uppercase; display: inline-block; margin-top: 20px; border: none; cursor: pointer; }
-        .btn:hover { background: #fff; }
+
+        /* --- BUTTONS --- */
+        .btn {
+            background: var(--neon-green);
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn:hover { background: #fff; transform: scale(1.05); }
+
     </style>
 </head>
 <body>
 
     <header>
         <div class="badge">TRL 9 SYSTEM LIVE</div>
-        <h1>Rosary Prime</h1>
-        <p class="subtitle">Decoupling Growth from Resource Depletion.</p>
+        <h1>ROSENKRANZ PRIME</h1>
+        <p class="subtitle">Entkopplung von Wachstum und Ressourcenerschöpfung.</p>
         <p style="max-width: 600px; line-height: 1.6;">
-            The Evolution from Bio 1.0 to <strong>Tech-Bio 2.0</strong>.<br>
-            Securing Europe's Strategic Autonomy via Fractal Agrivoltaics & Sovereign Fintech.
+            Die Evolution von Bio 1.0 zu <strong>Tech-Bio 2.0</strong>.<br>
+            Sicherung der strategischen Autonomie Europas durch fraktale Agrivoltaik & souveräne Fintech-Lösungen.
         </p>
-        <a href="./Motor/index.html" class="btn">ZUGRIFF AUF DIE INFRASTRUKTUR</a>
+        <!-- ABSOLUTER LINK ZUR VERMEIDUNG VON 404 FEHLERN -->
+        <a href="https://rosary-mom.github.io/Bio2.0/Motor/index.html" class="btn">ZUGRIFF AUF DIE INFRASTRUKTUR</a>
     </header>
 
     <section class="container">
         <div class="grid">
             <div class="card" style="border-color: #ff3333;">
                 <h3>BIO 1.0 (The Crash)</h3>
-                <p>⚠️ Land Scarcity (Food vs. Fuel)</p>
-                <p>⚠️ Systemic Greenwashing</p>
-                <p>⚠️ Zero Climate Resilience</p>
+                <p>⚠️ Landknappheit (Food vs. Fuel)</p>
+                <p>⚠️ Systemisches Greenwashing</p>
+                <p>⚠️ Keine Klimaresilienz</p>
+                <p>⚠️ $120 Mrd. Markt in Gefahr</p>
             </div>
             <div class="card" style="border-color: var(--neon-green);">
                 <h3>TECH-BIO 2.0 (The Fix)</h3>
-                <p>✅ Fractal Agrivoltaics (Dual Use)</p>
-                <p>✅ Real-Time Blockchain Traceability</p>
-                <p>✅ AlphaFold Optimized Crops</p>
+                <p>✅ Fraktale Agrivoltaik (Doppelnutzung)</p>
+                <p>✅ Echtzeit-Blockchain-Rückverfolgbarkeit</p>
+                <p>✅ AlphaFold-optimierte Kulturen</p>
+                <p>✅ Bankfähige ESG-Assetklasse</p>
             </div>
         </div>
     </section>
 
     <section class="container">
-        <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 30px;">The Deep Tech Stack</h2>
+        <h2 style="font-family: var(--font-head); font-size: 3rem; margin-bottom: 30px;">The Deep Tech Stack</h2>
         <div class="tech-display">
             > INITIALIZING SYSTEM...<br>
             > CONNECTING TO SINONG LLM... [OK]<br>
             > LOADING ALPHAFOLD PROTEIN STRUCTURES... [OK]<br>
+            > ACCESSING EMERGENT FREEDOM ENGINE... [OK]<br>
             > STATUS: <span class="blink">OPERATIONAL</span>
         </div>
         
         <div class="grid">
             <div class="card">
                 <h3>Emergent Freedom Engine</h3>
-                <p>Sovereign Fintech Infrastructure. Asset-Backed Vouchers & Digital Safe.</p>
+                <p>Souveräne Fintech-Infrastruktur. Asset-Backed Vouchers & SBLC Digital Safe.</p>
                 <br>
-                <a href="./Motor/" style="color: var(--neon-blue);">Launch Engine (Motor) -></a>
+                <a href="https://rosary-mom.github.io/Bio2.0/Motor/index.html" style="color: var(--neon-blue);">Launch Engine (Motor) -></a>
             </div>
             <div class="card">
                 <h3>Rosary Prime Bundle</h3>
-                <p>The Commercial Driver. Subscription-based health & energy access.</p>
+                <p>Der kommerzielle Treiber. Abonnementbasierter Zugang zu Gesundheit & Energie in 28 EU-Staaten.</p>
                 <br>
-                <a href="https://rosary.health" target="_blank" style="color: var(--neon-blue);">View Product -></a>
+                <a href="https://rosary.health" target="_blank" style="color: var(--neon-blue);">Produkt ansehen -></a>
             </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="diplomat-box">
+            <h2>LEADERSHIP & GOVERNANCE</h2>
+            <p style="margin: 20px 0; font-size: 1.2rem;">
+                <strong>Archbishop Dr. Uwe Rosenkranz</strong><br>
+                Co-Architect des EU Bio-Siegels (1992) | Globaler Kanzler (IGO)
+            </p>
+            <div class="grid">
+                <div>
+                    <h4 style="color:gold;">DER BANKIER</h4>
+                    <p>Bewährte Finanztechnik.<br>Ex-Dresdner Bank & VERSIKO AG.</p>
+                </div>
+                <div>
+                    <h4 style="color:gold;">DER DIPLOMAT</h4>
+                    <p>Grenzüberschreitende Agilität.<br>Akkreditiert nach Wiener Übereinkommen.</p>
+                </div>
+            </div>
+            <div class="badge" style="border-color: gold; color: gold;">RECHTSSTATUS BESTÄTIGT DURCH OLG</div>
         </div>
     </section>
 
     <footer style="text-align: center; padding: 50px; background: #000;">
         <h2 style="color: #fff;">READY FOR DEPLOYMENT</h2>
         <p style="color: #666; margin: 20px 0;">Rosary UG & Co KG Holding</p>
-        <a href="mailto:contact@rosary.health" class="btn">Contact Leadership</a>
+        <a href="mailto:contact@rosary.health" class="btn">Leadership kontaktieren</a>
     </footer>
 
 </body>
