@@ -62,6 +62,7 @@
             width: 100%;
             max-width: 800px;
             height: 600px;
+            loading: lazy; /* Für Performance */
         }
 
         .btn {
@@ -107,7 +108,7 @@
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "Emergent Freedom Engine",
-            "url": "https://rosary-mom.github.io/Bio2.0/Motor/"
+            "url": "https://rosary-mom.github.io/Bio2.0/engine/"
         }
     </script>
 </head>
@@ -117,7 +118,7 @@
         <p style="text-align: center; max-width: 800px; margin: 0 auto;">Energie, Freiheits-Maschine basierend auf Rosenkranz Pädagogik, Darwin-Kritik und AI-Integration.</p>
 
         <div class="tech-display">
-            <p><strong>Emergent Freiheits-Score: 700</strong></p>
+            <p><strong>Emergent Freiheits-Score: <span id="dynamic-score">700</span></strong></p>
             <p><strong>Rosenkranz-Integration: Reife, emanzipierte Individuen treten als Käufer und Verkäufer auf dem Markt auf – dialektisch balanciert für ethische Freiheit.</strong></p>
             <p>STATUS: <span class="blink">OPERATIONAL</span></p>
         </div>
@@ -127,7 +128,13 @@
 
         <h2 style="text-align: center; font-family: var(--font-head); color: var(--neon-green);">Iframe-Integration</h2>
         <div class="iframe-container">
-            <iframe src="https://rosary-mom.github.io/PoW/RMI/" title="Rosary VSP Iframe"></iframe>
+            <iframe src="https://rosary-mom.github.io/PoW/" title="Rosary VSP Iframe (RMI Inhalte)" loading="lazy"></iframe>
+        </div>
+
+        <h2 style="text-align: center; font-family: var(--font-head); color: var(--neon-green);">AlphaFold Protein Modeling</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;">Interaktiver 3D-Viewer für AlphaFold-vorhersagte Proteinstrukturen (Beispiel: Hemoglobin, UniProt P69905). Drehe und zoome für Details.</p>
+        <div class="iframe-container">
+            <iframe src="https://www.ncbi.nlm.nih.gov/Structure/icn3d/?afid=P69905&width=100%&height=600&showcommand=0&mobilemenu=1&showtitle=0" title="AlphaFold Protein Viewer (iCn3D)" loading="lazy"></iframe>
         </div>
 
         <p style="text-align: center;"><a href="../index.html" class="btn">← Zurück zur Hauptseite</a></p>
@@ -142,5 +149,21 @@
             <a href="../index.html">Framework: Deep Tech Stack</a>
         </div>
     </footer>
+
+    <!-- JavaScript für dynamische Scores -->
+    <script>
+        function updateDynamicScore() {
+            const scoreElement = document.getElementById('dynamic-score');
+            const baseScore = 700;
+            const variation = Math.floor(Math.random() * 50) - 25; // +/- 25
+            const newScore = baseScore + variation;
+            scoreElement.textContent = newScore;
+            scoreElement.classList.add('blink');
+            setTimeout(() => scoreElement.classList.remove('blink'), 1000);
+        }
+
+        updateDynamicScore();
+        setInterval(updateDynamicScore, 5000);
+    </script>
 </body>
 </html>
