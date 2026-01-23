@@ -147,8 +147,15 @@
             <iframe src="https://molstar.org/viewer/?afid=P00367" title="AlphaFold Protein Viewer (Mol*)" loading="lazy"></iframe>
         </div>
 
+        <h2 style="text-align: center; font-family: var(--font-head); color: var(--neon-green);">Colab Simulation: Interaktives Notebook</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;">Eingebettetes Google Colab-Notebook für detaillierte Simulationen (z.B. Proteinstruktur mit Dehydrogenase-Aktivität). Interagiere direkt hier oder öffne in neuem Tab.</p>
+        <div class="iframe-container">
+            <iframe src="https://colab.research.google.com/github/Rosary-mom/7gaben-hugel/blob/main/01_AlphaFold_Protease_Test.ipynb" loading="lazy" title="Colab Simulation Notebook"></iframe> <!-- Ersetzen Sie IHR_COLAB_LINK durch z.B. https://colab.research.google.com/drive/1ZBfG5n3ox1P3AWb1bIKmYshok9gZ2Uw -->
+        </div>
+        <p style="text-align: center;"><a href="https://colab.research.google.com/github/Rosary-mom/7gaben-hugel/blob/main/01_AlphaFold_Protease_Test.ipynb" target="_blank" class="btn">Colab in neuem Tab öffnen</a></p>
+
         <h2 style="text-align: center; font-family: var(--font-head); color: var(--neon-green);">Colab Simulation: Gerenderte Dehydrogenase-Aktivität</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto;">Portierte Colab-Instanz: Simulation des Rosenkranz-Q-Nebel mit Dehydrogenase-Faktor (exponentielles Wachstum vs. linear). Klicken Sie auf "Update Plot" für dynamische Variationen.</p>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;">Portierte Colab-Instanz: Simulation des Rosenkranz-Q-Hebel mit Dehydrogenase-Faktor (exponentielles Wachstum vs. linear). Klicken Sie auf "Update Plot" für dynamische Variationen.</p>
         <div class="chart-container">
             <canvas id="growthChart"></canvas>
         </div>
@@ -202,7 +209,7 @@
                             fill: false
                         },
                         {
-                            label: 'Rosary-System (Q-Nehel: Exponential)',
+                            label: 'Rosary-System (Q-Nebel: Exponential)',
                             data: growthRosary,
                             borderColor: 'purple',
                             borderWidth: 3,
