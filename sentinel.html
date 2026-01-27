@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENTINEL AI | Strategic Market Advisor</title>
+    <style>
+        body { background-color: #000; color: #0f0; font-family: 'Courier New', monospace; padding: 20px; }
+        .terminal { max-width: 800px; margin: 0 auto; border: 2px solid #333; padding: 20px; background: #050505; }
+        .header { border-bottom: 1px solid #0f0; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; }
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+        
+        .market-data { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .data-point { border: 1px solid #333; padding: 10px; }
+        .red { color: #ff3333; }
+        .gold { color: gold; }
+        
+        .chat-box { height: 300px; overflow-y: auto; border: 1px dashed #333; padding: 10px; margin-bottom: 20px; color: #fff; }
+        .input-area { display: flex; gap: 10px; }
+        input { background: #111; border: 1px solid #0f0; color: #fff; padding: 10px; flex-grow: 1; font-family: inherit; }
+        button { background: #0f0; color: #000; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; }
+        button:hover { background: #fff; }
+
+        .analysis-result { border: 1px solid gold; padding: 15px; margin-top: 20px; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="terminal">
+    <div class="header">
+        <span>SYSTEM: SENTINEL_GROK_MODE_V.9</span>
+        <span class="blink">● ONLINE</span>
+    </div>
+
+    <div class="market-data">
+        <div class="data-point">
+            CRYPTO FLUX (BlackRock)<br>
+            <span class="red">BTC: SELL ORDERS DETECTED (-4.2%)</span>
+        </div>
+        <div class="data-point">
+            REAL ASSETS (Legacy)<br>
+            <span class="gold">GOLD/SILVER: MOMENTUM UP (+2.1%)</span>
+        </div>
+        <div class="data-point">
+            GEOPOLITICS<br>
+            <span>STATUS: FRAGILE (Peace Boards Active)</span>
+        </div>
+        <div class="data-point">
+            BIO 2.0 INDEX<br>
+            <span style="color:#0f0">STABLE GROWTH (Tangible)</span>
+        </div>
+    </div>
+
+    <div class="chat-box" id="chat">
+        <div style="color: #0f0;">> AI INITALIZED. Zugriff auf Rosary Prime Datenbank...</div>
+        <div style="color: #0f0;">> "Invest when blood flows" Pattern erkannt.</div>
+        <div style="color: #0f0;">> Bitte Markt-Szenario wählen oder Frage eingeben...</div>
+        <br>
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="userInput" placeholder="Z.B.: 'Analyse BlackRock Shift' oder 'Sicherer Hafen?'">
+        <button onclick="runAnalysis()">ANALYSE STARTEN</button>
+    </div>
+
+    <div id="result" class="analysis-result">
+        <h3 style="color:gold; margin-top:0;">⚠️ STRATEGIC ADVISORY ALERT</h3>
+        <p id="advisory-text"></p>
+        <br>
+        <strong>EMPFEHLUNG:</strong> <span style="background:gold; color:black; padding:2px;">SHIFT TO ROSARY PRIME ASSETS</span>
+    </div>
+</div>
+
+<script>
+    function runAnalysis() {
+        const input = document.getElementById('userInput').value.toLowerCase();
+        const chat = document.getElementById('chat');
+        const resultBox = document.getElementById('result');
+        const advisoryText = document.getElementById('advisory-text');
+
+        // Simulation der "Denkzeit"
+        chat.innerHTML += `<div>> User: ${document.getElementById('userInput').value}</div>`;
+        chat.innerHTML += `<div class="blink">> Processing Real-Time Data (Coinbase, COMEX, Reuters)...</div>`;
+
+        setTimeout(() => {
+            let response = "";
+            
+            if (input.includes("blackrock") || input.includes("btc") || input.includes("crypto")) {
+                response = "ERGEBNIS: Großanleger (BlackRock) verschieben Liquidität. Massive Sell-Orders bei BTC signalisieren Vertrauensverlust in reine Digital-Assets.";
+                advisoryText.innerText = "Die Volatilität im Krypto-Sektor steigt durch institutionelle Abverkäufe. Das Kapital sucht physische Deckung (Land/Nahrung).";
+            } else if (input.includes("gold") || input.includes("silber") || input.includes("sicher")) {
+                response = "ERGEBNIS: Historische Korrelation. Wenn Fiat/Krypto wackelt, fließt Geld in 'Metalle & Boden'. Baron Rothschild Logik aktiviert.";
+                advisoryText.innerText = "Gold und Silber steigen, bieten aber keine Rendite (Cashflow). Bio 2.0 Ridge-Kultur bietet Inflationsschutz PLUS Ertrag.";
+            } else {
+                response = "ERGEBNIS: Globale Unsicherheit hoch. Technokratische Peace-Boards stabilisieren nur lokal. Globaler Trend: 'Assets on the ground'.";
+                advisoryText.innerText = "In geopolitisch fragilen Zeiten ist Landbesitz mit Nahrungsmittelproduktion (Bio 2.0) die einzige Asset-Klasse mit 'intrinsischem Überlebenswert'.";
+            }
+
+            chat.innerHTML += `<div style="color:gold;">> ${response}</div>`;
+            chat.scrollTop = chat.scrollHeight;
+            resultBox.style.display = 'block';
+        }, 1500);
+    }
+</script>
+
+<div style="text-align:center; margin-top:20px;">
+    <a href="index.html" style="color:#555; text-decoration:none;">[ ZURÜCK ZUR HAUPTSEITE ]</a>
+</div>
+
+</body>
+</html>
