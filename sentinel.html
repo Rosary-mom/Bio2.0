@@ -3,26 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENTINEL AI | Strategic Market Advisor</title>
+    <title>SENTINEL AI | Strategic Market Advisor & Oracle</title>
     <style>
-        body { background-color: #000; color: #0f0; font-family: 'Courier New', monospace; padding: 20px; }
-        .terminal { max-width: 800px; margin: 0 auto; border: 2px solid #333; padding: 20px; background: #050505; }
-        .header { border-bottom: 1px solid #0f0; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; }
+        body { background-color: #000; color: #0f0; font-family: 'Courier New', monospace; padding: 20px; overflow-x: hidden; }
+        .terminal { max-width: 900px; margin: 0 auto; border: 2px solid #333; padding: 20px; background: #050505; position: relative; box-shadow: 0 0 20px rgba(0, 255, 0, 0.1); }
+        
+        .header { border-bottom: 1px solid #0f0; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
         .blink { animation: blinker 1s linear infinite; }
         @keyframes blinker { 50% { opacity: 0; } }
         
-        .market-data { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .data-point { border: 1px solid #333; padding: 10px; }
+        /* MARKET DATA GRID */
+        .market-data { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 20px; }
+        .data-point { border: 1px solid #333; padding: 10px; font-size: 0.8rem; background: #0a0a0a; }
         .red { color: #ff3333; }
         .gold { color: gold; }
-        
-        .chat-box { height: 300px; overflow-y: auto; border: 1px dashed #333; padding: 10px; margin-bottom: 20px; color: #fff; }
-        .input-area { display: flex; gap: 10px; }
-        input { background: #111; border: 1px solid #0f0; color: #fff; padding: 10px; flex-grow: 1; font-family: inherit; }
-        button { background: #0f0; color: #000; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; }
-        button:hover { background: #fff; }
 
-        .analysis-result { border: 1px solid gold; padding: 15px; margin-top: 20px; display: none; }
+        /* SCHEMATIC VIEW (Das Bild & Radar) */
+        .schematic-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Passt zum Bildformat */
+            margin: 0 auto 20px auto;
+            border: 1px solid #333;
+            overflow: hidden;
+            display: none; /* Wird erst bei Scan eingeblendet */
+            background: #000;
+        }
+        .schematic-img { 
+            width: 100%; 
+            display: block; 
+            /* Cooler Cyberpunk-Filter für das Bild */
+            filter: grayscale(100%) sepia(100%) hue-rotate(90deg) saturate(300%) contrast(1.2); 
+            opacity: 0.9; 
+        }
+        .radar-sweep {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 800px; height: 800px; /* Groß genug für Rotation */
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(57, 255, 20, 0.1) 60deg, rgba(57, 255, 20, 0.5) 90deg, transparent 91deg);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: radar-spin 3s linear infinite;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+        @keyframes radar-spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+
+        /* CHAT & INPUT */
+        .chat-box { height: 180px; overflow-y: auto; border: 1px dashed #333; padding: 10px; margin-bottom: 20px; color: #fff; font-size: 0.9rem; background: #080808; }
+        .input-area { display: flex; gap: 10px; flex-wrap: wrap; }
+        input { background: #111; border: 1px solid #0f0; color: #fff; padding: 15px; flex-grow: 1; font-family: inherit; font-size: 1rem; outline: none; }
+        input:focus { box-shadow: 0 0 10px #0f0; }
+        button { background: #0f0; color: #000; border: none; padding: 15px 30px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        button:hover { background: #fff; box-shadow: 0 0 15px #fff; }
+
+        /* ORACLE RESULT (Der Glückskeks) */
+        .oracle-result { 
+            border: 2px solid gold; 
+            padding: 20px; 
+            margin-top: 20px; 
+            display: none; 
+            background: #1a1a00;
+            text-align: center;
+            animation: unfold 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes unfold { 0% { transform: scaleY(0); opacity: 0; } 100% { transform: scaleY(1); opacity: 1; } }
+        
+        .hexagram-symbol { font-size: 4rem; line-height: 1; margin-bottom: 15px; display: block; text-shadow: 0 0 10px currentColor; }
     </style>
 </head>
 <body>
@@ -30,82 +77,156 @@
 <div class="terminal">
     <div class="header">
         <span>SYSTEM: SENTINEL_GROK_MODE_V.9</span>
-        <span class="blink">● ONLINE</span>
+        <span class="blink" style="color:#0f0">● ONLINE</span>
     </div>
 
     <div class="market-data">
         <div class="data-point">
-            CRYPTO FLUX (BlackRock)<br>
-            <span class="red">BTC: SELL ORDERS DETECTED (-4.2%)</span>
+            CRYPTO FLUX<br>
+            <span class="red">BTC: SELL (-4.2%)</span>
         </div>
         <div class="data-point">
-            REAL ASSETS (Legacy)<br>
-            <span class="gold">GOLD/SILVER: MOMENTUM UP (+2.1%)</span>
+            REAL ASSETS<br>
+            <span class="gold">GOLD: BUY (+2.1%)</span>
         </div>
         <div class="data-point">
             GEOPOLITICS<br>
-            <span>STATUS: FRAGILE (Peace Boards Active)</span>
+            <span>US DEBT ➔ CHINA</span>
         </div>
         <div class="data-point">
-            BIO 2.0 INDEX<br>
-            <span style="color:#0f0">STABLE GROWTH (Tangible)</span>
+            PROTOCOL<br>
+            <span style="color:#0f0">SUN TZU ACTIVE</span>
         </div>
     </div>
 
+    <div id="schematic" class="schematic-container">
+        <img src="https://sorgenlos.de/vp/RMI/GROK_3.8.png" alt="Rosary Architecture Schematic" class="schematic-img">
+        
+        <div class="radar-sweep"></div>
+        
+        <div style="position:absolute; top:2%; left:50%; transform:translateX(-50%); color:#0f0; background:rgba(0,0,0,0.8); padding:2px 5px; font-size:0.8rem; border:1px solid #0f0;">12:00 (SÜD/YANG)</div>
+        <div style="position:absolute; bottom:2%; left:50%; transform:translateX(-50%); color:#0f0; background:rgba(0,0,0,0.8); padding:2px 5px; font-size:0.8rem; border:1px solid #0f0;">06:00 (NORD/YIN)</div>
+    </div>
+
     <div class="chat-box" id="chat">
-        <div style="color: #0f0;">> AI INITALIZED. Zugriff auf Rosary Prime Datenbank...</div>
-        <div style="color: #0f0;">> "Invest when blood flows" Pattern erkannt.</div>
-        <div style="color: #0f0;">> Bitte Markt-Szenario wählen oder Frage eingeben...</div>
+        <div style="color: #0f0;">> SYSTEM INITALIZED. Zugriff auf Rosary Prime Datenbank...</div>
+        <div style="color: #0f0;">> MACRO SCAN: "Blood on Streets" Pattern erkannt.</div>
+        <div style="color: #888;">> TIPP: Für "Insider Wisdom" (Zhang/I-Ging) geben Sie den Binär-Code ein.</div>
+        <div style="color: #888;">> Beispiel: 111111 (Süd) oder 000000 (Nord).</div>
         <br>
     </div>
 
     <div class="input-area">
-        <input type="text" id="userInput" placeholder="Z.B.: 'Analyse BlackRock Shift' oder 'Sicherer Hafen?'">
-        <button onclick="runAnalysis()">ANALYSE STARTEN</button>
+        <input type="text" id="userInput" placeholder="Code eingeben (z.B. 111111, South, Zhang)..." onkeypress="handleEnter(event)">
+        <button onclick="runAnalysis()">SCAN STARTEN</button>
     </div>
 
-    <div id="result" class="analysis-result">
-        <h3 style="color:gold; margin-top:0;">⚠️ STRATEGIC ADVISORY ALERT</h3>
-        <p id="advisory-text"></p>
-        <br>
-        <strong>EMPFEHLUNG:</strong> <span style="background:gold; color:black; padding:2px;">SHIFT TO ROSARY PRIME ASSETS</span>
+    <div id="result" class="oracle-result">
+        <span id="hex-icon" class="hexagram-symbol"></span>
+        <h3 id="oracle-title" style="color:gold; margin:0 0 10px 0; font-size:1.5rem;"></h3>
+        <p id="oracle-text" style="color:#fff; font-style:italic; font-size:1.1rem; margin-bottom:20px;"></p>
+        <div style="margin-top:15px; border-top:1px solid #555; padding-top:15px;">
+            <strong style="color:#39ff14; text-transform:uppercase;">Agrar- & Investment-Implikation:</strong><br>
+            <span id="agri-text" style="line-height:1.5;"></span>
+        </div>
     </div>
 </div>
 
 <script>
+    // Enter-Taste Support
+    function handleEnter(e) {
+        if(e.key === 'Enter') runAnalysis();
+    }
+
     function runAnalysis() {
-        const input = document.getElementById('userInput').value.toLowerCase();
+        const inputField = document.getElementById('userInput');
+        const input = inputField.value.toLowerCase().trim();
+        if(!input) return; // Nichts tun bei leerem Input
+
         const chat = document.getElementById('chat');
         const resultBox = document.getElementById('result');
-        const advisoryText = document.getElementById('advisory-text');
+        const schematic = document.getElementById('schematic');
+        const hexIcon = document.getElementById('hex-icon');
+        const oracleTitle = document.getElementById('oracle-title');
+        const oracleText = document.getElementById('oracle-text');
+        const agriText = document.getElementById('agri-text');
 
-        // Simulation der "Denkzeit"
-        chat.innerHTML += `<div>> User: ${document.getElementById('userInput').value}</div>`;
-        chat.innerHTML += `<div class="blink">> Processing Real-Time Data (Coinbase, COMEX, Reuters)...</div>`;
+        // Reset display für neue Suche
+        resultBox.style.display = 'none';
+
+        // User Input Log
+        chat.innerHTML += `<div style="color: #fff; margin-top:5px;">> USER: ${input}</div>`;
+        chat.innerHTML += `<div class="blink" style="color:#555;">> DECRYPTING ZHANG PROTOCOL...</div>`;
+        chat.scrollTop = chat.scrollHeight;
+
+        // Schematic einblenden für den "Scan-Effekt"
+        schematic.style.display = "block";
+        // Scrollen zum Bild, damit man es sieht
+        schematic.scrollIntoView({behavior: "smooth", block: "center"});
+
+        // input leeren
+        inputField.value = "";
 
         setTimeout(() => {
-            let response = "";
+            let mode = "market"; 
+
+            // --- LOGIK DES DIAMOND SCREW ---
             
-            if (input.includes("blackrock") || input.includes("btc") || input.includes("crypto")) {
-                response = "ERGEBNIS: Großanleger (BlackRock) verschieben Liquidität. Massive Sell-Orders bei BTC signalisieren Vertrauensverlust in reine Digital-Assets.";
-                advisoryText.innerText = "Die Volatilität im Krypto-Sektor steigt durch institutionelle Abverkäufe. Das Kapital sucht physische Deckung (Land/Nahrung).";
-            } else if (input.includes("gold") || input.includes("silber") || input.includes("sicher")) {
-                response = "ERGEBNIS: Historische Korrelation. Wenn Fiat/Krypto wackelt, fließt Geld in 'Metalle & Boden'. Baron Rothschild Logik aktiviert.";
-                advisoryText.innerText = "Gold und Silber steigen, bieten aber keine Rendite (Cashflow). Bio 2.0 Ridge-Kultur bietet Inflationsschutz PLUS Ertrag.";
-            } else {
-                response = "ERGEBNIS: Globale Unsicherheit hoch. Technokratische Peace-Boards stabilisieren nur lokal. Globaler Trend: 'Assets on the ground'.";
-                advisoryText.innerText = "In geopolitisch fragilen Zeiten ist Landbesitz mit Nahrungsmittelproduktion (Bio 2.0) die einzige Asset-Klasse mit 'intrinsischem Überlebenswert'.";
+            // 1. YANG / SÜD / 111111
+            if (input === "111111" || input.includes("süd") || input.includes("south") || input.includes("12") || input.includes("yang")) {
+                mode = "yang";
+                hexIcon.innerHTML = "☰"; // Qian
+                hexIcon.style.color = "gold";
+                oracleTitle.innerText = "HEXAGRAMM 1: QIAN (Das Schöpferische)";
+                oracleText.innerText = "'Großes Gelingen. Fördernd ist Beharrlichkeit.' - Der Drache fliegt am Himmel.";
+                agriText.innerHTML = "Sektor SÜD (12 Uhr). Maximale Solarenergie. C4-Hochleistungspflanzen. <br><strong>STRATEGIE:</strong> Aggressives Wachstum & Energy-Harvesting.";
+                resultBox.style.borderColor = "gold";
+            } 
+            // 2. YIN / NORD / 000000
+            else if (input === "000000" || input.includes("nord") || input.includes("north") || input.includes("6") || input.includes("yin")) {
+                mode = "yin";
+                hexIcon.innerHTML = "☷"; // Kun
+                hexIcon.style.color = "#00f3ff"; // Cyan
+                oracleTitle.innerText = "HEXAGRAMM 2: KUN (Das Empfangende)";
+                oracleText.innerText = "'Fördernd ist die Beharrlichkeit einer Stute.' - Die Erde trägt alles.";
+                agriText.innerHTML = "Sektor NORD (6 Uhr). Wasserspeicherung, Myzel & Schattenkulturen. <br><strong>STRATEGIE:</strong> Sicherheit, Substanz & Wasserspeicher (Clay).";
+                resultBox.style.borderColor = "#00f3ff";
+            }
+            // 3. ZHANG / FRIEDEN / 111000
+            else if (input.includes("zhang") || input.includes("frieden") || input.includes("peace") || input.includes("11")) {
+                mode = "peace";
+                hexIcon.innerHTML = "䷊"; // Tai
+                hexIcon.style.color = "#39ff14"; // Green
+                oracleTitle.innerText = "HEXAGRAMM 11: TAI (Der Frieden)";
+                oracleText.innerText = "'Das Kleine geht, das Große kommt.' - Himmel und Erde vereinen sich.";
+                agriText.innerHTML = "BOARD OF PEACE STANDARD. Die perfekte Balance im Rosary-System. <br><strong>STRATEGIE:</strong> Geopolitische Stabilität (Safe Haven) & Konvergenz.";
+                resultBox.style.borderColor = "#39ff14";
+            }
+            // 4. MARKT (Default)
+            else {
+                mode = "market";
+                hexIcon.innerHTML = "⚠️";
+                hexIcon.style.color = "#ff3333";
+                oracleTitle.innerText = "STRATEGIC ADVISORY";
+                oracleText.innerText = "Standard-Markt Scan aktiv. Unsicherheit erkannt.";
+                agriText.innerHTML = "US Debt Migration nach China erkannt. Kapital flieht in Land-Assets. <br><strong>EMPFEHLUNG:</strong> Shift to Rosary Prime Assets. <br>(Insider-Tipp: Versuchen Sie Code '111111' oder '000000')";
+                resultBox.style.borderColor = "#ff3333";
             }
 
-            chat.innerHTML += `<div style="color:gold;">> ${response}</div>`;
-            chat.scrollTop = chat.scrollHeight;
+            // Anzeigen
             resultBox.style.display = 'block';
-        }, 1500);
+            
+            // Scrolling zum Ergebnis
+            setTimeout(() => {
+                resultBox.scrollIntoView({behavior: "smooth", block: "center"});
+            }, 100);
+
+        }, 2000); // 2 Sekunden "Scan-Zeit" für mehr Dramatik
     }
 </script>
 
-<div style="text-align:center; margin-top:20px;">
-    <a href="index.html" style="color:#555; text-decoration:none;">[ ZURÜCK ZUR HAUPTSEITE ]</a>
+<div style="text-align:center; margin-top:30px;">
+    <a href="index.html" style="color:#555; text-decoration:none; border:1px solid #333; padding:10px;">[ ZURÜCK ZUR HAUPTSEITE ]</a>
 </div>
 
 </body>
