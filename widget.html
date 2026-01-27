@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { margin: 0; padding: 0; background: #000; overflow: hidden; font-family: 'Courier New', monospace; }
+        
+        .nano-wrapper {
+            display: flex;
+            align-items: center;
+            height: 60px;
+            border-bottom: 2px solid #39ff14;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+            color: #39ff14;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            line-height: 60px; /* Vertikale Zentrierung */
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(100%, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        .alert-btn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: #ff0033; /* Panic Red */
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            font-family: Arial, sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: 1px solid #fff;
+            box-shadow: 0 0 15px #ff0033;
+            animation: pulse 1.5s infinite;
+            z-index: 100;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 51, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 0, 51, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 51, 0); }
+        }
+
+        /* Overlay Gradient für bessere Lesbarkeit */
+        .overlay {
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 150px;
+            background: linear-gradient(to right, transparent, #000);
+            pointer-events: none;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nano-wrapper">
+        <div class="ticker-wrap">
+            <div class="ticker">
+                >>> 🩸 MARKET ALERT: "BLOOD ON THE STREETS" DETECTED >>> 📉 CRYPTO & FIAT VOLATILITY SPIKE >>> 🧱 SMART MONEY IS "GOING CLAY" (REAL ASSETS) >>> ⚠️ ROSARY PRIME INFRASTRUCTURE: ONLINE & READY >>> 🌍 SECURE YOUR ASSETS NOW >>>
+            </div>
+        </div>
+        <div class="overlay"></div>
+        <a href="https://rosary-mom.github.io/Bio2.0/" target="_blank" class="alert-btn">
+            🚀 EXIT TO SAFETY
+        </a>
+    </div>
+
+</body>
+</html>
