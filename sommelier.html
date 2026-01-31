@@ -7,283 +7,272 @@
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #f9f9f9; color: #333; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        
-        h1 { color: #8B0000; text-align: center; margin-bottom: 5px; }
-        .subtitle { text-align: center; color: #666; font-style: italic; margin-bottom: 40px; }
-        
+        :root {
+            --primary-color: #8B0000; /* Weinrot */
+            --accent-color: #D4AF37;  /* Gold */
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+        }
+
+        body { 
+            font-family: 'Lato', sans-serif; 
+            background: var(--bg-color); 
+            color: var(--text-color); 
+            margin: 0; padding: 0; 
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #000);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        h1 { font-family: 'Playfair Display', serif; margin: 0; font-size: 2.5em; color: var(--accent-color); }
+        .subtitle { font-style: italic; opacity: 0.8; margin-top: 10px; }
+
+        /* Container */
+        .container { 
+            max-width: 900px; 
+            margin: -30px auto 40px; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 8px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            position: relative;
+        }
+
         /* Formular Styling */
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; color: #444; }
-        select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; font-size: 16px; background: #fff; }
-        
-        button { 
-            width: 100%; padding: 15px; background-color: #8B0000; color: white; 
-            border: none; border-radius: 8px; font-size: 18px; cursor: pointer; transition: background 0.3s; margin-top: 10px;
+        .control-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
         }
-        button:hover { background-color: #600000; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; }
+        select { 
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; 
+            background: #fff; font-size: 16px; transition: border 0.3s;
+        }
+        select:focus { border-color: var(--primary-color); outline: none; }
+        
+        button.cta-btn { 
+            grid-column: 1 / -1;
+            padding: 15px; background-color: var(--primary-color); color: white; 
+            border: none; border-radius: 4px; font-size: 18px; cursor: pointer; 
+            transition: transform 0.2s, background 0.3s; text-transform: uppercase; font-weight: bold;
+        }
+        button.cta-btn:hover { background-color: #600000; transform: translateY(-2px); }
 
-        /* Ergebnisse */
-        #results { margin-top: 30px; padding: 20px; border-left: 5px solid #8B0000; background: #fff5f5; display: none; border-radius: 4px; }
-        #results h2 { margin-top: 0; color: #8B0000; }
+        /* Ergebnis Boxen */
+        .result-section { display: none; animation: fadeIn 0.5s ease-in-out; }
+        
+        .recommendation-card {
+            border-left: 5px solid var(--primary-color);
+            background: #fff5f5;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .recommendation-card h2 { margin-top: 0; color: var(--primary-color); font-family: 'Playfair Display', serif; }
 
-        /* 3D Viewer */
-        #protein-viewer-container {
-            margin-top: 40px;
+        /* Visualisierungen */
+        .viz-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .control-panel, .viz-grid { grid-template-columns: 1fr; }
+        }
+
+        .viz-box {
             border: 1px solid #eee;
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
-            display: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            background: white;
         }
-        .viewer-header { background: #2c3e50; color: white; padding: 15px; text-align: center; }
-        #viewer_3d { width: 100%; height: 400px; position: relative; background: white; }
-
-        /* Chart Container */
-        .chart-container { margin-top: 50px; padding-top: 30px; border-top: 2px dashed #eee; }
-        .chart-wrapper { position: relative; height: 400px; width: 100%; }
+        .viz-header { 
+            background: #f4f4f4; padding: 10px; text-align: center; 
+            font-weight: bold; border-bottom: 1px solid #eee; font-size: 0.9em;
+        }
         
-        .badge { display: inline-block; background: #2c3e50; color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.8em; margin-bottom: 10px; }
+        #viewer_3d { width: 100%; height: 300px; position: relative; }
+        .chart-wrapper { position: relative; height: 300px; padding: 10px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
+<header>
+    <h1>Digital Molecular Sommelier</h1>
+    <p class="subtitle">Rosary Bio2.0 – Wo Sensorik auf Wissenschaft trifft</p>
+</header>
+
 <div class="container">
-    <h1>🍷 Digital Molecular Sommelier</h1>
-    <p class="subtitle">Verbinde Geschmack (Sensorik) mit Wissenschaft (Proteine & Chemie)</p>
-
-    <form id="sommelierForm">
+    <div class="control-panel">
         <div class="form-group">
-            <label for="typ">Weinart:</label>
+            <label for="typ">Weinart</label>
             <select id="typ">
-                <option value="rot">Rotwein</option>
-                <option value="weiss">Weißwein</option>
-                <option value="rose">Rosé</option>
+                <option value="rot">Rotwein (Tiefgründig)</option>
+                <option value="weiss">Weißwein (Frisch)</option>
+                <option value="rose">Rosé (Balance)</option>
             </select>
         </div>
         
         <div class="form-group">
-            <label for="anlass">Anlass / Stimmung:</label>
+            <label for="anlass">Atmosphäre</label>
             <select id="anlass">
-                <option value="kamin">Kaminabend (Tiefgründig)</option>
-                <option value="terrasse">Sommerterrasse (Frisch)</option>
-                <option value="dinner">Elegantes Dinner (Balanciert)</option>
+                <option value="kamin">Kaminabend / Meditation</option>
+                <option value="terrasse">Sommerterrasse / Party</option>
+                <option value="dinner">Fine Dining / Eleganz</option>
             </select>
         </div>
         
-        <button type="button" onclick="starteAnalyse()">Analyse starten & Wein empfehlen</button>
-    </form>
-
-    <div id="results">
-        <h2 id="weinName"></h2>
-        <p id="weinDesc"></p>
+        <button class="cta-btn" onclick="starteAnalyse()">Analyse starten</button>
     </div>
 
-    <div id="protein-viewer-container">
-        <div class="viewer-header">
-            🔬 <b>Molecular Insight</b><br>
-            <span id="science-text" style="font-size:0.9em; opacity:0.9;"></span>
+    <div id="results" class="result-section">
+        
+        <div class="recommendation-card">
+            <h2 id="weinName"></h2>
+            <p id="weinDesc" style="font-size: 1.1em; line-height: 1.6;"></p>
         </div>
-        <div id="viewer_3d"></div>
-    </div>
 
-    <div class="chart-container">
-        <h3>🗺️ Terroir-Map: Der Chemische Fingerabdruck</h3>
-        <p style="font-size: 0.9em; color: #666;">
-            Diese Grafik zeigt die chemische Analyse unserer Weine (basierend auf Säure, Alkohol, Mineralik).
-            Jeder Punkt ist ein Wein. Ähnliche Weine liegen nah beieinander.
-        </p>
-        <div class="chart-wrapper">
-            <canvas id="terroirChart"></canvas>
+        <div class="viz-grid">
+            
+            <div class="viz-box">
+                <div class="viz-header">🔬 Aktives Boden-Enzym (AlphaFold)</div>
+                <div id="viewer_3d"></div>
+                <div style="padding:10px; font-size:0.85em; color:#666; text-align:center;" id="science-text"></div>
+            </div>
+
+            <div class="viz-box">
+                <div class="viz-header">🗺️ Chemischer Fingerabdruck (PCA)</div>
+                <div class="chart-wrapper">
+                    <canvas id="terroirChart"></canvas>
+                </div>
+                <div style="padding:10px; font-size:0.85em; color:#666; text-align:center;">
+                    Position im Geschmacks-Universum basierend auf Säure & Struktur.
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>
 
 <script>
-    // ==========================================
-    // 1. DATENBANK (Das "Gehirn")
-    // ==========================================
-    
-    // A. Die Weine & Proteine
+    // ================= DATENBANK =================
     const wineDatabase = [
         {
-            id: "prime_red",
-            type: "rot",
-            mood: "kamin",
+            id: "prime_red", type: "rot", mood: "kamin",
             name: "Rosary 'Deep Roots' Spätburgunder",
-            desc: "Ein tiefgründiger Roter, gewachsen auf vulkanischem Gestein. Noten von dunkler Kirsche, Tabak und Erde.",
+            desc: "Ein monumentaler Rotwein vom vulkanischen Gestein. Noten von dunkler Kirsche, Tabak und Wald, geprägt durch tiefe Wurzeln.",
             proteinID: "1TQN", // Cholin-Dehydrogenase
-            scienceTitle: "Enzym: Cholin-Dehydrogenase",
-            scienceDesc: "Hitzeschutz-Protein. Sorgt dafür, dass die Rebe auch bei Dürre Aromen bildet."
+            science: "Enzym: Cholin-Dehydrogenase. Dieses Protein schützt die Rebe vor Trockenstress und sorgt für konzentrierte Aromen."
         },
         {
-            id: "solaris_white",
-            type: "weiss",
-            mood: "terrasse",
+            id: "solaris_white", type: "weiss", mood: "terrasse",
             name: "Rosary 'Solaris' Bio-Cuvée",
-            desc: "Spritzig, pilzwiderstandsfähig (PIWI) und voller Sonnenenergie. Zitrus und grüner Apfel.",
+            desc: "Lebendige Energie im Glas. Zitrusfrüchte, grüner Apfel und eine vibrierende Säure, die direkt von der Sonne erzählt.",
             proteinID: "1DXJ", // Chitinase
-            scienceTitle: "Enzym: Chitinase",
-            scienceDesc: "Natürliche Abwehrkraft. Dieses Enzym schützt die PIWI-Rebe vor Pilzbefall ohne Chemie."
+            science: "Enzym: Chitinase. Die natürliche Abwehrkraft der PIWI-Rebe gegen Pilze – macht Chemie überflüssig."
         },
         {
-            id: "harmony_rose",
-            type: "rose",
-            mood: "dinner",
+            id: "harmony_rose", type: "rose", mood: "dinner",
             name: "Rosary 'Harmony' Rosé",
-            desc: "Die perfekte Balance. Erdbeere trifft auf mineralische Frische.",
+            desc: "Die goldene Mitte. Feinste Erdbeer-Noten treffen auf mineralische Kühle. Perfekte Balance.",
             proteinID: "3MJD", // Invertase
-            scienceTitle: "Enzym: Invertase",
-            scienceDesc: "Reguliert das Zucker-Säure-Spiel in der Beere für perfekte Harmonie."
+            science: "Enzym: Invertase. Reguliert das Zucker-Säure-Spiel in der Beere für perfekte Harmonie."
         }
     ];
 
-    // B. Die PCA Daten (Simuliert aus Ihrem Python-Code)
-    // Hier fügen wir das JSON ein, das der Python Code generiert hätte.
+    // Simulierter PCA Datensatz (aus Python übernommen)
     const pcaData = [
-        { x: -2.5, y: 0.5, type: "Premium (Rot)" },
-        { x: -2.3, y: 0.8, type: "Premium (Rot)" },
-        { x: -2.8, y: 0.2, type: "Premium (Rot)" },
-        { x: -2.1, y: 0.6, type: "Premium (Rot)" },
-        { x: 2.1, y: -1.2, type: "Leicht (Weiss)" },
-        { x: 1.9, y: -0.9, type: "Leicht (Weiss)" },
-        { x: 2.5, y: -1.5, type: "Leicht (Weiss)" },
-        { x: 2.2, y: -1.1, type: "Leicht (Weiss)" },
-        { x: 0.1, y: 1.5, type: "Balance (Rosé)" },
-        { x: -0.2, y: 1.2, type: "Balance (Rosé)" },
-        { x: 0.3, y: 1.8, type: "Balance (Rosé)" }
+        { x: -2.5, y: 0.5, type: "Rot (Komplex)" }, { x: -2.3, y: 0.8, type: "Rot (Komplex)" },
+        { x: 2.1, y: -1.2, type: "Weiß (Frisch)" }, { x: 1.9, y: -0.9, type: "Weiß (Frisch)" },
+        { x: 0.1, y: 1.5, type: "Rosé (Balance)" }, { x: -0.2, y: 1.2, type: "Rosé (Balance)" }
     ];
 
-    // ==========================================
-    // 2. LOGIK (Sommelier)
-    // ==========================================
+    // ================= LOGIK =================
+    let chartInstance = null;
+    let viewer = null;
 
     function starteAnalyse() {
         const typ = document.getElementById('typ').value;
         const anlass = document.getElementById('anlass').value;
         
-        // Suche passenden Wein
-        let match = wineDatabase.find(w => w.type === typ && w.mood === anlass);
-        
-        // Fallback, wenn exakte Kombi nicht existiert
-        if (!match) {
-            match = wineDatabase.find(w => w.type === typ);
-        }
+        // Intelligente Suche (Fallback wenn Anlass nicht passt)
+        let match = wineDatabase.find(w => w.type === typ && w.mood === anlass) || wineDatabase.find(w => w.type === typ);
 
         if (match) {
-            // UI Updates
-            document.getElementById('weinName').innerText = "🍾 Empfehlung: " + match.name;
+            // Text Update
+            document.getElementById('weinName').innerHTML = "🍾 Wir empfehlen: " + match.name;
             document.getElementById('weinDesc').innerText = match.desc;
-            document.getElementById('results').style.display = 'block';
+            document.getElementById('science-text').innerText = match.science;
             
-            // Science Text Update
-            document.getElementById('science-text').innerHTML = `
-                <b>${match.scienceTitle}:</b> ${match.scienceDesc}
-            `;
+            // UI anzeigen
+            document.getElementById('results').style.display = 'block';
 
-            // 3D Viewer starten
-            showProtein(match.proteinID);
+            // Visualisierungen starten
+            renderProtein(match.proteinID);
+            renderChart(match.type);
         }
     }
 
-    // ==========================================
-    // 3. 3D VISUALISIERUNG (AlphaFold/PDB)
-    // ==========================================
-    
-    let viewer = null;
-
-    function showProtein(pdbId) {
-        const viewerDiv = document.getElementById('protein-viewer-container');
-        viewerDiv.style.display = 'block';
-
+    // --- 3D Protein Renderer ---
+    function renderProtein(pdbId) {
         let element = document.getElementById('viewer_3d');
-        
         if (!viewer) {
-            let config = { backgroundColor: 'white' };
-            viewer = $3Dmol.createViewer(element, config);
+            viewer = $3Dmol.createViewer(element, { backgroundColor: 'white' });
         }
-
         viewer.clear();
-        
-        // Lade Struktur von RCSB PDB
         $3Dmol.download("pdb:" + pdbId, viewer, {doAssembly:true, noSecondaryStructure:false}, function() {
-            viewer.setStyle({}, {cartoon: {color: 'spectrum'}, stick: {}});
+            viewer.setStyle({}, {cartoon: {color: 'spectrum'}});
             viewer.zoomTo();
             viewer.render();
         });
     }
 
-    // ==========================================
-    // 4. CHART VISUALISIERUNG (PCA Map)
-    // ==========================================
-
-    function initChart() {
+    // --- Chart.js Renderer ---
+    function renderChart(activeType) {
         const ctx = document.getElementById('terroirChart').getContext('2d');
         
-        // Daten gruppieren für Farben
-        const rotData = pcaData.filter(d => d.type.includes("Rot"));
-        const weissData = pcaData.filter(d => d.type.includes("Weiss"));
-        const roseData = pcaData.filter(d => d.type.includes("Rosé"));
+        // Farben definieren
+        const colors = { "Rot (Komplex)": "#8B0000", "Weiß (Frisch)": "#F1C40F", "Rosé (Balance)": "#E91E63" };
 
-        new Chart(ctx, {
-            type: 'scatter',
-            data: {
-                datasets: [
-                    {
-                        label: 'Premium Rot (Komplex)',
-                        data: rotData,
-                        backgroundColor: '#8B0000', // Dunkelrot
-                        pointRadius: 6
-                    },
-                    {
-                        label: 'Leicht Weiß (Frisch)',
-                        data: weissData,
-                        backgroundColor: '#F1C40F', // Gelb
-                        pointRadius: 6
-                    },
-                    {
-                        label: 'Rosé (Balance)',
-                        data: roseData,
-                        backgroundColor: '#E91E63', // Pink
-                        pointRadius: 6
-                    }
-                ]
+        const datasets = Object.keys(colors).map(label => ({
+            label: label,
+            data: pcaData.filter(d => d.type === label),
+            backgroundColor: colors[label],
+            pointRadius: (ctx) => {
+                // Highlight den ausgewählten Typ
+                const typeMap = { "rot": "Rot (Komplex)", "weiss": "Weiß (Frisch)", "rose": "Rosé (Balance)" };
+                return typeMap[activeType] === label ? 10 : 5; // Größer wenn aktiv
             },
+            pointHoverRadius: 12
+        }));
+
+        if (chartInstance) chartInstance.destroy();
+
+        chartInstance = new Chart(ctx, {
+            type: 'scatter',
+            data: { datasets: datasets },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'bottom' },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return context.dataset.label;
-                            }
-                        }
-                    }
-                },
+                plugins: { legend: { position: 'bottom' } },
                 scales: {
-                    x: { 
-                        title: { display: true, text: 'Chemische Komplexität (PC1)' },
-                        grid: { color: '#eee' }
-                    },
-                    y: { 
-                        title: { display: true, text: 'Terroir Charakter (PC2)' },
-                        grid: { color: '#eee' }
-                    }
+                    x: { display: false }, // Achsen verstecken für cleaneren Look
+                    y: { display: false }
                 }
             }
         });
     }
-
-    // Chart starten beim Laden
-    window.onload = function() {
-        initChart();
-    };
-
 </script>
 
 </body>
