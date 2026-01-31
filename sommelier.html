@@ -3,208 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digitaler Sommelier</title>
+    <title>Rosary Bio2.0 | Digital Molecular Sommelier</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { color: #8B0000; }
-        form { margin-bottom: 20px; }
-        label { display: block; margin: 10px 0 5px; }
-        input { width: 100%; padding: 8px; }
-        button { background-color: #8B0000; color: white; padding: 10px; border: none; cursor: pointer; }
-        #results { margin-top: 20px; }
-        .wein { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
-        .wein h2 { margin-top: 0; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #f9f9f9; color: #333; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        h1 { color: #8B0000; text-align: center; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #666; font-style: italic; margin-bottom: 40px; }
+        
+        /* Formular Styling */
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #444; }
+        select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; font-size: 16px; background: #fff; }
+        
+        button { 
+            width: 100%; padding: 15px; background-color: #8B0000; color: white; 
+            border: none; border-radius: 8px; font-size: 18px; cursor: pointer; transition: background 0.3s; margin-top: 10px;
+        }
+        button:hover { background-color: #600000; }
+
+        /* Ergebnisse */
+        #results { margin-top: 30px; padding: 20px; border-left: 5px solid #8B0000; background: #fff5f5; display: none; border-radius: 4px; }
+        #results h2 { margin-top: 0; color: #8B0000; }
+
+        /* 3D Viewer */
+        #protein-viewer-container {
+            margin-top: 40px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            overflow: hidden;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .viewer-header { background: #2c3e50; color: white; padding: 15px; text-align: center; }
+        #viewer_3d { width: 100%; height: 400px; position: relative; background: white; }
+
+        /* Chart Container */
+        .chart-container { margin-top: 50px; padding-top: 30px; border-top: 2px dashed #eee; }
+        .chart-wrapper { position: relative; height: 400px; width: 100%; }
+        
+        .badge { display: inline-block; background: #2c3e50; color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.8em; margin-bottom: 10px; }
     </style>
 </head>
 <body>
-    <h1>Digitaler Sommelier</h1>
-    <p>Willkommen! Geben Sie Ihre Vorlieben ein, um Weinempfehlungen zu erhalten.</p>
-    
+
+<div class="container">
+    <h1>🍷 Digital Molecular Sommelier</h1>
+    <p class="subtitle">Verbinde Geschmack (Sensorik) mit Wissenschaft (Proteine & Chemie)</p>
+
     <form id="sommelierForm">
-        <label for="typ">Welchen Typ Wein bevorzugen Sie (rot/weiß oder leer für alle)?</label>
-        <input type="text" id="typ" name="typ">
+        <div class="form-group">
+            <label for="typ">Weinart:</label>
+            <select id="typ">
+                <option value="rot">Rotwein</option>
+                <option value="weiss">Weißwein</option>
+                <option value="rose">Rosé</option>
+            </select>
+        </div>
         
-        <label for="suessgrad">Süßgrad (trocken/halbtrocken/süß oder leer für alle)?</label>
-        <input type="text" id="suessgrad" name="suessgrad">
+        <div class="form-group">
+            <label for="anlass">Anlass / Stimmung:</label>
+            <select id="anlass">
+                <option value="kamin">Kaminabend (Tiefgründig)</option>
+                <option value="terrasse">Sommerterrasse (Frisch)</option>
+                <option value="dinner">Elegantes Dinner (Balanciert)</option>
+            </select>
+        </div>
         
-        <label for="geschmacksvorliebe">Geschmacksvorliebe (z.B. fruchtig, tanninreich oder leer)?</label>
-        <input type="text" id="geschmacksvorliebe" name="geschmacksvorliebe">
-        
-        <button type="submit">Empfehlungen anzeigen</button>
+        <button type="button" onclick="starteAnalyse()">Analyse starten & Wein empfehlen</button>
     </form>
+
+    <div id="results">
+        <h2 id="weinName"></h2>
+        <p id="weinDesc"></p>
+    </div>
+
+    <div id="protein-viewer-container">
+        <div class="viewer-header">
+            🔬 <b>Molecular Insight</b><br>
+            <span id="science-text" style="font-size:0.9em; opacity:0.9;"></span>
+        </div>
+        <div id="viewer_3d"></div>
+    </div>
+
+    <div class="chart-container">
+        <h3>🗺️ Terroir-Map: Der Chemische Fingerabdruck</h3>
+        <p style="font-size: 0.9em; color: #666;">
+            Diese Grafik zeigt die chemische Analyse unserer Weine (basierend auf Säure, Alkohol, Mineralik).
+            Jeder Punkt ist ein Wein. Ähnliche Weine liegen nah beieinander.
+        </p>
+        <div class="chart-wrapper">
+            <canvas id="terroirChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ==========================================
+    // 1. DATENBANK (Das "Gehirn")
+    // ==========================================
     
-    <div id="results"></div>
-    
-    <script>
-        const weine = {
-            "Cabernet Sauvignon": {
-                "typ": "rot",
-                "suessgrad": "trocken",
-                "geschmack": "Beerenaromen wie schwarze Johannisbeere, Brombeere, mit Noten von Vanille und Eiche.",
-                "geruch": "Intensiv nach dunklen Früchten, Tabak und Leder.",
-                "mundgefuehl": "Vollmundig, tanninreich, mit fester Struktur und langem Abgang.",
-                "preis": "Mittel bis hoch",
-                "essen": "Zu gegrilltem Fleisch, Wild oder reifem Käse."
-            },
-            "Chardonnay": {
-                "typ": "weiß",
-                "suessgrad": "trocken",
-                "geschmack": "Tropische Früchte wie Ananas und Mango, mit Butter- und Nussnoten.",
-                "geruch": "Fruchtig nach Apfel, Zitrus und Eiche.",
-                "mundgefuehl": "Cremig, mittelkräftig, mit ausgewogener Säure.",
-                "preis": "Mittel",
-                "essen": "Zu Fisch, Geflügel oder cremigen Pastagerichten."
-            },
-            "Riesling": {
-                "typ": "weiß",
-                "suessgrad": "halbtrocken",
-                "geschmack": "Frische Zitrusfrüchte, Apfel und Pfirsich, mit mineralischer Note.",
-                "geruch": "Blumig und fruchtig nach Limette, Honig und Petrol.",
-                "mundgefuehl": "Leicht, erfrischend, mit lebendiger Säure.",
-                "preis": "Niedrig bis mittel",
-                "essen": "Zu asiatischer Küche, scharfen Gerichten oder als Aperitif."
-            },
-            "Pinot Noir": {
-                "typ": "rot",
-                "suessgrad": "trocken",
-                "geschmack": "Rote Beeren wie Kirsche und Erdbeere, mit erdigen Untertönen.",
-                "geruch": "Fein nach Himbeere, Pilzen und Gewürzen.",
-                "mundgefuehl": "Elegant, seidig, mit milden Tanninen.",
-                "preis": "Mittel bis hoch",
-                "essen": "Zu Lachs, Ente oder Pilzgerichten."
-            },
-            "Merlot": {
-                "typ": "rot",
-                "suessgrad": "trocken",
-                "geschmack": "Pflaumen, Schokolade und weiche Früchte.",
-                "geruch": "Nach reifen Beeren, Kräutern und Vanille.",
-                "mundgefuehl": "Weich, rund, mit moderaten Tanninen.",
-                "preis": "Niedrig bis mittel",
-                "essen": "Zu Pasta, Burgern oder mildem Käse."
-            }
-        };
-
-        function empfehleWein(typ, suessgrad, geschmacksvorliebe) {
-            let empfehlungen = [];
-            for (let name in weine) {
-                let info = weine[name];
-                if ((typ.toLowerCase() === info.typ || typ === "") &&
-                    (suessgrad.toLowerCase() === info.suessgrad || suessgrad === "")) {
-                    if (geschmacksvorliebe.toLowerCase() === "" || info.geschmack.toLowerCase().includes(geschmacksvorliebe.toLowerCase())) {
-                        empfehlungen.push({ name: name, info: info });
-                    }
-                }
-            }
-            return empfehlungen;
-        }
-
-        function beschreibeWein(wein) {
-            return `
-                <div class="wein">
-                    <h2>${wein.name}</h2>
-                    <p><strong>Geschmacklich:</strong> ${wein.info.geschmack}</p>
-                    <p><strong>Olfaktorisch:</strong> ${wein.info.geruch}</p>
-                    <p><strong>Taktil:</strong> ${wein.info.mundgefuehl}</p>
-                    <p><strong>Preisrahmen:</strong> ${wein.info.preis}</p>
-                    <p><strong>Passend zu:</strong> ${wein.info.essen}</p>
-                </div>
-            `;
-        }
-
-        document.getElementById('sommelierForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            let typ = document.getElementById('typ').value;
-            let suessgrad = document.getElementById('suessgrad').value;
-            let geschmacksvorliebe = document.getElementById('geschmacksvorliebe').value;
-            
-            let empfehlungen = empfehleWein(typ, suessgrad, geschmacksvorliebe);
-            let resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = '';
-            
-            if (empfehlungen.length > 0) {
-                resultsDiv.innerHTML = `<p>Ich habe ${empfehlungen.length} Empfehlung(en) für Sie:</p>`;
-                empfehlungen.forEach(wein => {
-                    resultsDiv.innerHTML += beschreibeWein(wein);
-                });
-            } else {
-                resultsDiv.innerHTML = '<p>Leider keine passenden Empfehlungen. Versuchen Sie breitere Kriterien!</p>';
-            }
-        });
-    <script>
-    // --- 1. Die "Bio-Datenbank" (Das Gehirn aus dem Colab) ---
+    // A. Die Weine & Proteine
     const wineDatabase = [
         {
             id: "prime_red",
             type: "rot",
             mood: "kamin",
             name: "Rosary 'Deep Roots' Spätburgunder",
-            desc: "Ein tiefgründiger Roter, gewachsen auf vulkanischem Gestein. Noten von dunkler Kirsche und Erde.",
-            // Die Wissenschaft:
-            proteinID: "1TQN", // Cholin-Dehydrogenase (Stress-Resilienz)
-            scienceTitle: "Enzym: Cholin-Dehydrogenase (Stress-Schild)",
-            scienceDesc: "Dieser Wein stammt von Reben, die Hitzestress durch Glycinbetain-Produktion überlebt haben. Das angezeigte Protein ist der Motor dieser Schutzfunktion."
+            desc: "Ein tiefgründiger Roter, gewachsen auf vulkanischem Gestein. Noten von dunkler Kirsche, Tabak und Erde.",
+            proteinID: "1TQN", // Cholin-Dehydrogenase
+            scienceTitle: "Enzym: Cholin-Dehydrogenase",
+            scienceDesc: "Hitzeschutz-Protein. Sorgt dafür, dass die Rebe auch bei Dürre Aromen bildet."
         },
         {
             id: "solaris_white",
             type: "weiss",
             mood: "terrasse",
             name: "Rosary 'Solaris' Bio-Cuvée",
-            desc: "Spritzig, pilzwiderstandsfähig (PIWI) und voller Sonnenenergie.",
-            // Die Wissenschaft:
-            proteinID: "1CAG", // Kollagenase (Symbolisch für Strukturabbau/Reife oder Chitinase für Abwehr)
-            // Besser: Chitinase (Abwehr gegen Pilze) -> PDB: 1DXJ
-            proteinID: "1DXJ", 
-            scienceTitle: "Enzym: Chitinase (Die natürliche Abwehr)",
-            scienceDesc: "Da dies eine PIWI-Sorte ist, zeigt das Protein die natürliche Abwehrkraft der Pflanze gegen Pilze. Weniger Spritzmittel, mehr Natur."
+            desc: "Spritzig, pilzwiderstandsfähig (PIWI) und voller Sonnenenergie. Zitrus und grüner Apfel.",
+            proteinID: "1DXJ", // Chitinase
+            scienceTitle: "Enzym: Chitinase",
+            scienceDesc: "Natürliche Abwehrkraft. Dieses Enzym schützt die PIWI-Rebe vor Pilzbefall ohne Chemie."
         },
         {
             id: "harmony_rose",
             type: "rose",
             mood: "dinner",
             name: "Rosary 'Harmony' Rosé",
-            desc: "Die perfekte Balance zwischen Frucht und Säure. Ein Begleiter für leichte Küche.",
-            // Die Wissenschaft:
-            proteinID: "3MJD", // Invertase/Sucrose (Zuckerstoffwechsel)
-            scienceTitle: "Enzym: Invertase (Süße-Säure-Spiel)",
-            scienceDesc: "Dieses Enzym spaltet Zucker in der Traube und sorgt für den feinen Schmelz dieses Weines auf der Zunge."
+            desc: "Die perfekte Balance. Erdbeere trifft auf mineralische Frische.",
+            proteinID: "3MJD", // Invertase
+            scienceTitle: "Enzym: Invertase",
+            scienceDesc: "Reguliert das Zucker-Säure-Spiel in der Beere für perfekte Harmonie."
         }
-        // Hier können wir weitere Weine aus dem NotebookML hinzufügen
     ];
 
-    // --- 2. Die Sommelier Logik ---
-    function empfehleWein() {
+    // B. Die PCA Daten (Simuliert aus Ihrem Python-Code)
+    // Hier fügen wir das JSON ein, das der Python Code generiert hätte.
+    const pcaData = [
+        { x: -2.5, y: 0.5, type: "Premium (Rot)" },
+        { x: -2.3, y: 0.8, type: "Premium (Rot)" },
+        { x: -2.8, y: 0.2, type: "Premium (Rot)" },
+        { x: -2.1, y: 0.6, type: "Premium (Rot)" },
+        { x: 2.1, y: -1.2, type: "Leicht (Weiss)" },
+        { x: 1.9, y: -0.9, type: "Leicht (Weiss)" },
+        { x: 2.5, y: -1.5, type: "Leicht (Weiss)" },
+        { x: 2.2, y: -1.1, type: "Leicht (Weiss)" },
+        { x: 0.1, y: 1.5, type: "Balance (Rosé)" },
+        { x: -0.2, y: 1.2, type: "Balance (Rosé)" },
+        { x: 0.3, y: 1.8, type: "Balance (Rosé)" }
+    ];
+
+    // ==========================================
+    // 2. LOGIK (Sommelier)
+    // ==========================================
+
+    function starteAnalyse() {
         const typ = document.getElementById('typ').value;
         const anlass = document.getElementById('anlass').value;
         
-        // Suche passenden Wein (einfacher Filter)
-        // Logik: Wir suchen einen Wein, der zum Typ passt. 
-        // Falls Anlass nicht passt, nehmen wir trotzdem den ersten Treffer des Typs (Fallback).
+        // Suche passenden Wein
         let match = wineDatabase.find(w => w.type === typ && w.mood === anlass);
         
+        // Fallback, wenn exakte Kombi nicht existiert
         if (!match) {
-            // Fallback: Suche nur nach Typ
             match = wineDatabase.find(w => w.type === typ);
         }
 
         if (match) {
-            // Text Update
+            // UI Updates
             document.getElementById('weinName').innerText = "🍾 Empfehlung: " + match.name;
             document.getElementById('weinDesc').innerText = match.desc;
             document.getElementById('results').style.display = 'block';
             
-            // Update Science Badge & Text
-            document.querySelector('.viewer-header').innerHTML = `
-                🔬 <b>Molecular Insight:</b> ${match.scienceTitle}
-                <br><span style="font-size:0.8em; opacity:0.8;">${match.scienceDesc}</span>
+            // Science Text Update
+            document.getElementById('science-text').innerHTML = `
+                <b>${match.scienceTitle}:</b> ${match.scienceDesc}
             `;
 
-            // 3D Viewer starten mit der spezifischen Protein-ID
+            // 3D Viewer starten
             showProtein(match.proteinID);
         }
     }
 
-    // --- 3. Die AlphaFold/PDB Visualisierung ---
-    let viewer = null; // Globaler Viewer, damit wir ihn nicht 100x neu erstellen
+    // ==========================================
+    // 3. 3D VISUALISIERUNG (AlphaFold/PDB)
+    // ==========================================
+    
+    let viewer = null;
 
     function showProtein(pdbId) {
         const viewerDiv = document.getElementById('protein-viewer-container');
@@ -212,20 +201,90 @@
 
         let element = document.getElementById('viewer_3d');
         
-        // Viewer nur einmal initialisieren, sonst gibt es Grafik-Fehler
         if (!viewer) {
             let config = { backgroundColor: 'white' };
             viewer = $3Dmol.createViewer(element, config);
         }
 
-        viewer.clear(); // Altes Molekül löschen
+        viewer.clear();
         
-        // Lade neue Struktur live von der RCSB Datenbank
+        // Lade Struktur von RCSB PDB
         $3Dmol.download("pdb:" + pdbId, viewer, {doAssembly:true, noSecondaryStructure:false}, function() {
-            // Style: Cartoon (Bänder) + Stick (Moleküle) für Details
-            viewer.setStyle({}, {cartoon: {color: 'spectrum'}});
+            viewer.setStyle({}, {cartoon: {color: 'spectrum'}, stick: {}});
             viewer.zoomTo();
             viewer.render();
         });
     }
+
+    // ==========================================
+    // 4. CHART VISUALISIERUNG (PCA Map)
+    // ==========================================
+
+    function initChart() {
+        const ctx = document.getElementById('terroirChart').getContext('2d');
+        
+        // Daten gruppieren für Farben
+        const rotData = pcaData.filter(d => d.type.includes("Rot"));
+        const weissData = pcaData.filter(d => d.type.includes("Weiss"));
+        const roseData = pcaData.filter(d => d.type.includes("Rosé"));
+
+        new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    {
+                        label: 'Premium Rot (Komplex)',
+                        data: rotData,
+                        backgroundColor: '#8B0000', // Dunkelrot
+                        pointRadius: 6
+                    },
+                    {
+                        label: 'Leicht Weiß (Frisch)',
+                        data: weissData,
+                        backgroundColor: '#F1C40F', // Gelb
+                        pointRadius: 6
+                    },
+                    {
+                        label: 'Rosé (Balance)',
+                        data: roseData,
+                        backgroundColor: '#E91E63', // Pink
+                        pointRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: { 
+                        title: { display: true, text: 'Chemische Komplexität (PC1)' },
+                        grid: { color: '#eee' }
+                    },
+                    y: { 
+                        title: { display: true, text: 'Terroir Charakter (PC2)' },
+                        grid: { color: '#eee' }
+                    }
+                }
+            }
+        });
+    }
+
+    // Chart starten beim Laden
+    window.onload = function() {
+        initChart();
+    };
+
 </script>
+
+</body>
+</html>
