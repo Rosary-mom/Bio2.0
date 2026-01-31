@@ -69,10 +69,17 @@
             border-radius: 4px;
             background: #fffaf0;
         }
+        .wein.bio {
+            background: #f0fff0;
+            border-color: #228B22;
+        }
         .wein h2 {
             font-family: 'Playfair Display', serif;
             margin-top: 0;
             color: #8B0000;
+        }
+        .wein.bio h2 {
+            color: #228B22;
         }
         .bio-section {
             margin-top: 40px;
@@ -83,6 +90,19 @@
         .bio-section h2 {
             font-family: 'Playfair Display', serif;
             color: #228B22;
+        }
+        .enzyme-toggle {
+            cursor: pointer;
+            color: #228B22;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .enzyme-details {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #d9eed9;
+            border-radius: 4px;
         }
         a {
             color: #8B0000;
@@ -128,6 +148,19 @@
             </ul>
             <p>Integrieren Sie dies in Bio-Apps: Verwenden Sie JavaScript-Bibliotheken wie NGL Viewer für 3D-Modelle in HTML.</p>
             <a href="https://colab.research.google.com/github/deepmind/alphafold/blob/main/notebooks/AlphaFold.ipynb" target="_blank">AlphaFold Notebook in Colab öffnen</a>
+            
+            <div class="enzyme-toggle" onclick="toggleEnzymeDetails()">Mehr zu Enzymen in der Weinherstellung (anklicken zum Anzeigen)</div>
+            <div id="enzymeDetails" class="enzyme-details">
+                <p>Enzyme spielen eine entscheidende Rolle in der Weinherstellung. Wichtige Enzyme umfassen:</p>
+                <ul>
+                    <li><strong>Pektinasen (z.B. Polygalacturonase, Pektin-Lyase, Pektin-Methylesterase):</strong> Brechen Pektine ab, verbessern Klarung, Filtration und Saftausbeute.</li>
+                    <li><strong>Cellulasen und Hemicellulasen:</strong> Zersetzen Zellwände, fördern Extraktion von Aromen und Farben.</li>
+                    <li><strong>β-Glucanasen:</strong> Reduzieren Glucane von Hefen oder Schimmeln, erleichtern Filtration.</li>
+                    <li><strong>Glykosidasen:</strong> Freisetzen gebundener Aromen, verbessern Duft.</li>
+                    <li><strong>Proteasen:</strong> Abbau von Proteinen, stabilisieren Wein.</li>
+                </ul>
+                <p>Diese Enzyme werden oft als kommerzielle Präparate aus Pilzen wie Aspergillus niger oder Trichoderma spp. hergestellt und in verschiedenen Phasen der Weinproduktion eingesetzt, von der Maische bis zur Klärung. [](grok_render_citation_card_json={"cardIds":["49af21","13202b","04b024","a24c3a","75e2dd"]})</p>
+            </div>
         </div>
     </div>
     
@@ -232,6 +265,56 @@
                 "preis": "Niedrig bis mittel",
                 "essen": "Zu Rotfleisch, Pasta oder Käse.",
                 "bio": true
+            },
+            "Frog's Leap Cabernet Sauvignon (Organic)": {
+                "typ": "rot",
+                "suessgrad": "trocken",
+                "geschmack": "Dunkle Früchte, Cassis, Vanille, mit erdigen Nuancen.",
+                "geruch": "Beeren, Eiche und Gewürze.",
+                "mundgefuehl": "Ausgewogen, tanninreich, langes Finish.",
+                "preis": "Mittel bis hoch",
+                "essen": "Zu gegrilltem Rindfleisch oder Käse.",
+                "bio": true
+            },
+            "Tablas Creek Vineyard Esprit de Tablas (Biodynamic)": {
+                "typ": "rot",
+                "suessgrad": "trocken",
+                "geschmack": "Pflaumen, Kirschen, Lakritz, mit mineralischen Noten.",
+                "geruch": "Dunkle Früchte, Kräuter und Gewürze.",
+                "mundgefuehl": "Vollmundig, strukturiert, seidig.",
+                "preis": "Hoch",
+                "essen": "Zu Wildgerichten oder reifem Käse.",
+                "bio": true
+            },
+            "Frey Vineyards Chardonnay (Organic)": {
+                "typ": "weiß",
+                "suessgrad": "trocken",
+                "geschmack": "Apfel, Birne, Zitrus, mit leichter Eiche.",
+                "geruch": "Fruchtig mit floralen Noten.",
+                "mundgefuehl": "Cremig, erfrischend, ausgewogene Säure.",
+                "preis": "Niedrig bis mittel",
+                "essen": "Zu Meeresfrüchten oder Salaten.",
+                "bio": true
+            },
+            "Domaine Bousquet Malbec (Organic)": {
+                "typ": "rot",
+                "suessgrad": "trocken",
+                "geschmack": "Dunkle Beeren, Pflaumen, Schokolade.",
+                "geruch": "Fruchtig mit Gewürzen.",
+                "mundgefuehl": "Weich, rund, mittlere Tannine.",
+                "preis": "Niedrig bis mittel",
+                "essen": "Zu Grillfleisch oder Pasta.",
+                "bio": true
+            },
+            "Montinore Estate Pinot Gris (Biodynamic)": {
+                "typ": "weiß",
+                "suessgrad": "trocken",
+                "geschmack": "Pfirsich, Apfel, Zitrus, mineralisch.",
+                "geruch": "Frisch und blumig.",
+                "mundgefuehl": "Leicht, knackig, lebendige Säure.",
+                "preis": "Mittel",
+                "essen": "Zu Fisch oder leichten Gerichten.",
+                "bio": true
             }
         };
 
@@ -253,8 +336,9 @@
 
         function beschreibeWein(wein) {
             let bioTag = wein.info.bio ? '<span style="color: #228B22; font-weight: bold;"> (Bio)</span>' : '';
+            let bioClass = wein.info.bio ? ' bio' : '';
             return `
-                <div class="wein">
+                <div class="wein${bioClass}">
                     <h2>${wein.name}${bioTag}</h2>
                     <p><strong>Geschmacklich:</strong> ${wein.info.geschmack}</p>
                     <p><strong>Olfaktorisch:</strong> ${wein.info.geruch}</p>
@@ -284,6 +368,15 @@
                 resultsDiv.innerHTML = '<p>Leider keine passenden Empfehlungen. Versuchen Sie breitere Kriterien!</p>';
             }
         });
+
+        function toggleEnzymeDetails() {
+            let details = document.getElementById('enzymeDetails');
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block';
+            } else {
+                details.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
