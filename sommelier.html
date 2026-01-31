@@ -75,8 +75,27 @@
             background: #fff5f5;
             padding: 20px;
             margin-bottom: 30px;
+            position: relative; /* Für den Button */
         }
         .recommendation-card h2 { margin-top: 0; color: var(--primary-color); font-family: 'Playfair Display', serif; }
+
+        /* NEU: Shop Button Styling */
+        .shop-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background 0.3s, transform 0.2s;
+        }
+        .shop-btn:hover {
+            background-color: #bfa030;
+            transform: scale(1.05);
+        }
 
         /* Visualisierungen */
         .viz-grid {
@@ -141,6 +160,7 @@
         <div class="recommendation-card">
             <h2 id="weinName"></h2>
             <p id="weinDesc" style="font-size: 1.1em; line-height: 1.6;"></p>
+            <div id="shopLinkContainer"></div>
         </div>
 
         <div class="viz-grid">
@@ -166,28 +186,34 @@
 </div>
 
 <script>
-    // ================= DATENBANK =================
+    // ================= DATENBANK (Mit Shop-Links!) =================
     const wineDatabase = [
         {
             id: "prime_red", type: "rot", mood: "kamin",
             name: "Rosary 'Deep Roots' Spätburgunder",
             desc: "Ein monumentaler Rotwein vom vulkanischen Gestein. Noten von dunkler Kirsche, Tabak und Wald, geprägt durch tiefe Wurzeln.",
             proteinID: "1TQN", // Cholin-Dehydrogenase
-            science: "Enzym: Cholin-Dehydrogenase. Dieses Protein schützt die Rebe vor Trockenstress und sorgt für konzentrierte Aromen."
+            science: "Enzym: Cholin-Dehydrogenase. Dieses Protein schützt die Rebe vor Trockenstress und sorgt für konzentrierte Aromen.",
+            // NEU: Der Shop Link
+            link: "https://rosary.health/shop" 
         },
         {
             id: "solaris_white", type: "weiss", mood: "terrasse",
             name: "Rosary 'Solaris' Bio-Cuvée",
             desc: "Lebendige Energie im Glas. Zitrusfrüchte, grüner Apfel und eine vibrierende Säure, die direkt von der Sonne erzählt.",
             proteinID: "1DXJ", // Chitinase
-            science: "Enzym: Chitinase. Die natürliche Abwehrkraft der PIWI-Rebe gegen Pilze – macht Chemie überflüssig."
+            science: "Enzym: Chitinase. Die natürliche Abwehrkraft der PIWI-Rebe gegen Pilze – macht Chemie überflüssig.",
+            // NEU: Der Shop Link
+            link: "https://rosary.health/shop"
         },
         {
             id: "harmony_rose", type: "rose", mood: "dinner",
             name: "Rosary 'Harmony' Rosé",
             desc: "Die goldene Mitte. Feinste Erdbeer-Noten treffen auf mineralische Kühle. Perfekte Balance.",
             proteinID: "3MJD", // Invertase
-            science: "Enzym: Invertase. Reguliert das Zucker-Säure-Spiel in der Beere für perfekte Harmonie."
+            science: "Enzym: Invertase. Reguliert das Zucker-Säure-Spiel in der Beere für perfekte Harmonie.",
+            // NEU: Der Shop Link
+            link: "https://rosary.health/shop"
         }
     ];
 
@@ -214,6 +240,15 @@
             document.getElementById('weinName').innerHTML = "🍾 Wir empfehlen: " + match.name;
             document.getElementById('weinDesc').innerText = match.desc;
             document.getElementById('science-text').innerText = match.science;
+            
+            // NEU: Shop Button einfügen
+            const shopContainer = document.getElementById('shopLinkContainer');
+            // Hier wird der Goldene Button erstellt
+            shopContainer.innerHTML = `
+                <a href="${match.link}" target="_blank" class="shop-btn">
+                    🛒 ${match.name} jetzt im Shop ansehen
+                </a>
+            `;
             
             // UI anzeigen
             document.getElementById('results').style.display = 'block';
