@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitaler Sommelier</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #8B0000; }
+        form { margin-bottom: 20px; }
+        label { display: block; margin: 10px 0 5px; }
+        input { width: 100%; padding: 8px; }
+        button { background-color: #8B0000; color: white; padding: 10px; border: none; cursor: pointer; }
+        #results { margin-top: 20px; }
+        .wein { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+        .wein h2 { margin-top: 0; }
+    </style>
+</head>
+<body>
+    <h1>Digitaler Sommelier</h1>
+    <p>Willkommen! Geben Sie Ihre Vorlieben ein, um Weinempfehlungen zu erhalten.</p>
+    
+    <form id="sommelierForm">
+        <label for="typ">Welchen Typ Wein bevorzugen Sie (rot/weiß oder leer für alle)?</label>
+        <input type="text" id="typ" name="typ">
+        
+        <label for="suessgrad">Süßgrad (trocken/halbtrocken/süß oder leer für alle)?</label>
+        <input type="text" id="suessgrad" name="suessgrad">
+        
+        <label for="geschmacksvorliebe">Geschmacksvorliebe (z.B. fruchtig, tanninreich oder leer)?</label>
+        <input type="text" id="geschmacksvorliebe" name="geschmacksvorliebe">
+        
+        <button type="submit">Empfehlungen anzeigen</button>
+    </form>
+    
+    <div id="results"></div>
+    
+    <script>
+        const weine = {
+            "Cabernet Sauvignon": {
+                "typ": "rot",
+                "suessgrad": "trocken",
+                "geschmack": "Beerenaromen wie schwarze Johannisbeere, Brombeere, mit Noten von Vanille und Eiche.",
+                "geruch": "Intensiv nach dunklen Früchten, Tabak und Leder.",
+                "mundgefuehl": "Vollmundig, tanninreich, mit fester Struktur und langem Abgang.",
+                "preis": "Mittel bis hoch",
+                "essen": "Zu gegrilltem Fleisch, Wild oder reifem Käse."
+            },
+            "Chardonnay": {
+                "typ": "weiß",
+                "suessgrad": "trocken",
+                "geschmack": "Tropische Früchte wie Ananas und Mango, mit Butter- und Nussnoten.",
+                "geruch": "Fruchtig nach Apfel, Zitrus und Eiche.",
+                "mundgefuehl": "Cremig, mittelkräftig, mit ausgewogener Säure.",
+                "preis": "Mittel",
+                "essen": "Zu Fisch, Geflügel oder cremigen Pastagerichten."
+            },
+            "Riesling": {
+                "typ": "weiß",
+                "suessgrad": "halbtrocken",
+                "geschmack": "Frische Zitrusfrüchte, Apfel und Pfirsich, mit mineralischer Note.",
+                "geruch": "Blumig und fruchtig nach Limette, Honig und Petrol.",
+                "mundgefuehl": "Leicht, erfrischend, mit lebendiger Säure.",
+                "preis": "Niedrig bis mittel",
+                "essen": "Zu asiatischer Küche, scharfen Gerichten oder als Aperitif."
+            },
+            "Pinot Noir": {
+                "typ": "rot",
+                "suessgrad": "trocken",
+                "geschmack": "Rote Beeren wie Kirsche und Erdbeere, mit erdigen Untertönen.",
+                "geruch": "Fein nach Himbeere, Pilzen und Gewürzen.",
+                "mundgefuehl": "Elegant, seidig, mit milden Tanninen.",
+                "preis": "Mittel bis hoch",
+                "essen": "Zu Lachs, Ente oder Pilzgerichten."
+            },
+            "Merlot": {
+                "typ": "rot",
+                "suessgrad": "trocken",
+                "geschmack": "Pflaumen, Schokolade und weiche Früchte.",
+                "geruch": "Nach reifen Beeren, Kräutern und Vanille.",
+                "mundgefuehl": "Weich, rund, mit moderaten Tanninen.",
+                "preis": "Niedrig bis mittel",
+                "essen": "Zu Pasta, Burgern oder mildem Käse."
+            }
+        };
+
+        function empfehleWein(typ, suessgrad, geschmacksvorliebe) {
+            let empfehlungen = [];
+            for (let name in weine) {
+                let info = weine[name];
+                if ((typ.toLowerCase() === info.typ || typ === "") &&
+                    (suessgrad.toLowerCase() === info.suessgrad || suessgrad === "")) {
+                    if (geschmacksvorliebe.toLowerCase() === "" || info.geschmack.toLowerCase().includes(geschmacksvorliebe.toLowerCase())) {
+                        empfehlungen.push({ name: name, info: info });
+                    }
+                }
+            }
+            return empfehlungen;
+        }
+
+        function beschreibeWein(wein) {
+            return `
+                <div class="wein">
+                    <h2>${wein.name}</h2>
+                    <p><strong>Geschmacklich:</strong> ${wein.info.geschmack}</p>
+                    <p><strong>Olfaktorisch:</strong> ${wein.info.geruch}</p>
+                    <p><strong>Taktil:</strong> ${wein.info.mundgefuehl}</p>
+                    <p><strong>Preisrahmen:</strong> ${wein.info.preis}</p>
+                    <p><strong>Passend zu:</strong> ${wein.info.essen}</p>
+                </div>
+            `;
+        }
+
+        document.getElementById('sommelierForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let typ = document.getElementById('typ').value;
+            let suessgrad = document.getElementById('suessgrad').value;
+            let geschmacksvorliebe = document.getElementById('geschmacksvorliebe').value;
+            
+            let empfehlungen = empfehleWein(typ, suessgrad, geschmacksvorliebe);
+            let resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            
+            if (empfehlungen.length > 0) {
+                resultsDiv.innerHTML = `<p>Ich habe ${empfehlungen.length} Empfehlung(en) für Sie:</p>`;
+                empfehlungen.forEach(wein => {
+                    resultsDiv.innerHTML += beschreibeWein(wein);
+                });
+            } else {
+                resultsDiv.innerHTML = '<p>Leider keine passenden Empfehlungen. Versuchen Sie breitere Kriterien!</p>';
+            }
+        });
+    </script>
+</body>
+</html>
