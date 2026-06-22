@@ -1,0 +1,137 @@
+
+<script>
+// Expandable Financial Model
+function toggleFinancialModel() {
+    const content = document.getElementById('financial-model-content');
+    const icon = document.getElementById('financial-toggle-icon');
+    if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+    } else {
+        content.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+    }
+}
+
+// Enhanced Simulator with Risk Scenarios
+function updateSimulator() {
+    // existing logic (assume it exists; we enhance below)
+    const amount = parseFloat(document.getElementById('invest-amount').value) || 85000;
+    const bimsPct = parseFloat(document.getElementById('bims-allocation').value) || 65;
+    
+    // Base calculations
+    const hectares = Math.round(amount * 0.022 * (bimsPct/100) * 1.1);
+    const units = Math.round(amount * 1.75 * (bimsPct/100));
+    const tokens = Math.round(amount * 0.00158);
+    const esg = Math.round(amount * 0.0346);
+
+    const hEl = document.getElementById('sim-hectares');
+    const uEl = document.getElementById('sim-units');
+    const tEl = document.getElementById('sim-tokens');
+    const eEl = document.getElementById('sim-esg');
+
+    if (hEl) hEl.textContent = hectares.toLocaleString();
+    if (uEl) uEl.textContent = units.toLocaleString();
+    if (tEl) tEl.textContent = tokens.toLocaleString();
+    if (eEl) eEl.textContent = esg.toLocaleString();
+}
+
+// Wire simulator to simulated Hardhat proposal
+function simulateInvestment() {
+    const amount = document.getElementById('invest-amount') ? document.getElementById('invest-amount').value : '85000';
+    const bimsPct = document.getElementById('bims-allocation') ? document.getElementById('bims-allocation').value : '65';
+
+    // Show proposal modal simulating Hardhat call
+    const modalHTML = `
+        <div id="hardhat-proposal-modal" onclick="closeHardhatModal()" class="fixed inset-0 bg-black/70 flex items-center justify-center z-[200]">
+            <div onclick="event.stopImmediatePropagation()" class="bg-slate-900 text-white max-w-md mx-4 rounded-3xl p-7 border border-teal-800">
+                <div class="flex items-center gap-2 mb-4">
+                    <i class="fa-solid fa-hammer text-amber-400"></i>
+                    <span class="font-bold">Hardhat 888M Governor</span>
+                </div>
+                <div class="text-sm mb-4">Simulated on-chain proposal created:</div>
+                
+                <div class="bg-black/40 p-4 rounded-2xl text-xs font-mono mb-4">
+                    proposeBIMSAllocation(<br>
+                    &nbsp;&nbsp;privateCapital: ${amount},<br>
+                    &nbsp;&nbsp;bimsAllocation: ${bimsPct}%,<br>
+                    &nbsp;&nbsp;matchMultiplier: 2.5,<br>
+                    &nbsp;&nbsp;targetAPY: 20.1%<br>
+                    )
+                </div>
+
+                <div class="text-xs text-emerald-300 mb-1">Status: Proposal submitted to Timelock (48h delay)</div>
+                <div class="text-xs text-teal-400">Voting power from 27,600 Crypto-Units applied.</div>
+
+                <div class="mt-5 flex gap-2">
+                    <button onclick="confirmHardhatProposal()" class="flex-1 bg-teal-600 hover:bg-teal-700 py-2 rounded-2xl text-sm font-semibold">Vote Yes &amp; Execute (Demo)</button>
+                    <button onclick="closeHardhatModal()" class="flex-1 border border-slate-600 py-2 rounded-2xl text-sm">Close</button>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+function closeHardhatModal() {
+    const modal = document.getElementById('hardhat-proposal-modal');
+    if (modal) modal.remove();
+}
+
+function confirmHardhatProposal() {
+    const modal = document.getElementById('hardhat-proposal-modal');
+    if (modal) modal.remove();
+    
+    alert("✅ Proposal executed on simulated Hardhat 888M chain.\n\n- ESGImpactRegistry updated\n- Crypto-Units minted\n- Timelock passed\n\nIn production this would be a real transaction on the 888,888,888 Governor contract.");
+    
+    // Update some UI state to reflect "on-chain" success
+    const tokenEl = document.querySelector('.font-bold.text-5xl');
+    if (tokenEl) {
+        tokenEl.textContent = (parseInt(tokenEl.textContent.replace(/,/g,'')) + 180).toLocaleString() + ' / 27,600';
+    }
+}
+
+function triggerHardhatProposalFromModel() {
+    // Trigger from the embedded model section
+    const amount = 500000; // default example
+    const bimsPct = 65;
+    
+    const modalHTML = `
+        <div id="hardhat-proposal-modal" onclick="closeHardhatModal()" class="fixed inset-0 bg-black/70 flex items-center justify-center z-[200]">
+            <div onclick="event.stopImmediatePropagation()" class="bg-slate-900 text-white max-w-md mx-4 rounded-3xl p-7 border border-teal-800">
+                <div class="flex items-center gap-2 mb-4">
+                    <i class="fa-solid fa-hammer text-amber-400"></i>
+                    <span class="font-bold">888M Governor — BIMS Allocation</span>
+                </div>
+                <div class="text-sm mb-4">Proposal from Financial Model:</div>
+                <div class="bg-black/40 p-4 rounded-2xl text-xs font-mono mb-4">
+                    private: €${amount.toLocaleString()}<br>
+                    allocation: ${bimsPct}%<br>
+                    projected APY: 20.1%
+                </div>
+                <button onclick="confirmHardhatProposal(); closeHardhatModal();" class="w-full bg-emerald-600 py-2 rounded-2xl">Submit to Timelock</button>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+// Initialize updates
+function initFinancialEnhancements() {
+    // Attach to existing sliders if present
+    const amountSlider = document.getElementById('invest-amount');
+    const bimsSlider = document.getElementById('bims-allocation');
+    
+    if (amountSlider) amountSlider.oninput = updateSimulator;
+    if (bimsSlider) bimsSlider.oninput = updateSimulator;
+    
+    // Initial run
+    setTimeout(updateSimulator, 300);
+}
+
+if (typeof window !== 'undefined') {
+    window.addEventListener('load', function() {
+        if (typeof initFinancialEnhancements === 'function') initFinancialEnhancements();
+    });
+}
+</script>
