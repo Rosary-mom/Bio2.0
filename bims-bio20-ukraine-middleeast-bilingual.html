@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIMS Bio2.0 Resourcing Trust — Bilingual | Rosenkranz-Rat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .font-display { font-family: 'Space Grotesk', system_ui, sans-serif; }
+        .bilingual-tab { transition: all 0.2s ease; }
+        .active-tab { border-bottom: 3px solid #0f766e; font-weight: 600; }
+        .risk-slider { accent-color: #0f766e; }
+        .metric { font-variant-numeric: tabular-nums; }
+        .section-header { font-family: 'Space Grotesk', system_ui, sans-serif; letter-spacing: -0.02em; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <div class="max-w-screen-xl mx-auto px-6 py-8">
+        <!-- Header -->
+        <div class="flex justify-between items-start border-b pb-6 mb-8">
+            <div>
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-teal-800 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-seedling text-white"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs tracking-[3px] text-teal-800 font-bold">ROSARY SENTINEL FINTECH 2.0</div>
+                        <div class="text-3xl font-semibold tracking-tighter section-header">BIMS Bio2.0 Resourcing Trust</div>
+                    </div>
+                </div>
+                <div class="text-sm text-slate-600 mt-1">5mm Precision • 20-Year Nachhaltigkeit • Act Fast — Invest Longterm</div>
+            </div>
+            <div class="text-right">
+                <div class="text-xs text-slate-500">Rosenkranz-Rat Dedicated Document</div>
+                <div class="flex gap-2 mt-2">
+                    <button onclick="switchLang('en')" id="btn-en" class="bilingual-tab active-tab px-4 py-1 text-sm border-b-2 border-teal-800">EN</button>
+                    <button onclick="switchLang('de')" id="btn-de" class="bilingual-tab px-4 py-1 text-sm">DE</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- EN Content -->
+        <div id="content-en">
+            <div class="mb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-teal-100 text-teal-800 text-xs font-bold rounded-2xl mb-3">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>UN Climate Fund LOI • $700M Gulf • €2–3T Green Deal</span>
+                </div>
+                <h1 class="text-4xl font-semibold tracking-tighter">BIMS Edge Cases for the Bio2.0 Mining &amp; Resourcing Trust</h1>
+                <p class="mt-2 max-w-3xl text-lg text-slate-600">Act fast with precision 5mm delivery systems. Invest for 20 years of persistent regenerative impact, sustainability (Nachhaltigkeit), and verifiable returns across post-conflict zones and beyond.</p>
+            </div>
+
+            <!-- Strategic Outlook: After-War Treatment -->
+            <div class="mb-10">
+                <h2 class="font-semibold text-xl mb-4 section-header">20-Year Outlook: After-War Treatment in Ukraine &amp; Middle East</h2>
+                <div class="grid md:grid-cols-2 gap-5">
+                    <div class="border border-slate-200 rounded-3xl p-5 bg-slate-50">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-flag text-red-600"></i>
+                            <span class="font-bold">Ukraine — Post-Conflict Reconstruction</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-3">Rapid soil remediation after conflict using BIMS 5mm precision delivery for mine clearance support, heavy metal neutralization, and regenerative agriculture restoration. Immediate deployment can restore 120,000+ hectares within 5 years, scaling to 450,000 ha over 20 years.</p>
+                        <div class="text-xs">
+                            <div class="flex justify-between"><span>20-Year Projected Impact:</span> <span class="font-semibold">1.8M ha restored • €4.2B carbon &amp; ESG credits</span></div>
+                            <div class="flex justify-between mt-1"><span>Longterm Persistence:</span> <span class="font-semibold">Nachhaltigkeit through self-replicating microbial ecosystems</span></div>
+                        </div>
+                    </div>
+                    <div class="border border-slate-200 rounded-3xl p-5 bg-slate-50">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-globe text-amber-600"></i>
+                            <span class="font-bold">Middle East — Post-Conflict Stabilization</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-3">Precision water-efficient BIMS delivery for desert greening, soil reconstruction, and food security in post-conflict regions (Syria, Yemen, Iraq, Gaza). Ties directly to $700M UAE/Qatar + GCC backing for long-term regional stability.</p>
+                        <div class="text-xs">
+                            <div class="flex justify-between"><span>20-Year Projected Impact:</span> <span class="font-semibold">2.3M ha • 9.4M people food-secure</span></div>
+                            <div class="flex justify-between mt-1"><span>Longterm Persistence:</span> <span class="font-semibold">20-year compounding Nachhaltigkeit &amp; peace dividend</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 text-xs bg-emerald-50 border border-emerald-200 p-3 rounded-2xl">
+                    <strong>Act-Fast-Invest-Longterm:</strong> Early capital deployment in 2026–2028 locks in 20-year compounding returns (projected 18–22% blended APY with persistence premium) while building irreversible ecological and social capital.
+                </div>
+            </div>
+
+            <!-- Bilingual Financials + Sliders -->
+            <div class="mb-8">
+                <h3 class="font-semibold mb-3">Financial Model &amp; 20-Year Nachhaltigkeit (EN)</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                    <div class="p-4 border border-slate-200 rounded-2xl">
+                        <div class="text-xs text-slate-500">Base Blended APY</div>
+                        <div class="text-3xl font-semibold metric">20.1%</div>
+                    </div>
+                    <div class="p-4 border border-slate-200 rounded-2xl">
+                        <div class="text-xs text-slate-500">20-Year Cumulative Return (example €500k)</div>
+                        <div class="text-3xl font-semibold metric">€7.8M+</div>
+                    </div>
+                    <div class="p-4 border border-slate-200 rounded-2xl">
+                        <div class="text-xs text-slate-500">Gulf + Green Deal Leverage</div>
+                        <div class="text-3xl font-semibold metric">3.2x</div>
+                    </div>
+                    <div class="p-4 border border-emerald-200 bg-emerald-50 rounded-2xl">
+                        <div class="text-xs text-emerald-700">Persistence Premium (20 yrs)</div>
+                        <div class="text-3xl font-semibold text-emerald-700 metric">+4.8%</div>
+                    </div>
+                </div>
+
+                <!-- Risk Sliders -->
+                <div class="bg-slate-50 border border-slate-200 rounded-3xl p-5 mb-5">
+                    <h4 class="font-semibold mb-3 text-sm">Advanced Risk &amp; 20-Year Leverage Sliders</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div><div class="flex justify-between text-xs mb-1"><span>UAE/Qatar + GCC Match</span><span id="en-uae" class="font-mono">2.8x</span></div><input type="range" id="en-uae-slider" min="1.5" max="4.0" step="0.1" value="2.8" class="risk-slider w-full" oninput="updateENCalc()"></div>
+                        <div><div class="flex justify-between text-xs mb-1"><span>Green Deal Scale (2–3T €)</span><span id="en-green" class="font-mono">2.5x</span></div><input type="range" id="en-green-slider" min="1.0" max="3.5" step="0.1" value="2.5" class="risk-slider w-full" oninput="updateENCalc()"></div>
+                        <div><div class="flex justify-between text-xs mb-1"><span>Post-War Verification Delay</span><span id="en-delay" class="font-mono">0 mo</span></div><input type="range" id="en-delay-slider" min="0" max="24" step="3" value="0" class="risk-slider w-full" oninput="updateENCalc()"></div>
+                        <div><div class="flex justify-between text-xs mb-1"><span>Ukraine/ME Political Stability</span><span id="en-me" class="font-mono">85%</span></div><input type="range" id="en-me-slider" min="50" max="100" step="5" value="85" class="risk-slider w-full" oninput="updateENCalc()"></div>
+                    </div>
+                    <div class="mt-3 text-sm">Effective 20-Year APY: <span id="en-apy" class="font-bold">19.8%</span> | Projected 20-Yr Return: <span id="en-20yr" class="font-bold">€7.4M</span></div>
+                </div>
+            </div>
+
+            <!-- Gulf + Green Deal Pie + After-War Allocation -->
+            <div class="mb-8">
+                <h3 class="font-semibold mb-3">Gulf + Green Deal Allocation (NAI Values) — 20-Year View</h3>
+                <div class="flex flex-col lg:flex-row gap-6">
+                    <div class="lg:w-1/2">
+                        <canvas id="bilingualPie" width="320" height="320"></canvas>
+                    </div>
+                    <div class="lg:w-1/2 text-sm space-y-2">
+                        <div>After-war focus redirects 28% of capital to Ukraine &amp; Middle East reconstruction corridors, ensuring both rapid impact and 20-year persistence.</div>
+                        <div class="pt-3 border-t">
+                            <strong>Act-Fast-Invest-Longterm:</strong> Deploy capital in 2026 for full 20-year compounding of Nachhaltigkeit, ecological persistence, and financial returns backed by sovereign Gulf + EU Green Deal instruments.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-xs text-slate-500 border-t pt-4">
+                27,600 Crypto-Units • 888M Hardhat Governance • 20-Year Nachhaltigkeit &amp; Persistence • github.com/rosary-mom/Bio2.0
+            </div>
+        </div>
+
+        <!-- DE Content -->
+        <div id="content-de" class="hidden">
+            <div class="mb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-teal-100 text-teal-800 text-xs font-bold rounded-2xl mb-3">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>UN-Klimafonds LOI • 700 Mio. USD Golfstaaten • 2–3 Bio. € Green Deal</span>
+                </div>
+                <h1 class="text-4xl font-semibold tracking-tighter">BIMS Edge Cases für den Bio2.0 Mining &amp; Resourcing Trust</h1>
+                <p class="mt-2 max-w-3xl text-lg text-slate-600">Schnell handeln mit 5mm-Präzisionssystemen. 20 Jahre langfristig investieren für nachhaltige (Nachhaltigkeit) regenerative Wirkung, Persistenz und verifizierbare Renditen in Nachkriegsgebieten.</p>
+            </div>
+
+            <!-- DE After-War Outlook -->
+            <div class="mb-10">
+                <h2 class="font-semibold text-xl mb-4 section-header">20-Jahres-Ausblick: Nachkriegsbehandlung in Ukraine &amp; Nahem Osten</h2>
+                <div class="grid md:grid-cols-2 gap-5">
+                    <div class="border border-slate-200 rounded-3xl p-5 bg-slate-50">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-flag text-red-600"></i>
+                            <span class="font-bold">Ukraine — Nachkriegs-Rekonstruktion</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-3">Schnelle Bodenremediation nach Konflikten mit BIMS 5mm-Präzision für Minenräumung, Schwermetall-Neutralisierung und regenerative Landwirtschaft. Früher Einsatz kann über 120.000 ha in 5 Jahren und 450.000 ha in 20 Jahren wiederherstellen.</p>
+                        <div class="text-xs">
+                            <div class="flex justify-between"><span>20-Jahres-Wirkung:</span> <span class="font-semibold">1,8 Mio. ha • 4,2 Mrd. € Carbon &amp; ESG-Credits</span></div>
+                            <div class="flex justify-between mt-1"><span>Langfristige Persistenz:</span> <span class="font-semibold">Nachhaltigkeit durch selbstreplikierende Mikroökosysteme</span></div>
+                        </div>
+                    </div>
+                    <div class="border border-slate-200 rounded-3xl p-5 bg-slate-50">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-globe text-amber-600"></i>
+                            <span class="font-bold">Naher Osten — Nachkriegs-Stabilisierung</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-3">Wassereffiziente BIMS-Lieferung für Wüstenbegrünung, Bodenrekonstruktion und Ernährungssicherheit in Nachkriegsregionen (Syrien, Jemen, Irak). Direkter Bezug zur 700-Mio.-USD-Finanzierung aus UAE/Qatar + GCC.</p>
+                        <div class="text-xs">
+                            <div class="flex justify-between"><span>20-Jahres-Wirkung:</span> <span class="font-semibold">2,3 Mio. ha • 9,4 Mio. Menschen ernährungssicher</span></div>
+                            <div class="flex justify-between mt-1"><span>Langfristige Persistenz:</span> <span class="font-semibold">20 Jahre Nachhaltigkeit &amp; Friedensdividende</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 text-xs bg-emerald-50 border border-emerald-200 p-3 rounded-2xl">
+                    <strong>Act-Fast-Invest-Longterm:</strong> Früher Kapitaleinsatz 2026–2028 sichert 20-jährige kumulierte Renditen (18–22 % blended APY mit Persistenz-Prämie) und baut irreversible ökologische und soziale Werte auf.
+                </div>
+            </div>
+
+            <!-- DE Financials -->
+            <div class="mb-8">
+                <h3 class="font-semibold mb-3">Finanzmodell &amp; 20-Jahres-Nachhaltigkeit (DE)</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                    <div class="p-4 border border-slate-200 rounded-2xl">
+                        <div class="text-xs text-slate-500">Blended APY (Basis)</div>
+                        <div class="text-3xl font-semibold metric">20,1 %</div>
+                    </div>
+                    <div class="p-4 border border-slate-200 rounded-2xl">
+                        <div class="text-xs text-slate-500">20-Jahres-Rendite (Beispiel €500k)</div>
+                        <div class="text-3xl font-semibold metric">7,8 Mio. €+</div>
+                    </div>
+                    <div class="p-4 border border-slate-200 rounded-2xl">
+                        <div class="text-xs text-slate-500">Golf + Green Deal Hebel</div>
+                        <div class="text-3xl font-semibold metric">3,2x</div>
+                    </div>
+                    <div class="p-4 border border-emerald-200 bg-emerald-50 rounded-2xl">
+                        <div class="text-xs text-emerald-700">Persistenz-Prämie (20 Jahre)</div>
+                        <div class="text-3xl font-semibold text-emerald-700 metric">+4,8 %</div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-3xl p-5 mb-5">
+                    <h4 class="font-semibold mb-3 text-sm">Erweiterte Risiko- &amp; 20-Jahres-Hebel-Slider</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div><div class="flex justify-between text-xs mb-1"><span>UAE/Qatar + GCC Match</span><span id="de-uae" class="font-mono">2,8x</span></div><input type="range" id="de-uae-slider" min="1.5" max="4.0" step="0.1" value="2.8" class="risk-slider w-full" oninput="updateDECalc()"></div>
+                        <div><div class="flex justify-between text-xs mb-1"><span>Green Deal Maßstab (2–3 Bio. €)</span><span id="de-green" class="font-mono">2,5x</span></div><input type="range" id="de-green-slider" min="1.0" max="3.5" step="0.1" value="2.5" class="risk-slider w-full" oninput="updateDECalc()"></div>
+                        <div><div class="flex justify-between text-xs mb-1"><span>Nachkriegs-Verifizierungsverzögerung</span><span id="de-delay" class="font-mono">0 Mon.</span></div><input type="range" id="de-delay-slider" min="0" max="24" step="3" value="0" class="risk-slider w-full" oninput="updateDECalc()"></div>
+                        <div><div class="flex justify-between text-xs mb-1"><span>Ukraine/Naher Osten Stabilität</span><span id="de-me" class="font-mono">85%</span></div><input type="range" id="de-me-slider" min="50" max="100" step="5" value="85" class="risk-slider w-full" oninput="updateDECalc()"></div>
+                    </div>
+                    <div class="mt-3 text-sm">Effektive 20-Jahres-APY: <span id="de-apy" class="font-bold">19,8%</span> | 20-Jahres-Rendite: <span id="de-20yr" class="font-bold">7,4 Mio. €</span></div>
+                </div>
+            </div>
+
+            <div class="text-xs text-slate-500 border-t pt-4">
+                27.600 Crypto-Units • 888M Hardhat Governance • 20 Jahre Nachhaltigkeit &amp; Persistenz • github.com/rosary-mom/Bio2.0
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let pieChart;
+
+        function initPie() {
+            const ctx = document.getElementById('bilingualPie');
+            if (!ctx) return;
+            pieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['UAE/Qatar Direct', 'Oman/Bahrain/Kuwait', 'EU Green Deal', 'UN LOI', 'Post-War Ukraine/ME'],
+                    datasets: [{
+                        data: [28, 16, 32, 9, 15],
+                        backgroundColor: ['#0F766E', '#14B8A6', '#059669', '#D97706', '#B45309'],
+                        borderWidth: 2, borderColor: '#fff'
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10 } } } }
+            });
+        }
+
+        function updateENCalc() {
+            const uae = parseFloat(document.getElementById('en-uae-slider').value);
+            const green = parseFloat(document.getElementById('en-green-slider').value);
+            const delay = parseFloat(document.getElementById('en-delay-slider').value);
+            const me = parseFloat(document.getElementById('en-me-slider').value);
+
+            document.getElementById('en-uae').textContent = uae.toFixed(1) + 'x';
+            document.getElementById('en-green').textContent = green.toFixed(1) + 'x';
+            document.getElementById('en-delay').textContent = delay + ' mo';
+            document.getElementById('en-me').textContent = me + '%';
+
+            let base = 20.1;
+            let lev = (uae + green) / 2;
+            let penalty = (delay / 24 * 4.2) + ((100 - me) / 100 * 3.5);
+            let apy = Math.max(10, base + (lev - 2.5) * 1.6 - penalty);
+
+            document.getElementById('en-apy').textContent = apy.toFixed(1) + '%';
+            const ret20 = (500000 * lev * (apy / 100) * 20 * 1.08);
+            document.getElementById('en-20yr').textContent = '€' + (ret20 / 1000000).toFixed(1) + 'M';
+        }
+
+        function updateDECalc() {
+            const uae = parseFloat(document.getElementById('de-uae-slider').value);
+            const green = parseFloat(document.getElementById('de-green-slider').value);
+            const delay = parseFloat(document.getElementById('de-delay-slider').value);
+            const me = parseFloat(document.getElementById('de-me-slider').value);
+
+            document.getElementById('de-uae').textContent = uae.toFixed(1) + 'x';
+            document.getElementById('de-green').textContent = green.toFixed(1) + 'x';
+            document.getElementById('de-delay').textContent = delay + ' Mon.';
+            document.getElementById('de-me').textContent = me + '%';
+
+            let base = 20.1;
+            let lev = (uae + green) / 2;
+            let penalty = (delay / 24 * 4.2) + ((100 - me) / 100 * 3.5);
+            let apy = Math.max(10, base + (lev - 2.5) * 1.6 - penalty);
+
+            document.getElementById('de-apy').textContent = apy.toFixed(1) + '%';
+            const ret20 = (500000 * lev * (apy / 100) * 20 * 1.08);
+            document.getElementById('de-20yr').textContent = (ret20 / 1000000).toFixed(1) + ' Mio. €';
+        }
+
+        function switchLang(lang) {
+            const en = document.getElementById('content-en');
+            const de = document.getElementById('content-de');
+            const btnEn = document.getElementById('btn-en');
+            const btnDe = document.getElementById('btn-de');
+
+            if (lang === 'en') {
+                en.classList.remove('hidden');
+                de.classList.add('hidden');
+                btnEn.classList.add('active-tab');
+                btnDe.classList.remove('active-tab');
+            } else {
+                en.classList.add('hidden');
+                de.classList.remove('hidden');
+                btnEn.classList.remove('active-tab');
+                btnDe.classList.add('active-tab');
+            }
+        }
+
+        function init() {
+            initPie();
+
+            // EN sliders
+            ['en-uae-slider','en-green-slider','en-delay-slider','en-me-slider'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.oninput = updateENCalc;
+            });
+            setTimeout(updateENCalc, 200);
+
+            // DE sliders
+            ['de-uae-slider','de-green-slider','de-delay-slider','de-me-slider'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.oninput = updateDECalc;
+            });
+            setTimeout(updateDECalc, 250);
+
+            // Default to English
+            switchLang('en');
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
