@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Emergent Freedom Engine: Freiheits-Maschine basierend auf Rosenkranz Pädagogik, Darwin-Kritik und AI-Integration.">
+    <title>Emergent Freedom Engine | ROSARY©®™ PRIME Bio 2.0</title>
+    <style>
+        :root {
+            --neon-green: #39ff14;
+            --neon-blue: #00f3ff;
+            --dark-bg: #0a0a0a;
+            --panel-bg: #111;
+            --font-main: 'Courier New', monospace;
+            --font-head: 'Arial Black', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        h1 {
+            font-family: var(--font-head);
+            font-size: 3rem;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 2px 2px 0px var(--neon-green);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p { font-size: 1.2rem; line-height: 1.6; }
+
+        .tech-display {
+            background: #000;
+            border: 1px solid var(--neon-green);
+            padding: 20px;
+            font-family: monospace;
+            color: var(--neon-green);
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        .iframe-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        iframe {
+            border: 1px solid var(--neon-green);
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            loading: lazy;
+        }
+
+        .btn {
+            background: var(--neon-green);
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn:hover { background: #fff; transform: scale(1.05); }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: #000;
+            border-top: 1px solid var(--neon-green);
+        }
+        footer a {
+            color: var(--neon-blue);
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: #000;
+            border: 1px solid var(--neon-green);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        /* Responsivität */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            iframe { height: 400px; }
+        }
+    </style>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Emergent Freedom Engine",
+            "url": "https://rosary-mom.github.io/Bio2.0/engine/"
+        }
+    </script>
+    <!-- Chart.js CDN für JS-Plot (aus Colab portiert) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Emergent Freedom Engine</h1>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;">Energie, Freiheits-Maschine basierend auf Rosenkranz Pädagogik, Darwin-Kritik und AI-Integration.</p>
+
+        <div class="tech-display">
+            <p><strong>Emergent Freiheits-Score: <span id="dynamic-score">700</span></strong></p>
+            <p><strong>Rosenkranz-Integration: Reife, emanzipierte Individuen treten als Käufer und Verkäufer auf dem Markt auf – dialektisch balanciert für ethische Freiheit.</strong></p>
+            <p>STATUS: <span class="blink">OPERATIONAL</span></p>
+        </div>
+
+        <p style="text-align: center;">AI-Produktauswahl: Nutze die APP <a href="https://sorgenlos.de/vp/RMI/" target="_blank" style="color: var(--neon-blue);">hier</a>.</p>
+        <p style="text-align: center;">Für gesicherte Zwischenschritte: <a href="https://www.secureletterservice.com/" target="_blank" style="color: var(--neon-blue);">SecureLetterService nutzen</a>.</p>
+
+        <h2 style="text-align: center; font-family: var(--font-head); color: var(--neon-green);">Iframe-Integration</h2>
+        <div class="iframe-container">
+            <iframe src="https://rosary-mom.github.io/PoW/" title="Rosary VSP Iframe (RMI Inhalte)" loading="lazy"></iframe>
+        </div>
+
+        <h2 style="text-align: center; font-family: var(--font-head); color: var(--neon-green);">AlphaFold Protein Modeling</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;">Interaktiver 3D-Viewer für AlphaFold-vorhersagte Proteinstrukturen (Beispiel: Glutamat-Dehydrogenase, UniProt P00367 für Dehydrogenase-Aktivität). Drehe und zoome für Details. (Alternative zu iCn3D für bessere Kompatibilität.)</p>
+        <div class="iframe-container">
+            <iframe src="https://molstar.org/viewer/?afid=P00367" title="AlphaFold Protein Viewer (Mol*)" loading="lazy"></iframe>
+        </div>
+
+        <h2 style="text-align: center; font-family: var(--font-head); color: var(--neon-green);">Modul 04: Epistemology & Bio 2.0 Governance</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;">Interaktives Google Colab-Notebook: Analyse der Systemstabilität, ESG Carbon Metriken und der 30.000-fachen "Down-to-Earth" Validierung. Führen Sie den Code zur epistemologischen Matrix (Einstein vs. Tesla vs. Bio 2.0) direkt im Browser aus.</p>
+        <div class="iframe-container">
+            <iframe src="https://colab.research.google.com/github/Rosary-mom/Bio2.0/blob/main/04_epistemology_and_governance.ipynb" loading="lazy" title="Bio 2.0 Governance Notebook"></iframe>
+        </div>
+        <p style="text-align: center;"><a href="https://colab.research.google.com/github/Rosary-mom/Bio2.0/blob/main/04_epistemology_and_governance.ipynb" target="_blank" class="btn">Governance Colab in neuem Tab öffnen</a></p>
+
+        <h2 style="text-align: center; font-family: var(--font-head); color: var(--neon-green);">Colab Simulation: Gerenderte Dehydrogenase-Aktivität</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;">Portierte Colab-Instanz: Simulation des Rosenkranz-Q-Hebel mit Dehydrogenase-Faktor (exponentielles Wachstum vs. linear). Klicken Sie auf "Update Plot" für dynamische Variationen.</p>
+        <div class="chart-container">
+            <canvas id="growthChart"></canvas>
+        </div>
+        <p style="text-align: center;"><button onclick="updatePlot()" class="btn">Update Plot (Variation simulieren)</button></p>
+
+        <p style="text-align: center;"><a href="../index.html" class="btn">← Zurück zur Hauptseite</a></p>
+    </div>
+
+    <footer>
+        <h2 style="color: #fff;">READY FOR DEPLOYMENT</h2>
+        <p style="color: #666; margin: 20px 0;">Rosary UG & Co KG Holding</p>
+        <div style="margin-top: 20px;">
+            <a href="https://rosary.health/product/bundle-rosary-prime/">Produkt: Bundle Rosary-Prime</a> |
+            <a href="https://rosary.health/kontakt">Kontakt & Beratung</a> |
+            <a href="../index.html">Framework: Deep Tech Stack</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript für dynamische Scores und Colab-Plot -->
+    <script>
+        // Dynamische Scores (wie zuvor)
+        function updateDynamicScore() {
+            const scoreElement = document.getElementById('dynamic-score');
+            const baseScore = 700;
+            const variation = Math.floor(Math.random() * 50) - 25;
+            const newScore = baseScore + variation;
+            scoreElement.textContent = newScore;
+            scoreElement.classList.add('blink');
+            setTimeout(() => scoreElement.classList.remove('blink'), 1000);
+        }
+
+        updateDynamicScore();
+        setInterval(updateDynamicScore, 5000);
+
+        // Portierter Colab-Code als Chart.js Plot
+        let chart;
+
+        function drawPlot(years, growthTech, growthRosary) {
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            if (chart) chart.destroy(); // Vorherigen Chart löschen
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: years,
+                    datasets: [
+                        {
+                            label: 'Mechanische Co-Spezierung (Linear)',
+                            data: growthTech,
+                            borderColor: 'red',
+                            borderDash: [5, 5],
+                            fill: false
+                        },
+                        {
+                            label: 'Rosary-System (Q-Nebel: Exponential)',
+                            data: growthRosary,
+                            borderColor: 'purple',
+                            borderWidth: 3,
+                            fill: { target: 'origin', above: 'rgba(255, 215, 0, 0.3)' } // Gold-Fill für "Monster-Locke"
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: { type: 'logarithmic', title: { display: true, text: 'Wachstum' } }
+                    },
+                    responsive: true,
+                    plugins: { legend: { display: true } }
+                }
+            });
+        }
+
+        function updatePlot() {
+            const years = Array.from({length: 200}, (_, i) => i * (30 / 199)); // np.linspace(0, 30, 200)
+            const efficiencyMechanical = 1.0;
+            const growthTech = years.map(y => efficiencyMechanical * y);
+
+            const qNebelFaktor = 30.0 * 200; // Holistische Enzyme
+            const charcoalStability = 0.62 * 200; // Skelett-Stabilität
+            const dehydrogenaseFactor = Math.random() * 0.2 + 0.8; // Zufällige Variation für Dehydrogenase-Aktivität (0.8-1.0)
+            const growthRosary = years.map(y => Math.exp(y * 0.5) * qNebelFaktor * charcoalStability * (1500 * y / 200) * dehydrogenaseFactor);
+
+            drawPlot(years, growthTech, growthRosary);
+        }
+
+        // Initialer Plot beim Laden
+        updatePlot();
+    </script>
+</body>
+</html>
