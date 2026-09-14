@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ROSARY©®™ PRIME: Tech-Bio 2.0 Infrastructure für strategische Autonomie in Europa durch Agrivoltaik und Fintech.">
-    <title>ROSARY©®™ PRIME | Bio 2.0 Infrastructure</title>
+    <meta name="description" content="ROSARY©®™ PRIME: Tech-Bio 2.0 Infrastructure. Embedded monitor: ESG, numerical NS-Blowup flag, Vault graph.">
+    <title>ROSARY©®™ PRIME | Bio 2.0 Monitor</title>
     <style>
         :root {
             --neon-green: #39ff14;
@@ -13,21 +13,18 @@
             --panel-bg: #111;
             --font-main: 'Courier New', monospace;
             --font-head: 'Arial Black', sans-serif;
+            --alarm: #ff3333;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
             background-color: var(--dark-bg);
             color: #fff;
             font-family: var(--font-main);
             overflow-x: hidden;
         }
-
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        
         header {
-            height: 100vh;
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -35,105 +32,65 @@
             text-align: center;
             background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
             border-bottom: 2px solid var(--neon-green);
+            padding: 40px 16px;
         }
-
         h1 {
             font-family: var(--font-head);
-            font-size: 4rem;
+            font-size: 3.2rem;
             text-transform: uppercase;
             letter-spacing: -2px;
-            color: #fff;
             text-shadow: 2px 2px 0px var(--neon-green);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: var(--neon-blue);
-            margin-bottom: 40px;
-        }
-
+        .subtitle { font-size: 1.3rem; color: var(--neon-blue); margin-bottom: 24px; }
         .badge {
             border: 1px solid var(--neon-green);
-            padding: 10px 20px;
+            padding: 8px 16px;
             color: var(--neon-green);
             font-weight: bold;
             text-transform: uppercase;
-            margin-top: 20px;
+            margin-top: 12px;
             display: inline-block;
         }
-
-        /* --- SECTIONS --- */
-        section { padding: 80px 0; border-bottom: 1px solid #333; }
-
+        section { padding: 64px 0; border-bottom: 1px solid #333; }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
         }
-
         .card {
             background: var(--panel-bg);
             border: 1px solid #333;
-            padding: 30px;
-            transition: 0.3s;
-            position: relative;
+            padding: 24px;
         }
-
-        .card:hover {
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
-        }
-
-        .card h3 {
-            color: var(--neon-green);
-            margin-bottom: 15px;
-            font-family: var(--font-head);
-            font-size: 1.5rem;
-        }
-
-        /* --- TECH VISUALS --- */
+        .card:hover { border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0, 243, 255, 0.2); }
+        .card h3 { color: var(--neon-green); margin-bottom: 12px; font-family: var(--font-head); }
         .tech-display {
             background: #000;
             border: 1px solid var(--neon-green);
-            padding: 20px;
-            font-family: monospace;
+            padding: 16px;
             color: var(--neon-green);
-            margin: 20px 0;
-            overflow: hidden;
+            margin: 16px 0;
         }
-
         .blink { animation: blinker 1s linear infinite; }
         @keyframes blinker { 50% { opacity: 0; } }
-
-        /* --- DIPLOMAT SECTION --- */
         .diplomat-box {
             border: 2px solid gold;
-            padding: 40px;
+            padding: 32px;
             text-align: center;
             background: #1a1a00;
         }
-        
         .diplomat-box h2 { color: gold; font-family: var(--font-head); }
-
-        /* --- BUTTONS --- */
         .btn {
             background: var(--neon-green);
             color: #000;
-            padding: 15px 30px;
+            padding: 14px 28px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.2rem;
             text-transform: uppercase;
             display: inline-block;
-            margin-top: 20px;
-            border: none;
-            cursor: pointer;
-            transition: 0.2s;
+            margin-top: 16px;
         }
-        .btn:hover { background: #fff; transform: scale(1.05); }
-
-        /* --- NANO SENTINEL TICKER STYLES --- */
         .nano-trigger-wrapper {
             background: #000;
             border-top: 1px solid var(--neon-green);
@@ -143,125 +100,128 @@
             overflow: hidden;
             display: flex;
             align-items: center;
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
-            z-index: 100;
         }
-
         .nano-ticker {
             white-space: nowrap;
             position: absolute;
             animation: ticker-scroll 35s linear infinite;
             color: var(--neon-green);
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
             letter-spacing: 2px;
         }
-
         @keyframes ticker-scroll {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-
         .nano-btn-container {
             position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
+            right: 0; top: 0; height: 100%;
             background: linear-gradient(90deg, transparent, #000 20%);
-            padding-left: 50px;
-            padding-right: 20px;
-            display: flex;
-            align-items: center;
-            z-index: 10;
+            padding-left: 50px; padding-right: 20px;
+            display: flex; align-items: center; z-index: 10;
         }
-
         .nano-btn {
-            background: #ff3333; /* Alarm Red */
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 5px 15px;
-            border: 1px solid #fff;
-            font-family: Arial, sans-serif;
-            text-transform: uppercase;
-            font-size: 0.9rem;
+            background: #ff3333; color: #fff; font-weight: bold;
+            text-decoration: none; padding: 5px 15px; border: 1px solid #fff;
+            text-transform: uppercase; font-size: 0.9rem;
             animation: pulse-red 2s infinite;
-            box-shadow: 0 0 10px #ff3333;
         }
-
         @keyframes pulse-red {
             0% { box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7); }
             70% { box-shadow: 0 0 0 10px rgba(255, 51, 51, 0); }
             100% { box-shadow: 0 0 0 0 rgba(255, 51, 51, 0); }
         }
-
-        @media (max-width: 600px) {
-            .nano-btn-container {
-                position: relative; 
-                background: #000; 
-                width: 100%; 
-                justify-content: center;
-                padding: 10px;
-                border-top: 1px solid #333;
-            }
-            .nano-trigger-wrapper {
-                height: auto;
-                flex-direction: column;
-            }
-            .nano-ticker {
-                position: relative;
-                padding: 10px;
-            }
-        }
-
-        /* Footer Styles */
         footer {
             text-align: center;
-            padding: 50px;
+            padding: 48px;
             background: #000;
             border-top: 1px solid var(--neon-green);
         }
-        footer a {
-            color: var(--neon-blue);
-            margin: 0 10px;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
+        footer a { color: var(--neon-blue); margin: 0 10px; text-decoration: none; }
 
-        /* Responsivität */
+        /* --- LIVE MONITOR --- */
+        #live-monitor { background: #050505; }
+        #live-monitor h2 { font-family: var(--font-head); font-size: 2rem; margin-bottom: 8px; }
+        .mon-meta { color: #888; margin-bottom: 20px; font-size: 0.85rem; }
+        .bar { background: #222; height: 10px; border-radius: 4px; margin: 6px 0 14px; overflow: hidden; }
+        .bar > span { display: block; height: 100%; background: var(--neon-green); }
+        .flag {
+            display: inline-block;
+            border: 1px solid var(--alarm);
+            color: var(--alarm);
+            padding: 6px 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .flag.ok { border-color: var(--neon-green); color: var(--neon-green); }
+        .kv { font-size: 0.85rem; line-height: 1.6; color: #ccc; }
+        .kv b { color: #fff; }
+        #vault-svg { width: 100%; height: 360px; background: #000; border: 1px solid #333; }
+        #vault-svg .source { fill: #4ea1ff; }
+        #vault-svg .crop { fill: #7dce82; }
+        #vault-svg .factor { fill: #e6b800; }
+        #vault-svg .prep { fill: #c97bff; }
+        #vault-svg .geo { fill: #5ec8e8; }
+        #vault-svg .metric { fill: #ff8a4e; }
+        #vault-svg .agent { fill: #d0d0d0; }
+        #vault-svg line { stroke: #555; }
+        #vault-svg text { fill: #ddd; font-size: 10px; font-family: var(--font-main); }
+        .claim { color: #888; font-size: 0.8rem; margin-top: 10px; }
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .subtitle { font-size: 1.2rem; }
-            section { padding: 40px 0; }
-            .grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.2rem; }
+            .nano-trigger-wrapper { height: auto; flex-direction: column; }
+            .nano-ticker { position: relative; padding: 10px; }
+            .nano-btn-container { position: relative; width: 100%; justify-content: center; padding: 10px; }
         }
     </style>
 </head>
 <body>
-
     <header>
-        <div class="badge">TRL 9 SYSTEM LIVE</div>
+        <div class="badge">TRL 9 SYSTEM LIVE · MONITOR EMBEDDED</div>
         <h1>ROSENKRANZ©®™ PRIME</h1>
         <p class="subtitle">Entkopplung von Wachstum und Ressourcenerschöpfung.</p>
-        <p style="max-width: 600px; line-height: 1.6;">
+        <p style="max-width: 640px; line-height: 1.6;">
             Die Evolution von Bio 1.0 zu <strong>Tech-Bio 2.0</strong>.<br>
-            Sicherung der strategischen Autonomie Europas durch fraktale Agrivoltaik & souveräne Fintech-Lösungen.
+            ESG-Telemetrie, spektraler NS-Stepper (numerischer Blowup-Flag) und Vault-Graph — tokenfrei.
         </p>
-        <a href="https://rosary-mom.github.io/Bio2.0/engine/index.html" class="btn">ZUGRIFF AUF DIE INFRASTRUKTUR</a>
+        <a href="#live-monitor" class="btn">Live-Monitor</a>
+        <a href="https://rosary-mom.github.io/Bio2.0/engine/index.html" class="btn" style="background:#00f3ff; margin-left:8px;">Infrastruktur</a>
     </header>
 
     <div class="nano-trigger-wrapper">
         <div class="nano-ticker">
-            >>> 🏛️ MACRO ALERT: FED LIQUIDITY MIGRATING TO CHINA (US DEBT OFF-LOADING) >>> 🇨🇳 EASTERN SAFE HAVENS ACTIVATED (SUN TZU PROTOCOL) >>> ⚖️ BOARD OF PEACE = GESARA/NESARA COMPLIANT >>> 🛡️ ROSARY PRIME: THE TECHNOCRATIC CHAMPION TIER >>> 🧱 INVEST IN REALITY (CLAY) >>>
+            >>> ESG CARBON · DHG TPF · TOMATE M+P 41.006 kg >>> NS WATCH: numerical_ns_blowup (STEPPER, NICHT CLAY) >>> VAULT GRAPH /rosary-atlas/vault-graph.json >>> QUORUM hermes-1 + bitz >>> eta_raw=30000 AUTHOR_CLAIM NICHT ENZYM >>>
         </div>
         <div class="nano-btn-container">
-            <a href="sentinel.html" class="nano-btn">
-                ⚠️ ASK SENTINEL AI
-            </a>
+            <a href="#live-monitor" class="nano-btn">⚠️ MONITOR</a>
         </div>
     </div>
+
+    <section id="live-monitor" class="container">
+        <h2>EMBEDDED MONITOR</h2>
+        <p class="mon-meta" id="mon-meta">lade /rosary-atlas/ …</p>
+        <div class="grid">
+            <div class="card">
+                <h3>ESG</h3>
+                <div id="esg-panel" class="kv">…</div>
+            </div>
+            <div class="card" style="border-color:#ff3333;">
+                <h3>NS-BLOWUP</h3>
+                <div id="ns-flag" class="flag">…</div>
+                <div id="ns-panel" class="kv" style="margin-top:12px;">…</div>
+                <p class="claim">Flag = numerischer Blowup des spektralen RK2-Steppers auf NS-evolviertem Feld. Kein Clay-Beweis.</p>
+            </div>
+            <div class="card">
+                <h3>BODEN (Alfter 1988)</h3>
+                <div id="soil-panel" class="kv">…</div>
+                <p class="claim">η_DHG Mist/Kompost 8–9× (TPF). 30 000× bleibt author_claim.</p>
+            </div>
+        </div>
+        <div class="card" style="margin-top:24px;">
+            <h3>VAULT GRAPH</h3>
+            <div id="vault-meta" class="mon-meta">…</div>
+            <svg id="vault-svg"></svg>
+        </div>
+    </section>
 
     <section class="container">
         <div class="grid">
@@ -275,156 +235,189 @@
             <div class="card" style="border-color: var(--neon-green);">
                 <h3>TECH-BIO 2.0 (The Fix)</h3>
                 <p>✅ Fraktale Agrivoltaik (Doppelnutzung)</p>
-                <p>✅ Echtzeit-Blockchain-Rückverfolgbarkeit</p>
+                <p>✅ Echtzeit-Kette (Hermes ESG / Vault)</p>
                 <p>✅ AlphaFold-optimierte Kulturen</p>
                 <p>✅ Bankfähige ESG-Assetklasse</p>
             </div>
         </div>
     </section>
-<section style="padding: 60px 20px; text-align: center; background: linear-gradient(135deg, #1a1a1a, #2c3e50);">
-    <div style="max-width: 800px; margin: 0 auto; color: white;">
-        
-        <h2 style="font-size: 3em; margin: 0 0 20px 0; color: #D4AF37;">🍷</h2>
-        <h2 style="font-size: 2.2em; margin-bottom: 15px;">Digital Molecular Sommelier</h2>
-        
-        <p style="font-size: 1.2em; line-height: 1.6; margin-bottom: 30px; opacity: 0.9;">
-            Entdecken Sie den "Chemischen Fingerabdruck" unserer Weine. 
-            Unsere interaktive Web-App visualisiert die Enzyme (AlphaFold) und 
-            das Terroir (PCA-Daten) hinter jedem Tropfen.
-        </p>
-        
-        <a href="sommelier.html" style="
-            display: inline-block;
-            background-color: #D4AF37;
-            color: #1a1a1a;
-            padding: 18px 40px;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-            transition: transform 0.2s;
-        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-            🚀 App starten
-        </a>
-        
-    </div>
-</section>
+
+    <section style="padding: 60px 20px; text-align: center; background: linear-gradient(135deg, #1a1a1a, #2c3e50);">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 2.2em; margin-bottom: 15px; color:#D4AF37;">Digital Molecular Sommelier</h2>
+            <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 24px; opacity: 0.9;">
+                Enzym-Assays nur mit <code>evidence: measured</code> + Einheit. Colab-30 000× ist nicht TTC/TPF.
+            </p>
+            <a href="sommelier.html" class="btn" style="background:#D4AF37;">App starten</a>
+        </div>
+    </section>
+
     <section class="container">
-        <h2 style="font-family: var(--font-head); font-size: 3rem; margin-bottom: 30px;">The Deep Tech Stack</h2>
-        <div class="tech-display">
-            > INITIALIZING SYSTEM...<br>
-            > CONNECTING TO SINONG LLM... [OK]<br>
-            > LOADING ALPHAFOLD PROTEIN STRUCTURES... [OK]<br>
-            > ACCESSING EMERGENT FREEDOM ENGINE... [OK]<br>
+        <h2 style="font-family: var(--font-head); font-size: 2.4rem; margin-bottom: 24px;">The Deep Tech Stack</h2>
+        <div class="tech-display" id="boot">
+            > INITIALIZING MONITOR…<br>
+            > ESG PACKET / NS FLAG / VAULT GRAPH<br>
             > STATUS: <span class="blink">OPERATIONAL</span>
         </div>
-        
         <div class="grid">
             <div class="card">
                 <h3>Emergent Freedom Engine</h3>
-                <p>Souveräne Fintech-Infrastruktur. Asset-Backed Vouchers & SBLC Digital Safe.</p>
+                <p>Souveräne Fintech-Infrastruktur. Asset-Backed Vouchers &amp; SBLC Digital Safe.</p>
                 <br>
-                <a href="https://rosary-mom.github.io/Bio2.0/engine/index.html" style="color: var(--neon-blue);">Launch Engine (Motor) -></a>
+                <a href="https://rosary-mom.github.io/Bio2.0/engine/index.html" style="color: var(--neon-blue);">Launch Engine -&gt;</a>
             </div>
             <div class="card">
                 <h3>Rosary Prime Bundle</h3>
-                <p>Der kommerzielle Treiber. Abonnementbasierter Zugang zu Gesundheit & Energie in 28 EU-Staaten.</p>
+                <p>Der kommerzielle Treiber. Abonnement in 28 EU-Staaten.</p>
                 <br>
-                <a href="https://rosary.health/product/bundle-rosary-prime/" target="_blank" style="color: var(--neon-blue);">Produkt ansehen -></a>
+                <a href="https://rosary.health/product/bundle-rosary-prime/" target="_blank" style="color: var(--neon-blue);">Produkt ansehen -&gt;</a>
             </div>
         </div>
     </section>
 
     <section class="container">
         <div class="diplomat-box">
-            <h2>LEADERSHIP & GOVERNANCE</h2>
+            <h2>LEADERSHIP &amp; GOVERNANCE</h2>
             <p style="margin: 20px 0; font-size: 1.2rem;">
                 <strong>Archbishop Dr. Uwe Rosenkranz</strong><br>
                 Co-Architect des EU Bio-Siegels (1992) | Globaler Kanzler (IGO)
             </p>
-            <div class="grid">
-                <div>
-                    <h4 style="color:gold;">DER BANKIER</h4>
-                    <p>Bewährte Finanztechnik.<br>Ex-Dresdner Bank & VERSIKO AG.</p>
-                </div>
-                <div>
-                    <h4 style="color:gold;">DER DIPLOMAT</h4>
-                    <p>Grenzüberschreitende Agilität.<br>Akkreditiert nach Wiener Übereinkommen.</p>
-                </div>
-            </div>
             <div class="badge" style="border-color: gold; color: gold;">RECHTSSTATUS BESTÄTIGT DURCH OLG</div>
         </div>
     </section>
 
-    <section id="investor-data" style="padding: 50px 20px; background-color: #f4f6f9; color: #333;">
-        <div style="max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-            <h2 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 15px; font-family: Arial, sans-serif;">📂 Technical Due Diligence & Investor Relations</h2>
-            
-            <div style="background-color: #e8f4f8; padding: 15px; border-left: 5px solid #007bff; margin-bottom: 25px; font-family: Arial, sans-serif;">
-                <strong>Open Science Statement:</strong><br>
-                Transparenz ist der Kern von Bio 2.0. Um Investoren und Evaluatoren eine tiefergehende Prüfung (Due Diligence) zu ermöglichen, stellen wir Rohdaten und TRL-7 Beweise direkt bereit.
-            </div>
-
-            <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px; font-family: Arial, sans-serif;">
-                <thead style="background-color: #2c3e50; color: white;">
-                    <tr>
-                        <th style="padding: 12px; text-align: left;">Dokument / Asset</th>
-                        <th style="padding: 12px; text-align: left;">Status</th>
-                        <th style="padding: 12px; text-align: left;">Secure Access</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom: 1px solid #ddd;">
-                        <td style="padding: 12px;"><strong>TRL 7 Infrastructure Proof</strong><br><span style="font-size:0.8em; color:#777;">GitHub Actions Log</span></td>
-                        <td style="padding: 12px; color: green;">✅ Verified Live</td>
-                        <td style="padding: 12px;"><a href="https://sorgenlos.de/vp/RMI/Screenshot_2026-01-27_135323.png" target="_blank" style="color: #007bff; text-decoration: none; font-weight:bold;">📸 View Evidence</a></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #ddd; background-color: #fcffff;">
-                        <td style="padding: 12px;"><strong>Implementation Strategy</strong><br><span style="font-size:0.8em; color:#777;">Operative Skalierung Plan</span></td>
-                        <td style="padding: 12px; color: #2980b9;">🚀 Execution Ready</td>
-                        <td style="padding: 12px;"><a href="https://sorgenlos.de/vp/RMI/Horizon_Europe_Implementierung__Operative_Skalierung_und_TRL_7_Validierung.txt" target="_blank" style="color: #007bff; text-decoration: none; font-weight:bold;">📄 Download .txt</a></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #ddd;">
-                        <td style="padding: 12px;"><strong>Deep Tech Analysis</strong><br><span style="font-size:0.8em; color:#777;">Thermodynamik & Ridge-Systeme</span></td>
-                        <td style="padding: 12px; color: #d35400;">🔍 Due Diligence</td>
-                        <td style="padding: 12px;"><a href="https://sorgenlos.de/vp/RMI/Fraktale_Agri-PV_und_Bio_2.0_Ridge-Systeme_Analyse.txt" target="_blank" style="color: #007bff; text-decoration: none; font-weight:bold;">📄 Download .txt</a></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #ddd;">
-                        <td style="padding: 12px;"><strong>Horizon Europe Proposal</strong><br><span style="font-size:0.8em; color:#777;">Scientific Grant Application</span></td>
-                        <td style="padding: 12px;">🔒 Protected</td>
-                        <td style="padding: 12px;"><a href="mailto:eurobitz@Jesus.tips" style="color: #007bff; text-decoration: none; font-weight:bold;">📧 Request PDF</a></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div style="margin-top: 30px; padding: 20px; background: #fff; border-left: 5px solid #27ae60; font-family: Arial, sans-serif;">
-                <h3 style="margin-top: 0; color: #2c3e50;">🌍 Strategic Resonance & Global Macro</h3>
-                <p>
-                    Our approach navigates the current shift from volatile digital assets to tangible, peace-backed land derivatives. 
-                    It represents a convergence between <strong>Legacy Capital</strong> (Gold/Silver/Land) seeking safety ("Invest when assets hit the ground") and <strong>Technocratic Peace Frameworks</strong> stabilizing global hotspots.
-                </p>
-                <p style="font-size: 0.9em; color: #555;">
-                    <em>Current Signal: BlackRock De-Risking ➔ Inflow to Bio 2.0 Real Assets.</em>
-                </p>
-            </div>
-
-            <div style="margin-top: 20px; font-size: 0.9em; color: #777; text-align: center; font-family: Arial, sans-serif;">
-                <em>*Data hosted on secure private servers (Sorgenlos.de). All rights reserved.</em>
-            </div>
+    <section id="investor-data" style="padding: 50px 20px; background-color: #111;">
+        <div class="container">
+            <h2 style="font-family: var(--font-head); margin-bottom: 16px;">Technical Due Diligence</h2>
+            <p class="kv">Open Science: Alfter 1988 Tab. 16 + Kledtke TPF in <code>rosary-vault/data/</code>. ESG-Kette: <code>hermes-esg-chain/shared/</code>.</p>
+            <p style="margin-top:12px;"><a href="https://monitor.rosenkranz.eu.com/rosary-atlas/vault-graph.html" style="color:var(--neon-blue);">Live Vault Graph</a></p>
         </div>
     </section>
 
     <footer>
-        <h2 style="color: #fff;">READY FOR DEPLOYMENT</h2>
-        <p style="color: #666; margin: 20px 0;">Rosary UG & Co KG Holding</p>
+        <h2>READY FOR DEPLOYMENT</h2>
+        <p style="color:#666; margin: 20px 0;">Rosary UG &amp; Co KG Holding</p>
         <a href="mailto:eurobitz@Jesus.tips" class="btn">Leadership kontaktieren</a>
         <div style="margin-top: 20px;">
-            <a href="https://rosary.health/product/bundle-rosary-prime/">Produkt: Bundle Rosary-Prime</a> |
-            <a href="https://rosary.health/kontakt">Kontakt & Beratung</a> |
-            <a href="https://rosary-mom.github.io/Bio2.0/engine/index.html">Framework: Emergent Freedom Engine</a>
+            <a href="https://rosary.health/product/bundle-rosary-prime/">Bundle Rosary-Prime</a> |
+            <a href="https://rosary.health/kontakt">Kontakt</a> |
+            <a href="https://rosary-mom.github.io/Bio2.0/engine/index.html">Emergent Freedom Engine</a>
         </div>
     </footer>
 
+<script>
+const FALLBACK = {
+  esg: { esg_carbon: 0.9412, aggregate_stability: 0.9381, vertical_thesis: 0.95, social_policy: 0.915 },
+  soil: { soil_dhg_tpf: 153.1, tomato_kg: 41.006 },
+  ns: { watch: "numerical_ns_blowup", E: 8.574626289846562e22, Omega: 5.4067633152778876e23, bkm: 5.8787398359953636e10,
+        energy_finite: false, enstrophy_finite: false, bkm_finite: false }
+};
+
+function bar(id, v, hi) {
+  const pct = Math.max(0, Math.min(100, 100 * v / hi));
+  return `<div>${id} <b>${v}</b></div><div class="bar"><span style="width:${pct}%"></span></div>`;
+}
+
+function renderEsg(m) {
+  const s = Object.assign({}, FALLBACK.esg, m || {});
+  document.getElementById("esg-panel").innerHTML =
+    bar("esg_carbon", s.esg_carbon, 1) +
+    bar("aggregate_stability", s.aggregate_stability, 1) +
+    bar("vertical_thesis", s.vertical_thesis || 0.95, 1) +
+    bar("social_policy", s.social_policy || 0.915, 1);
+}
+
+function renderSoil(m) {
+  const s = Object.assign({}, FALLBACK.soil, m || {});
+  document.getElementById("soil-panel").innerHTML =
+    `soil_dhg_tpf <b>${s.soil_dhg_tpf}</b> mg/10g (Mist-Ende Kledtke)<br>` +
+    `tomato_kg <b>${s.tomato_kg}</b> kg/bed (Tab. 16 M_P)`;
+}
+
+function renderNs(ns, metrics) {
+  const w = (ns && ns.watch) || FALLBACK.ns.watch;
+  const E = (metrics && metrics.E) != null ? metrics.E : FALLBACK.ns.E;
+  const Om = (metrics && metrics.Omega) != null ? metrics.Omega : FALLBACK.ns.Omega;
+  const bkm = (metrics && metrics.bkm) != null ? metrics.bkm : FALLBACK.ns.bkm;
+  const el = document.getElementById("ns-flag");
+  el.textContent = "FLAG " + w;
+  el.className = "flag" + (w === "regular_so_far" ? " ok" : "");
+  document.getElementById("ns-panel").innerHTML =
+    `E = <b>${Number(E).toExponential(3)}</b><br>` +
+    `Omega = <b>${Number(Om).toExponential(3)}</b><br>` +
+    `BKM = <b>${Number(bkm).toExponential(3)}</b><br>` +
+    `energy_finite=${ns && ns.energy_finite}<br>enstrophy_finite=${ns && ns.enstrophy_finite}`;
+}
+
+function drawVault(data) {
+  const svg = document.getElementById("vault-svg");
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+  const st = data.stats || {};
+  document.getElementById("vault-meta").textContent =
+    (data.public_view || "") + "  nodes " + (st.n_nodes || (data.nodes||[]).length) +
+    "  edges " + (st.n_edges || (data.edges||[]).length) + "  tokens " + (st.loop_token_budget ?? 0);
+  const W = svg.clientWidth || 900, H = 360;
+  const nodes = data.nodes || [];
+  const idx = {};
+  nodes.forEach((n, i) => { idx[n.id] = i; });
+  const order = ["source", "crop", "factor", "prep", "geo", "metric", "agent"];
+  const ringOf = n => Math.max(0, order.indexOf(n.group || n.type));
+  const pos = nodes.map(n => {
+    const ring = ringOf(n);
+    const same = nodes.filter(x => ringOf(x) === ring);
+    const k = same.indexOf(n);
+    const r = 28 + ring * 48;
+    const a = (2 * Math.PI * k) / Math.max(same.length, 1) - Math.PI / 2;
+    return { x: W / 2 + r * Math.cos(a), y: H / 2 + r * Math.sin(a) };
+  });
+  (data.edges || []).forEach(e => {
+    const a = pos[idx[e.from || e.source]], b = pos[idx[e.to || e.target]];
+    if (!a || !b) return;
+    const l = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    l.setAttribute("x1", a.x); l.setAttribute("y1", a.y);
+    l.setAttribute("x2", b.x); l.setAttribute("y2", b.y);
+    svg.appendChild(l);
+  });
+  nodes.forEach((n, i) => {
+    const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    c.setAttribute("cx", pos[i].x); c.setAttribute("cy", pos[i].y);
+    c.setAttribute("r", 5);
+    c.setAttribute("class", n.group || n.type || "");
+    svg.appendChild(c);
+    const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    t.setAttribute("x", pos[i].x + 7); t.setAttribute("y", pos[i].y + 3);
+    t.textContent = (n.label || n.id || "").slice(0, 22);
+    svg.appendChild(t);
+  });
+}
+
+function pick(urls) {
+  return urls.reduce((p, u) => p.catch(() => fetch(u).then(r => { if (!r.ok) throw r.status; return r.json(); })), Promise.reject());
+}
+
+function boot() {
+  renderEsg(FALLBACK.esg);
+  renderSoil(FALLBACK.soil);
+  renderNs(FALLBACK.ns, FALLBACK.ns);
+  document.getElementById("mon-meta").textContent = "fallback · live fetch /rosary-atlas/";
+
+  pick(["/rosary-atlas/gov_telemetry.json", "./gov_telemetry.json", "./tip.json"])
+    .then(j => {
+      const pay = j.payload || j;
+      const m = pay.metrics || pay.scores || pay;
+      const ns = (pay.extra && pay.extra.ns) || pay.diagnostics || {};
+      renderEsg(m);
+      renderSoil(m);
+      renderNs(ns, m);
+      document.getElementById("mon-meta").textContent = "live gov_telemetry · lock " + (pay.lock || "");
+    })
+    .catch(() => {});
+
+  pick(["/rosary-atlas/vault-graph.json", "./vault-graph.json", "./graph.json"])
+    .then(drawVault)
+    .catch(err => { document.getElementById("vault-meta").textContent = String(err); });
+}
+boot();
+</script>
 </body>
 </html>
