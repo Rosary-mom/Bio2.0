@@ -220,6 +220,8 @@
         .vs-col.colab { border-color: var(--neon-green); }
         .vs-k { color: #888; font-size: 0.8rem; letter-spacing: 1px; }
         #vs-q { width: 100%; background: #000; color: #fff; border: 1px solid #8ab4f8; padding: 12px; font-family: var(--font-main); margin-top: 12px; }
+        .code-block { background: #000; border: 1px solid var(--neon-green); color: var(--neon-green); padding: 14px; overflow: auto; font-size: 0.85rem; line-height: 1.5; margin: 12px 0; }
+        .colab-frame { width: 100%; height: 560px; border: 1px solid var(--neon-green); background: #000; margin-top: 16px; }
         @media (max-width: 768px) { .vs-grid { grid-template-columns: 1fr; } }
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
@@ -319,9 +321,19 @@
                 <p id="vs-colab-measured" class="kv"></p>
                 <p id="vs-colab-claim" class="claim"></p>
                 <a id="vs-colab-link" class="btn" target="_blank" rel="noopener">Open the notebook</a>
-                <p class="claim">Gemini review is the last cell. Project <code>gen-lang-client-0049820616</code> (1065720335356). Colab secret <code>GEMINI_API_KEY</code>, or the same name in VS Code. The key is not in the notebook.</p>
+                <p class="claim">Gemini review is the last cell. Project <code>gen-lang-client-0049820616</code> (1065720335356). The key is not in the notebook.</p>
             </article>
         </div>
+        <h3 style="margin-top:28px; color:var(--neon-green);">VS Code — set GEMINI_API_KEY</h3>
+        <p class="kv">In the VS Code terminal (PowerShell). Replace the placeholder with the key from that AI Studio project. Do not commit it.</p>
+        <pre class="code-block">$env:GEMINI_API_KEY = "YOUR_API_KEY"
+pip install -U google-genai
+python notebooks/gemini_review.py</pre>
+        <p class="kv">macOS or Linux: <code>export GEMINI_API_KEY="YOUR_API_KEY"</code></p>
+        <h3 style="margin-top:20px; color:var(--neon-green);">Open the Colab project</h3>
+        <p class="kv">Same pattern as the engine page: the notebook opens here, and again in a new tab.</p>
+        <iframe class="colab-frame" src="https://colab.research.google.com/github/Rosary-mom/Bio2.0/blob/main/04_epistemology_and_governance.ipynb" loading="lazy" title="Module 04 Colab notebook"></iframe>
+        <p><a class="btn" href="https://colab.research.google.com/github/Rosary-mom/Bio2.0/blob/main/04_epistemology_and_governance.ipynb" target="_blank" rel="noopener">Colab in neuem Tab öffnen</a></p>
     </section>
 
     <section id="organigramm" class="container">
