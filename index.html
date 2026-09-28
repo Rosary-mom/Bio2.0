@@ -262,7 +262,7 @@
 
     <section id="true-words" class="container">
         <h2>IN TRUE WORDS</h2>
-        <p class="mon-meta">Grok on x.ai · model grok-4.7 · key stays on the server</p>
+        <p class="mon-meta">Grok on x.ai · grok-4.7 · short pass (reasoning effort low) · key stays on the server</p>
         <ol class="true-list">
             <li>This URL is a static HTML page. It is a monitor and a landing page, not a laboratory instrument.</li>
             <li>ESG and soil figures are either a live read of <code>/rosary-atlas/</code> JSON, or the fallback constants written in this page. The fallback soil line is 153.1 mg/10g and 41.006 kg/bed. The page cites those as Alfter 1988 / Kledtke, not as a new assay run in the browser.</li>
@@ -498,7 +498,7 @@ boot();
   async function ask(text) {
     turns.push({ role: 'user', content: text });
     add('You', text);
-    add('Grok', '…');
+    add('Grok', 'Grok 4.7 is writing a short answer…');
     const pending = log.lastChild;
     try {
       const res = await fetch('/api/grok', {

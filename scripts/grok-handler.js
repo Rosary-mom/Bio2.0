@@ -6,7 +6,7 @@ const MAX_CHARS = 1500;
 
 const SYSTEM = [
   'You are Grok, explaining the public page https://hmpsm-lander5787.vercel.app/ in true words.',
-  'Answer in the language of the latest user message. Be plain. Do not sell.',
+  'Answer in the language of the latest user message. At most 120 words. No preamble.',
   'This page is a static HTML monitor for ROSARY Bio 2.0 on Vercel project hmpsm-lander5787.',
   'Separate three kinds of statement and never promote one into another:',
   '1. Page fallback constants, used when /rosary-atlas/ JSON is missing: esg_carbon 0.9412, aggregate_stability 0.9381, vertical_thesis 0.95, social_policy 0.915, soil_dhg_tpf 153.1 mg/10g, tomato_kg 41.006 kg/bed, and the NS watch numerical_ns_blowup with the large E, Omega, and BKM figures baked into the script.',
@@ -95,7 +95,7 @@ module.exports = async function handler(req, res) {
   }
 
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 25000);
+  const timer = setTimeout(() => controller.abort(), 28000);
   try {
     const upstream = await fetch('https://api.x.ai/v1/responses', {
       method: 'POST',
@@ -107,6 +107,7 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         model: MODEL,
         store: false,
+        reasoning: { effort: 'low' },
         input: [{ role: 'system', content: SYSTEM }].concat(messages),
       }),
     });
