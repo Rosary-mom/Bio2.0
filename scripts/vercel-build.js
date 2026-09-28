@@ -54,9 +54,32 @@ if (!fs.existsSync(indexPath)) {
   process.exit(1);
 }
 
+const grokFunc = path.join(OUT, 'functions', 'api', 'grok.func');
+fs.mkdirSync(grokFunc, { recursive: true });
+fs.copyFileSync(
+  path.join(ROOT, 'scripts', 'grok-handler.js'),
+  path.join(grokFunc, 'index.js')
+);
 fs.writeFileSync(
-  path.join(OUT, 'config.json'),
-  JSON.stringify({ version: 3 }, null, 2) + '\n'
+  path.join(grokFunc, '.vc-config.json'),
+  JSON.stringify({
+    runtime: 'nodejs22.x',
+    handler: 'index.js',
+    launcherType: 'Nodejs',
+    shouldAddHelpers: true,
+    maxDuration: 30,
+  }, null, 2) + '\n'
 );
 
-console.log('vercel-build: wrote Build Output API static site to .vercel/output');
+fs.writeFileSync(
+  path.join(OUT, 'config.json'),
+  JSON.stringify({
+    version: 3,
+    routes: [
+      { src: '^/api/grok$', dest: '/api/grok' },
+      { handle: 'filesystem' },
+    ],
+  }, null, 2) + '\n'
+);
+
+console.log('vercel-build: wrote static files and /api/grok to .vercel/output');

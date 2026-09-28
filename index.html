@@ -166,6 +166,41 @@
         #vault-svg line { stroke: #555; }
         #vault-svg text { fill: #ddd; font-size: 10px; font-family: var(--font-main); }
         .claim { color: #888; font-size: 0.8rem; margin-top: 10px; }
+        #true-words { background: #050505; }
+        #true-words h2 { font-family: var(--font-head); font-size: 2rem; margin-bottom: 8px; }
+        .true-list { margin: 16px 0 8px 18px; line-height: 1.55; color: #ddd; }
+        .true-list li { margin: 8px 0; }
+        #grok-log {
+            background: #000;
+            border: 1px solid #333;
+            min-height: 140px;
+            max-height: 320px;
+            overflow: auto;
+            padding: 12px;
+            margin: 16px 0;
+            white-space: pre-wrap;
+        }
+        .grok-line { margin: 0 0 12px; }
+        .grok-who { color: var(--neon-blue); font-weight: bold; }
+        #grok-form { display: flex; gap: 8px; flex-wrap: wrap; }
+        #grok-q {
+            flex: 1 1 240px;
+            background: #000;
+            color: #fff;
+            border: 1px solid var(--neon-green);
+            padding: 12px;
+            font-family: var(--font-main);
+        }
+        #grok-form button {
+            background: var(--neon-green);
+            color: #000;
+            border: 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 12px 18px;
+            cursor: pointer;
+            font-family: var(--font-main);
+        }
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             .nano-trigger-wrapper { height: auto; flex-direction: column; }
@@ -184,6 +219,7 @@
             ESG-Telemetrie, spektraler NS-Stepper (numerischer Blowup-Flag) und Vault-Graph — tokenfrei.
         </p>
         <a href="#live-monitor" class="btn">Live-Monitor</a>
+        <a href="#true-words" class="btn" style="background:#00f3ff; margin-left:8px;">True words</a>
         <a href="https://rosary-mom.github.io/Bio2.0/engine/index.html" class="btn" style="background:#00f3ff; margin-left:8px;">Infrastruktur</a>
     </header>
 
@@ -222,6 +258,25 @@
             <svg id="vault-svg"></svg>
             <p class="claim"><a href="/rosary-atlas/vault-graph.html" style="color:var(--neon-blue);">rosary-atlas / vault-graph</a></p>
         </div>
+    </section>
+
+    <section id="true-words" class="container">
+        <h2>IN TRUE WORDS</h2>
+        <p class="mon-meta">Grok on x.ai · model grok-4.7 · key stays on the server</p>
+        <ol class="true-list">
+            <li>This URL is a static HTML page. It is a monitor and a landing page, not a laboratory instrument.</li>
+            <li>ESG and soil figures are either a live read of <code>/rosary-atlas/</code> JSON, or the fallback constants written in this page. The fallback soil line is 153.1 mg/10g and 41.006 kg/bed. The page cites those as Alfter 1988 / Kledtke, not as a new assay run in the browser.</li>
+            <li>The NS flag is a numerical blow-up watch on a spectral RK2 stepper. This page says it is not a Clay proof.</li>
+            <li><code>eta_raw=30000</code> is labeled AUTHOR_CLAIM on this page. It is not a measured enzyme TTC/TPF result.</li>
+            <li>TRL 9, “bankable ESG asset class”, and the Bio 1.0 / Tech-Bio 2.0 cards are sentences printed here. They are not readings from the monitor JSON.</li>
+        </ol>
+        <div id="grok-log" aria-live="polite"></div>
+        <form id="grok-form">
+            <input id="grok-q" name="q" maxlength="1500" placeholder="Ask what this page actually says" required>
+            <button type="submit">Ask Grok</button>
+            <button type="button" id="grok-plain">Explain the page</button>
+        </form>
+        <p class="claim">If the reply says the key is missing, set <code>XAI_API_KEY</code> on the Vercel project hmpsm-lander5787. The key is not in this HTML.</p>
     </section>
 
     <section class="container">
@@ -419,6 +474,60 @@ function boot() {
     .catch(err => { document.getElementById("vault-meta").textContent = String(err); });
 }
 boot();
+</script>
+<script>
+(function () {
+  const log = document.getElementById('grok-log');
+  const form = document.getElementById('grok-form');
+  const input = document.getElementById('grok-q');
+  const turns = [];
+  const PLAIN = 'Explain this page in true words. Separate fallback constants, live JSON readings, and author claims. Do not upgrade a claim into a measurement.';
+
+  function add(who, text) {
+    const line = document.createElement('p');
+    line.className = 'grok-line';
+    const name = document.createElement('span');
+    name.className = 'grok-who';
+    name.textContent = who + ' ';
+    line.appendChild(name);
+    line.appendChild(document.createTextNode(text));
+    log.appendChild(line);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  async function ask(text) {
+    turns.push({ role: 'user', content: text });
+    add('You', text);
+    add('Grok', '…');
+    const pending = log.lastChild;
+    try {
+      const res = await fetch('/api/grok', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: turns.slice(-8) }),
+      });
+      const data = await res.json().catch(() => ({}));
+      const answer = data.text || data.error || ('HTTP ' + res.status);
+      pending.lastChild.textContent = answer;
+      if (res.ok && data.text) turns.push({ role: 'assistant', content: data.text });
+      else turns.pop();
+    } catch (err) {
+      pending.lastChild.textContent = 'The request did not reach /api/grok.';
+      turns.pop();
+    }
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    ask(text);
+  });
+  document.getElementById('grok-plain').addEventListener('click', function () {
+    ask(PLAIN);
+  });
+})();
 </script>
 </body>
 </html>
