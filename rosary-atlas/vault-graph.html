@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <title>rosary-vault graph</title>
+  <style>
+    body { font-family: sans-serif; margin: 1rem; background: #111; color: #eee; }
+    svg { width: 100%; height: 80vh; background: #1a1a1a; border: 1px solid #333; }
+    .source { fill: #4ea1ff; }
+    .crop { fill: #7dce82; }
+    .factor { fill: #e6b800; }
+    .prep { fill: #c97bff; }
+    .geo { fill: #5ec8e8; }
+    .metric { fill: #ff8a4e; }
+    .agent { fill: #d0d0d0; }
+    line { stroke: #555; }
+    text { fill: #ddd; font-size: 11px; }
+    #meta { color: #aaa; margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>rosary-atlas</h1>
+  <div id="meta">lade /rosary-atlas/vault-graph.json …</div>
+  <svg id="g"></svg>
+  <script>
+    function draw(data) {
+      const svg = document.getElementById("g");
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      const st = data.stats || {};
+      document.getElementById("meta").textContent =
+        (data.public_view || "") + "  nodes " + (st.n_nodes || data.nodes.length) +
+        "  edges " + (st.n_edges || data.edges.length) + "  loop_token_budget " + (st.loop_token_budget ?? 0);
+      const W = svg.clientWidth || 900, H = svg.clientHeight || 600;
+      const nodes = data.nodes || [];
+      const idx = {};
+      nodes.forEach((n, i) => { idx[n.id] = i; });
+      const order = ["source", "crop", "factor", "prep", "geo", "metric", "agent"];
+      const ringOf = n => Math.max(0, order.indexOf(n.group || n.type));
+      const pos = nodes.map(n => {
+        const ring = ringOf(n);
+        const same = nodes.filter(x => ringOf(x) === ring);
+        const k = same.indexOf(n);
+        const r = 50 + ring * 120;
+        const a = (2 * Math.PI * k) / Math.max(same.length, 1) - Math.PI / 2;
+        return { x: W / 2 + r * Math.cos(a), y: H / 2 + r * Math.sin(a) };
+      });
+      (data.edges || []).forEach(e => {
+        const a = pos[idx[e.from || e.source]], b = pos[idx[e.to || e.target]];
+        if (!a || !b) return;
+        const l = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        l.setAttribute("x1", a.x); l.setAttribute("y1", a.y);
+        l.setAttribute("x2", b.x); l.setAttribute("y2", b.y);
+        svg.appendChild(l);
+      });
+      nodes.forEach((n, i) => {
+        const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        c.setAttribute("cx", pos[i].x); c.setAttribute("cy", pos[i].y);
+        c.setAttribute("r", 8);
+        c.setAttribute("class", n.group || n.type || "");
+        svg.appendChild(c);
+        const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        t.setAttribute("x", pos[i].x + 10); t.setAttribute("y", pos[i].y + 4);
+        t.textContent = n.label || n.id;
+        svg.appendChild(t);
+      });
+    }
+    function pick(urls) {
+      return urls.reduce((p, u) => p.catch(() => fetch(u).then(r => { if (!r.ok) throw r.status; return r.json(); })), Promise.reject());
+    }
+    pick(["./vault-graph.json", "/rosary-atlas/vault-graph.json", "/vault-graph.json", "/graph.json"])
+      .then(draw)
+      .catch(err => { document.getElementById("meta").textContent = String(err); });
+  </script>
+</body>
+</html>

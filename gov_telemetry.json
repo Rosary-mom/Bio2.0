@@ -1,0 +1,39 @@
+{
+  "lock": "PROTOCOL_LOCK_ACTIVE",
+  "scores": {
+    "aggregate_stability": 0.9350335616666806,
+    "esg_carbon": 0.940649363402773,
+    "vertical_thesis": 0.950670927465273,
+    "social_policy": 0.9160461474652731
+  },
+  "channels": {
+    "religion": {
+      "stability": 0.9558778565,
+      "trust": 0.4184898394167975,
+      "trust_refined": 0.428658912149916,
+      "stability_refined": 0.9558778565
+    },
+    "climate": {
+      "stability": 0.9336628933750001,
+      "trust": 2.2961981727078746,
+      "trust_refined": 2.2711251070674137,
+      "stability_refined": 0.9336628933750001
+    },
+    "social": {
+      "stability": 0.9106096763524029,
+      "trust": 1.2905342588028135,
+      "trust_refined": 1.2938709048432124,
+      "stability_refined": 0.9106096763524029
+    }
+  },
+  "eta_raw": 30206.750577991617,
+  "eta_log10": 4.480104009551714,
+  "diagnostics": {
+    "energy": 3.4866917121121666,
+    "enstrophy": 0.5527575706710351,
+    "rss": 7.880458864163879e-07,
+    "n_obs": 18,
+    "lock": "PROTOCOL_LOCK_ACTIVE",
+    "token_budget": 0
+  }
+}

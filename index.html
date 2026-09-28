@@ -220,6 +220,7 @@
             <h3>VAULT GRAPH</h3>
             <div id="vault-meta" class="mon-meta">…</div>
             <svg id="vault-svg"></svg>
+            <p class="claim"><a href="/rosary-atlas/vault-graph.html" style="color:var(--neon-blue);">rosary-atlas / vault-graph</a></p>
         </div>
     </section>
 
@@ -290,7 +291,7 @@
         <div class="container">
             <h2 style="font-family: var(--font-head); margin-bottom: 16px;">Technical Due Diligence</h2>
             <p class="kv">Open Science: Alfter 1988 Tab. 16 + Kledtke TPF in <code>rosary-vault/data/</code>. ESG-Kette: <code>hermes-esg-chain/shared/</code>.</p>
-            <p style="margin-top:12px;"><a href="https://monitor.rosenkranz.eu.com/rosary-atlas/vault-graph.html" style="color:var(--neon-blue);">Live Vault Graph</a></p>
+            <p style="margin-top:12px;"><a href="/rosary-atlas/vault-graph.html" style="color:var(--neon-blue);">Live Vault Graph</a></p>
         </div>
     </section>
 
@@ -401,7 +402,7 @@ function boot() {
   renderNs(FALLBACK.ns, FALLBACK.ns);
   document.getElementById("mon-meta").textContent = "fallback · live fetch /rosary-atlas/";
 
-  pick(["/rosary-atlas/gov_telemetry.json", "./gov_telemetry.json", "./tip.json"])
+  pick(["/rosary-atlas/gov_telemetry.json", "/rosary-atlas/tip.json", "./gov_telemetry.json", "./tip.json"])
     .then(j => {
       const pay = j.payload || j;
       const m = pay.metrics || pay.scores || pay;
@@ -413,7 +414,7 @@ function boot() {
     })
     .catch(() => {});
 
-  pick(["/rosary-atlas/vault-graph.json", "./vault-graph.json", "./graph.json"])
+  pick(["/rosary-atlas/vault-graph.json", "./vault-graph.json", "./graph.json", "/graph.json"])
     .then(drawVault)
     .catch(err => { document.getElementById("vault-meta").textContent = String(err); });
 }

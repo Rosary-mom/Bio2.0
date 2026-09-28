@@ -1,0 +1,291 @@
+{
+  "public_view": "https://hmpsm-lander5787.vercel.app/rosary-atlas/vault-graph.html",
+  "nodes": [
+    {
+      "id": "src:diplom_1991",
+      "label": "Diplom 1991",
+      "group": "source",
+      "year": 1991
+    },
+    {
+      "id": "src:patent",
+      "label": "DE10307771B4",
+      "group": "source",
+      "year": 2003
+    },
+    {
+      "id": "crop:tomato",
+      "label": "Tomate Vollendung",
+      "group": "crop"
+    },
+    {
+      "id": "crop:radish",
+      "label": "Radieschen",
+      "group": "crop"
+    },
+    {
+      "id": "crop:cauli",
+      "label": "Blumenkohl",
+      "group": "crop"
+    },
+    {
+      "id": "crop:chicory",
+      "label": "Wegwarte",
+      "group": "crop"
+    },
+    {
+      "id": "factor:D\u00fc",
+      "label": "D\u00fcnger M|K",
+      "group": "factor"
+    },
+    {
+      "id": "factor:Ex",
+      "label": "Exposition S|N",
+      "group": "factor"
+    },
+    {
+      "id": "factor:Pr\u00e4",
+      "label": "Pr\u00e4parate P|O",
+      "group": "factor"
+    },
+    {
+      "id": "prep:500",
+      "label": "500 Hornmist",
+      "group": "prep"
+    },
+    {
+      "id": "prep:501",
+      "label": "501 Hornkiesel",
+      "group": "prep"
+    },
+    {
+      "id": "prep:502",
+      "label": "502 Schafgarbe",
+      "group": "prep"
+    },
+    {
+      "id": "prep:503",
+      "label": "503 Kamille",
+      "group": "prep"
+    },
+    {
+      "id": "prep:504",
+      "label": "504 Brennessel",
+      "group": "prep"
+    },
+    {
+      "id": "prep:505",
+      "label": "505 Eichenrinde",
+      "group": "prep"
+    },
+    {
+      "id": "prep:506",
+      "label": "506 L\u00f6wenzahn",
+      "group": "prep"
+    },
+    {
+      "id": "prep:507",
+      "label": "507 Baldrian",
+      "group": "prep"
+    },
+    {
+      "id": "geo:pond",
+      "label": "Teich r=1.5 m",
+      "group": "geo",
+      "radius_m": 1.5
+    },
+    {
+      "id": "geo:wall",
+      "label": "Ringwall h=0.5 m",
+      "group": "geo"
+    },
+    {
+      "id": "metric:tomato",
+      "label": "Tab.16 Tomatenertrag",
+      "group": "metric",
+      "K_O": 36.709,
+      "K_P": 36.159,
+      "M_O": 33.658,
+      "M_P": 41.006
+    },
+    {
+      "id": "agent:ingest",
+      "label": "liest inbox + data/",
+      "group": "agent",
+      "machine": "master",
+      "tokens": 0
+    },
+    {
+      "id": "agent:metrician",
+      "label": "berechnet Ertrag/Geometrie",
+      "group": "agent",
+      "machine": "master",
+      "tokens": 0
+    },
+    {
+      "id": "agent:cartographer",
+      "label": "schreibt graph.json",
+      "group": "agent",
+      "machine": "master",
+      "tokens": 0
+    },
+    {
+      "id": "agent:sync-master",
+      "label": "verteilt outbox",
+      "group": "agent",
+      "machine": "master",
+      "tokens": 0
+    },
+    {
+      "id": "agent:sync-slave",
+      "label": "zieht Diff, schreibt incoming",
+      "group": "agent",
+      "machine": "slave:*",
+      "tokens": 0
+    },
+    {
+      "id": "agent:field-logger",
+      "label": "Bodenfeuchte / F\u00fcllstand",
+      "group": "agent",
+      "machine": "slave:bitz",
+      "tokens": 0
+    },
+    {
+      "id": "agent:reviewer-grok",
+      "label": "NUR manuell, nie im Loop",
+      "group": "agent",
+      "machine": "master",
+      "tokens": 1
+    }
+  ],
+  "edges": [
+    {
+      "from": "src:diplom_1991",
+      "to": "crop:tomato",
+      "rel": "measures"
+    },
+    {
+      "from": "factor:D\u00fc",
+      "to": "crop:tomato",
+      "rel": "treats"
+    },
+    {
+      "from": "factor:Ex",
+      "to": "crop:tomato",
+      "rel": "treats"
+    },
+    {
+      "from": "factor:Pr\u00e4",
+      "to": "crop:tomato",
+      "rel": "treats"
+    },
+    {
+      "from": "src:diplom_1991",
+      "to": "crop:radish",
+      "rel": "measures"
+    },
+    {
+      "from": "factor:D\u00fc",
+      "to": "crop:radish",
+      "rel": "treats"
+    },
+    {
+      "from": "factor:Ex",
+      "to": "crop:radish",
+      "rel": "treats"
+    },
+    {
+      "from": "factor:Pr\u00e4",
+      "to": "crop:radish",
+      "rel": "treats"
+    },
+    {
+      "from": "src:diplom_1991",
+      "to": "crop:cauli",
+      "rel": "measures"
+    },
+    {
+      "from": "factor:D\u00fc",
+      "to": "crop:cauli",
+      "rel": "treats"
+    },
+    {
+      "from": "factor:Ex",
+      "to": "crop:cauli",
+      "rel": "treats"
+    },
+    {
+      "from": "factor:Pr\u00e4",
+      "to": "crop:cauli",
+      "rel": "treats"
+    },
+    {
+      "from": "src:diplom_1991",
+      "to": "crop:chicory",
+      "rel": "measures"
+    },
+    {
+      "from": "factor:D\u00fc",
+      "to": "crop:chicory",
+      "rel": "treats"
+    },
+    {
+      "from": "factor:Ex",
+      "to": "crop:chicory",
+      "rel": "treats"
+    },
+    {
+      "from": "factor:Pr\u00e4",
+      "to": "crop:chicory",
+      "rel": "treats"
+    },
+    {
+      "from": "src:diplom_1991",
+      "to": "metric:tomato",
+      "rel": "tab16"
+    },
+    {
+      "from": "src:patent",
+      "to": "geo:pond",
+      "rel": "spec"
+    },
+    {
+      "from": "src:patent",
+      "to": "geo:wall",
+      "rel": "spec"
+    },
+    {
+      "from": "geo:wall",
+      "to": "geo:pond",
+      "rel": "encircles"
+    },
+    {
+      "from": "agent:ingest",
+      "to": "src:diplom_1991",
+      "rel": "reads"
+    },
+    {
+      "from": "agent:metrician",
+      "to": "metric:tomato",
+      "rel": "computes"
+    },
+    {
+      "from": "agent:cartographer",
+      "to": "agent:sync-master",
+      "rel": "emits"
+    },
+    {
+      "from": "agent:sync-master",
+      "to": "agent:sync-slave",
+      "rel": "replicates"
+    }
+  ],
+  "stats": {
+    "n_nodes": 27,
+    "n_edges": 24,
+    "n_agents": 7,
+    "loop_token_budget": 0
+  },
+  "hash": "484c596ab2952eb706acb14352a1cb52811cf93ec0cc9268a4a7352e1ed501b6",
+  "updated": "2026-09-14T10:07:57Z"
+}
