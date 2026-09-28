@@ -201,6 +201,13 @@
             cursor: pointer;
             font-family: var(--font-main);
         }
+        .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+        .vs-col h3 { margin-bottom: 8px; }
+        .vs-col.google { border-color: #8ab4f8; }
+        .vs-col.colab { border-color: var(--neon-green); }
+        .vs-k { color: #888; font-size: 0.8rem; letter-spacing: 1px; }
+        #vs-q { width: 100%; background: #000; color: #fff; border: 1px solid #8ab4f8; padding: 12px; font-family: var(--font-main); margin-top: 12px; }
+        @media (max-width: 768px) { .vs-grid { grid-template-columns: 1fr; } }
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             .nano-trigger-wrapper { height: auto; flex-direction: column; }
@@ -220,6 +227,7 @@
         </p>
         <a href="#live-monitor" class="btn">Live-Monitor</a>
         <a href="#true-words" class="btn" style="background:#00f3ff; margin-left:8px;">True words</a>
+        <a href="#google-vs-colab" class="btn" style="margin-left:8px;">Google vs Colab</a>
         <a href="https://rosary-mom.github.io/Bio2.0/engine/index.html" class="btn" style="background:#00f3ff; margin-left:8px;">Infrastruktur</a>
     </header>
 
@@ -277,6 +285,28 @@
             <button type="button" id="grok-plain">Explain the page</button>
         </form>
         <p class="claim">If the reply says the key is missing, set <code>XAI_API_KEY</code> on the Vercel project hmpsm-lander5787. The key is not in this HTML.</p>
+    </section>
+
+    <section id="google-vs-colab" class="container">
+        <h2 style="font-family:var(--font-head); font-size:2rem;">GOOGLE VS COLAB</h2>
+        <p class="mon-meta">Research engine from notebook 04. Google opens a real search. Colab shows the packet in that notebook. This page does not invent Google's results.</p>
+        <input id="vs-q" maxlength="200" placeholder="Ask: eta, tomato, soil, NS, ESG" value="eta 30000">
+        <div class="vs-grid">
+            <article class="card vs-col google">
+                <p class="vs-k">GOOGLE</p>
+                <h3 id="vs-google-title">Public query</h3>
+                <p id="vs-google-may" class="kv"></p>
+                <p id="vs-google-not" class="claim"></p>
+                <a id="vs-google-link" class="btn" style="background:#8ab4f8;" target="_blank" rel="noopener">Open on Google</a>
+            </article>
+            <article class="card vs-col colab">
+                <p class="vs-k">COLAB</p>
+                <h3 id="vs-colab-title">Notebook packet</h3>
+                <p id="vs-colab-measured" class="kv"></p>
+                <p id="vs-colab-claim" class="claim"></p>
+                <a id="vs-colab-link" class="btn" target="_blank" rel="noopener">Open the notebook</a>
+            </article>
+        </div>
     </section>
 
     <section class="container">
@@ -527,6 +557,67 @@ boot();
   document.getElementById('grok-plain').addEventListener('click', function () {
     ask(PLAIN);
   });
+})();
+</script>
+<script>
+(function () {
+  const COLAB = 'https://colab.research.google.com/github/Rosary-mom/Bio2.0/blob/main/04_epistemology_and_governance.ipynb';
+  const LANES = [
+    {
+      keys: ['eta', '30000', 'enzym', 'enzyme', 'dhg', 'synergy', 'claim'],
+      title: 'Three etas, never mixed',
+      googleQ: 'Bio 2.0 30000x enzyme efficiency',
+      may: 'A public page may repeat 30,000× as a synergy peak.',
+      not: 'The notebook says marketing may not call 30000× an assay without a unit.',
+      measured: 'Colab packet: eta_DHG 8.5 (Kledtke TTC to TPF, derived). eta_enz is undefined.',
+      claim: 'eta_raw 30000, eta_log10 4.477, evidence author_claim, allowed_in_learner false.'
+    },
+    {
+      keys: ['tomato', 'tomate', 'soil', 'boden', 'kledtke', 'alfter', 'tpf'],
+      title: 'Tomato table and soil DHG',
+      googleQ: 'Alfter 1988 tomato kg bed Kledtke DHG TPF',
+      may: 'Google can be asked for the published table and the soil paper.',
+      not: 'Those hits are not a new assay run in this browser.',
+      measured: 'Notebook measured: tomato M_P 41.006, M_O 33.658, K_P 36.159, K_O 36.709 kg/bed. soil_dhg_tpf manure_end 153.1, compost_start_lo 13.1 mg/10g.',
+      claim: 'Vault accepts a number only with evidence measured and a unit.'
+    },
+    {
+      keys: ['ns', 'clay', 'blow', 'navier', 'stepper'],
+      title: 'Numerical NS watch',
+      googleQ: 'Navier-Stokes Clay prize numerical blowup',
+      may: 'Google will find the Clay problem and numerical papers.',
+      not: 'This notebook says the flag is not a Clay proof.',
+      measured: 'Optional T4 cell: tiny GPU advection, watch regular_so_far or numerical_ns_blowup, not_clay true. Skip if CUDA is absent.',
+      claim: 'The page fallback FLAG numerical_ns_blowup is a watch, not a solved millennium problem.'
+    },
+    {
+      keys: ['esg', 'carbon', 'telemetry', 'governance'],
+      title: 'Governance telemetry',
+      googleQ: 'ESG carbon index governance telemetry',
+      may: 'Google returns general ESG indexes. They are not this page.',
+      not: 'The notebook class governance_telemetry is not allowed in the enzyme learner.',
+      measured: 'Notebook telemetry: esg_carbon 0.9412, aggregate_stability 0.9381, unit 1, allowed_in_enzyme_learner false.',
+      claim: 'TRL 9 and bankable ESG on this landing page are printed sentences, not this packet.'
+    }
+  ];
+
+  const q = document.getElementById('vs-q');
+  function show(text) {
+    const t = (text || '').toLowerCase();
+    const lane = LANES.find(function (item) {
+      return item.keys.some(function (k) { return t.indexOf(k) !== -1; });
+    }) || LANES[0];
+    document.getElementById('vs-google-title').textContent = lane.title;
+    document.getElementById('vs-colab-title').textContent = lane.title;
+    document.getElementById('vs-google-may').textContent = lane.may;
+    document.getElementById('vs-google-not').textContent = lane.not;
+    document.getElementById('vs-colab-measured').textContent = lane.measured;
+    document.getElementById('vs-colab-claim').textContent = lane.claim;
+    document.getElementById('vs-google-link').href = 'https://www.google.com/search?q=' + encodeURIComponent(lane.googleQ);
+    document.getElementById('vs-colab-link').href = COLAB;
+  }
+  q.addEventListener('input', function () { show(q.value); });
+  show(q.value);
 })();
 </script>
 </body>
