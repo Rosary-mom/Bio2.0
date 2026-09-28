@@ -2,6 +2,8 @@
 
 Colab uses the same prompt in 04_epistemology_and_governance.ipynb.
 Set GEMINI_API_KEY in the environment. This file does not contain a key.
+The key belongs to Google AI Studio project gen-lang-client-0049820616
+(number 1065720335356, projects/1065720335356).
 """
 
 import json
@@ -34,7 +36,9 @@ def main() -> None:
     if not key:
         print(json.dumps({
             "gemini": "skipped",
-            "vscode": "set GEMINI_API_KEY, then python notebooks/gemini_review.py",
+            "project": "gen-lang-client-0049820616",
+            "project_number": "1065720335356",
+            "vscode": "set GEMINI_API_KEY from that AI Studio project, then python notebooks/gemini_review.py",
         }, indent=2))
         return
     from google import genai
