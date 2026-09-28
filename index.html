@@ -165,6 +165,19 @@
         #vault-svg .agent { fill: #d0d0d0; }
         #vault-svg line { stroke: #555; }
         #vault-svg text { fill: #ddd; font-size: 10px; font-family: var(--font-main); }
+        #org-svg { width: 100%; height: 440px; background: #000; border: 1px solid #333; }
+        #org-svg line { stroke: #444; }
+        #org-svg text { fill: #ddd; font-size: 11px; font-family: var(--font-main); }
+        #org-svg .orchestrator { fill: #39ff14; }
+        #org-svg .planning { fill: #4ea1ff; }
+        #org-svg .build { fill: #7dce82; }
+        #org-svg .quality { fill: #e6b800; }
+        #org-svg .ops { fill: #5ec8e8; }
+        #org-svg .vault { fill: #ff8a4e; }
+        #org-svg .home { fill: #c97bff; }
+        .org-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 16px; }
+        .org-table th, .org-table td { border-bottom: 1px solid #333; padding: 6px 8px; text-align: left; }
+        .org-table th { color: var(--neon-green); }
         .claim { color: #888; font-size: 0.8rem; margin-top: 10px; }
         #true-words { background: #050505; }
         #true-words h2 { font-family: var(--font-head); font-size: 2rem; margin-bottom: 8px; }
@@ -228,6 +241,7 @@
         <a href="#live-monitor" class="btn">Live-Monitor</a>
         <a href="#true-words" class="btn" style="background:#00f3ff; margin-left:8px;">True words</a>
         <a href="#google-vs-colab" class="btn" style="margin-left:8px;">Google vs Colab</a>
+        <a href="#organigramm" class="btn" style="margin-left:8px;">Organigramm</a>
         <a href="https://rosary-mom.github.io/Bio2.0/engine/index.html" class="btn" style="background:#00f3ff; margin-left:8px;">Infrastruktur</a>
     </header>
 
@@ -308,6 +322,17 @@
                 <p class="claim">Gemini review is the last cell. Colab secret <code>GEMINI_API_KEY</code>, or the same name in VS Code. The key is not in the notebook.</p>
             </article>
         </div>
+    </section>
+
+    <section id="organigramm" class="container">
+        <h2 style="font-family:var(--font-head); font-size:2rem;">ORGANIGRAMM 1.2.3</h2>
+        <p class="mon-meta">Office DESKTOP-K2JCAOI · grok-4.7 · Home ROSENKRANZ-PC · vault PC PORZELLAN-PC. Cockpit may sync. The vault corpus stays on that PC.</p>
+        <svg id="org-svg"></svg>
+        <p class="claim">Second graph: the subagent tree from organigramm 1.2.3, not the rosary-atlas vault graph above. Tags are the delegation labels.</p>
+        <table class="org-table">
+            <thead><tr><th>Tag</th><th>Role</th><th>Mode</th><th>Machine</th></tr></thead>
+            <tbody id="org-rows"></tbody>
+        </table>
     </section>
 
     <section class="container">
@@ -619,6 +644,103 @@ boot();
   }
   q.addEventListener('input', function () { show(q.value); });
   show(q.value);
+})();
+</script>
+<script>
+(function () {
+  const nodes = [
+    { id: 'master', label: 'Sync Master', group: 'orchestrator', col: 0 },
+    { id: 'pm', label: '[pm]', group: 'planning', col: 1 },
+    { id: 'researcher', label: '[researcher]', group: 'planning', col: 1 },
+    { id: 'architect', label: '[architect]', group: 'planning', col: 1 },
+    { id: 'backend', label: '[backend]', group: 'build', col: 2 },
+    { id: 'implementer', label: '[implementer]', group: 'build', col: 2 },
+    { id: 'qa', label: '[qa]', group: 'quality', col: 3 },
+    { id: 'reviewer', label: '[reviewer]', group: 'quality', col: 3 },
+    { id: 'security', label: '[security]', group: 'quality', col: 3 },
+    { id: 'test', label: '[test-runner]', group: 'quality', col: 3 },
+    { id: 'devops', label: '[devops]', group: 'ops', col: 4 },
+    { id: 'home-r', label: 'hermes-research', group: 'home', col: 4 },
+    { id: 'home-l', label: 'hermes-logos', group: 'home', col: 4 },
+    { id: 'home-s', label: 'hermes-summarizer', group: 'home', col: 4 },
+    { id: 'lock', label: '[share-lock]', group: 'vault', col: 5 },
+    { id: 'son', label: '[dr-son]', group: 'vault', col: 5 },
+    { id: 'evidence', label: '[evidence]', group: 'vault', col: 5 },
+    { id: 'risk', label: '[risk]', group: 'vault', col: 5 }
+  ];
+  const edges = [
+    ['master', 'pm'], ['master', 'researcher'], ['master', 'architect'],
+    ['architect', 'backend'], ['master', 'implementer'],
+    ['backend', 'qa'], ['qa', 'test'], ['reviewer', 'security'], ['master', 'reviewer'],
+    ['master', 'devops'], ['master', 'home-r'], ['home-r', 'home-l'], ['home-l', 'home-s'],
+    ['master', 'lock'], ['lock', 'son'], ['lock', 'evidence'], ['lock', 'risk']
+  ];
+  const rows = [
+    ['[pm]', 'Project Manager', 'read-only', 'any'],
+    ['[researcher]', 'Researcher', 'read-only', 'any'],
+    ['[architect]', 'Software Architect', 'read-only', 'any'],
+    ['[backend]', 'Backend Developer', 'all', 'DESKTOP-K2JCAOI'],
+    ['[implementer]', 'Implementer', 'all', 'DESKTOP-K2JCAOI'],
+    ['[qa]', 'QA Engineer', 'execute', 'any'],
+    ['[reviewer]', 'Code Reviewer', 'all', 'any'],
+    ['[security]', 'Security Reviewer', 'read-only', 'any'],
+    ['[test-runner]', 'Test Runner', 'execute', 'DESKTOP-K2JCAOI'],
+    ['[devops]', 'DevOps Engineer', 'all', 'DESKTOP-K2JCAOI'],
+    ['[print]', 'Print & Output', 'all', 'DESKTOP-K2JCAOI'],
+    ['[shipping]', 'Shipping & Freight', 'all', 'DESKTOP-K2JCAOI'],
+    ['[auslieferer]', 'Auslieferer', 'all', 'DESKTOP-K2JCAOI'],
+    ['[monitoring]', 'Logistics Monitoring', 'read-only', 'DESKTOP-K2JCAOI'],
+    ['[share-lock]', 'Share-Lock', 'read-only', 'any'],
+    ['[dr-son]', 'What-Dr.Son', 'read-only', 'PORZELLAN-PC'],
+    ['[evidence]', 'Manhunt Evidence', 'read-only', 'PORZELLAN-PC'],
+    ['[risk]', 'Manhunt Risk', 'read-only', 'any']
+  ];
+  const body = document.getElementById('org-rows');
+  rows.forEach(function (r) {
+    const tr = document.createElement('tr');
+    r.forEach(function (cell) {
+      const td = document.createElement('td');
+      td.textContent = cell;
+      tr.appendChild(td);
+    });
+    body.appendChild(tr);
+  });
+  const svg = document.getElementById('org-svg');
+  const W = svg.clientWidth || 1000;
+  const H = 440;
+  const cols = 6;
+  const byCol = {};
+  nodes.forEach(function (n) {
+    (byCol[n.col] = byCol[n.col] || []).push(n);
+  });
+  const pos = {};
+  nodes.forEach(function (n) {
+    const list = byCol[n.col];
+    const i = list.indexOf(n);
+    pos[n.id] = {
+      x: (n.col + 0.5) * (W / cols),
+      y: ((i + 1) / (list.length + 1)) * (H - 20) + 10
+    };
+  });
+  function el(name) { return document.createElementNS('http://www.w3.org/2000/svg', name); }
+  edges.forEach(function (e) {
+    const a = pos[e[0]], b = pos[e[1]];
+    const l = el('line');
+    l.setAttribute('x1', a.x); l.setAttribute('y1', a.y);
+    l.setAttribute('x2', b.x); l.setAttribute('y2', b.y);
+    svg.appendChild(l);
+  });
+  nodes.forEach(function (n) {
+    const p = pos[n.id];
+    const c = el('circle');
+    c.setAttribute('cx', p.x); c.setAttribute('cy', p.y); c.setAttribute('r', 5);
+    c.setAttribute('class', n.group);
+    svg.appendChild(c);
+    const t = el('text');
+    t.setAttribute('x', p.x + 8); t.setAttribute('y', p.y + 3);
+    t.textContent = n.label;
+    svg.appendChild(t);
+  });
 })();
 </script>
 </body>
