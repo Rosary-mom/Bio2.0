@@ -37,7 +37,6 @@ def main() -> None:
             "vscode": "set GEMINI_API_KEY, then python notebooks/gemini_review.py",
         }, indent=2))
         return
-    os.environ["GEMINI_API_KEY"] = key
     from google import genai
 
     prompt = (
@@ -46,7 +45,11 @@ def main() -> None:
         "German, at most 120 words, then one next notebook step inside those rules.\n"
         + json.dumps({"measured": MEASURED, "telemetry": TELEMETRY, "claim": CLAIM})
     )
-    interaction = genai.Client().interactions.create(model="gemini-3.8-flash", input=prompt)
+    client = genai.Client(api_key=key)
+    interaction = client.interactions.create(
+        model="gemini-3.8-flash",
+        input=prompt,
+    )
     print(interaction.output_text)
 
 
