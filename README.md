@@ -269,5 +269,12 @@ function simulateOtherPCSync() {
 // Initial log
 console.log('%c[ROSENKRANZ Optimized + True Words GROK Bot] Phase 5 + /DREAM + Syncs + Commit ready. High contrast Magnifica style integrated.', 'color:#d4af37');
 </script>
+<footer style="background:#0a0a0a; color:#aaa; padding:1.5rem; font-size:0.75rem; border-top:2px solid #d4af37; margin-top:2rem; text-align:left; line-height:1.4;">
+  <strong>ROSARY</strong> – Haftungsausschluss &amp; Rechtliche Hinweise<br>
+  Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Informationen übernehmen wir keine Gewähr. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Für die Inhalte verlinkter externer Seiten sind ausschließlich deren Betreiber verantwortlich.<br><br>
+  <strong>DISG Konformität:</strong> Diese Website entspricht den Anforderungen der Datenschutz-Grundverordnung (DSGVO / DISG) sowie den geltenden AGB und Impressum-Regelungen. Weitere Details: <a href="https://www.rosary.center/impressum-agb-sorgenlos" target="_blank" style="color:#d4af37;">Impressum, AGB, sorgenlos</a>.<br><br>
+  <strong>Universal Statement of Purpose:</strong> Unsere Mission und Zweckbestimmung ist in der <a href="https://www.rosary.center/universal-statement-of-purpose" target="_blank" style="color:#d4af37;">Universal Statement of Purpose</a> detailliert dargelegt.<br>
+  <span style="font-size:0.7rem; opacity:0.7;">© ROSARY / Uwe Rosenkranz – Alle Rechte vorbehalten. Keine Haftung für externe Inhalte oder Folgen der Nutzung.</span>
+</footer>
 </body>
 </html>
