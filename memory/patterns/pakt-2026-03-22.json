@@ -8,10 +8,13 @@
   "corpus": "memory/platform/corpus/rosenkranz-larijani-templer-pakt-2026-03-22.pdf",
   "unit": "pages",
   "formats": [
-    "manifest-pdf"
+    "manifest-pdf",
+    "q-hebel-pdf"
   ],
-  "redundant_with": [],
-  "missing_second_format": "C:/Users/Administrator/OneDrive/Dokumente/Downloads/Rosenkranz_Grok_2025_Q_Hebel_Manifest_Ri.docx on DESKTOP-K2JCAOI",
+  "redundant_with": [
+    "memory/patterns/q-hebel-2025-11-20.json"
+  ],
+  "missing_second_format": null,
   "chain": [
     {
       "step": "sehen",
@@ -39,12 +42,12 @@
     "second format not yet in the repo"
   ],
   "decision": {
-    "aid": "feasibility",
-    "why": "PDF corpus is present. Q-Hebel docx is only a shortcut to the office PC, so redundancy is not yet met."
+    "aid": "decision-capable",
+    "why": "Two formats share the triad Kant/Rosenkranz/Ockham and the a-priori annotation. Still not a measurement and not a proof of RH."
   },
   "egenden": {
     "selbst-administrierend": true,
     "selbst-versorgend": true,
-    "selbst-ausbreitend": false
+    "selbst-ausbreitend": true
   }
 }
