@@ -1,0 +1,25 @@
+name: esg-memory
+on:
+  push:
+    paths:
+      - "memory/**"
+      - ".github/workflows/esg-memory.yml"
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: validate chains
+        run: |
+          python3 - << 'PY'
+          import json
+          from pathlib import Path
+          for path in Path("memory/patterns").glob("*.json"):
+              if path.name.startswith("_"):
+                  continue
+              data = json.loads(path.read_text())
+              if data.get("schema") == "rosary.esg.chain.v1" and data.get("client") is not None:
+                  raise SystemExit("client must be null: %s" % path)
+          json.loads(Path("memory/esg-multipc.json").read_text())
+          print("ok")
+          PY
