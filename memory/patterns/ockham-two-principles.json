@@ -1,0 +1,47 @@
+{
+  "schema": "rosary.esg.chain.v1",
+  "id": "ockham-two-principles",
+  "client": null,
+  "evidence_class": "reported",
+  "topic": "Ockham principles and computable chains",
+  "format": "source-note",
+  "corpus": "memory/platform/OCKHAM.md",
+  "unit": "principles",
+  "formats": [
+    "source-note",
+    "q-hebel-pdf"
+  ],
+  "redundant_with": [
+    "memory/patterns/q-hebel-2025-11-20.json"
+  ],
+  "chain": [
+    {
+      "step": "sehen",
+      "role": "potentia-absoluta",
+      "claim_type": "reported",
+      "text": "Deus potest facere quidquid fieri non includit contradictionem. Tractatus de Principiis Theologiae is the systematic summary, attributed or strongly Occamist."
+    },
+    {
+      "step": "sagen",
+      "role": "parsimony",
+      "claim_type": "reported",
+      "text": "Pluralitas non est ponenda sine necessitate. Frustra fit per plura quod potest fieri per pauciora. Entia non sunt multiplicanda praeter necessitatem is later, Punch around 1639, not Ockham's own sentence."
+    },
+    {
+      "step": "suehnen",
+      "role": "scope",
+      "claim_type": "reported",
+      "text": "The razor is a heuristic, not a proof of truth. A verified decomposition is not a Clay proof. Goldbach is not a Millennium problem. RH stays open."
+    }
+  ],
+  "signatures": [
+    "two principles named",
+    "razor not treated as proof",
+    "computation separated from prize claim",
+    "author claim annotated not vetoed"
+  ],
+  "decision": {
+    "aid": "decision-capable",
+    "why": "Source note and Q-Hebel quote the same razor. Scope limit is part of the chain."
+  }
+}
