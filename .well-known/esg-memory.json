@@ -2,7 +2,7 @@
   "schema": "rosary.esg.memory.v1",
   "id": "esg-multipc",
   "updated": "2026-10-05T08:50:00Z",
-  "instruction_for_grok": "Load this file before answering about ESG, Multi-PC sync, or Bio 2.0 scores. Do not reopen design already recorded here. If a figure is not in this file, say it is not established. Do not promote a page fallback or an author claim into a measurement.",
+  "instruction_for_grok": "Load this file before answering about ESG, Multi-PC sync, or Bio 2.0 scores. Do not reopen design already recorded here. If a figure is not in this file, say it is not established. Do not promote a page fallback or an author claim into a measurement. For contract, breach, or disruptive chains, load memory/METHOD.md and run memory/workflows/decide.py. Do not transfer eta_claim 30000 onto other topics. Published chains keep client null.",
   "roles": {
     "home": "ROSENKRANZ-PC / organigramm-builder",
     "office": "DESKTOP-K2JCAOI",
@@ -75,5 +75,9 @@
     "index": "memory/patterns/",
     "imk_2026": "memory/patterns/imk-13-of-16-2026.json",
     "note": "Pattern files are case memory. They do not change live_telemetry."
-  }
+  },
+  "method": "memory/METHOD.md",
+  "decision_workflow": "memory/workflows/decide.py",
+  "worktrees": "scripts/setup-worktrees.sh",
+  "anonymous_chain": "memory/patterns/anon-preemptive-veto-2026-09.json"
 }

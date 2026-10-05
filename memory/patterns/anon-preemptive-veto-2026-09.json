@@ -1,0 +1,47 @@
+{
+  "schema": "rosary.esg.chain.v1",
+  "id": "anon-preemptive-veto-2026-09",
+  "client": null,
+  "evidence_class": "reported",
+  "topic": "consensus-body rule",
+  "format": "news-report",
+  "source_pattern": "memory/patterns/imk-13-of-16-2026.json",
+  "note": "Anonymous projection of the IMK case. No party, person, or Land is required to test the chain.",
+  "chain": [
+    {
+      "step": "sehen",
+      "role": "actor-near-veto-seat",
+      "claim_type": "reported",
+      "text": "An actor is short of a majority but close to a seat that is a veto under the current rule."
+    },
+    {
+      "step": "sagen",
+      "role": "incumbent-frame",
+      "claim_type": "reported",
+      "text": "Incumbents name blockade prevention as the reason to change the rule."
+    },
+    {
+      "step": "suehnen",
+      "role": "threshold-raise",
+      "claim_type": "reported",
+      "text": "Dissent cost rises before the seat is filled; exclusion also moves to a side channel."
+    }
+  ],
+  "signatures": [
+    "rule change before the seat is filled",
+    "written procedure",
+    "justification is blockade prevention",
+    "formal threshold stays high",
+    "effective exclusion is informal"
+  ],
+  "redundant_with": [],
+  "decision": {
+    "aid": "prepare",
+    "why": "Sehen and Sagen are reported, Suehnen has already fired, and five signatures match the preemptive-veto pattern. This is a decision aid, not a measurement and not a client finding.",
+    "do_not": [
+      "name a client in published memory",
+      "import eta_claim 30000",
+      "import esg_carbon as a political score"
+    ]
+  }
+}

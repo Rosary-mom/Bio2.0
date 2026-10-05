@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Anonymous event chain",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "evidence_class",
+    "client",
+    "chain",
+    "decision"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rosary.esg.chain.v1"
+    },
+    "id": {
+      "type": "string"
+    },
+    "client": {
+      "type": "null",
+      "description": "Published memory never names a client."
+    },
+    "evidence_class": {
+      "enum": [
+        "measured",
+        "telemetry",
+        "reported",
+        "author_claim"
+      ]
+    },
+    "topic": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string"
+    },
+    "chain": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "step",
+          "role",
+          "claim_type"
+        ],
+        "properties": {
+          "step": {
+            "enum": [
+              "sehen",
+              "sagen",
+              "suehnen"
+            ]
+          },
+          "role": {
+            "type": "string"
+          },
+          "claim_type": {
+            "enum": [
+              "measured",
+              "telemetry",
+              "reported",
+              "author_claim"
+            ]
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "signatures": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision": {
+      "type": "object"
+    }
+  }
+}

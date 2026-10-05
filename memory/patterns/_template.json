@@ -1,0 +1,33 @@
+{
+  "schema": "rosary.esg.chain.v1",
+  "id": "replace-me",
+  "client": null,
+  "evidence_class": "reported",
+  "topic": "",
+  "format": "",
+  "chain": [
+    {
+      "step": "sehen",
+      "role": "seat-not-yet-filled",
+      "claim_type": "reported",
+      "text": ""
+    },
+    {
+      "step": "sagen",
+      "role": "incumbent-frame",
+      "claim_type": "reported",
+      "text": ""
+    },
+    {
+      "step": "suehnen",
+      "role": "rule-change",
+      "claim_type": "reported",
+      "text": ""
+    }
+  ],
+  "signatures": [],
+  "decision": {
+    "aid": "observe",
+    "why": ""
+  }
+}
