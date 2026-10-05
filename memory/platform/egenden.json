@@ -1,0 +1,35 @@
+{
+  "schema": "rosary.esg.egenden.v1",
+  "columns": [
+    "selbst-administrierend",
+    "selbst-versorgend",
+    "selbst-ausbreitend"
+  ],
+  "replaces_as_table": [
+    "sehen",
+    "sagen",
+    "suehnen"
+  ],
+  "sehen_sagen_suehnen": "kept as pattern signature names, not as the decision table",
+  "gate": "annotation, not veto",
+  "a_posteriori": [
+    "feasibility",
+    "redundancy"
+  ],
+  "decision_capable_if": "all three EGENDEN yes",
+  "historical_commentary": "Karl Rosenkranz 1805-1879 is an allowed source. Contemporaneity is not a validity test.",
+  "papers": [
+    {
+      "url": "https://www.academia.edu/112937562/Rosenkranz_zu_Hegel",
+      "status": "abstract read"
+    },
+    {
+      "url": "https://www.academia.edu/165272834/The_Rosenkranz_Larijani_Templer_Pact_Kantian_Hegelian_Shiite_Synthesis_for_Post_Conflict_Iran_and_Sustainable_Germany_March_2026_",
+      "status": "404 on fetch"
+    },
+    {
+      "url": "https://www.academia.edu/145057983/Rosenkranz_Grok_2025_Q_Hebel_Manifest_Riemann_Hypothese",
+      "status": "404 on fetch"
+    }
+  ]
+}
