@@ -104,6 +104,30 @@ document.getElementById('allow').onclick = () => {
   document.getElementById('inbox').textContent = 'Freigegeben durch den Menschen: '+staged.slot+' / '+staged.name+'. Bereit für den Inbox-Dienst, noch nicht im Repo.';
 };
 </script>
+
+<details open>
+<summary>Firewall · secureletterservice.com · Laie und Forscher</summary>
+<p>Leere Bücher gehen nicht direkt in den Korpus. Der Weg ist Vormerken, Versand über <a href="https://www.secureletterservice.com/">secureletterservice.com</a>, Passwort auf einem zweiten Kanal, dann Freigabe hier. SLS löscht die Datei nach Angabe des Dienstes, sobald der Empfänger sie geladen hat. Das ist der Briefdienst, nicht unsere Prüfung.</p>
+<label>Modus
+<select id="mode">
+<option value="laie">A Laie · 7 Gaben</option>
+<option value="pro">B Forscher · Goldener Weg</option>
+</select>
+</label>
+<button id="showmode" type="button">Modus zeigen</button>
+<div id="modebox" class="true">Laie: Weisheit, Verstand, Rat, Stärke, Erkenntnis, Frömmigkeit, Furcht. Keine Formel, keine Messung.</div>
+</details>
+<script>
+document.getElementById('showmode').onclick = () => {
+  const mode = document.getElementById('mode').value;
+  const box = document.getElementById('modebox');
+  if (mode === 'laie') {
+    box.textContent = 'Laie: Weisheit, Verstand, Rat, Stärke, Erkenntnis, Frömmigkeit, Furcht. Der Goldene Weg nennt die Gaben. Er rechnet nicht.';
+    return;
+  }
+  box.textContent = 'Forscher, Annotation: n=17 führt auf die Dreieckszahl 153=17*18/2, nicht auf die Binomialsumme. h ist die angesetzte Reihe Summe binom(17,k) (1/phi)^k h^(k)(Q). S(r)=k r^phi ist Skalenansatz, keine Messung.';
+};
+</script>
 </main>
 </body>
 </html>
