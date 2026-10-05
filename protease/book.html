@@ -115,17 +115,17 @@ document.getElementById('allow').onclick = () => {
 </select>
 </label>
 <button id="showmode" type="button">Modus zeigen</button>
-<div id="modebox" class="true">Laie: Weisheit, Verstand, Rat, Stärke, Erkenntnis, Frömmigkeit, Furcht. Keine Formel, keine Messung.</div>
+<div id="modebox" class="true">Laie: Schnecke, jede Windung größer. Unten Demut, oben Weisheit. Keine Formel.</div>
 </details>
 <script>
 document.getElementById('showmode').onclick = () => {
   const mode = document.getElementById('mode').value;
   const box = document.getElementById('modebox');
   if (mode === 'laie') {
-    box.textContent = 'Laie: Weisheit, Verstand, Rat, Stärke, Erkenntnis, Frömmigkeit, Furcht. Der Goldene Weg nennt die Gaben. Er rechnet nicht.';
+    box.textContent = 'Laie: Der Hügel wächst wie eine Schnecke. Jede Windung größer, Fibonacci. Unten Demut, oben Weisheit. Dazwischen Furcht, Frömmigkeit, Erkenntnis, Rat, Stärke, Verstand.';
     return;
   }
-  box.textContent = 'Forscher, Annotation: n=17 führt auf die Dreieckszahl 153=17*18/2, nicht auf die Binomialsumme. h ist die angesetzte Reihe Summe binom(17,k) (1/phi)^k h^(k)(Q). S(r)=k r^phi ist Skalenansatz, keine Messung.';
+  box.textContent = 'Forscher, Annotation: sieben Windungen 1,1,2,3,5,8,13. Verhältnis gegen phi. Demut ist die untere Lage, nicht die siebte klassische Gabe. n=17 führt auf 153=17*18/2. S(r)=k r^phi ist Skalenansatz, keine Messung.';
 };
 </script>
 </main>
