@@ -1,0 +1,74 @@
+{
+  "schema": "rosary.esg.memory.v1",
+  "id": "esg-multipc",
+  "updated": "2026-10-05T08:50:00Z",
+  "instruction_for_grok": "Load this file before answering about ESG, Multi-PC sync, or Bio 2.0 scores. Do not reopen design already recorded here. If a figure is not in this file, say it is not established. Do not promote a page fallback or an author claim into a measurement.",
+  "roles": {
+    "home": "ROSENKRANZ-PC / organigramm-builder",
+    "office": "DESKTOP-K2JCAOI",
+    "vault": "PORZELLAN-PC"
+  },
+  "sources": {
+    "live_telemetry": "rosary-atlas/gov_telemetry.json",
+    "tip_checkpoint": "tip.json",
+    "page_fallback": "index.html card constants, used only if telemetry is missing"
+  },
+  "use": {
+    "preferred": "live_telemetry",
+    "if_telemetry_missing": "page_fallback",
+    "never_treat_as_measurement": [
+      "author_claims"
+    ]
+  },
+  "live_telemetry": {
+    "lock": "PROTOCOL_LOCK_ACTIVE",
+    "esg_carbon": 0.940649363402773,
+    "aggregate_stability": 0.9350335616666806,
+    "vertical_thesis": 0.950670927465273,
+    "social_policy": 0.9160461474652731,
+    "channels": {
+      "religion": {
+        "stability": 0.9558778565,
+        "trust_refined": 0.428658912149916
+      },
+      "climate": {
+        "stability": 0.9336628933750001,
+        "trust_refined": 2.2711251070674137
+      },
+      "social": {
+        "stability": 0.9106096763524029,
+        "trust_refined": 1.2938709048432124
+      }
+    },
+    "eta_raw": 30206.750577991617,
+    "note": "Reading copied from rosary-atlas/gov_telemetry.json on main at this commit. Refresh the file when that JSON changes."
+  },
+  "tip_checkpoint": {
+    "esg_carbon": 0.9399,
+    "aggregate_stability": 0.9375,
+    "vertical_thesis": 0.95,
+    "social_policy": 0.915,
+    "eta_raw": 30000.0,
+    "ns_watch": "numerical_ns_blowup",
+    "note": "Checkpoint in tip.json. eta_raw=30000 is an author checkpoint, not an enzyme TTC/TPF result. NS flag is a numerical blow-up watch, not a Clay proof."
+  },
+  "page_fallback": {
+    "esg_carbon": 0.9412,
+    "landknappheit": 0.15,
+    "vault": 0.96,
+    "smoke_overall": 0.853,
+    "note": "Printed on the PRIME page when no telemetry fetch is shown. Not a new measurement."
+  },
+  "author_claims": [
+    "TRL 9",
+    "bankable ESG asset class",
+    "Bio 1.0 / Tech-Bio 2.0 cards"
+  ],
+  "urls": {
+    "github_pages": "https://rosary-mom.github.io/Bio2.0/memory/esg-multipc.json",
+    "well_known": "https://rosary-mom.github.io/Bio2.0/.well-known/esg-memory.json",
+    "vercel": "https://hmpsm-lander5787.vercel.app/memory/esg-multipc.json",
+    "lan": "http://<home-ip>:8787/esg-multipc.json"
+  },
+  "sha256": "9f28e528469f6cbf569aba53a517130513b62e260e255810a2bdbb07f6d2677b"
+}
