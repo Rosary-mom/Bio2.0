@@ -70,5 +70,10 @@
     "vercel": "https://hmpsm-lander5787.vercel.app/memory/esg-multipc.json",
     "lan": "http://<home-ip>:8787/esg-multipc.json"
   },
-  "sha256": "9f28e528469f6cbf569aba53a517130513b62e260e255810a2bdbb07f6d2677b"
+  "sha256": "9f28e528469f6cbf569aba53a517130513b62e260e255810a2bdbb07f6d2677b",
+  "patterns": {
+    "index": "memory/patterns/",
+    "imk_2026": "memory/patterns/imk-13-of-16-2026.json",
+    "note": "Pattern files are case memory. They do not change live_telemetry."
+  }
 }
