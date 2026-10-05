@@ -69,6 +69,41 @@ summary{cursor:pointer;font-family:Rosario,sans-serif;font-weight:700;color:#6e1
 <p><span class="tag">Contra.</span> Titel und Dateiname sind kein Inhalt.</p>
 <div class="true">True Words: keine UAP-Akte im Korpus. Aid observe. Skala offen.</div>
 </details>
+
+<details>
+<summary>Upload in ein leeres Buch</summary>
+<p>Der Bot sucht nicht von selbst und lädt nicht von selbst hoch. Er merkt eine Datei vor. Hochladen ins Korpus erst nach deiner Freigabe.</p>
+<label>Kapitel
+<select id="slot">
+<option value="9-11">1. 9/11</option>
+<option value="bundeszwang">2b. Bundeszwang</option>
+<option value="df1073">3. DF1073</option>
+<option value="pandemie">4. Pandemie</option>
+<option value="uap">5. UAP</option>
+</select>
+</label>
+<input id="file" type="file">
+<button id="stage" type="button">Vormerken</button>
+<button id="allow" type="button">Ich gebe frei</button>
+<div id="inbox" class="true">Keine Datei vorgemerkt.</div>
+<p class="true">Heimnetz: auf dem Home-PC <code>python3 scripts/corpus-inbox.py</code>. Der andere PC sieht die freigegebene Datei unter <code>http://<home-ip>:8788/inbox</code>. Ins Repo kommt sie erst mit Commit.</p>
+</details>
+<script>
+let staged = null;
+let allowed = false;
+document.getElementById('stage').onclick = () => {
+  const f = document.getElementById('file').files[0];
+  if (!f) { document.getElementById('inbox').textContent = 'Keine Datei gewählt.'; return; }
+  staged = {slot: document.getElementById('slot').value, name: f.name, size: f.size};
+  allowed = false;
+  document.getElementById('inbox').textContent = 'Vorgemerkt: '+staged.slot+' / '+staged.name+' ('+staged.size+' Bytes). Noch nicht freigegeben.';
+};
+document.getElementById('allow').onclick = () => {
+  if (!staged) { document.getElementById('inbox').textContent = 'Zuerst vormerken.'; return; }
+  allowed = true;
+  document.getElementById('inbox').textContent = 'Freigegeben durch den Menschen: '+staged.slot+' / '+staged.name+'. Bereit für den Inbox-Dienst, noch nicht im Repo.';
+};
+</script>
 </main>
 </body>
 </html>
