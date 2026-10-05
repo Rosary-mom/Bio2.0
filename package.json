@@ -1,0 +1,10 @@
+{
+  "name": "bio2",
+  "private": true,
+  "version": "1.0.0",
+  "description": "ROSARY Bio 2.0 static site for Vercel project hmpsm-lander5787",
+  "scripts": {
+    "build": "node scripts/vercel-build.js",
+    "vercel-build": "node scripts/vercel-build.js"
+  }
+}

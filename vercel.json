@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm install --ignore-scripts",
+  "buildCommand": "npm run vercel-build",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Permissions-Policy",
+          "value": "autoplay=*, encrypted-media=*, picture-in-picture=*, fullscreen=*"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.youtube.de; child-src https://www.youtube.com https://www.youtube-nocookie.com https://www.youtube.de"
+        }
+      ]
+    }
+  ]
+}
