@@ -1,0 +1,33 @@
+{
+  "prev": "931aa4cfa29abe13ccf17323a0dc4318ad6369cab0e3a00554ba0dc88b943143",
+  "height": 2,
+  "payload": {
+    "ts": 1789396589980291300,
+    "source": "hermes-0",
+    "metrics": {
+      "aggregate_stability": 0.9375,
+      "esg_carbon": 0.9399,
+      "vertical_thesis": 0.95,
+      "social_policy": 0.915,
+      "eta_raw": 30000.0,
+      "eta_log10": 4.477,
+      "E": 8.574626289846562e+22,
+      "Omega": 5.4067633152778876e+23,
+      "bkm": 58787398359.953636
+    },
+    "extra": {
+      "sources": [],
+      "ns": {
+        "energy_finite": false,
+        "enstrophy_finite": false,
+        "bkm_finite": false,
+        "watch": "numerical_ns_blowup"
+      }
+    }
+  },
+  "acks": [
+    "hermes-1",
+    "bitz"
+  ],
+  "hash": "5c83c4ee0cd4277872e537859c31d854370d42016be403ff1831425c6fa8a281"
+}

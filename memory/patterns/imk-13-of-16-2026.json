@@ -1,0 +1,55 @@
+{
+  "schema": "rosary.esg.pattern.v1",
+  "id": "imk-13-of-16-2026",
+  "instruction_for_grok": "Load this pattern before re-analyzing the IMK rule change or AfD Sachsen-Anhalt 2026. Do not reopen the settled facts below. Separate measurement, reported claim, and author inference. Do not treat the ESG-Carbon telemetry number as a score for this political case.",
+  "case": "IMK drops unwritten unanimity for a 13-of-16 threshold after the Saxony-Anhalt election",
+  "sources": [
+    {
+      "outlet": "WELT",
+      "date": "2026-09-30",
+      "url": "https://www.welt.de/politik/deutschland/article6abd576996732a6393809b94/nach-sachsen-anhalt-wahl-wegen-moeglichen-afd-ministers-innenministerkonferenz-kippt-einstimmigkeits-prinzip.html"
+    },
+    {
+      "outlet": "ZEIT/dpa",
+      "date": "2026-09-30",
+      "url": "https://www.zeit.de/politik/deutschland/2026-09/innenministerkonferenz-einstimmigkeitsprinzip-beschluesse-laender-afd"
+    },
+    {
+      "outlet": "tagesschau",
+      "date": "2026-09-30",
+      "url": "https://www.tagesschau.de/inland/innenpolitik/innenminister-einstimmigkeit-100.html"
+    },
+    {
+      "outlet": "ZEIT/dpa",
+      "date": "2026-10-02",
+      "url": "https://www.zeit.de/news/2026-10/02/afd-innenminister-wuerde-bei-der-imk-keinen-anschluss-finden"
+    }
+  ],
+  "settled_reported_facts": {
+    "election": "Landtag Sachsen-Anhalt, 6 September 2026. AfD 43.8 percent, 39 of 83 seats, three short of a majority. CDU 17.2 percent. Ulrich Siegmund said he wants to be elected minister-president before Christmas. December IMK still represented by caretaker Tamara Zieschang (CDU).",
+    "old_rule": "Unwritten unanimity: a decision only if no Land actively objected. Abstentions allowed. Reservations could be recorded in a protocol note without a no vote.",
+    "new_rule": "Written circulation procedure. A decision stands with at least 13 of 16 Land votes. Up to three Länder can dissent without blocking.",
+    "stated_motive": "Prevent a blockade by a possible AfD interior minister from Saxony-Anhalt. Daniela Behrens (SPD) had already said at the autumn 2025 conference that the IMK should remain able to decide.",
+    "side_channel": "Joachim Herrmann (CSU), speaker of the B-Länder, said CDU/CSU will not cooperate with the AfD. An AfD minister could attend the plenary, not the A/B pre-meetings.",
+    "legal_weight": "IMK decisions coordinate the Länder. They are not statutes."
+  },
+  "pattern": {
+    "name": "preemptive veto removal",
+    "sehen": "An actor is about to occupy a seat that, under the current rule, is a veto.",
+    "sagen": "Incumbents reframe the rule as capacity to decide, and name the anticipated actor as the blockage.",
+    "suehnen": "Raise the dissent cost before the actor sits. Here from 1 no-vote to 4 (13/16). Add an informal exclusion (no A/B caucus).",
+    "repeat_signature": [
+      "rule change timed before the new seat is filled",
+      "written or accelerated procedure rather than an open session with the new actor",
+      "public justification is blockade prevention, not a general efficiency review",
+      "formal threshold stays high, so the change looks like continuity",
+      "real exclusion moves to a side channel the new actor cannot enter"
+    ]
+  },
+  "not_this": [
+    "Do not score this case with esg_carbon 0.940649363402773. That figure is soil/governance telemetry from rosary-atlas/gov_telemetry.json.",
+    "Do not treat TRL 9 or bankable ESG asset class as evidence about the IMK.",
+    "Do not claim the AfD already holds the interior ministry. As of 2 October 2026 it does not."
+  ],
+  "reuse": "Apply sehen/sagen/suehnen plus the five repeat signatures to the next format. Keep each new case in its own file under memory/patterns/."
+}
