@@ -4,10 +4,10 @@
   "updated": "2026-10-05T09:40:00Z",
   "continue_on": "any PC on the home LAN",
   "branches": {
-    "main": "50fc2cf229880fbb20b6856fe24a5a7bbb947741",
-    "v2-2026": "1546bd9"
+    "main": "c39578f",
+    "v2-2026": "168c1d2"
   },
-  "merged": "main into v2-2026 at 1546bd9; Vercel files kept from v2, memory gate taken from main",
+  "merged": "main into v2-2026, handoff commit 168c1d2",
   "memory": "memory/esg-multipc.json",
   "platform": "memory/platform/SYNTHESIS.md",
   "lan": "python3 scripts/serve-esg-lan.py",
