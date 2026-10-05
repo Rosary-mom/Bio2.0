@@ -1,0 +1,22 @@
+{
+  "schema": "rosary.hermes.sync.v1",
+  "role": "hermes-sync-master",
+  "updated": "2026-10-05T09:40:00Z",
+  "continue_on": "any PC on the home LAN",
+  "branches": {
+    "main": "50fc2cf229880fbb20b6856fe24a5a7bbb947741",
+    "v2-2026": "1546bd9"
+  },
+  "merged": "main into v2-2026 at 1546bd9; Vercel files kept from v2, memory gate taken from main",
+  "memory": "memory/esg-multipc.json",
+  "platform": "memory/platform/SYNTHESIS.md",
+  "lan": "python3 scripts/serve-esg-lan.py",
+  "next_pc": [
+    "git clone https://github.com/Rosary-mom/Bio2.0.git",
+    "cd Bio2.0",
+    "git checkout v2-2026",
+    "git pull",
+    "sh scripts/hermes-sync-master.sh"
+  ],
+  "instruction_for_grok": "Load hermes_sync_master_LATEST.json before continuing. Do not reopen the merge. Author claim annotates, it does not veto."
+}
