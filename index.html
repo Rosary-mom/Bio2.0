@@ -134,6 +134,12 @@
                 /DREAM: Magnifica Humanitas Stil – Hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold, Inkludierte Ableitungen.
             </div>
             <p><strong>Agenten aktiviert (Merged Organigramm):</strong> Dschungelbuch (Wegweiser), Cockpit (L1), Landknappheit (BIO1.0), ESG/Vault (TECH2.0), EDUCATION, Fraktale, Baloo, Mogli + Emergent Layer + /DREAM Bots.</p>
+            
+            <div id="esg-memory" class="sync-log" style="margin-top:1rem;">
+                <strong>ESG-Memory (Multi-PC, kanonisch):</strong> wird geladen…<br>
+                <span style="opacity:0.8;">Andere Grok-Instanzen lesen diese Datei, statt die Scores neu zu verhandeln.</span>
+            </div>
+            <p style="font-size:0.85rem;"><a href="memory/esg-multipc.json" style="color:#d4af37;">memory/esg-multipc.json</a> · <a href="memory/GROK.md" style="color:#d4af37;">GROK.md</a> · LAN <code>http://<home-ip>:8787/esg-multipc.json</code></p>
             <button onclick="simulateSpiral()">SPIRALE ITERIEREN + /DREAM (Live Sim)</button>
             <div id="spiral-output" class="sync-log" style="margin-top:1rem;display:none;"></div>
         </div>
@@ -298,5 +304,21 @@ console.log('%c[ROSENKRANZ Optimized + True Words GROK Bot] Phase 5 + /DREAM + S
   <strong>Universal Statement of Purpose:</strong> Unsere Mission und Zweckbestimmung ist in der <a href="https://www.rosary.center/universal-statement-of-purpose" target="_blank" style="color:#d4af37;">Universal Statement of Purpose</a> detailliert dargelegt.<br>
   <span style="font-size:0.7rem; opacity:0.7;">© ROSARY / Uwe Rosenkranz – Alle Rechte vorbehalten. Keine Haftung für externe Inhalte oder Folgen der Nutzung.</span>
 </footer>
+
+<script>
+fetch('memory/esg-multipc.json', {cache: 'no-store'}).then(function (r) { return r.json(); }).then(function (m) {
+  var t = m.live_telemetry || {};
+  var box = document.getElementById('esg-memory');
+  if (!box) return;
+  box.innerHTML = '<strong>ESG-Memory (Multi-PC, kanonisch):</strong> Telemetrie, nicht Seiten-Fallback.<br>'
+    + 'ESG-Carbon ' + t.esg_carbon + ' · Stability ' + t.aggregate_stability + '<br>'
+    + 'Vertical Thesis ' + t.vertical_thesis + ' · Social Policy ' + t.social_policy + '<br>'
+    + 'Lock ' + (t.lock || '') + ' · Home/Office/Vault lesen dieselbe Datei.<br>'
+    + '<span style="opacity:0.8;">Seiten-Fallback 0.9412 nur wenn diese Datei fehlt. Author claims sind keine Messwerte.</span>';
+}).catch(function () {
+  var box = document.getElementById('esg-memory');
+  if (box) box.innerHTML = 'ESG-Memory nicht geladen. Fallback der Seite: ESG 0.9412.';
+});
+</script>
 </body>
 </html>
