@@ -1,0 +1,31 @@
+{
+  "id": "protease-cdh-2026",
+  "archive": "PDB 1SCJ Subtilisin Carlsberg",
+  "keys": {
+    "epistemological": "Getrennt: Annahme, Datenbank, Telemetrie, Messung. schutz_faktor 0.8 ist Annahme.",
+    "ontological": "Die Struktur ist ein Archivobjekt. Die Kurve ist kein Enzym.",
+    "hermeneutical": "Die grüne Fläche liest sich als Pufferbild, nicht als Assay."
+  },
+  "chain": [
+    {
+      "cause": "Trockenstress 0-100",
+      "effect": "EM-Aktivität linear runter",
+      "class": "*simulation"
+    },
+    {
+      "cause": "schutz_faktor 0.8",
+      "effect": "grüne Fläche",
+      "class": "*simulation"
+    },
+    {
+      "cause": "Phi-Skala",
+      "effect": "Harmonie-Index",
+      "class": "*phi"
+    },
+    {
+      "cause": "PDB 1SCJ",
+      "effect": "3D-Ansicht Subtilisin",
+      "class": "*pdb"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protease-Kette</title>
+<style>
+body{margin:0;font-family:Georgia,serif;background:#0e1114;color:#f4efe4}
+header,main{max-width:880px;margin:0 auto;padding:1.2rem}
+h1{font-size:1.6rem;margin:0}
+.muted{opacity:.75}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem}
+.card{border:1px solid #3a3428;padding:.7rem;background:#171b1f}
+.star{color:#d4af37}
+button,select,input{background:#111;color:#f4efe4;border:1px solid #3a3428;padding:.4rem}
+#log{white-space:pre-wrap;font-family:ui-monospace,monospace;font-size:.85rem}
+#bot{min-height:4rem}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<h1>Protease-Ereigniskette</h1>
+<p class="muted">Archiv PDB 1SCJ. Schlüssel: epistemologisch, ontologisch, hermeneutisch. * klassifiziert, sperrt nicht.</p>
+</header>
+<main>
+<div class="grid" id="keys"></div>
+<h2>Ursache und Wirkung</h2>
+<div id="chain"></div>
+<p>
+<label>Ursache <input id="cause" value="zweiter Lauf"></label>
+<label>Wirkung <input id="effect" value="decision-capable"></label>
+<label>Klasse
+<select id="cls">
+<option>*simulation</option>
+<option>*phi</option>
+<option>*gpu</option>
+<option>*pdb</option>
+<option>*not-eta</option>
+</select>
+</label>
+<button id="add" type="button">Kante setzen</button>
+<button id="run" type="button">Lauf</button>
+</p>
+<div id="log" class="card"></div>
+<h2>Grok-Bot, Korpus</h2>
+<p class="muted">Antwortet aus dieser Kette. Kein externer Schlüssel, keine Messung.</p>
+<input id="q" placeholder="Frage zur Protease-Kette" style="width:70%">
+<button id="ask" type="button">Fragen</button>
+<div id="bot" class="card"></div>
+</main>
+<script>
+const chain = {"id":"protease-cdh-2026","archive":"PDB 1SCJ Subtilisin Carlsberg","keys":{"epistemological":"Getrennt: Annahme, Datenbank, Telemetrie, Messung. schutz_faktor 0.8 ist Annahme.","ontological":"Die Struktur ist ein Archivobjekt. Die Kurve ist kein Enzym.","hermeneutical":"Die grüne Fläche liest sich als Pufferbild, nicht als Assay."},"chain":[{"cause":"Trockenstress 0-100","effect":"EM-Aktivität linear runter","class":"*simulation"},{"cause":"schutz_faktor 0.8","effect":"grüne Fläche","class":"*simulation"},{"cause":"Phi-Skala","effect":"Harmonie-Index","class":"*phi"},{"cause":"PDB 1SCJ","effect":"3D-Ansicht Subtilisin","class":"*pdb"}]};
+let runs = 1;
+const keys = document.getElementById('keys');
+for (const [name, text] of Object.entries(chain.keys)) {
+  keys.insertAdjacentHTML('beforeend', '<div class="card"><strong>'+name+'</strong><p>'+text+'</p></div>');
+}
+function draw() {
+  const box = document.getElementById('chain');
+  box.innerHTML = chain.chain.map(e => '<div class="card"><span class="star">'+e.class+'</span> '+e.cause+' → '+e.effect+'</div>').join('');
+}
+function aid() {
+  return runs >= 2 ? 'decision-capable' : 'feasibility';
+}
+function log() {
+  document.getElementById('log').textContent = 'runs '+runs+'\naid '+aid()+'\narchiv '+chain.archive;
+}
+document.getElementById('add').onclick = () => {
+  chain.chain.push({cause: document.getElementById('cause').value, effect: document.getElementById('effect').value, class: document.getElementById('cls').value});
+  draw();
+};
+document.getElementById('run').onclick = () => { runs += 1; log(); };
+document.getElementById('ask').onclick = () => {
+  const q = document.getElementById('q').value.toLowerCase();
+  let a = 'Aid ist '+aid()+'. Zweiter Lauf fehlt noch, wenn runs unter 2 liegt.';
+  if (q.includes('pdb') || q.includes('archiv')) a = chain.keys.ontological+' Archiv: '+chain.archive+'.';
+  else if (q.includes('phi') || q.includes('kurve') || q.includes('les')) a = chain.keys.hermeneutical;
+  else if (q.includes('mess') || q.includes('annah')) a = chain.keys.epistemological;
+  else if (q.includes('kette')) a = chain.chain.map(e => e.class+' '+e.cause+' → '+e.effect).join('; ');
+  document.getElementById('bot').textContent = a;
+};
+draw();
+log();
+</script>
+</body>
+</html>
