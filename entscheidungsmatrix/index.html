@@ -47,6 +47,21 @@
     <div id="esg-kette" class="section active">
       <h2 class="magnifica" style="color: var(--gold);">ESG Kette • rosary.esg.chain</h2>
       <p>Secret-Unlock + <strong>echter Vercel /api/webhook</strong> + Woo-Felder + Email-Benachrichtigung (wie dein altes PHP-Snippet).</p>
+      <!-- FORSCHER BESTELL-SIMULATOR -->
+      <div class="simulator-box" style="background:#1A1611; border:3px dashed var(--gold); padding:1.3rem; margin:1rem 0; border-radius:6px;">
+        <h3 style="margin:0 0 0.5rem 0; color:var(--gold);">🧪 Forscher-Simulation: Bestellung + Secret (2–3 Klicks)</h3>
+        <p style="margin:0 0 0.8rem 0; font-size:0.9rem;">Als versierter Forscher: Wähle dein Paket, „bezahle“, erhalte Secret per simulierter E-Mail und nutze sofort die Tools.</p>
+        
+        <select id="sim-product" style="width:auto; display:inline-block; margin-right:0.5rem;">
+          <option value="stufe3-pandamie-flug">Stufe 3 – Pandämie + Flug DF1073</option>
+          <option value="stufe4-imk-911">Stufe 4 – Regeländerung IMK + 9/11</option>
+          <option value="full-fivefold">Full Five-Fold ESG Kette</option>
+          <option value="custom">Nur ein Feld (Custom)</option>
+        </select>
+        <button onclick="simulatePurchase()" style="width:auto; display:inline-block;">Jetzt bezahlen (Simulation)</button>
+        
+        <div id="sim-result" style="margin-top:1rem; display:none;"></div>
+      </div>
       
       <div class="secret-box" style="background:#2C2520; border:3px solid var(--gold); padding:1rem; margin:1rem 0;">
         <label><strong>Webhook URL</strong> (dein Woo-Setup oder die neue Vercel /api/webhook)</label>
@@ -141,7 +156,66 @@
       document.getElementById('tab-' + tab).classList.add('active');
     }
 
-    function unlockWithSecret() {
+
+    function simulatePurchase() {
+      const product = document.getElementById('sim-product').value;
+      const orderId = 'SIM-' + Date.now().toString(36).slice(-6).toUpperCase();
+      const secret = 'ESG-UNLOCK-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+      
+      const resultDiv = document.getElementById('sim-result');
+      resultDiv.style.display = 'block';
+      
+      let productLabel = product;
+      if (product === 'stufe3-pandamie-flug') productLabel = 'Stufe 3 – Pandämie + Flug DF1073';
+      else if (product === 'stufe4-imk-911') productLabel = 'Stufe 4 – Regeländerung IMK + 9/11';
+      else if (product === 'full-fivefold') productLabel = 'Full Five-Fold ESG Kette';
+      
+      resultDiv.innerHTML = `
+        <div style="background:#2C2520; padding:12px; border:1px solid var(--gold); font-size:0.9rem;">
+          <strong>✅ Bestellung #${orderId} abgeschlossen</strong><br>
+          Produkt: ${productLabel}<br>
+          Bezahlt (Simulation). Secret generiert.<br><br>
+          <strong>Simulierte E-Mail (wie von rosary.health):</strong><br>
+          <div style="background:#111; padding:8px; margin:8px 0; font-family:monospace; font-size:0.8rem;">
+            Dein persönlicher Secret-Code für die ESG App:<br>
+            <strong>${secret}</strong><br><br>
+            Human-Secret (Admin): HUMAN-SECRET-ROSARY-2026
+          </div>
+          <button onclick="copyAndUnlock('${secret}')" style="width:auto;">Secret kopieren &amp; sofort freischalten</button>
+          <button onclick="quickUnlockAndTest('${secret}')" style="width:auto; background:#4A1F24;">Freischalten + Test-Upload</button>
+        </div>
+      `;
+      
+      window.lastSimSecret = secret;
+      console.log('Simulated order:', orderId, secret);
+    }
+
+    function copyAndUnlock(secret) {
+      const input = document.getElementById('secret-input');
+      input.value = secret;
+      unlockWithSecret();
+    }
+
+    function quickUnlockAndTest(secret) {
+      const input = document.getElementById('secret-input');
+      input.value = secret;
+      unlockWithSecret();
+      
+      // After short delay, send a sample for Pandämie
+      setTimeout(() => {
+        const log = document.getElementById('webhook-log');
+        if (log) log.innerHTML = 'Auto-Test nach simulierter Bestellung gestartet...
+' + log.innerHTML;
+        
+        // fill sample data
+        const textEl = document.getElementById('text-pandamie');
+        if (textEl) textEl.value = 'Test-Daten vom Forscher nach simulierter Bezahlung. Pandämie Metriken + anonymer Leak.';
+        
+        sendToWebhook('Pandämie', 'text-pandamie', 'file-pandamie');
+      }, 800);
+    }
+
+        function unlockWithSecret() {
       const input = document.getElementById('secret-input').value.trim().toUpperCase();
       const status = document.getElementById('unlock-status');
       const webhookInput = document.getElementById('webhook-url').value.trim();

@@ -106,7 +106,15 @@
   </div>
 
   <div class="container">
-    <p><strong>Secret-Unlock</strong> für human-executed Uploads. Nach Freischaltung werden Uploads per Webhook versendet.</p>
+          <p><strong>Secret-Unlock</strong> für human-executed Uploads. Nach Freischaltung werden Uploads per Webhook versendet.</p>
+      
+      <!-- FORSCHER SIM -->
+      <div class="simulator-box" style="background:#1A1611; border:3px dashed var(--gold); padding:1rem; margin:1rem 0;">
+        <h4 style="margin:0 0 0.4rem;">🧪 Schnelltest: Bestellung simulieren</h4>
+        <button onclick="simulatePurchaseKette()" style="width:auto;">Bezahlen & Secret erhalten (Simulation)</button>
+        <div id="sim-kette-result" style="margin-top:0.5rem; display:none;"></div>
+      </div>
+
 
     <div class="secret-box">
       <label>Webhook URL (Vercel /api/webhook oder dein Woo-Setup)</label>
@@ -175,6 +183,21 @@
   </footer>
 
   <script>
+    
+    function simulatePurchaseKette() {
+      const orderId = 'SIM-' + Date.now().toString(36).slice(-6).toUpperCase();
+      const secret = 'ESG-UNLOCK-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+      const res = document.getElementById('sim-kette-result');
+      res.style.display = 'block';
+      res.innerHTML = `
+        <div style="background:#2C2520;padding:8px;border:1px solid var(--gold);font-size:0.85rem;">
+          Bestellung ${orderId} simuliert.<br>
+          Secret: <strong>${secret}</strong><br>
+          <button onclick="document.getElementById('secret-input').value='${secret}'; unlockWithSecret();" style="width:auto;">Secret übernehmen & freischalten</button>
+        </div>
+      `;
+    }
+
     function unlockWithSecret() {
       const input = document.getElementById('secret-input').value.trim().toUpperCase();
       const status = document.getElementById('unlock-status');
