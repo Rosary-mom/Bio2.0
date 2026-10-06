@@ -31,42 +31,84 @@
     footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: #A38A5C; border-top: 2px solid var(--bordeaux); }
     input, textarea, select, button { background: #1A1611; color: #F5F5F5; border: 1px solid var(--gold); padding: 0.6rem; margin: 0.3rem 0; width: 100%; box-sizing: border-box; font-family: 'Rosario', sans-serif; }
     button { background: var(--bordeaux); color: var(--gold); font-weight: bold; cursor: pointer; }
+    .webhook-log { background: #111; border: 1px solid var(--gold); padding: 1rem; margin-top: 1rem; max-height: 200px; overflow-y: auto; font-family: monospace; font-size: 0.8rem; }
+    .status-ok { color: #D4AF37; }
+    .status-err { color: #ff6b6b; }
   </style>
 </head>
 <body>
   <div class="header">
     <h1 class="magnifica">Entscheidungsmatrix</h1>
-    <p style="color: var(--sand); margin: 0.3rem 0 0;">rosary.esg.chain • Magnifica Humanitas • Bio 2.0</p>
+    <p style="color: var(--sand); margin: 0.3rem 0 0;">rosary.esg.chain • Magnifica Humanitas • Bio 2.0 • mit Webhook</p>
   </div>
 
   <div class="container">
     <div class="nav">
-      <button onclick="showTab('esg-kette')" class="active" id="tab-esg-kette">ESG Kette (Paywall + Upload)</button>
+      <button onclick="showTab('esg-kette')" class="active" id="tab-esg-kette">ESG Kette (Paywall + Webhook)</button>
       <button onclick="showTab('phase5')" id="tab-phase5">Phase 5 Piloten Matrix</button>
     </div>
 
-    <!-- ESG Kette Section -->
+    <!-- ESG Kette Section with Webhook -->
     <div id="esg-kette" class="section active">
       <h2 class="magnifica" style="color: var(--gold);">ESG Kette • rosary.esg.chain</h2>
-      <p>Secret-Unlock für human-executed Uploads in den Feldern.</p>
+      <p>Secret-Unlock + direkter Webhook-Versand für human-executed Uploads (analog WooCommerce Hook + Blog Entscheidungsmatrix).</p>
+      
       <div class="secret-box" style="background:#2C2520; border:3px solid var(--gold); padding:1rem; margin:1rem 0;">
+        <label>Webhook URL (z.B. dein Woo / n8n / Vercel Function):</label>
+        <input type="text" id="webhook-url" value="https://dein-woo-site.com/wp-json/esg/webhook" placeholder="https://.../webhook">
+        <br><br>
         <input type="text" id="secret-input" placeholder="ESG-UNLOCK-XXXXXXXX oder HUMAN-SECRET-ROSARY-2026">
-        <button onclick="unlockWithSecret()">Freischalten</button>
+        <button onclick="unlockWithSecret()">Freischalten + Webhook aktivieren</button>
         <div id="unlock-status" style="margin-top:0.5rem; font-size:0.9rem;"></div>
       </div>
+
       <div id="fields">
-        <div class="field"><h3>🦠 Pandämie</h3><div class="upload-form"><textarea placeholder="Beschreibung / Metrik / Leak (anonym)" rows="2"></textarea><input type="file"><button>Anonym einpflegen (human review)</button></div></div>
-        <div class="field"><h3>✈️ Flug DF1073</h3><div class="upload-form"><textarea placeholder="Beschreibung / Metrik / Leak (anonym)" rows="2"></textarea><input type="file"><button>Anonym einpflegen (human review)</button></div></div>
-        <div class="field"><h3>📜 Regeländerung IMK</h3><div class="upload-form"><textarea placeholder="Beschreibung / Metrik / Leak (anonym)" rows="2"></textarea><input type="file"><button>Anonym einpflegen (human review)</button></div></div>
-        <div class="field"><h3>🗓️ 9/11</h3><div class="upload-form"><textarea placeholder="Beschreibung / Metrik / Leak (anonym)" rows="2"></textarea><input type="file"><button>Anonym einpflegen (human review)</button></div></div>
+        <div class="field">
+          <h3>🦠 Pandämie</h3>
+          <div class="upload-form">
+            <textarea id="text-pandamie" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="2"></textarea>
+            <input type="file" id="file-pandamie">
+            <button onclick="sendToWebhook('Pandämie', 'text-pandamie', 'file-pandamie')">Anonym an Webhook senden (human review)</button>
+          </div>
+        </div>
+        <div class="field">
+          <h3>✈️ Flug DF1073</h3>
+          <div class="upload-form">
+            <textarea id="text-flug" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="2"></textarea>
+            <input type="file" id="file-flug">
+            <button onclick="sendToWebhook('Flug DF1073', 'text-flug', 'file-flug')">Anonym an Webhook senden (human review)</button>
+          </div>
+        </div>
+        <div class="field">
+          <h3>📜 Regeländerung IMK</h3>
+          <div class="upload-form">
+            <textarea id="text-imk" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="2"></textarea>
+            <input type="file" id="file-imk">
+            <button onclick="sendToWebhook('Regeländerung IMK', 'text-imk', 'file-imk')">Anonym an Webhook senden (human review)</button>
+          </div>
+        </div>
+        <div class="field">
+          <h3>🗓️ 9/11</h3>
+          <div class="upload-form">
+            <textarea id="text-911" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="2"></textarea>
+            <input type="file" id="file-911">
+            <button onclick="sendToWebhook('9/11', 'text-911', 'file-911')">Anonym an Webhook senden (human review)</button>
+          </div>
+        </div>
       </div>
+
+      <div>
+        <h4>Webhook Log (letzte Sends)</h4>
+        <div id="webhook-log" class="webhook-log"></div>
+      </div>
+
       <p><a href="esg-kette.html" target="_blank">Vollständige ESG Kette Seite öffnen</a></p>
     </div>
 
     <!-- Phase 5 Section -->
     <div id="phase5" class="section">
       <h2 class="magnifica" style="color: var(--gold);">Phase 5 Piloten Entscheidungsmatrix</h2>
-      <p>Sehen / Sagen / Sühnen mit Live-Telemetry Scores (aus esg-multipc.json).</p>
+      <p>Sehen / Sagen / Sühnen mit Live-Telemetry Scores (aus esg-multipc.json). Webhook-fähig über Chain-Validation.</p>
       <div class="pilot-card">
         <h3>🌱 Landwirtschaft Pilot</h3>
         <div class="score">Score: 0.8722</div>
@@ -85,7 +127,8 @@
     </div>
 
     <footer>
-      Magnifica Humanitas • Commit 593e86a6 • rosary.esg.chain.v1 • Beide Matrizen in einer Vercel-App
+      Magnifica Humanitas • Commit 593e86a6 + Webhook • rosary.esg.chain.v1 • Beide Matrizen + Webhook in einer Vercel-App<br>
+      Webhook-Payload enthält: field, text, fileName, timestamp, unlocked, source: "entscheidungsmatrix-vercel"
     </footer>
   </div>
 
@@ -96,22 +139,75 @@
       document.getElementById(tab).classList.add('active');
       document.getElementById('tab-' + tab).classList.add('active');
     }
+
     function unlockWithSecret() {
       const input = document.getElementById('secret-input').value.trim().toUpperCase();
       const status = document.getElementById('unlock-status');
       if (input.startsWith('ESG-UNLOCK-') || input === 'HUMAN-SECRET-ROSARY-2026') {
         localStorage.setItem('esg_unlock', 'true');
-        status.textContent = 'Freigeschaltet! Uploads aktiviert.';
-        status.style.color = '#D4AF37';
-        document.querySelectorAll('#esg-kette .upload-form').forEach(el => el.style.opacity = '1');
+        localStorage.setItem('esg_webhook', document.getElementById('webhook-url').value);
+        status.innerHTML = '<span class="status-ok">Freigeschaltet! Webhook aktiv. Uploads senden jetzt an Webhook.</span>';
+        document.querySelectorAll('#esg-kette .upload-form button').forEach(el => el.disabled = false);
       } else {
-        status.textContent = 'Ungültiger Secret.';
-        status.style.color = '#ff6b6b';
+        status.innerHTML = '<span class="status-err">Ungültiger Secret.</span>';
       }
     }
-    // Auto unlock if previously set
-    if (localStorage.getItem('esg_unlock') === 'true') {
-      document.querySelectorAll('#esg-kette .upload-form').forEach(el => el.style.opacity = '1');
+
+    async function sendToWebhook(field, textId, fileId) {
+      const webhookUrl = localStorage.getItem('esg_webhook') || document.getElementById('webhook-url').value || 'https://example.com/webhook';
+      const text = document.getElementById(textId).value.trim();
+      const fileInput = document.getElementById(fileId);
+      const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'no-file';
+
+      if (!localStorage.getItem('esg_unlock')) {
+        alert('Bitte zuerst mit Secret freischalten!');
+        return;
+      }
+
+      const payload = {
+        source: "entscheidungsmatrix-vercel",
+        schema: "rosary.esg.chain.v1",
+        field: field,
+        text: text,
+        fileName: fileName,
+        timestamp: new Date().toISOString(),
+        unlocked: true,
+        secret_used: localStorage.getItem('esg_unlock') ? 'yes' : 'no'
+      };
+
+      const logEl = document.getElementById('webhook-log');
+      logEl.innerHTML = `Sending to ${webhookUrl} ...<br>` + logEl.innerHTML;
+
+      try {
+        const res = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await res.text();
+        const entry = `[${new Date().toLocaleTimeString()}] ${field} → ${res.status} OK<br>Payload: ${JSON.stringify(payload).slice(0,120)}...`;
+        logEl.innerHTML = entry + '<br>' + logEl.innerHTML;
+
+        // Optional: simulate response from webhook (e.g. new secret or confirmation)
+        if (res.ok) {
+          alert(`Webhook empfangen für ${field}. Human Review ausgelöst.`);
+        }
+      } catch (e) {
+        const entry = `[${new Date().toLocaleTimeString()}] ${field} → ERROR: ${e.message}`;
+        logEl.innerHTML = entry + '<br>' + logEl.innerHTML;
+      }
+    }
+
+    // Init: disable buttons until unlocked
+    window.onload = function() {
+      document.querySelectorAll('#esg-kette .upload-form button').forEach(el => el.disabled = true);
+      const savedWebhook = localStorage.getItem('esg_webhook');
+      if (savedWebhook) document.getElementById('webhook-url').value = savedWebhook;
+      if (localStorage.getItem('esg_unlock')) {
+        document.querySelectorAll('#esg-kette .upload-form button').forEach(el => el.disabled = false);
+        document.getElementById('unlock-status').innerHTML = '<span class="status-ok">Bereits freigeschaltet (Webhook aktiv).</span>';
+      }
     }
   </script>
 </body>
