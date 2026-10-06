@@ -58,7 +58,7 @@
           <option value="full-fivefold">Full Five-Fold ESG Kette</option>
           <option value="custom">Nur ein Feld (Custom)</option>
         </select>
-        <button onclick="simulatePurchase()" style="width:auto; display:inline-block;">Jetzt bezahlen (Simulation)</button>
+        <button onclick="alert('Button clicked! Simulator starting...'); var sel=document.getElementById('sim-product'); var p = sel ? sel.value : 'full'; var s = 'ESG-UNLOCK-TEST123'; var r = document.getElementById('sim-result'); if(r){ r.style.display='block'; r.innerHTML = '<b>Secret: ' + s + '</b> <button onclick="document.getElementById('secret-input').value=''+s+''; if(typeof unlockWithSecret=='function') unlockWithSecret();">Unlock</button>'); }" style="width:auto; display:inline-block;">Jetzt bezahlen (Simulation)</button>
         
         <div id="sim-result" style="margin-top:1rem; display:none;"></div>
       </div>
@@ -157,39 +157,6 @@
     }
 
 
-    function simulatePurchase() {
-      const product = document.getElementById('sim-product').value;
-      const orderId = 'SIM-' + Date.now().toString(36).slice(-6).toUpperCase();
-      const secret = 'ESG-UNLOCK-' + Math.random().toString(36).substring(2, 10).toUpperCase();
-      
-      const resultDiv = document.getElementById('sim-result');
-      resultDiv.style.display = 'block';
-      
-      let productLabel = product;
-      if (product === 'stufe3-pandamie-flug') productLabel = 'Stufe 3 – Pandämie + Flug DF1073';
-      else if (product === 'stufe4-imk-911') productLabel = 'Stufe 4 – Regeländerung IMK + 9/11';
-      else if (product === 'full-fivefold') productLabel = 'Full Five-Fold ESG Kette';
-      
-      resultDiv.innerHTML = `
-        <div style="background:#2C2520; padding:12px; border:1px solid var(--gold); font-size:0.9rem;">
-          <strong>✅ Bestellung #${orderId} abgeschlossen</strong><br>
-          Produkt: ${productLabel}<br>
-          Bezahlt (Simulation). Secret generiert.<br><br>
-          <strong>Simulierte E-Mail (wie von rosary.health):</strong><br>
-          <div style="background:#111; padding:8px; margin:8px 0; font-family:monospace; font-size:0.8rem;">
-            Dein persönlicher Secret-Code für die ESG App:<br>
-            <strong>${secret}</strong><br><br>
-            Human-Secret (Admin): HUMAN-SECRET-ROSARY-2026
-          </div>
-          <button onclick="copyAndUnlock('${secret}')" style="width:auto;">Secret kopieren &amp; sofort freischalten</button>
-          <button onclick="quickUnlockAndTest('${secret}')" style="width:auto; background:#4A1F24;">Freischalten + Test-Upload</button>
-        </div>
-      `;
-      
-      window.lastSimSecret = secret;
-      console.log('Simulated order:', orderId, secret);
-    }
-
     function copyAndUnlock(secret) {
       const input = document.getElementById('secret-input');
       input.value = secret;
@@ -215,7 +182,18 @@
       }, 800);
     }
 
-        function unlockWithSecret() {
+        function simulatePurchase() {
+      var sel = document.getElementById("sim-product");
+      var prod = sel ? sel.value : "full-fivefold";
+      var oid = "SIM-" + Date.now().toString(36).slice(-6).toUpperCase();
+      var sec = "ESG-UNLOCK-" + Math.random().toString(36).substring(2,10).toUpperCase();
+      var res = document.getElementById("sim-result");
+      if(!res) return;
+      res.style.display = "block";
+      res.innerHTML = "<div style=\"background:#2C2520;padding:10px;border:1px solid #D4AF37\">Bestellung " + oid + " simuliert.<br>Secret: <b>" + sec + "</b><br><button onclick=\"document.getElementById(\"secret-input\").value=\"" + sec + "\"; unlockWithSecret();\">Secret übernehmen & freischalten</button></div>";
+      window.lastSim = sec;
+    }
+    function unlockWithSecret() {
       const input = document.getElementById('secret-input').value.trim().toUpperCase();
       const status = document.getElementById('unlock-status');
       const webhookInput = document.getElementById('webhook-url').value.trim();
