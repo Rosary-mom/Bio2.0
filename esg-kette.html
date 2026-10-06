@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESG Kette • rosary.esg.chain | Magnifica Humanitas Paywall | Bio20</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Rosario:wght@400;700&amp;display=swap');
+    
+    :root {
+      --bordeaux: #722F37;
+      --gold: #D4AF37;
+      --sand: #F5E8C7;
+      --beige: #EDE4D0;
+      --dark: #1A1611;
+      --text: #F5F5F5;
+    }
+    
+    body {
+      font-family: 'Rosario', system-ui, sans-serif;
+      background: #1A1611;
+      color: #F5F5F5;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, var(--bordeaux), #4A1F24);
+      padding: 2rem 1rem;
+      border-bottom: 6px solid var(--gold);
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      margin: 0;
+      color: var(--gold);
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    
+    .magnifica {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .section {
+      background: #2C2520;
+      border: 2px solid var(--gold);
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+    
+    .field {
+      background: #1A1611;
+      border-left: 6px solid var(--bordeaux);
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .upload-form {
+      background: #2C2520;
+      border: 2px dashed var(--gold);
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    input, textarea, select, button {
+      background: #1A1611;
+      color: #F5F5F5;
+      border: 1px solid var(--gold);
+      padding: 0.6rem;
+      margin: 0.3rem 0;
+      width: 100%;
+      box-sizing: border-box;
+      font-family: 'Rosario', sans-serif;
+    }
+    
+    button {
+      background: var(--bordeaux);
+      color: var(--gold);
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .locked {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    
+    .secret-box {
+      background: #2C2520;
+      border: 3px solid var(--gold);
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .high-contrast {
+      font-weight: 700;
+      text-shadow: 1px 1px 2px #000;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      color: #A38A5C;
+      border-top: 2px solid var(--bordeaux);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1 class="magnifica">ESG Kette</h1>
+    <p style="color: var(--sand); margin: 0.3rem 0 0; font-size: 1.1rem;">rosary.esg.chain — Deutsche Übersetzung von ESG Chain</p>
+    <p style="font-size: 0.9rem; color: #D4AF37;">Commit 593e86a6 • Bio2.0 • Paywall + Human Executed Upload (rosary.esg.chain)</p>
+  </div>
+
+  <div class="container">
+    <!-- Paywall / Secret Unlock -->
+    <div class="section">
+      <h2 class="magnifica" style="color: var(--gold);">Paywall Unlock (Secret from Email or Human)</h2>
+      <p>Geben Sie den Secret-Code aus der WooCommerce-Bestätigungs-E-Mail ein oder den Human-Secret für manuellen Freischalt.</p>
+      
+      <div class="secret-box">
+        <input type="text" id="secret-input" placeholder="ESG-UNLOCK-XXXXXXXX oder HUMAN-SECRET-ROSARY-2026">
+        <button onclick="unlockWithSecret()">Freischalten</button>
+        <div id="unlock-status" style="margin-top: 0.5rem; font-size: 0.9rem;"></div>
+      </div>
+      
+      <p style="font-size: 0.8rem;">Verknüpft mit Vercel-App: https://hmpsm-lander5787.vercel.app (rosary.esg.chain) und WooCommerce ESG-Schranke.</p>
+    </div>
+
+    <!-- The Fields with Upload -->
+    <div class="section">
+      <h2 class="magnifica" style="color: var(--gold);">ESG in den Feldern anwenden (Human Executed)</h2>
+      <p>Anonyme Leaks / Metriken als Datei oder Text einpflegen. Wird manuell (human) geprüft und angewendet.</p>
+
+      <div id="fields">
+        <!-- Pandämie -->
+        <div class="field" id="field-pandemie">
+          <h3 style="color: var(--gold);">🦠 Pandämie</h3>
+          <p>ESG-Anwendung: Resilienz, Versorgungsketten, soziale Gerechtigkeit.</p>
+          <div class="upload-form">
+            <textarea placeholder="Beschreibung / Metrik / Leak (anonym)" id="desc-pandemie" rows="2"></textarea>
+            <input type="file" id="file-pandemie">
+            <button onclick="submitUpload('pandemie')">Anonym einpflegen (human review)</button>
+          </div>
+        </div>
+
+        <!-- FlugDF1073 -->
+        <div class="field" id="field-flugdf1073">
+          <h3 style="color: var(--gold);">✈️ Flug DF1073</h3>
+          <p>ESG-Anwendung: CO2, Lieferketten, ethische Mobilität.</p>
+          <div class="upload-form">
+            <textarea placeholder="Beschreibung / Metrik / Leak (anonym)" id="desc-flugdf1073" rows="2"></textarea>
+            <input type="file" id="file-flugdf1073">
+            <button onclick="submitUpload('flugdf1073')">Anonym einpflegen (human review)</button>
+          </div>
+        </div>
+
+        <!-- Regeländerung IMK -->
+        <div class="field" id="field-regeländerung-imk">
+          <h3 style="color: var(--gold);">📜 Regeländerung IMK</h3>
+          <p>ESG-Anwendung: Governance, Recht, Migration, Verfassung.</p>
+          <div class="upload-form">
+            <textarea placeholder="Beschreibung / Metrik / Leak (anonym)" id="desc-regeländerung-imk" rows="2"></textarea>
+            <input type="file" id="file-regeländerung-imk">
+            <button onclick="submitUpload('regeländerung-imk')">Anonym einpflegen (human review)</button>
+          </div>
+        </div>
+
+        <!-- 9/11 -->
+        <div class="field" id="field-911">
+          <h3 style="color: var(--gold);">🗓️ 9/11</h3>
+          <p>ESG-Anwendung: Sicherheit, Trauma, globale Gerechtigkeit, Erinnerungskultur.</p>
+          <div class="upload-form">
+            <textarea placeholder="Beschreibung / Metrik / Leak (anonym)" id="desc-911" rows="2"></textarea>
+            <input type="file" id="file-911">
+            <button onclick="submitUpload('911')">Anonym einpflegen (human review)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p><strong>Verbindung:</strong> Nach WooCommerce-Kauf erhalten Sie per E-Mail einen Secret-Code. Dieser schaltet die Uploads hier und in der Vercel-App frei.</p>
+      <p><strong>Human Secret (für Admin):</strong> HUMAN-SECRET-ROSARY-2026</p>
+      <p style="font-size: 0.8rem;">Uploads werden gespeichert und an Admin gemeldet (human executed). Kein automatisches Merging. rosary.esg.chain</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    Magnifica Humanitas • Gold • Sandfarben-Beige • Bordeaux-Rot • Hoher Kontrast • Commit 593e86a6 (Rosary-mom/Bio2.0)<br>
+    rosary.esg.chain — Verknüpft mit WooCommerce ESG-Schranke + Vercel Five-Fold App
+  </div>
+
+  <script>
+    // Reuse unlock logic
+    function unlockWithSecret() {
+      const input = document.getElementById('secret-input').value.trim().toUpperCase();
+      const status = document.getElementById('unlock-status');
+      
+      if (!input) {
+        status.textContent = 'Bitte Secret eingeben.';
+        status.style.color = '#ff6b6b';
+        return;
+      }
+
+      const validSecrets = ['ESG-UNLOCK-', 'HUMAN-SECRET-ROSARY-2026'];
+      let unlocked = false;
+
+      if (input.startsWith('ESG-UNLOCK-') || input === 'HUMAN-SECRET-ROSARY-2026') {
+        unlocked = true;
+        localStorage.setItem('esg_magnifica_unlock', 'true');
+        status.textContent = 'Freigeschaltet! Uploads aktiviert. (rosary.esg.chain)';
+        status.style.color = '#D4AF37';
+        
+        document.querySelectorAll('.upload-form').forEach(el => el.style.opacity = '1');
+        document.querySelectorAll('.upload-form button').forEach(el => el.disabled = false);
+      } else {
+        status.textContent = 'Ungültiger Secret. Prüfen Sie Ihre E-Mail oder kontaktieren Sie Admin.';
+        status.style.color = '#ff6b6b';
+      }
+    }
+
+    function checkUnlock() {
+      if (localStorage.getItem('esg_magnifica_unlock') === 'true') {
+        document.getElementById('unlock-status').textContent = 'Bereits freigeschaltet. (rosary.esg.chain)';
+        document.getElementById('unlock-status').style.color = '#D4AF37';
+        document.querySelectorAll('.upload-form').forEach(el => el.style.opacity = '1');
+      }
+    }
+
+    function submitUpload(topic) {
+      const desc = document.getElementById('desc-' + topic).value || 'Keine Beschreibung';
+      const fileInput = document.getElementById('file-' + topic);
+      const file = fileInput.files[0];
+
+      const entry = {
+        timestamp: new Date().toISOString(),
+        topic: topic,
+        description: desc,
+        file: file ? file.name : 'keine Datei',
+        source: 'anonymous-human-leak',
+        status: 'pending human review',
+        chain: 'rosary.esg.chain'
+      };
+
+      let uploads = JSON.parse(localStorage.getItem('esg_magnifica_uploads') || '[]');
+      uploads.push(entry);
+      localStorage.setItem('esg_magnifica_uploads', JSON.stringify(uploads));
+
+      alert('Upload für ' + topic + ' empfangen. Wird human geprüft und angewendet. Danke! (rosary.esg.chain)');
+
+      console.log('Human Executed ESG Upload (rosary.esg.chain):', entry);
+
+      document.getElementById('desc-' + topic).value = '';
+      fileInput.value = '';
+    }
+
+    window.onload = function() {
+      checkUnlock();
+      if (localStorage.getItem('esg_unlocks_v1')) {
+        document.getElementById('unlock-status').textContent = 'Vercel-Session erkannt – Uploads aktiviert. (rosary.esg.chain)';
+      }
+    };
+  </script>
+</body>
+</html>

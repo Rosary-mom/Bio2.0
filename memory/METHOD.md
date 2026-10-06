@@ -22,3 +22,4 @@ A chain is redundant when the same signatures appear in at least two topics or t
 Aids: `observe` (one format only), `prepare` (signatures match, seat not yet filled or Suehnen just fired), `hold` (claim class leaked into the chain).
 
 Run: `python3 memory/workflows/decide.py memory/patterns/anon-preemptive-veto-2026-09.json`
+ESG Multi-PC instruction followed: read esg-multipc first, prefer live_telemetry, author_claims not measurements.
