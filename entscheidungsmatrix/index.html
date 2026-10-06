@@ -147,63 +147,66 @@
     </footer>
   </div>
 
-  <script>
+  
+</body>
+</html>
+
+
+
+
+<script>
     function showTab(tab) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
-      document.getElementById(tab).classList.add('active');
-      document.getElementById('tab-' + tab).classList.add('active');
+      var sec = document.getElementById(tab);
+      if (sec) sec.classList.add('active');
+      var btn = document.getElementById('tab-' + tab);
+      if (btn) btn.classList.add('active');
     }
 
-
-    function copyAndUnlock(secret) {
-      const input = document.getElementById('secret-input');
-      input.value = secret;
-      unlockWithSecret();
-    }
-
-    function quickUnlockAndTest(secret) {
-      const input = document.getElementById('secret-input');
-      input.value = secret;
-      unlockWithSecret();
+    function simulatePurchase() {
+      var sel = document.getElementById('sim-product');
+      var product = sel ? sel.value : 'full-fivefold';
+      var orderId = 'SIM-' + Date.now().toString(36).slice(-6).toUpperCase();
+      var secret = 'ESG-UNLOCK-' + Math.random().toString(36).substring(2, 10).toUpperCase();
       
-      // After short delay, send a sample for Pandämie
-      setTimeout(() => {
-        const log = document.getElementById('webhook-log');
-        if (log) log.innerHTML = 'Auto-Test nach simulierter Bestellung gestartet...
-' + log.innerHTML;
-        
-        // fill sample data
-        const textEl = document.getElementById('text-pandamie');
-        if (textEl) textEl.value = 'Test-Daten vom Forscher nach simulierter Bezahlung. Pandämie Metriken + anonymer Leak.';
-        
-        sendToWebhook('Pandämie', 'text-pandamie', 'file-pandamie');
-      }, 800);
+      var resultDiv = document.getElementById('sim-result');
+      if (!resultDiv) return;
+      resultDiv.style.display = 'block';
+      
+      var label = product;
+      if (product === 'stufe3-pandamie-flug') label = 'Stufe 3 – Pandämie + Flug DF1073';
+      else if (product === 'stufe4-imk-911') label = 'Stufe 4 – Regeländerung IMK + 9/11';
+      else if (product === 'full-fivefold') label = 'Full Five-Fold ESG Kette';
+      
+      resultDiv.innerHTML = 
+        '<div style="background:#2C2520;padding:12px;border:1px solid #D4AF37;font-size:0.9rem;">' +
+        '<strong>✅ Bestellung #' + orderId + ' abgeschlossen</strong><br>' +
+        'Produkt: ' + label + '<br>' +
+        'Secret: <b>' + secret + '</b><br><br>' +
+        '<button onclick="document.getElementById(\'secret-input\').value=\'' + secret + '\'; ' +
+        'try { unlockWithSecret(); } catch(e) { ' +
+        'localStorage.setItem(\'esg_unlock\', \'true\'); ' +
+        'var st = document.getElementById(\'unlock-status\'); if(st) st.innerHTML = \'<span style=color:#D4AF37>Freigeschaltet!</span>\'; ' +
+        'document.querySelectorAll(\'#esg-kette .upload-form button\').forEach(function(el){el.disabled=false;}); ' +
+        '}" style="width:auto;">Secret kopieren & Freischalten</button>' +
+        '</div>';
     }
 
-        function simulatePurchase() {
-      var sel = document.getElementById("sim-product");
-      var prod = sel ? sel.value : "full-fivefold";
-      var oid = "SIM-" + Date.now().toString(36).slice(-6).toUpperCase();
-      var sec = "ESG-UNLOCK-" + Math.random().toString(36).substring(2,10).toUpperCase();
-      var res = document.getElementById("sim-result");
-      if(!res) return;
-      res.style.display = "block";
-      res.innerHTML = "<div style=\"background:#2C2520;padding:10px;border:1px solid #D4AF37\">Bestellung " + oid + " simuliert.<br>Secret: <b>" + sec + "</b><br><button onclick=\"document.getElementById(\"secret-input\").value=\"" + sec + "\"; unlockWithSecret();\">Secret übernehmen & freischalten</button></div>";
-      window.lastSim = sec;
-    }
     function unlockWithSecret() {
-      const input = document.getElementById('secret-input').value.trim().toUpperCase();
-      const status = document.getElementById('unlock-status');
-      const webhookInput = document.getElementById('webhook-url').value.trim();
+      var input = document.getElementById('secret-input');
+      if (!input) return;
+      var val = input.value.trim().toUpperCase();
+      var status = document.getElementById('unlock-status');
+      var webhookInput = document.getElementById('webhook-url').value.trim();
 
-      if (input.startsWith('ESG-UNLOCK-') || input === 'HUMAN-SECRET-ROSARY-2026') {
+      if (val.startsWith('ESG-UNLOCK-') || val === 'HUMAN-SECRET-ROSARY-2026') {
         localStorage.setItem('esg_unlock', 'true');
         localStorage.setItem('esg_webhook', webhookInput);
-        status.innerHTML = '<span class="status-ok">Freigeschaltet! Webhook aktiv. /api/webhook + Woo-Felder + Email bereit.</span>';
-        document.querySelectorAll('#esg-kette .upload-form button').forEach(el => el.disabled = false);
-      } else {
-        status.innerHTML = '<span class="status-err">Ungültiger Secret.</span>';
+        if (status) status.innerHTML = '<span style="color:#D4AF37">Freigeschaltet! Webhook aktiv. /api/webhook + Woo-Felder + Email bereit.</span>';
+        document.querySelectorAll('#esg-kette .upload-form button').forEach(function(el){ el.disabled = false; });
+      } else if (status) {
+        status.innerHTML = '<span style="color:#ff6b6b">Ungültiger Secret.</span>';
       }
     }
 
@@ -244,9 +247,9 @@
         });
 
         const result = await res.json();
-        
+
         let logEntry = `[${new Date().toLocaleTimeString()}] ${label || payload.field} → ${res.status}\n`;
-        
+
         if (result.wooFields) {
           logEntry += `Woo-Felder: ${JSON.stringify(result.wooFields)}\n`;
         }
@@ -256,11 +259,10 @@
         if (result.secret) {
           logEntry += `Neues Secret: ${result.secret}\n`;
         }
-        
+
         logEntry += `Response: ${JSON.stringify(result).slice(0, 150)}...\n---\n`;
-        
         logEl.innerHTML = logEntry + logEl.innerHTML;
-        
+
         if (res.ok) {
           alert(`Webhook OK für ${label || payload.field}. Email-Benachrichtigung vorbereitet.`);
         }
@@ -269,7 +271,6 @@
       }
     }
 
-    // Test-Button: Sendet erweiterte Payload direkt an das aktuell eingetragene Woo-Setup
     async function testWooSetup() {
       const webhookUrl = document.getElementById('webhook-url').value.trim() || '/api/webhook';
       const statusEl = document.getElementById('test-status');
@@ -283,7 +284,6 @@
         timestamp: new Date().toISOString(),
         unlocked: true,
         secret_used: "test",
-        // Erweiterte Woo-Felder
         woo_extra: {
           order_id: "TEST-" + Date.now(),
           _esg_schranke_paid: true,
@@ -294,112 +294,28 @@
         }
       };
 
-      statusEl.innerHTML = `Sende Test-Payload an ${webhookUrl}...`;
-      
-      await postToWebhook(webhookUrl, testPayload, "TEST-Woo");
-      statusEl.innerHTML = `<span class="status-ok">Test an Woo-Setup / Webhook gesendet. Schau in den Log + deine Email.</span>`;
+      if (statusEl) statusEl.innerHTML = "Sende Test...";
+
+      try {
+        const res = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(testPayload)
+        });
+        const result = await res.json();
+        if (statusEl) statusEl.innerHTML = "Test erfolgreich! Siehe Log.";
+        const logEl = document.getElementById('webhook-log');
+        if (logEl) logEl.innerHTML = `[TEST] ${JSON.stringify(result).slice(0,200)}...\n` + logEl.innerHTML;
+      } catch (e) {
+        if (statusEl) statusEl.innerHTML = "Fehler: " + e.message;
+      }
     }
 
-    // Init
-    window.onload = function() {
-      document.querySelectorAll('#esg-kette .upload-form button').forEach(el => el.disabled = true);
-      
-      const savedWebhook = localStorage.getItem('esg_webhook');
-      if (savedWebhook) {
-        document.getElementById('webhook-url').value = savedWebhook;
-      } else {
-        // Default auf relative /api/webhook wenn deployed
-        if (window.location.hostname.includes('vercel.app')) {
-          document.getElementById('webhook-url').value = window.location.origin + '/api/webhook';
-        }
-      }
-
+    window.addEventListener('load', function() {
       if (localStorage.getItem('esg_unlock')) {
         document.querySelectorAll('#esg-kette .upload-form button').forEach(el => el.disabled = false);
-        document.getElementById('unlock-status').innerHTML = '<span class="status-ok">Bereits freigeschaltet (Webhook + /api/webhook aktiv).</span>';
+        var st = document.getElementById('unlock-status');
+        if (st) st.innerHTML = '<span style="color:#D4AF37">Bereits freigeschaltet (aus vorheriger Session).</span>';
       }
-    }
-  </script>
-</body>
-</html>
-<script>
-// Emergency clean simulator - will be removed on next proper edit
-function simulatePurchase() {
-  var sel = document.getElementById('sim-product');
-  var product = sel ? sel.value : 'full-fivefold';
-  var orderId = 'SIM-' + Date.now().toString(36).slice(-6).toUpperCase();
-  var secret = 'ESG-UNLOCK-' + Math.random().toString(36).substring(2, 10).toUpperCase();
-  var resultDiv = document.getElementById('sim-result');
-  if (!resultDiv) return;
-  resultDiv.style.display = 'block';
-  var label = product;
-  if (product === 'stufe3-pandamie-flug') label = 'Stufe 3 – Pandämie + Flug DF1073';
-  else if (product === 'stufe4-imk-911') label = 'Stufe 4 – Regeländerung IMK + 9/11';
-  else if (product === 'full-fivefold') label = 'Full Five-Fold ESG Kette';
-  resultDiv.innerHTML = '<div style="background:#2C2520;padding:12px;border:1px solid #D4AF37;font-size:0.9rem;"><strong>Bestellung #' + orderId + ' abgeschlossen</strong><br>Produkt: ' + label + '<br>Secret: <b>' + secret + '</b><br><button onclick="document.getElementById(\'secret-input\').value=\'' + secret + '\'; if(typeof unlockWithSecret==\'function\') unlockWithSecret();">Secret kopieren & freischalten</button></div>';
-}
-</script>
-
-<script>
-// Emergency fixes for simulator unlock and Phase 5 tabs
-(function() {
-  // Robust simulatePurchase override
-  window.simulatePurchase = function() {
-    var sel = document.getElementById('sim-product');
-    var product = sel ? sel.value : 'full-fivefold';
-    var orderId = 'SIM-' + Date.now().toString(36).slice(-6).toUpperCase();
-    var secret = 'ESG-UNLOCK-' + Math.random().toString(36).substring(2, 10).toUpperCase();
-    
-    var resultDiv = document.getElementById('sim-result');
-    if (!resultDiv) return;
-    resultDiv.style.display = 'block';
-    
-    var label = product;
-    if (product === 'stufe3-pandamie-flug') label = 'Stufe 3 – Pandämie + Flug DF1073';
-    else if (product === 'stufe4-imk-911') label = 'Stufe 4 – Regeländerung IMK + 9/11';
-    else if (product === 'full-fivefold') label = 'Full Five-Fold ESG Kette';
-    
-    resultDiv.innerHTML = 
-      '<div style="background:#2C2520;padding:12px;border:1px solid #D4AF37;font-size:0.9rem;">' +
-      '<strong>✅ Bestellung #' + orderId + ' abgeschlossen</strong><br>' +
-      'Produkt: ' + label + '<br>' +
-      'Secret: <b>' + secret + '</b><br><br>' +
-      '<button onclick="document.getElementById(\'secret-input\').value=\'' + secret + '\'; ' +
-      'try { unlockWithSecret(); } catch(e) { ' +
-      'localStorage.setItem(\'esg_unlock\', \'true\'); ' +
-      'document.getElementById(\'unlock-status\').innerHTML = \'<span style=color:#D4AF37>Freigeschaltet!</span>\'; ' +
-      'document.querySelectorAll(\'#esg-kette .upload-form button\').forEach(function(el){el.disabled=false;}); ' +
-      '} " style="width:auto;">Secret kopieren & Freischalten</button>' +
-      '</div>';
-  };
-
-  // Ensure showTab works for Phase 5
-  if (typeof window.showTab !== 'function' || true) {
-    window.showTab = function(tab) {
-      document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
-      document.querySelectorAll('.nav button').forEach(function(b) { b.classList.remove('active'); });
-      var sec = document.getElementById(tab);
-      if (sec) sec.classList.add('active');
-      var btn = document.getElementById('tab-' + tab);
-      if (btn) btn.classList.add('active');
-    };
-  }
-
-  // Make unlockWithSecret global and robust
-  window.unlockWithSecret = window.unlockWithSecret || function() {
-    var input = document.getElementById('secret-input');
-    if (!input) return;
-    var val = input.value.trim().toUpperCase();
-    var status = document.getElementById('unlock-status');
-    if (val.startsWith('ESG-UNLOCK-') || val === 'HUMAN-SECRET-ROSARY-2026') {
-      localStorage.setItem('esg_unlock', 'true');
-      if (status) status.innerHTML = '<span style="color:#D4AF37">Freigeschaltet! Webhook aktiv.</span>';
-      document.querySelectorAll('#esg-kette .upload-form button').forEach(function(el){ el.disabled = false; });
-    } else if (status) {
-      status.innerHTML = '<span style="color:#ff6b6b">Ungültiger Secret.</span>';
-    }
-  };
-
-  console.log('Emergency fixes loaded for simulator and tabs');
-})();
+    });
 </script>
