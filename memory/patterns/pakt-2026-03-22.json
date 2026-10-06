@@ -1,0 +1,53 @@
+{
+  "schema": "rosary.esg.chain.v1",
+  "id": "pakt-2026-03-22",
+  "client": null,
+  "evidence_class": "author_claim",
+  "topic": "synthesis pact",
+  "format": "manifest-pdf",
+  "corpus": "memory/platform/corpus/rosenkranz-larijani-templer-pakt-2026-03-22.pdf",
+  "unit": "pages",
+  "formats": [
+    "manifest-pdf",
+    "q-hebel-pdf"
+  ],
+  "redundant_with": [
+    "memory/patterns/q-hebel-2025-11-20.json"
+  ],
+  "missing_second_format": null,
+  "chain": [
+    {
+      "step": "sehen",
+      "role": "triad",
+      "claim_type": "author_claim",
+      "text": "Kant as starting point, Karl Rosenkranz as editor of Kant and dialectical continuation to Hegel, Larijani as reconciliation of synthetic a priori judgments with Shiite Shuhud."
+    },
+    {
+      "step": "sagen",
+      "role": "author-frame",
+      "claim_type": "author_claim",
+      "text": "Preamble dates the pact 22 March 2026 and states Ali Larijani's violent death as the antithesis. That death claim is not independently verified in this session."
+    },
+    {
+      "step": "suehnen",
+      "role": "proposed-order",
+      "claim_type": "author_claim",
+      "text": "Articles 2-4 propose an Islamic-dialectical republic under a constitutional Shah, a council of religious intuition, a German counterpart, BW as export model, and a 2027 founding summit."
+    }
+  ],
+  "signatures": [
+    "historical commentator used as living source",
+    "a priori and a posteriori kept side by side",
+    "author claim annotated not vetoed",
+    "second format not yet in the repo"
+  ],
+  "decision": {
+    "aid": "decision-capable",
+    "why": "Two formats share the triad Kant/Rosenkranz/Ockham and the a-priori annotation. Still not a measurement and not a proof of RH."
+  },
+  "egenden": {
+    "selbst-administrierend": true,
+    "selbst-versorgend": true,
+    "selbst-ausbreitend": true
+  }
+}

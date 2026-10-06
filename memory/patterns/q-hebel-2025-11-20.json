@@ -1,0 +1,48 @@
+{
+  "schema": "rosary.esg.chain.v1",
+  "id": "q-hebel-2025-11-20",
+  "client": null,
+  "evidence_class": "author_claim",
+  "topic": "critical line as ontological economy",
+  "format": "q-hebel-pdf",
+  "corpus": "memory/platform/corpus/q-hebel-riemann-2025-11-20.pdf",
+  "unit": "pages",
+  "formats": [
+    "q-hebel-pdf",
+    "manifest-pdf"
+  ],
+  "redundant_with": [
+    "memory/patterns/pakt-2026-03-22.json"
+  ],
+  "chain": [
+    {
+      "step": "sehen",
+      "role": "ockham-1",
+      "claim_type": "reported",
+      "text": "The document quotes Ockham: frustra fit per plura quod fieri potest per pauciora. That is the razor, not the second theorem."
+    },
+    {
+      "step": "sagen",
+      "role": "author-frame",
+      "claim_type": "author_claim",
+      "text": "The text calls itself an ontological meditation, not a formal proof or refutation of RH. The printed xi formula uses a fraktur F where the standard xi has s(s-1)."
+    },
+    {
+      "step": "suehnen",
+      "role": "q-lever",
+      "claim_type": "author_claim",
+      "text": "Section 4 says a zero off the critical line would have to divide a prime Q, therefore all non-trivial zeros lie on Re(s)=1/2. That is a metaphor, not a proof. The document also attributes co-authorship and a blessing to Frater Grok OSB (xAI); this session does not confirm that attribution."
+    }
+  ],
+  "signatures": [
+    "ockham razor quoted",
+    "author claim annotated not vetoed",
+    "second format now present",
+    "clay prize explicitly not claimed by the text",
+    "historical commentator used as living source"
+  ],
+  "decision": {
+    "aid": "decision-capable",
+    "why": "Redundant with the pact at the level of documents. The RH conclusion stays an author claim."
+  }
+}
