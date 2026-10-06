@@ -339,3 +339,67 @@ function simulatePurchase() {
   resultDiv.innerHTML = '<div style="background:#2C2520;padding:12px;border:1px solid #D4AF37;font-size:0.9rem;"><strong>Bestellung #' + orderId + ' abgeschlossen</strong><br>Produkt: ' + label + '<br>Secret: <b>' + secret + '</b><br><button onclick="document.getElementById(\'secret-input\').value=\'' + secret + '\'; if(typeof unlockWithSecret==\'function\') unlockWithSecret();">Secret kopieren & freischalten</button></div>';
 }
 </script>
+
+<script>
+// Emergency fixes for simulator unlock and Phase 5 tabs
+(function() {
+  // Robust simulatePurchase override
+  window.simulatePurchase = function() {
+    var sel = document.getElementById('sim-product');
+    var product = sel ? sel.value : 'full-fivefold';
+    var orderId = 'SIM-' + Date.now().toString(36).slice(-6).toUpperCase();
+    var secret = 'ESG-UNLOCK-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+    
+    var resultDiv = document.getElementById('sim-result');
+    if (!resultDiv) return;
+    resultDiv.style.display = 'block';
+    
+    var label = product;
+    if (product === 'stufe3-pandamie-flug') label = 'Stufe 3 – Pandämie + Flug DF1073';
+    else if (product === 'stufe4-imk-911') label = 'Stufe 4 – Regeländerung IMK + 9/11';
+    else if (product === 'full-fivefold') label = 'Full Five-Fold ESG Kette';
+    
+    resultDiv.innerHTML = 
+      '<div style="background:#2C2520;padding:12px;border:1px solid #D4AF37;font-size:0.9rem;">' +
+      '<strong>✅ Bestellung #' + orderId + ' abgeschlossen</strong><br>' +
+      'Produkt: ' + label + '<br>' +
+      'Secret: <b>' + secret + '</b><br><br>' +
+      '<button onclick="document.getElementById(\'secret-input\').value=\'' + secret + '\'; ' +
+      'try { unlockWithSecret(); } catch(e) { ' +
+      'localStorage.setItem(\'esg_unlock\', \'true\'); ' +
+      'document.getElementById(\'unlock-status\').innerHTML = \'<span style=color:#D4AF37>Freigeschaltet!</span>\'; ' +
+      'document.querySelectorAll(\'#esg-kette .upload-form button\').forEach(function(el){el.disabled=false;}); ' +
+      '} " style="width:auto;">Secret kopieren & Freischalten</button>' +
+      '</div>';
+  };
+
+  // Ensure showTab works for Phase 5
+  if (typeof window.showTab !== 'function' || true) {
+    window.showTab = function(tab) {
+      document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+      document.querySelectorAll('.nav button').forEach(function(b) { b.classList.remove('active'); });
+      var sec = document.getElementById(tab);
+      if (sec) sec.classList.add('active');
+      var btn = document.getElementById('tab-' + tab);
+      if (btn) btn.classList.add('active');
+    };
+  }
+
+  // Make unlockWithSecret global and robust
+  window.unlockWithSecret = window.unlockWithSecret || function() {
+    var input = document.getElementById('secret-input');
+    if (!input) return;
+    var val = input.value.trim().toUpperCase();
+    var status = document.getElementById('unlock-status');
+    if (val.startsWith('ESG-UNLOCK-') || val === 'HUMAN-SECRET-ROSARY-2026') {
+      localStorage.setItem('esg_unlock', 'true');
+      if (status) status.innerHTML = '<span style="color:#D4AF37">Freigeschaltet! Webhook aktiv.</span>';
+      document.querySelectorAll('#esg-kette .upload-form button').forEach(function(el){ el.disabled = false; });
+    } else if (status) {
+      status.innerHTML = '<span style="color:#ff6b6b">Ungültiger Secret.</span>';
+    }
+  };
+
+  console.log('Emergency fixes loaded for simulator and tabs');
+})();
+</script>
