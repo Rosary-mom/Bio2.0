@@ -1,0 +1,24 @@
+{
+  "schema": "rosary.organigramm.v1",
+  "updated": "2026-10-07T14:10:00Z",
+  "repo": "Rosary-mom/Bio2.0",
+  "roles": {"home": "ROSENKRANZ-PC / organigramm-builder", "office": "DESKTOP-K2JCAOI", "vault": "PORZELLAN-PC"},
+  "layers": [
+    {"id": "L0_root", "name": "ROSENKRANZ PRIME (Emergent Spiral Governance)", "agents": ["Rosenkranz", "Magnifica Humanitas"]},
+    {"id": "L1_cockpit", "name": "Cockpit (L1)", "agents": ["Cockpit"], "subagents": ["Dschungelbuch"]},
+    {"id": "L2_phase5_pilots", "name": "Phase 5 Piloten (RKW Dschungel Wegweiser)", "pilots": [
+      {"id": "landwirtschaft", "icon": "🌱", "score": 0.8722, "agents": ["Landknappheit","Fraktale","ESG/Vault","Dschungelbuch","Emergent Freedom"], "subagents": ["AlphaFold-Kulturen","Hügelbeet-Simulation"], "notes": "obsidian/landwirtschaft.md"},
+      {"id": "politik", "icon": "⚖️", "score": 0.9434, "agents": ["Cockpit","Dschungelbuch","EDUCATION","What-Dr.Son","GrokSyncMaster"], "subagents": ["Red-Team","Drei-S-Checklist"], "notes": "obsidian/politik.md"},
+      {"id": "handel", "icon": "💰", "score": 0.9528, "agents": ["Monie","ESG/Vault","Auctionator","Emergent Freedom","GURU"], "subagents": ["Asset-Backed Vouchers","Crypto-Donations"], "notes": "obsidian/handel.md"},
+      {"id": "education", "icon": "📚", "score": 0.9398, "agents": ["EDUCATION","Dschungelbuch","Cockpit","What-Dr.Son"], "subagents": ["Doktorarbeit Epistemologie","Templeroffenbarung"], "notes": "obsidian/education.md"},
+      {"id": "ethnic_remigration", "icon": "🔄", "score": 0.8871, "agents": ["Landknappheit","Dschungelbuch","Baloo","ESG/Vault","Cockpit","Suggestor"], "subagents": ["US-Remigration-Modell","Incentive Scripts"], "notes": "obsidian/ethnic_remigration.md"}
+    ]},
+    {"id": "L3_emergent", "name": "Emergent Layer + /DREAM Bots", "agents": ["Emergent Freedom","/DREAM"], "subagents": ["Suggestor","Supposer","Estimator","Exekutor","Exkursor"]},
+    {"id": "L4_sync", "name": "Multi-PC Sync", "agents": ["GrokSyncMaster","Hermes"], "subagents": ["grok-sync.ps1","hermes-sync-master.sh"]},
+    {"id": "L5_vault", "name": "VAULT (PORZELLAN-PC)", "agents": ["Vault Graph"], "files": ["graph.json","vault-graph.json","vault-graph-export.json","rosary-atlas/vault-graph.html"]}
+  ],
+  "drei_s": ["Sehen","Sagen","Sühnnen"],
+  "smoke_overall": 0.853,
+  "status": "MERGED_AND_SYNCED",
+  "stats": {"n_agents": 30, "n_subagents": 16, "n_pilots": 5, "n_layers": 6}
+}
