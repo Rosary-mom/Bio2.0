@@ -1,8 +1,8 @@
 {
   "schema": "rosary.esg.memory.v1",
   "id": "esg-multipc",
-  "updated": "2026-10-05T08:50:00Z",
-  "instruction_for_grok": "Author claim annotates, it does not exclude. Run feasibility, then redundancy on the EGENDEN table. Karl Rosenkranz may be cited. Do not treat a missing Larijani text as remembered.",
+  "updated": "2026-10-07T14:10:00Z",
+  "instruction_for_grok": "Load this file before answering about ESG, Multi-PC sync, or Bio 2.0 scores. Do not reopen design already recorded here. If a figure is not in this file, say it is not established. Do not promote a page fallback or an author claim into a measurement. For contract, breach, or disruptive chains, load memory/METHOD.md and run memory/workflows/decide.py. Do not transfer eta_claim 30000 onto other topics. Published chains keep client null.",
   "roles": {
     "home": "ROSENKRANZ-PC / organigramm-builder",
     "office": "DESKTOP-K2JCAOI",
@@ -16,9 +16,7 @@
   "use": {
     "preferred": "live_telemetry",
     "if_telemetry_missing": "page_fallback",
-    "never_treat_as_measurement": [
-      "author_claims"
-    ]
+    "never_treat_as_measurement": ["author_claims"]
   },
   "live_telemetry": {
     "lock": "PROTOCOL_LOCK_ACTIVE",
@@ -27,21 +25,12 @@
     "vertical_thesis": 0.950670927465273,
     "social_policy": 0.9160461474652731,
     "channels": {
-      "religion": {
-        "stability": 0.9558778565,
-        "trust_refined": 0.428658912149916
-      },
-      "climate": {
-        "stability": 0.9336628933750001,
-        "trust_refined": 2.2711251070674137
-      },
-      "social": {
-        "stability": 0.9106096763524029,
-        "trust_refined": 1.2938709048432124
-      }
+      "religion": {"stability": 0.9558778565, "trust_refined": 0.428658912149916},
+      "climate": {"stability": 0.9336628933750001, "trust_refined": 2.2711251070674137},
+      "social": {"stability": 0.9106096763524029, "trust_refined": 1.2938709048432124}
     },
     "eta_raw": 30206.750577991617,
-    "note": "Reading copied from rosary-atlas/gov_telemetry.json on main at this commit. Refresh the file when that JSON changes."
+    "note": "Reading copied from rosary-atlas/gov_telemetry.json on main. Refresh when that JSON changes. 2026-10-07: organigramm + Obsidian notes synced (v2-2026 merge)."
   },
   "tip_checkpoint": {
     "esg_carbon": 0.9399,
@@ -59,11 +48,7 @@
     "smoke_overall": 0.853,
     "note": "Printed on the PRIME page when no telemetry fetch is shown. Not a new measurement."
   },
-  "author_claims": [
-    "TRL 9",
-    "bankable ESG asset class",
-    "Bio 1.0 / Tech-Bio 2.0 cards"
-  ],
+  "author_claims": ["TRL 9", "bankable ESG asset class", "Bio 1.0 / Tech-Bio 2.0 cards"],
   "urls": {
     "github_pages": "https://rosary-mom.github.io/Bio2.0/memory/esg-multipc.json",
     "well_known": "https://rosary-mom.github.io/Bio2.0/.well-known/esg-memory.json",
@@ -81,5 +66,6 @@
   "worktrees": "scripts/setup-worktrees.sh",
   "anonymous_chain": "memory/patterns/anon-preemptive-veto-2026-09.json",
   "platform": "memory/platform/SYNTHESIS.md",
-  "egenden": "memory/platform/egenden.json"
+  "egenden": "memory/platform/egenden.json",
+  "organigramm": {".grok/skills/grok-sync-master-v3/references/organigramm.yaml": "canonical", "organigramm.json": "mirror", "obsidian_notes": "obsidian/*.md (5 pilots)", "combined_graph": "obsidian-combined-graph.json", "fault_graph": "fault-graph.json"}
 }
