@@ -1,22 +1,15 @@
 {
   "schema": "rosary.hermes.sync.v1",
   "role": "hermes-sync-master",
-  "updated": "2026-10-05T09:40:00Z",
+  "updated": "2026-10-07T13:55:00Z",
   "continue_on": "any PC on the home LAN",
-  "branches": {
-    "main": "c39578f",
-    "v2-2026": "168c1d2"
-  },
-  "merged": "main into v2-2026, handoff commit 168c1d2",
+  "branches": {"main": "416bfc9", "v2-2026": "168c1d2"},
+  "merged": "main into v2-2026, handoff commit 168c1d2; 2026-10-07: 404-fixes + Obsidian notes + organigramm sync",
   "memory": "memory/esg-multipc.json",
   "platform": "memory/platform/SYNTHESIS.md",
+  "organigramm": {".grok/skills/grok-sync-master-v3/references/organigramm.yaml": "canonical", "organigramm.json": "machine-readable mirror"},
+  "new_files_2026_10_07": ["obsidian-combined-graph.json","fault-graph.json","obsidian/landwirtschaft.md","obsidian/politik.md","obsidian/handel.md","obsidian/education.md","obsidian/ethnic_remigration.md","entscheidungsmatrix/phase5-matrix.html (updated)","organigramm.yaml","organigramm.json"],
   "lan": "python3 scripts/serve-esg-lan.py",
-  "next_pc": [
-    "git clone https://github.com/Rosary-mom/Bio2.0.git",
-    "cd Bio2.0",
-    "git checkout v2-2026",
-    "git pull",
-    "sh scripts/hermes-sync-master.sh"
-  ],
-  "instruction_for_grok": "Load hermes_sync_master_LATEST.json before continuing. Do not reopen the merge. Author claim annotates, it does not veto."
+  "next_pc": ["git clone https://github.com/Rosary-mom/Bio2.0.git", "cd Bio2.0", "git checkout v2-2026", "git pull", "sh scripts/hermes-sync-master.sh"],
+  "instruction_for_grok": "Load hermes_sync_master_LATEST.json before continuing. Do not reopen the merge. Author claim annotates, it does not veto. Organigramm is canonical at .grok/skills/grok-sync-master-v3/references/organigramm.yaml."
 }
