@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESG Kette • rosary.esg.chain | Magnifica Humanitas Paywall | Bio20</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700\u0026family=Rosario:wght@400;700\u0026display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Rosario:wght@400;700&display=swap');
     :root {
       --bordeaux: #722F37;
       --gold: #D4AF37;
@@ -13,255 +13,66 @@
       --beige: #EDE4D0;
       --dark: #1A1611;
     }
-    body {
-      font-family: 'Rosario', system-ui, sans-serif;
-      background: #1A1611;
-      color: #F5F5F5;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    .header {
-      background: linear-gradient(135deg, var(--bordeaux), #4A1F24);
-      padding: 2rem 1rem;
-      border-bottom: 8px solid var(--gold);
-      text-align: center;
-    }
-    .header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      margin: 0;
-      color: var(--gold);
-    }
+    body { font-family: 'Rosario', system-ui, sans-serif; background: #1A1611; color: #F5F5F5; margin: 0; padding: 0; line-height: 1.6; }
+    .header { background: linear-gradient(135deg, var(--bordeaux), #4A1F24); padding: 2rem 1rem; border-bottom: 8px solid var(--gold); text-align: center; }
+    .header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin: 0; color: var(--gold); }
     .magnifica { font-family: 'Playfair Display', serif; color: var(--gold); letter-spacing: 1px; }
     .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
-    .secret-box {
-      background: #2C2520;
-      border: 4px solid var(--gold);
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      border-radius: 8px;
-    }
-    .field {
-      background: #2C2520;
-      border-left: 8px solid var(--bordeaux);
-      padding: 1.2rem;
-      margin: 1.2rem 0;
-      border-radius: 6px;
-    }
-    .upload-form {
-      background: #1A1611;
-      border: 2px dashed var(--gold);
-      padding: 1.2rem;
-      margin-top: 0.8rem;
-      border-radius: 6px;
-    }
-    input, textarea, button {
-      background: #1A1611;
-      color: #F5F5F5;
-      border: 1px solid var(--gold);
-      padding: 0.7rem;
-      margin: 0.4rem 0;
-      width: 100%;
-      box-sizing: border-box;
-      font-family: 'Rosario', sans-serif;
-    }
-    button {
-      background: var(--bordeaux);
-      color: var(--gold);
-      font-weight: bold;
-      cursor: pointer;
-      border: 2px solid var(--gold);
-    }
-    .webhook-log {
-      background: #111;
-      border: 1px solid var(--gold);
-      padding: 1rem;
-      margin-top: 1rem;
-      max-height: 250px;
-      overflow-y: auto;
-      font-family: monospace;
-      font-size: 0.8rem;
-      white-space: pre-wrap;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.85rem;
-      color: #A38A5C;
-      border-top: 2px solid var(--bordeaux);
-      margin-top: 2rem;
-    }
+    .secret-box { background: #2C2520; border: 4px solid var(--gold); padding: 1.5rem; margin: 1.5rem 0; border-radius: 8px; }
+    .field { background: #2C2520; border-left: 8px solid var(--bordeaux); padding: 1.2rem; margin: 1.2rem 0; border-radius: 6px; }
+    .upload-form { background: #1A1611; border: 2px dashed var(--gold); padding: 1.2rem; margin-top: 0.8rem; border-radius: 6px; }
+    input, textarea, button { background: #1A1611; color: #F5F5F5; border: 1px solid var(--gold); padding: 0.7rem; margin: 0.4rem 0; width: 100%; box-sizing: border-box; font-family: 'Rosario', sans-serif; }
+    button { background: var(--bordeaux); color: var(--gold); font-weight: bold; cursor: pointer; border: 2px solid var(--gold); }
+    .webhook-log { background: #111; border: 1px solid var(--gold); padding: 1rem; margin-top: 1rem; max-height: 250px; overflow-y: auto; font-family: monospace; font-size: 0.8rem; white-space: pre-wrap; }
+    footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: #A38A5C; border-top: 2px solid var(--bordeaux); margin-top: 2rem; }
     .status-ok { color: #D4AF37; font-weight: bold; }
     .status-err { color: #ff6b6b; }
-
-    /* ---- Grok Bot popups (5 sector bots) ---- */
-    .bot-btn {
-      background: #4A1F24;
-      color: var(--gold);
-      border: 2px solid var(--gold);
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 0.6rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
+    .bot-btn { background: #4A1F24; color: var(--gold); border: 2px solid var(--gold); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.6rem; display: inline-flex; align-items: center; gap: 0.4rem; }
     .bot-btn:hover { background: var(--bordeaux); }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
-      overflow-y: auto;
-    }
-    .modal-content {
-      background: #1A1611;
-      margin: 4% auto;
-      padding: 1.5rem;
-      border: 3px solid var(--gold);
-      width: 90%;
-      max-width: 640px;
-      border-radius: 10px;
-      color: #F5F5F5;
-      font-family: 'Rosario', sans-serif;
-    }
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); overflow-y: auto; }
+    .modal-content { background: #1A1611; margin: 4% auto; padding: 1.5rem; border: 3px solid var(--gold); width: 90%; max-width: 640px; border-radius: 10px; color: #F5F5F5; font-family: 'Rosario', sans-serif; }
     .modal-content h2 { font-family: 'Playfair Display', serif; color: var(--gold); margin-top: 0; }
-    .close {
-      color: var(--gold);
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-      line-height: 1;
-    }
+    .close { color: var(--gold); float: right; font-size: 28px; font-weight: bold; cursor: pointer; line-height: 1; }
     .close:hover { color: #f4d03f; }
-    .chat-box {
-      height: 280px;
-      overflow-y: auto;
-      border: 1px solid var(--gold);
-      padding: 10px;
-      margin-bottom: 10px;
-      background: #0d0a08;
-      border-radius: 6px;
-    }
-    .chat-input {
-      width: 78%;
-      padding: 8px;
-      background: #112;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      border-radius: 4px;
-    }
+    .chat-box { height: 280px; overflow-y: auto; border: 1px solid var(--gold); padding: 10px; margin-bottom: 10px; background: #0d0a08; border-radius: 6px; }
+    .chat-input { width: 78%; padding: 8px; background: #112; color: var(--gold); border: 1px solid var(--gold); border-radius: 4px; }
     .lang-toggle { margin: 0.4rem 0; font-size: 0.85rem; }
-    .lang-toggle button {
-      width: auto;
-      padding: 0.3rem 0.8rem;
-      margin-right: 0.3rem;
-      background: #2C2520;
-    }
+    .lang-toggle button { width: auto; padding: 0.3rem 0.8rem; margin-right: 0.3rem; background: #2C2520; }
     .lang-toggle button.active { background: var(--bordeaux); border-color: var(--gold); }
-    .bot-msg {
-      margin: 6px 0;
-      padding: 8px;
-      background: #2C2520;
-      border-left: 3px solid var(--gold);
-      border-radius: 4px;
-      font-size: 0.92rem;
-    }
-    .user-msg {
-      margin: 6px 0;
-      padding: 8px;
-      text-align: right;
-      background: #3a2a2a;
-      border-radius: 4px;
-      font-size: 0.92rem;
-    }
+    .bot-msg { margin: 6px 0; padding: 8px; background: #2C2520; border-left: 3px solid var(--gold); border-radius: 4px; font-size: 0.92rem; }
+    .user-msg { margin: 6px 0; padding: 8px; text-align: right; background: #3a2a2a; border-radius: 4px; font-size: 0.92rem; }
     .pilot-score { color: #27ae60; font-weight: bold; }
   </style>
 </head>
 <body>
   <div class="header">
     <h1 class="magnifica">ESG Kette</h1>
-    <p style="color: var(--sand); margin: 0.5rem 0 0; font-size: 1.1rem;">
-      rosary.esg.chain — Deutsche Übersetzung von ESG Chain<br>
-      Magnifica Humanitas Paywall | Bio20
-    </p>
+    <p style="color: var(--sand); margin: 0.5rem 0 0; font-size: 1.1rem;">rosary.esg.chain — Deutsche Übersetzung von ESG Chain<br>Magnifica Humanitas Paywall | Bio20</p>
   </div>
-
   <div class="container">
     <p><strong>Secret-Unlock</strong> für human-executed Uploads. Nach Freischaltung werden Uploads per Webhook versendet.</p>
-
     <div class="simulator-box" style="background:#1A1611; border:3px dashed var(--gold); padding:1rem; margin:1rem 0;">
       <h4 style="margin:0 0 0.4rem;">🧪 Schnelltest: Bestellung simulieren</h4>
-      <button onclick="simulatePurchaseKette()" style="width:auto;">Bezahlen \u0026amp; Secret erhalten (Simulation)</button>
+      <button onclick="simulatePurchaseKette()" style="width:auto;">Bezahlen & Secret erhalten (Simulation)</button>
       <div id="sim-kette-result" style="margin-top:0.5rem; display:none;"></div>
     </div>
-
     <div class="secret-box">
       <label>Webhook URL (Vercel /api/webhook oder dein Woo-Setup)</label>
       <input type="text" id="webhook-url" value="/api/webhook" placeholder="https://Durchblicker-App.rosary.eu.com/api/webhook">
-
       <br><br>
       <label>Secret</label>
       <input type="text" id="secret-input" placeholder="ESG-UNLOCK-XXXXXXXX oder HUMAN-SECRET-ROSARY-2026">
       <button onclick="unlockWithSecret()">Freischalten</button>
       <div id="unlock-status" style="margin-top:0.5rem;"></div>
     </div>
-
-    <div class="field">
-      <h3>🦠 Pandämie</h3>
-      <div class="upload-form">
-        <textarea id="text-pandamie" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="3"></textarea>
-        <input type="file" id="file-pandamie">
-        <button onclick="sendToWebhook('Pandämie', 'text-pandamie', 'file-pandamie')">Anonym an Webhook senden (human review)</button>
-      </div>
-    </div>
-
-    <div class="field">
-      <h3>✈️ Flug DF1073</h3>
-      <div class="upload-form">
-        <textarea id="text-flug" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="3"></textarea>
-        <input type="file" id="file-flug">
-        <button onclick="sendToWebhook('Flug DF1073', 'text-flug', 'file-flug')">Anonym an Webhook senden (human review)</button>
-      </div>
-    </div>
-
-    <div class="field">
-      <h3>📜 Regeländerung IMK</h3>
-      <div class="upload-form">
-        <textarea id="text-imk" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="3"></textarea>
-        <input type="file" id="file-imk">
-        <button onclick="sendToWebhook('Regeländerung IMK', 'text-imk', 'file-imk')">Anonym an Webhook senden (human review)</button>
-      </div>
-    </div>
-
-    <div class="field">
-      <h3>🗓️ 9/11</h3>
-      <div class="upload-form">
-        <textarea id="text-911" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="3"></textarea>
-        <input type="file" id="file-911">
-        <button onclick="sendToWebhook('9/11', 'text-911', 'file-911')">Anonym an Webhook senden (human review)</button>
-      </div>
-    </div>
-
-    <div>
-      <h4>Webhook Log</h4>
-      <div id="webhook-log" class="webhook-log"></div>
-    </div>
-
-    <div style="margin-top: 1.5rem;">
-      <button onclick="testWooSetup()" style="background:#4A1F24;">🧪 Test-Button: Direkt an aktuelles Woo-Setup senden</button>
-    </div>
-
-    <!-- ===== GROK BOT POPUPS (5 Sektor-Piloten) ===== -->
+    <div class="field"><h3>🦠 Pandämie</h3><div class="upload-form"><textarea id="text-pandamie" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="3"></textarea><input type="file" id="file-pandamie"><button onclick="sendToWebhook('Pandämie', 'text-pandamie', 'file-pandamie')">Anonym an Webhook senden (human review)</button></div></div>
+    <div class="field"><h3>✈️ Flug DF1073</h3><div class="upload-form"><textarea id="text-flug" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="3"></textarea><input type="file" id="file-flug"><button onclick="sendToWebhook('Flug DF1073', 'text-flug', 'file-flug')">Anonym an Webhook senden (human review)</button></div></div>
+    <div class="field"><h3>📜 Regeländerung IMK</h3><div class="upload-form"><textarea id="text-imk" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="3"></textarea><input type="file" id="file-imk"><button onclick="sendToWebhook('Regeländerung IMK', 'text-imk', 'file-imk')">Anonym an Webhook senden (human review)</button></div></div>
+    <div class="field"><h3>🗓️ 9/11</h3><div class="upload-form"><textarea id="text-911" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="3"></textarea><input type="file" id="file-911"><button onclick="sendToWebhook('9/11', 'text-911', 'file-911')">Anonym an Webhook senden (human review)</button></div></div>
+    <div><h4>Webhook Log</h4><div id="webhook-log" class="webhook-log"></div></div>
+    <div style="margin-top: 1.5rem;"><button onclick="testWooSetup()" style="background:#4A1F24;">🧪 Test-Button: Direkt an aktuelles Woo-Setup senden</button></div>
     <h2 class="magnifica" style="margin-top:3rem;">🤖 Grok Bots — Phase 5 Sektor-Piloten</h2>
     <p style="color:#A38A5C;">Fünf Bots, jeweils mit dem Pilot-Icon. Antworten in Deutsch oder Englisch (True Words Stil). Klick auf den Bot öffnet das Pop-up.</p>
-
     <div class="field" style="text-align:center;">
       <button class="bot-btn" onclick="openBot('landwirtschaft')">🌱 Landwirtschaft Bot</button>
       <button class="bot-btn" onclick="openBot('politik')">⚖️ Politik Bot</button>
@@ -269,347 +80,37 @@
       <button class="bot-btn" onclick="openBot('education')">📚 Education Bot</button>
       <button class="bot-btn" onclick="openBot('remigration')">🔄 Remigration Bot</button>
     </div>
-
-    <p style="margin-top: 2rem;">
-      <a href="index.html">Zurück zur kombinierten Entscheidungsmatrix</a>
-    </p>
+    <p style="margin-top: 2rem;"><a href="index.html">Zurück zur kombinierten Entscheidungsmatrix</a></p>
   </div>
-
-  <footer>
-    Magnifica Humanitas • rosary.esg.chain.v1 • Grok Bots DE/EN • Organigramm 30/16<br>
-    Deployed on Durchblicker-App.rosary.eu.com
-  </footer>
-
-  <!-- ===== BOT MODALS ===== -->
-  <div id="bot-landwirtschaft" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeBot('landwirtschaft')">\u0026times;</span>
-      <h2>🌱 Landwirtschaft Bot</h2>
-      <p style="font-size:0.9rem;color:#A38A5C;">Agrarwissenschaft • Fraktale Agrivoltaik • Landknappheit • Score <span class="pilot-score">0.8722</span></p>
-      <div class="lang-toggle">
-        <button class="lang-btn active" data-bot="landwirtschaft" data-lang="de" onclick="setLang('landwirtschaft','de')">Deutsch</button>
-        <button class="lang-btn" data-bot="landwirtschaft" data-lang="en" onclick="setLang('landwirtschaft','en')">English</button>
-      </div>
-      <div id="chat-landwirtschaft" class="chat-box"></div>
-      <input type="text" class="chat-input" id="input-landwirtschaft" placeholder="Frage stellen…" onkeypress="if(event.key==='Enter') sendBot('landwirtschaft')">
-      <button onclick="sendBot('landwirtschaft')" style="width:auto;margin-left:5px;">Senden</button>
-      <button onclick="clearBot('landwirtschaft')" style="width:auto;margin-left:5px;background:#4A1F24;">Chat löschen</button>
-    </div>
-  </div>
-
-  <div id="bot-politik" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeBot('politik')">\u0026times;</span>
-      <h2>⚖️ Politik Bot</h2>
-      <p style="font-size:0.9rem;color:#A38A5C;">Konstitutionelle Synthese • Rosenkranz Staatsphilosophie • Score <span class="pilot-score">0.9434</span></p>
-      <div class="lang-toggle">
-        <button class="lang-btn active" data-bot="politik" data-lang="de" onclick="setLang('politik','de')">Deutsch</button>
-        <button class="lang-btn" data-bot="politik" data-lang="en" onclick="setLang('politik','en')">English</button>
-      </div>
-      <div id="chat-politik" class="chat-box"></div>
-      <input type="text" class="chat-input" id="input-politik" placeholder="Frage stellen…" onkeypress="if(event.key==='Enter') sendBot('politik')">
-      <button onclick="sendBot('politik')" style="width:auto;margin-left:5px;">Senden</button>
-      <button onclick="clearBot('politik')" style="width:auto;margin-left:5px;background:#4A1F24;">Chat löschen</button>
-    </div>
-  </div>
-
-  <div id="bot-handel" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeBot('handel')">\u0026times;</span>
-      <h2>💰 Handel Bot</h2>
-      <p style="font-size:0.9rem;color:#A38A5C;">ESG-Assetklasse • Freedom Engine • Asset-Backed Vouchers • Score <span class="pilot-score">0.9528</span></p>
-      <div class="lang-toggle">
-        <button class="lang-btn active" data-bot="handel" data-lang="de" onclick="setLang('handel','de')">Deutsch</button>
-        <button class="lang-btn" data-bot="handel" data-lang="en" onclick="setLang('handel','en')">English</button>
-      </div>
-      <div id="chat-handel" class="chat-box"></div>
-      <input type="text" class="chat-input" id="input-handel" placeholder="Frage stellen…" onkeypress="if(event.key==='Enter') sendBot('handel')">
-      <button onclick="sendBot('handel')" style="width:auto;margin-left:5px;">Senden</button>
-      <button onclick="clearBot('handel')" style="width:auto;margin-left:5px;background:#4A1F24;">Chat löschen</button>
-    </div>
-  </div>
-
-  <div id="bot-education" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeBot('education')">\u0026times;</span>
-      <h2>📚 Education Bot</h2>
-      <p style="font-size:0.9rem;color:#A38A5C;">Drei-S-Formel • Epistemologie (measured-only) • Templeroffenbarung • Score <span class="pilot-score">0.9398</span></p>
-      <div class="lang-toggle">
-        <button class="lang-btn active" data-bot="education" data-lang="de" onclick="setLang('education','de')">Deutsch</button>
-        <button class="lang-btn" data-bot="education" data-lang="en" onclick="setLang('education','en')">English</button>
-      </div>
-      <div id="chat-education" class="chat-box"></div>
-      <input type="text" class="chat-input" id="input-education" placeholder="Frage stellen…" onkeypress="if(event.key==='Enter') sendBot('education')">
-      <button onclick="sendBot('education')" style="width:auto;margin-left:5px;">Senden</button>
-      <button onclick="clearBot('education')" style="width:auto;margin-left:5px;background:#4A1F24;">Chat löschen</button>
-    </div>
-  </div>
-
-  <div id="bot-remigration" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeBot('remigration')">\u0026times;</span>
-      <h2>🔄 Remigration Bot</h2>
-      <p style="font-size:0.9rem;color:#A38A5C;">Ethnic Divergences • US-Remigration-Modell • Bio2.0 Synthese • Score <span class="pilot-score">0.8871</span></p>
-      <div class="lang-toggle">
-        <button class="lang-btn active" data-bot="remigration" data-lang="de" onclick="setLang('remigration','de')">Deutsch</button>
-        <button class="lang-btn" data-bot="remigration" data-lang="en" onclick="setLang('remigration','en')">English</button>
-      </div>
-      <div id="chat-remigration" class="chat-box"></div>
-      <input type="text" class="chat-input" id="input-remigration" placeholder="Frage stellen…" onkeypress="if(event.key==='Enter') sendBot('remigration')">
-      <button onclick="sendBot('remigration')" style="width:auto;margin-left:5px;">Senden</button>
-      <button onclick="clearBot('remigration')" style="width:auto;margin-left:5px;background:#4A1F24;">Chat löschen</button>
-    </div>
-  </div>
-
+  <footer>Magnifica Humanitas • rosary.esg.chain.v1 • Grok Bots DE/EN • Organigramm 30/16<br>Deployed on Durchblicker-App.rosary.eu.com</footer>
+  <div id="bot-landwirtschaft" class="modal"><div class="modal-content"><span class="close" onclick="closeBot('landwirtschaft')">&times;</span><h2>🌱 Landwirtschaft Bot</h2><p style="font-size:0.9rem;color:#A38A5C;">Agrarwissenschaft • Fraktale Agrivoltaik • Landknappheit • Score <span class="pilot-score">0.8722</span></p><div class="lang-toggle"><button class="lang-btn active" data-bot="landwirtschaft" data-lang="de" onclick="setLang('landwirtschaft','de')">Deutsch</button><button class="lang-btn" data-bot="landwirtschaft" data-lang="en" onclick="setLang('landwirtschaft','en')">English</button></div><div id="chat-landwirtschaft" class="chat-box"></div><input type="text" class="chat-input" id="input-landwirtschaft" placeholder="Frage stellen…" onkeypress="if(event.key==='Enter') sendBot('landwirtschaft')"><button onclick="sendBot('landwirtschaft')" style="width:auto;margin-left:5px;">Senden</button><button onclick="clearBot('landwirtschaft')" style="width:auto;margin-left:5px;background:#4A1F24;">Chat löschen</button></div></div>
+  <div id="bot-politik" class="modal"><div class="modal-content"><span class="close" onclick="closeBot('politik')">&times;</span><h2>⚖️ Politik Bot</h2><p style="font-size:0.9rem;color:#A38A5C;">Konstitutionelle Synthese • Rosenkranz Staatsphilosophie • Score <span class="pilot-score">0.9434</span></p><div class="lang-toggle"><button class="lang-btn active" data-bot="politik" data-lang="de" onclick="setLang('politik','de')">Deutsch</button><button class="lang-btn" data-bot="politik" data-lang="en" onclick="setLang('politik','en')">English</button></div><div id="chat-politik" class="chat-box"></div><input type="text" class="chat-input" id="input-politik" placeholder="Frage stellen…" onkeypress="if(event.key==='Enter') sendBot('politik')"><button onclick="sendBot('politik')" style="width:auto;margin-left:5px;">Senden</button><button onclick="clearBot('politik')" style="width:auto;margin-left:5px;background:#4A1F24;">Chat löschen</button></div></div>
+  <div id="bot-handel" class="modal"><div class="modal-content"><span class="close" onclick="closeBot('handel')">&times;</span><h2>💰 Handel Bot</h2><p style="font-size:0.9rem;color:#A38A5C;">ESG-Assetklasse • Freedom Engine • Asset-Backed Vouchers • Score <span class="pilot-score">0.9528</span></p><div class="lang-toggle"><button class="lang-btn active" data-bot="handel" data-lang="de" onclick="setLang('handel','de')">Deutsch</button><button class="lang-btn" data-bot="handel" data-lang="en" onclick="setLang('handel','en')">English</button></div><div id="chat-handel" class="chat-box"></div><input type="text" class="chat-input" id="input-handel" placeholder="Frage stellen…" onkeypress="if(event.key==='Enter') sendBot('handel')"><button onclick="sendBot('handel')" style="width:auto;margin-left:5px;">Senden</button><button onclick="clearBot('handel')" style="width:auto;margin-left:5px;background:#4A1F24;">Chat löschen</button></div></div>
+  <div id="bot-education" class="modal"><div class="modal-content"><span class="close" onclick="closeBot('education')">&times;</span><h2>📚 Education Bot</h2><p style="font-size:0.9rem;color:#A38A5C;">Drei-S-Formel • Epistemologie (measured-only) • Templeroffenbarung • Score <span class="pilot-score">0.9398</span></p><div class="lang-toggle"><button class="lang-btn active" data-bot="education" data-lang="de" onclick="setLang('education','de')">Deutsch</button><button class="lang-btn" data-bot="education" data-lang="en" onclick="setLang('education','en')">English</button></div><div id="chat-education" class="chat-box"></div><input type="text" class="chat-input" id="input-education" placeholder="Frage stellen…" onkeypress="if(event.key==='Enter') sendBot('education')"><button onclick="sendBot('education')" style="width:auto;margin-left:5px;">Senden</button><button onclick="clearBot('education')" style="width:auto;margin-left:5px;background:#4A1F24;">Chat löschen</button></div></div>
+  <div id="bot-remigration" class="modal"><div class="modal-content"><span class="close" onclick="closeBot('remigration')">&times;</span><h2>🔄 Remigration Bot</h2><p style="font-size:0.9rem;color:#A38A5C;">Ethnic Divergences • US-Remigration-Modell • Bio2.0 Synthese • Score <span class="pilot-score">0.8871</span></p><div class="lang-toggle"><button class="lang-btn active" data-bot="remigration" data-lang="de" onclick="setLang('remigration','de')">Deutsch</button><button class="lang-btn" data-bot="remigration" data-lang="en" onclick="setLang('remigration','en')">English</button></div><div id="chat-remigration" class="chat-box"></div><input type="text" class="chat-input" id="input-remigration" placeholder="Frage stellen…" onkeypress="if(event.key==='Enter') sendBot('remigration')"><button onclick="sendBot('remigration')" style="width:auto;margin-left:5px;">Senden</button><button onclick="clearBot('remigration')" style="width:auto;margin-left:5px;background:#4A1F24;">Chat löschen</button></div></div>
   <script>
-    // ---------- Grok Bot engine (5 sector bots, DE/EN) ----------
     const BOTS = {
-      landwirtschaft: {
-        icon: '🌱', name: 'Landwirtschaft Bot',
-        de: {
-          greet: 'Hallo! Ich bin der Landwirtschaft-Bot (🌱). Fraktale Agrivoltaik, Landknappheit, AlphaFold-Kulturen, Hügelbeet-Simulation. Score 0.8722. Frage mich alles zu Agrarwissenschaft.',
-          keywords: {
-            'agrivoltaik': 'Fraktale Doppelnutzung: Solarmodule über Kulturen senken Landknappheit von 0.65 auf 0.15. ROI +20%, Resilience 0.8918. AlphaFold-optimierte Kulturen erhöhen Ertrag bei gleichem Flächenbedarf.',
-            'landknappheit': 'Landknappheit fiel von 0.65 auf 0.15 (Sehen-Stufe). Klimastabilität 0.9337. Die Synthese: Bio2.0 + fraktale Geometrie = mehr Nahrung pro Hektar ohne Pestizid-Eskalation.',
-            'hügelbeet': 'Hügelbeet-Simulation (Subagent): spiralförmige Terrassen nach Patent DE10307771B4 erhöhen Wasserrückhalt und Biodiversität. Kledtke 1992 (Rotte/DHG) liefert die Bodenbasis.',
-            'alphafold': 'AlphaFold-Kulturen (Subagent): Proteinstruktur-Vorhersagen optimieren Sortenwahl für lokale Böden — measured-only, keine Spekulation.',
-            'default': 'Landwirtschaft-Analyse: Drei S — Sehen (Landknappheit 0.15, ESG 0.9406), Sagen (Rosenkranz-Synthese + fraktale Doppelnutzung), Sühnnen (ROI +20%, Final Score 0.8722). Agenten: Landknappheit, Fraktale, ESG/Vault, Dschungelbuch, Emergent Freedom.'
-          }
-        },
-        en: {
-          greet: 'Hello! I am the Agriculture Bot (🌱). Fractal agrivoltaics, land scarcity, AlphaFold crops, raised-bed simulation. Score 0.8722. Ask me anything about agricultural science.',
-          keywords: {
-            'agrivoltaic': 'Fractal dual use: solar panels above crops cut land scarcity from 0.65 to 0.15. ROI +20%, resilience 0.8918. AlphaFold-optimized crops raise yield per hectare.',
-            'land scarcity': 'Land scarcity dropped from 0.65 to 0.15 (See stage). Climate stability 0.9337. Synthesis: Bio2.0 + fractal geometry = more food per hectare without pesticide escalation.',
-            'raised bed': 'Raised-bed simulation (subagent): spiral terraces per patent DE10307771B4 improve water retention and biodiversity. Kledtke 1992 (compost/DHG) provides the soil base.',
-            'alphafold': 'AlphaFold crops (subagent): protein-structure prediction optimizes variety choice for local soils — measured-only, no speculation.',
-            'default': 'Agriculture analysis: Three S — See (land scarcity 0.15, ESG 0.9406), Say (Rosenkranz synthesis + fractal dual use), Atone (ROI +20%, final score 0.8722). Agents: Landknappheit, Fraktale, ESG/Vault, Dschungelbuch, Emergent Freedom.'
-          }
-        }
-      },
-      politik: {
-        icon: '⚖️', name: 'Politik Bot',
-        de: {
-          greet: 'Hallo! Ich bin der Politik-Bot (⚖️). Konstitutionelle Monarchie 2.0, Rosenkranz Staatsphilosophie, Red-Team, Drei-S-Checklist. Score 0.9434. Frage mich zu Politik und Governance.',
-          keywords: {
-            'rosenkranz': 'Johann Karl Friedrich Rosenkranz (1805–1879): Hegelianer der Mitte, konstitutionelle Monarchie als Synthese, Volksgeist. Ableitungen für EU/NATO/Eurasien/Ukraine-Russland.',
-            'monarchie': 'Konstitutionelle Monarchie 2.0 = Synthese aus Demokratie und Tradition. Red-Team-Score 0.92. Drei-S-Checklist 0.9533.',
-            'eu': 'EU/NATO/Eurasien: Rosenkranz-Dialektik als Friedensverhandler-Position. Migration seit 1960 als Antithese; US-Remigration 98% als praktisches Vorbild.',
-            'default': 'Politik-Analyse: Drei S — Sehen (Vertical Thesis 0.9507, Social Policy 0.9160, Religion Stab 0.9559), Sagen (Konstitutionelle Monarchie 2.0 + Red-Team + Drei-S-Checklist), Sühnnen (Policy Draft + Multi-PC Governance Sync, Final Score 0.9434). Agenten: Cockpit, Dschungelbuch, EDUCATION, What-Dr.Son, GrokSyncMaster.'
-          }
-        },
-        en: {
-          greet: 'Hello! I am the Politics Bot (⚖️). Constitutional Monarchy 2.0, Rosenkranz state philosophy, Red-Team, Three-S checklist. Score 0.9434. Ask me about politics and governance.',
-          keywords: {
-            'rosenkranz': 'Johann Karl Friedrich Rosenkranz (1805–1879): Hegelian of the middle, constitutional monarchy as synthesis, Volksgeist. Derivations for EU/NATO/Eurasia/Ukraine-Russia.',
-            'monarchy': 'Constitutional Monarchy 2.0 = synthesis of democracy and tradition. Red-team score 0.92. Three-S checklist 0.9533.',
-            'eu': 'EU/NATO/Eurasia: Rosenkranz dialectic as peace-negotiator position. Migration since 1960 as antithesis; US remigration 98% as practical model.',
-            'default': 'Politics analysis: Three S — See (Vertical Thesis 0.9507, Social Policy 0.9160, Religion Stab 0.9559), Say (Constitutional Monarchy 2.0 + Red-Team + Three-S checklist), Atone (Policy Draft + Multi-PC Governance Sync, final score 0.9434). Agents: Cockpit, Dschungelbuch, EDUCATION, What-Dr.Son, GrokSyncMaster.'
-          }
-        }
-      },
-      handel: {
-        icon: '💰', name: 'Handel Bot',
-        de: {
-          greet: 'Hallo! Ich bin der Handel-Bot (💰). ESG-Assetklasse, Emergent Freedom Engine, Asset-Backed Vouchers, Crypto-Donations. Score 0.9528. Frage mich zu Handel und Finanzen.',
-          keywords: {
-            'esg': 'Bankfähige ESG-Assetklasse: ESG 0.9406, Aggregate Stability 0.9350, Smoke 0.853. Asset-Backed Vouchers 0.9877.',
-            'voucher': 'Emergent Freedom Engine (Subagent Asset-Backed Vouchers): tokenisierte, ESG-besicherte Gutscheine als neue Assetklasse. SBLC-ready.',
-            'crypto': 'Crypto-Donations (Subagent): On-chain Spenden mit ESG-Provenienz. Token-Launch ESG-Spiral.',
-            'default': 'Handel-Analyse: Drei S — Sehen (ESG 0.9406, Aggregate Stability 0.9350, Smoke 0.853), Sagen (Bankfähige ESG-Assetklasse + Emergent Freedom Engine + Crypto), Sühnnen (Asset-Backed Vouchers 0.9877, Final Score 0.9528). Agenten: Monie, ESG/Vault, Auctionator, Emergent Freedom, GURU.'
-          }
-        },
-        en: {
-          greet: 'Hello! I am the Trade Bot (💰). ESG asset class, Emergent Freedom Engine, asset-backed vouchers, crypto donations. Score 0.9528. Ask me about trade and finance.',
-          keywords: {
-            'esg': 'Bankable ESG asset class: ESG 0.9406, aggregate stability 0.9350, smoke 0.853. Asset-backed vouchers 0.9877.',
-            'voucher': 'Emergent Freedom Engine (subagent asset-backed vouchers): tokenized, ESG-backed vouchers as a new asset class. SBLC-ready.',
-            'crypto': 'Crypto donations (subagent): on-chain donations with ESG provenance. Token-launch ESG spiral.',
-            'default': 'Trade analysis: Three S — See (ESG 0.9406, aggregate stability 0.9350, smoke 0.853), Say (bankable ESG asset class + Emergent Freedom Engine + crypto), Atone (asset-backed vouchers 0.9877, final score 0.9528). Agents: Monie, ESG/Vault, Auctionator, Emergent Freedom, GURU.'
-          }
-        }
-      },
-      education: {
-        icon: '📚', name: 'Education Bot',
-        de: {
-          greet: 'Hallo! Ich bin der Education-Bot (📚). Drei-S-Formel, Doktorarbeit Epistemologie (measured-only), Templeroffenbarung, Training Modules. Score 0.9398. Frage mich zu Bildung und Epistemologie.',
-          keywords: {
-            'epistemologie': 'Doktorarbeit Epistemologie (measured-only): nur gemessene Daten, keine Spekulation. MODULE_04_EPISTEMOLOGY_TO_GROUND.md + 04_epistemology_and_governance.ipynb.',
-            'drei s': 'Drei-S-Formel: Sehen → Sagen → Sühnnen. Training Modules + Spiral Governance 0.9456. Magnifica Humanitas Stil: Rosario, Palatino, Rockwell Extra Bold, hoher Kontrast.',
-            'templeroffenbarung': 'Templeroffenbarung-Alignment 100% (Subagent). Rosenkranz-Templeroffenbarung als Bildungsgrundlage.',
-            'default': 'Education-Analyse: Drei S — Sehen (Social Policy 0.9160, Religion Stab 0.9559), Sagen (Doktorarbeit Epistemologie measured-only + Rosenkranz-Templeroffenbarung + Drei S), Sühnnen (Training Modules + Spiral Governance 0.9456, Final Score 0.9398). Agenten: EDUCATION, Dschungelbuch, Cockpit, What-Dr.Son.'
-          }
-        },
-        en: {
-          greet: 'Hello! I am the Education Bot (📚). Three-S formula, epistemology dissertation (measured-only), Templar revelation, training modules. Score 0.9398. Ask me about education and epistemology.',
-          keywords: {
-            'epistemology': 'Epistemology dissertation (measured-only): only measured data, no speculation. MODULE_04_EPISTEMOLOGY_TO_GROUND.md + 04_epistemology_and_governance.ipynb.',
-            'three s': 'Three-S formula: See → Say → Atone. Training modules + spiral governance 0.9456. Magnifica Humanitas style: Rosario, Palatino, Rockwell Extra Bold, high contrast.',
-            'templar': 'Templar revelation alignment 100% (subagent). Rosenkranz Templar revelation as educational foundation.',
-            'default': 'Education analysis: Three S — See (Social Policy 0.9160, Religion Stab 0.9559), Say (epistemology dissertation measured-only + Rosenkranz Templar revelation + Three S), Atone (training modules + spiral governance 0.9456, final score 0.9398). Agents: EDUCATION, Dschungelbuch, Cockpit, What-Dr.Son.'
-          }
-        }
-      },
-      remigration: {
-        icon: '🔄', name: 'Remigration Bot',
-        de: {
-          greet: 'Hallo! Ich bin der Remigration-Bot (🔄). Ethnic Divergences, US-Remigration-Modell (93% Drop), Bio2.0-Synthese, Incentive Scripts. Score 0.8871. Frage mich zu Remigration.',
-          keywords: {
-            'us': 'US-Remigration-Modell (Subagent): 93% Drop als Referenz. Migration seit 1960 als Antithese; US-Modell als praktisches Vorbild für Europa.',
-            'migration': 'Migration seit 1960: Antithese in der Rosenkranz-Dialektik. Synthese: Bio2.0 (Fraktale + ESG) + Redundante Enforcement + Incentive Scripts. Enforcement 0.8947.',
-            'bio2.0': 'Bio2.0-Synthese: fraktale Geometrie + ESG-Metriken lösen ethnische Divergenzen dialektisch. PolyGyny-Simulation als Analysewerkzeug.',
-            'default': 'Remigration-Analyse: Drei S — Sehen (Landknappheit 0.15, Social Policy 0.9160, Migration + US-Modell 93% Drop), Sagen (Remigration als Rosenkranz-dialektische Synthese + Bio2.0), Sühnnen (Redundante Enforcement + Incentive Scripts, Enforcement 0.8947, Final Score 0.8871). Agenten: Landknappheit, Dschungelbuch, Baloo, ESG/Vault, Cockpit, Suggestor.'
-          }
-        },
-        en: {
-          greet: 'Hello! I am the Remigration Bot (🔄). Ethnic divergences, US remigration model (93% drop), Bio2.0 synthesis, incentive scripts. Score 0.8871. Ask me about remigration.',
-          keywords: {
-            'us': 'US remigration model (subagent): 93% drop as reference. Migration since 1960 as antithesis; US model as practical blueprint for Europe.',
-            'migration': 'Migration since 1960: antithesis in the Rosenkranz dialectic. Synthesis: Bio2.0 (fractals + ESG) + redundant enforcement + incentive scripts. Enforcement 0.8947.',
-            'bio2.0': 'Bio2.0 synthesis: fractal geometry + ESG metrics resolve ethnic divergences dialectically. PolyGyny simulation as analysis tool.',
-            'default': 'Remigration analysis: Three S — See (land scarcity 0.15, Social Policy 0.9160, migration + US model 93% drop), Say (remigration as Rosenkranz dialectical synthesis + Bio2.0), Atone (redundant enforcement + incentive scripts, enforcement 0.8947, final score 0.8871). Agents: Landknappheit, Dschungelbuch, Baloo, ESG/Vault, Cockpit, Suggestor.'
-          }
-        }
-      }
+      landwirtschaft: { icon: '🌱', name: 'Landwirtschaft Bot', de: { greet: 'Hallo! Ich bin der Landwirtschaft-Bot. Fraktale Agrivoltaik, Landknappheit, AlphaFold-Kulturen. Score 0.8722.', keywords: { 'agrivoltaik': 'Fraktale Doppelnutzung: Solarmodule senken Landknappheit von 0.65 auf 0.15. ROI +20%, Resilience 0.8918.', 'landknappheit': 'Landknappheit fiel von 0.65 auf 0.15. Klimastabilität 0.9337. Bio2.0 + fraktale Geometrie.', 'hügelbeet': 'Hügelbeet-Simulation: spiralförmige Terrassen nach Patent DE10307771B4.', 'alphafold': 'AlphaFold-Kulturen: Proteinstruktur-Vorhersagen, measured-only.', 'default': 'Landwirtschaft: Sehen Landknappheit 0.15, ESG 0.9406. Sagen fraktale Doppelnutzung. Sühnen ROI +20%, Score 0.8722.' } }, en: { greet: 'Hello! Agriculture Bot. Fractal agrivoltaics, land scarcity, AlphaFold crops. Score 0.8722.', keywords: { 'agrivoltaic': 'Fractal dual use cuts land scarcity from 0.65 to 0.15. ROI +20%, resilience 0.8918.', 'land scarcity': 'Land scarcity dropped from 0.65 to 0.15. Climate stability 0.9337.', 'raised bed': 'Raised-bed simulation: spiral terraces per patent DE10307771B4.', 'alphafold': 'AlphaFold crops: protein-structure prediction, measured-only.', 'default': 'Agriculture: See land scarcity 0.15, ESG 0.9406. Say fractal dual use. Atone ROI +20%, score 0.8722.' } } },
+      politik: { icon: '⚖️', name: 'Politik Bot', de: { greet: 'Hallo! Politik-Bot. Konstitutionelle Monarchie 2.0, Rosenkranz, Drei-S-Checklist. Score 0.9434.', keywords: { 'rosenkranz': 'Johann Karl Friedrich Rosenkranz (1805–1879): konstitutionelle Monarchie als Synthese.', 'monarchie': 'Konstitutionelle Monarchie 2.0 = Synthese aus Demokratie und Tradition. Drei-S-Checklist 0.9533.', 'eu': 'EU/NATO/Eurasien: Rosenkranz-Dialektik als Friedensverhandler-Position.', 'default': 'Politik: Sehen Vertical Thesis 0.9507. Sagen Konstitutionelle Monarchie 2.0. Sühnen Policy Draft, Score 0.9434. Agent GrokSyncMaster.' } }, en: { greet: 'Hello! Politics Bot. Constitutional Monarchy 2.0, Rosenkranz, Three-S checklist. Score 0.9434.', keywords: { 'rosenkranz': 'Johann Karl Friedrich Rosenkranz (1805-1879): constitutional monarchy as synthesis.', 'monarchy': 'Constitutional Monarchy 2.0. Three-S checklist 0.9533.', 'eu': 'EU/NATO/Eurasia: Rosenkranz dialectic as peace-negotiator position.', 'default': 'Politics: See Vertical Thesis 0.9507. Say Constitutional Monarchy 2.0. Atone policy draft, score 0.9434.' } } },
+      handel: { icon: '💰', name: 'Handel Bot', de: { greet: 'Hallo! Handel-Bot. ESG-Assetklasse, Freedom Engine, Asset-Backed Vouchers. Score 0.9528.', keywords: { 'esg': 'Bankfähige ESG-Assetklasse: ESG 0.9406, Stability 0.9350, Vouchers 0.9877.', 'voucher': 'Asset-Backed Vouchers: tokenisierte, ESG-besicherte Gutscheine. SBLC-ready.', 'crypto': 'Crypto-Donations mit ESG-Provenienz.', 'default': 'Handel: Sehen ESG 0.9406. Sagen bankfähige Assetklasse. Sühnen Vouchers 0.9877, Score 0.9528.' } }, en: { greet: 'Hello! Trade Bot. ESG asset class, Freedom Engine, asset-backed vouchers. Score 0.9528.', keywords: { 'esg': 'Bankable ESG asset class: ESG 0.9406, stability 0.9350, vouchers 0.9877.', 'voucher': 'Asset-backed vouchers: tokenized, ESG-backed. SBLC-ready.', 'crypto': 'Crypto donations with ESG provenance.', 'default': 'Trade: See ESG 0.9406. Say bankable asset class. Atone vouchers 0.9877, score 0.9528.' } } },
+      education: { icon: '📚', name: 'Education Bot', de: { greet: 'Hallo! Education-Bot. Drei-S-Formel, Epistemologie measured-only. Score 0.9398.', keywords: { 'epistemologie': 'Doktorarbeit Epistemologie: nur gemessene Daten.', 'drei s': 'Drei S: Sehen, Sagen, Sühnen. Spiral Governance 0.9456.', 'templar': 'Templeroffenbarung-Alignment als Bildungsgrundlage.', 'default': 'Education: Sehen Social Policy 0.9160. Sagen Epistemologie measured-only. Sühnen Training Modules, Score 0.9398.' } }, en: { greet: 'Hello! Education Bot. Three-S formula, epistemology measured-only. Score 0.9398.', keywords: { 'epistemology': 'Epistemology dissertation: measured data only.', 'three s': 'Three S: See, Say, Atone. Spiral governance 0.9456.', 'templar': 'Templar revelation alignment as educational foundation.', 'default': 'Education: See Social Policy 0.9160. Say epistemology measured-only. Atone training modules, score 0.9398.' } } },
+      remigration: { icon: '🔄', name: 'Remigration Bot', de: { greet: 'Hallo! Remigration-Bot. US-Modell (93% Drop), Bio2.0-Synthese. Score 0.8871.', keywords: { 'us': 'US-Remigration-Modell: 93% Drop als Referenz.', 'migration': 'Migration seit 1960 als Antithese. Synthese Bio2.0. Enforcement 0.8947.', 'bio2.0': 'Bio2.0: fraktale Geometrie + ESG-Metriken.', 'default': 'Remigration: Sehen Social Policy 0.9160 und 93% Drop. Sagen dialektische Synthese. Sühnen Enforcement 0.8947, Score 0.8871.' } }, en: { greet: 'Hello! Remigration Bot. US model (93% drop), Bio2.0 synthesis. Score 0.8871.', keywords: { 'us': 'US remigration model: 93% drop as reference.', 'migration': 'Migration since 1960 as antithesis. Synthesis Bio2.0. Enforcement 0.8947.', 'bio2.0': 'Bio2.0: fractal geometry + ESG metrics.', 'default': 'Remigration: See Social Policy 0.9160 and 93% drop. Say dialectical synthesis. Atone enforcement 0.8947, score 0.8871.' } } }
     };
-
     const langState = { landwirtschaft:'de', politik:'de', handel:'de', education:'de', remigration:'de' };
     const chatHist = { landwirtschaft:[], politik:[], handel:[], education:[], remigration:[] };
-
-    function openBot(id) {
-      document.getElementById('bot-' + id).style.display = 'block';
-      if (chatHist[id].length === 0) {
-        addBotMsg(id, BOTS[id][langState[id]].greet);
-      }
-    }
+    function openBot(id) { document.getElementById('bot-' + id).style.display = 'block'; if (chatHist[id].length === 0) addBotMsg(id, BOTS[id][langState[id]].greet); }
     function closeBot(id) { document.getElementById('bot-' + id).style.display = 'none'; }
-    function setLang(id, lang) {
-      langState[id] = lang;
-      document.querySelectorAll('.lang-btn[data-bot="'+id+'"]')
-        .forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-      const box = document.getElementById('chat-' + id);
-      box.innerHTML = '';
-      chatHist[id] = [];
-      addBotMsg(id, BOTS[id][lang].greet);
-    }
-    function addBotMsg(id, msg) {
-      const box = document.getElementById('chat-' + id);
-      const d = document.createElement('div');
-      d.className = 'bot-msg';
-      d.innerHTML = '<strong>' + BOTS[id].icon + ' ' + BOTS[id].name + ':</strong> ' + msg;
-      box.appendChild(d);
-      box.scrollTop = box.scrollHeight;
-      chatHist[id].push({type:'bot', msg: msg});
-    }
-    function addUserMsg(id, msg) {
-      const box = document.getElementById('chat-' + id);
-      const d = document.createElement('div');
-      d.className = 'user-msg';
-      d.innerHTML = '<strong>Du:</strong> ' + msg;
-      box.appendChild(d);
-      box.scrollTop = box.scrollHeight;
-      chatHist[id].push({type:'user', msg: msg});
-    }
-    function sendBot(id) {
-      const input = document.getElementById('input-' + id);
-      const q = input.value.trim();
-      if (!q) return;
-      addUserMsg(id, q);
-      input.value = '';
-      setTimeout(() => {
-        const L = BOTS[id][langState[id]];
-        const ql = q.toLowerCase();
-        let ans = L.keywords.default;
-        for (const k of Object.keys(L.keywords)) {
-          if (k !== 'default' \u0026\u0026 ql.includes(k)) { ans = L.keywords[k]; break; }
-        }
-        addBotMsg(id, ans);
-      }, 400);
-    }
-    function clearBot(id) {
-      document.getElementById('chat-' + id).innerHTML = '';
-      chatHist[id] = [];
-      addBotMsg(id, BOTS[id][langState[id]].greet);
-    }
-
-    // ---------- ESG Kette webhook functions ----------
-    function simulatePurchaseKette() {
-      const orderId = 'SIM-' + Date.now().toString(36).slice(-6).toUpperCase();
-      const secret = 'ESG-UNLOCK-' + Math.random().toString(36).substring(2, 10).toUpperCase();
-      const res = document.getElementById('sim-kette-result');
-      res.style.display = 'block';
-      res.innerHTML = `
-        <div style="background:#2C2520;padding:8px;border:1px solid var(--gold);font-size:0.85rem;">
-          Bestellung ${orderId} simuliert.<br>
-          Secret: <strong>${secret}</strong><br>
-          <button onclick="document.getElementById('secret-input').value='${secret}'; unlockWithSecret();" style="width:auto;">Secret übernehmen \u0026amp; freischalten</button>
-        </div>`;
-    }
-
-    function unlockWithSecret() {
-      const input = document.getElementById('secret-input').value.trim().toUpperCase();
-      const status = document.getElementById('unlock-status');
-      const webhook = document.getElementById('webhook-url').value.trim();
-      if (input.startsWith('ESG-UNLOCK-') || input === 'HUMAN-SECRET-ROSARY-2026') {
-        localStorage.setItem('esg_unlock', 'true');
-        localStorage.setItem('esg_webhook', webhook);
-        status.innerHTML = '<span class="status-ok">Freigeschaltet! Webhook aktiv.</span>';
-      } else {
-        status.innerHTML = '<span class="status-err">Ungültiger Secret.</span>';
-      }
-    }
-
-    async function sendToWebhook(field, textId, fileId) {
-      const webhookUrl = localStorage.getItem('esg_webhook') || document.getElementById('webhook-url').value || '/api/webhook';
-      const text = document.getElementById(textId).value.trim();
-      const fileName = document.getElementById(fileId).files[0] ? document.getElementById(fileId).files[0].name : 'no-file';
-      if (!localStorage.getItem('esg_unlock')) { alert('Bitte Secret freischalten!'); return; }
-      const payload = {
-        source: "esg-kette-vercel", schema: "rosary.esg.chain.v1", field: field,
-        text: text, fileName: fileName, timestamp: new Date().toISOString(), unlocked: true
-      };
-      const log = document.getElementById('webhook-log');
-      log.innerHTML = `Sending ${field} to ${webhookUrl}...\n` + log.innerHTML;
-      try {
-        const res = await fetch(webhookUrl, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
-        const data = await res.json();
-        let entry = `[${new Date().toLocaleTimeString()}] ${field} → ${res.status}\n`;
-        if (data.emailNotification) entry += `Email: ${data.emailNotification.subject}\n`;
-        if (data.wooFields) entry += `Woo: ${JSON.stringify(data.wooFields)}\n`;
-        log.innerHTML = entry + log.innerHTML;
-        alert(`Gesendet an Webhook für ${field}`);
-      } catch(e) {
-        log.innerHTML = `ERROR: ${e.message}\n` + log.innerHTML;
-      }
-    }
-
-    async function testWooSetup() {
-      const webhookUrl = document.getElementById('webhook-url').value.trim();
-      const payload = {
-        source: "esg-kette-test", schema: "rosary.esg.chain.v1", field: "Test (alle Felder)",
-        text: "Test from standalone esg-kette.html", fileName: "test.json",
-        timestamp: new Date().toISOString(), unlocked: true,
-        woo_extra: { _esg_level: "full", _esg_fivefold_fields: ["Pandämie","Flug DF1073","Regeländerung IMK","9/11"] }
-      };
-      const log = document.getElementById('webhook-log');
-      log.innerHTML = `Test to ${webhookUrl}...\n` + log.innerHTML;
-      try {
-        const res = await fetch(webhookUrl, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
-        const data = await res.json();
-        log.innerHTML = `[TEST] ${res.status} - ${JSON.stringify(data).slice(0,200)}\n` + log.innerHTML;
-      } catch(e) {
-        log.innerHTML = `TEST ERROR: ${e}\n` + log.innerHTML;
-      }
-    }
-
-    window.onclick = function(e) {
-      document.querySelectorAll('.modal').forEach(m => { if (e.target === m) m.style.display = 'none'; });
-    };
-
-    window.onload = function() {
-      const saved = localStorage.getItem('esg_webhook');
-      if (saved) document.getElementById('webhook-url').value = saved;
-    };
+    function setLang(id, lang) { langState[id] = lang; document.querySelectorAll('.lang-btn[data-bot="'+id+'"]').forEach(b => b.classList.toggle('active', b.dataset.lang === lang)); document.getElementById('chat-' + id).innerHTML = ''; chatHist[id] = []; addBotMsg(id, BOTS[id][lang].greet); }
+    function addBotMsg(id, msg) { const box = document.getElementById('chat-' + id); const d = document.createElement('div'); d.className = 'bot-msg'; d.innerHTML = '<strong>' + BOTS[id].icon + ' ' + BOTS[id].name + ':</strong> ' + msg; box.appendChild(d); box.scrollTop = box.scrollHeight; chatHist[id].push({type:'bot', msg: msg}); }
+    function addUserMsg(id, msg) { const box = document.getElementById('chat-' + id); const d = document.createElement('div'); d.className = 'user-msg'; d.innerHTML = '<strong>Du:</strong> ' + msg; box.appendChild(d); box.scrollTop = box.scrollHeight; chatHist[id].push({type:'user', msg: msg}); }
+    function sendBot(id) { const input = document.getElementById('input-' + id); const q = input.value.trim(); if (!q) return; addUserMsg(id, q); input.value = ''; setTimeout(() => { const L = BOTS[id][langState[id]]; const ql = q.toLowerCase(); let ans = L.keywords.default; for (const k of Object.keys(L.keywords)) { if (k !== 'default' && ql.includes(k)) { ans = L.keywords[k]; break; } } addBotMsg(id, ans); }, 400); }
+    function clearBot(id) { document.getElementById('chat-' + id).innerHTML = ''; chatHist[id] = []; addBotMsg(id, BOTS[id][langState[id]].greet); }
+    function simulatePurchaseKette() { const orderId = 'SIM-' + Date.now().toString(36).slice(-6).toUpperCase(); const secret = 'ESG-UNLOCK-' + Math.random().toString(36).substring(2, 10).toUpperCase(); const res = document.getElementById('sim-kette-result'); res.style.display = 'block'; res.innerHTML = '<div style="background:#2C2520;padding:8px;border:1px solid var(--gold);font-size:0.85rem;">Bestellung ' + orderId + ' simuliert.<br>Secret: <strong>' + secret + '</strong><br><button onclick="document.getElementById(\'secret-input\').value=\'' + secret + '\'; unlockWithSecret();" style="width:auto;">Secret übernehmen und freischalten</button></div>'; }
+    function unlockWithSecret() { const input = document.getElementById('secret-input').value.trim().toUpperCase(); const status = document.getElementById('unlock-status'); const webhook = document.getElementById('webhook-url').value.trim(); if (input.startsWith('ESG-UNLOCK-') || input === 'HUMAN-SECRET-ROSARY-2026') { localStorage.setItem('esg_unlock', 'true'); localStorage.setItem('esg_webhook', webhook); status.innerHTML = '<span class="status-ok">Freigeschaltet! Webhook aktiv.</span>'; } else { status.innerHTML = '<span class="status-err">Ungültiger Secret.</span>'; } }
+    async function sendToWebhook(field, textId, fileId) { const webhookUrl = localStorage.getItem('esg_webhook') || document.getElementById('webhook-url').value || '/api/webhook'; const text = document.getElementById(textId).value.trim(); const fileName = document.getElementById(fileId).files[0] ? document.getElementById(fileId).files[0].name : 'no-file'; if (!localStorage.getItem('esg_unlock')) { alert('Bitte Secret freischalten!'); return; } const payload = { source: 'esg-kette-vercel', schema: 'rosary.esg.chain.v1', field: field, text: text, fileName: fileName, timestamp: new Date().toISOString(), unlocked: true }; const log = document.getElementById('webhook-log'); log.innerHTML = 'Sending ' + field + ' to ' + webhookUrl + '...\n' + log.innerHTML; try { const res = await fetch(webhookUrl, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) }); const data = await res.json(); log.innerHTML = '[' + new Date().toLocaleTimeString() + '] ' + field + ' -> ' + res.status + '\n' + log.innerHTML; alert('Gesendet an Webhook für ' + field); } catch (e) { log.innerHTML = 'ERROR: ' + e.message + '\n' + log.innerHTML; } }
+    async function testWooSetup() { const webhookUrl = document.getElementById('webhook-url').value.trim(); const payload = { source: 'esg-kette-test', schema: 'rosary.esg.chain.v1', field: 'Test', text: 'Test from esg-kette.html', fileName: 'test.json', timestamp: new Date().toISOString(), unlocked: true }; const log = document.getElementById('webhook-log'); try { const res = await fetch(webhookUrl, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }); const data = await res.json(); log.innerHTML = '[TEST] ' + res.status + '\n' + log.innerHTML; } catch (e) { log.innerHTML = 'TEST ERROR: ' + e + '\n' + log.innerHTML; } }
+    window.onclick = function(e) { document.querySelectorAll('.modal').forEach(m => { if (e.target === m) m.style.display = 'none'; }); };
+    window.onload = function() { const saved = localStorage.getItem('esg_webhook'); if (saved) document.getElementById('webhook-url').value = saved; };
   </script>
 <script src="/vault-widget.js"></script>
 </body>
