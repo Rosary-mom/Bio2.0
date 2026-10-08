@@ -26,8 +26,99 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+if (!defined('ROSARY_BBB_SALT')) {
+    define('ROSARY_BBB_SALT', '');
+}
+
 function rosary_esg_product_ids() {
     return array(1594, 1595);
+}
+
+function rosary_bbb_base() {
+    return 'https://mxoa230012.rna1.blindsidenetworks.com/bigbluebutton/api/';
+}
+
+function rosary_bbb_salt() {
+    return defined('ROSARY_BBB_SALT') ? trim((string) ROSARY_BBB_SALT) : '';
+}
+
+function rosary_bbb_qs($params) {
+    $parts = array();
+    foreach ($params as $key => $value) {
+        $parts[] = rawurlencode($key) . '=' . rawurlencode((string) $value);
+    }
+    return implode('&', $parts);
+}
+
+function rosary_bbb_create($order) {
+    $salt = rosary_bbb_salt();
+    if ($salt === '') {
+        return new WP_Error('salt', 'BBB-Salt fehlt. Im Snippet ROSARY_BBB_SALT eintragen.', array('status' => 503));
+    }
+    $ap = (string) $order->get_meta('_esg_bbb_ap');
+    $mp = (string) $order->get_meta('_esg_bbb_mp');
+    if ($ap === '' || $mp === '') {
+        $ap = wp_generate_password(12, false, false);
+        $mp = wp_generate_password(12, false, false);
+        $order->update_meta_data('_esg_bbb_ap', $ap);
+        $order->update_meta_data('_esg_bbb_mp', $mp);
+        $order->save();
+    }
+    $query = rosary_bbb_qs(array(
+        'name' => '90 Minuten Decision-Engine ' . $order->get_id(),
+        'meetingID' => 'rosary-esg-' . $order->get_id(),
+        'attendeePW' => $ap,
+        'moderatorPW' => $mp,
+        'meetingExpireIfNoUserJoinedInMinutes' => '90',
+        'meetingExpireWhenLastUserLeftInMinutes' => '15',
+        'logoutURL' => 'https://durchblicker-app.rosary.eu.com/esg-kette.html',
+    ));
+    $known = get_option('rosary_bbb_algo', '');
+    $algos = in_array($known, array('sha1', 'sha256'), true) ? array($known) : array('sha256', 'sha1');
+    $last = 'BBB-Aufruf fehlgeschlagen.';
+    foreach ($algos as $algo) {
+        $sum = hash($algo, 'create' . $query . $salt);
+        $res = wp_remote_get(rosary_bbb_base() . 'create?' . $query . '&checksum=' . $sum, array('timeout' => 12));
+        if (is_wp_error($res)) {
+            $last = $res->get_error_message();
+            continue;
+        }
+        $body = wp_remote_retrieve_body($res);
+        if (strpos($body, 'checksumError') !== false) {
+            $last = 'Checksums do not match. Salt oder Verfahren falsch.';
+            continue;
+        }
+        update_option('rosary_bbb_algo', $algo, false);
+        if (strpos($body, 'FAILED') !== false && strpos($body, 'idNotUnique') === false && strpos($body, 'duplicateWarning') === false) {
+            return new WP_Error('bbb', wp_strip_all_tags($body), array('status' => 502));
+        }
+        return true;
+    }
+    return new WP_Error('bbb', $last, array('status' => 502));
+}
+
+function rosary_bbb_join_url($order, $full_name, $moderator) {
+    $created = rosary_bbb_create($order);
+    if (is_wp_error($created)) {
+        return $created;
+    }
+    $order = wc_get_order($order->get_id());
+    $algo = get_option('rosary_bbb_algo', '');
+    if (!in_array($algo, array('sha1', 'sha256'), true)) {
+        return new WP_Error('bbb', 'Checksum-Verfahren unbekannt.', array('status' => 502));
+    }
+    $name = trim((string) $full_name);
+    if ($name === '') {
+        $name = $moderator ? 'Moderator' : 'Teilnehmer';
+    }
+    $query = rosary_bbb_qs(array(
+        'fullName' => $name,
+        'meetingID' => 'rosary-esg-' . $order->get_id(),
+        'password' => $moderator ? (string) $order->get_meta('_esg_bbb_mp') : (string) $order->get_meta('_esg_bbb_ap'),
+        'redirect' => 'true',
+    ));
+    $sum = hash($algo, 'join' . $query . rosary_bbb_salt());
+    return rosary_bbb_base() . 'join?' . $query . '&checksum=' . $sum;
 }
 
 function rosary_esg_mail_to($order) {
@@ -86,8 +177,8 @@ function rosary_esg_on_paid($order_id) {
             . "Status: " . $status . "\n"
             . "Secret: " . $secret . "\n"
             . "Freischalten: " . $return . "\n\n"
-            . "90 Minuten: auf der Freischalt-Seite einen Wunschtermin nennen.\n"
-            . "Raum: https://mxoa230012.rna1.blindsidenetworks.com/html5client/\n";
+            . "90 Minuten: auf der Freischalt-Seite einen Wunschtermin nennen, dann Raum öffnen.\n"
+            . "Der Client ohne Meeting-Token ist kein Raum.\n";
         wp_mail(
             rosary_esg_mail_to($order),
             'ESG Kette freigeschaltet #' . $order->get_id(),
@@ -222,21 +313,81 @@ add_action('rest_api_init', function () {
             $order->update_meta_data('_esg_session_when', $when);
             $order->update_meta_data('_esg_session_name', $name);
             $order->update_meta_data('_esg_session_email', $email);
+            $token = (string) $order->get_meta('_esg_bbb_mod_token');
+            if ($token === '') {
+                $token = wp_generate_password(24, false, false);
+                $order->update_meta_data('_esg_bbb_mod_token', $token);
+            }
             $order->save();
-            $room = 'https://mxoa230012.rna1.blindsidenetworks.com/html5client/';
-            $body = "90-Minuten-Termin angefragt.\n\n"
-                . "Bestellung #" . $order->get_id() . "\n"
-                . "Name: " . $name . "\n"
-                . "E-Mail: " . $email . "\n"
-                . "Wunschtermin (Europe/Berlin): " . $when . "\n"
-                . "Raum: " . $room . "\n\n"
-                . "Der Raum ist damit nicht reserviert. Termin per Antwort bestätigen.\n";
+            $mod = add_query_arg(
+                array(
+                    'order' => $order->get_id(),
+                    'mod' => $token,
+                    'name' => 'Moderator',
+                ),
+                rest_url('rosary/v1/esg-session-join')
+            );
             wp_mail(
                 rosary_esg_mail_to($order),
                 '90-Minuten-Termin #' . $order->get_id(),
-                $body
+                "90-Minuten-Termin angefragt.\n\nBestellung #" . $order->get_id()
+                . "\nName: " . $name
+                . "\nE-Mail: " . $email
+                . "\nWunschtermin (Europe/Berlin): " . $when
+                . "\n\nTeilnehmer öffnet den Raum auf der Freischalt-Seite mit Raum öffnen.\n"
+                . "Der Termin ist erst bestätigt, wenn ihr antwortet.\n"
+            );
+            wp_mail(
+                array('eurobitz@Jesus.tips', 'uwe.rosenkranz@gmail.com'),
+                'Moderator-Raum #' . $order->get_id(),
+                "Moderator-Link, erst zur Terminzeit öffnen:\n" . $mod . "\n"
             );
             return array('ok' => true, 'order' => $order->get_id(), 'when' => $when);
+        },
+    ));
+});
+
+add_action('rest_api_init', function () {
+    register_rest_route('rosary/v1', '/esg-session-join', array(
+        'methods' => array('GET', 'POST', 'OPTIONS'),
+        'permission_callback' => '__return_true',
+        'callback' => function ($req) {
+            if ($req->get_method() === 'OPTIONS') {
+                return array('ok' => true);
+            }
+            if ($req->get_method() === 'GET') {
+                $order = function_exists('wc_get_order') ? wc_get_order(absint($req->get_param('order'))) : null;
+                $mod = (string) $req->get_param('mod');
+                $stored = $order ? (string) $order->get_meta('_esg_bbb_mod_token') : '';
+                if (!$order || $mod === '' || $stored === '' || !hash_equals($stored, $mod)) {
+                    return new WP_Error('forbidden', 'Moderator-Link ungültig.', array('status' => 403));
+                }
+                $url = rosary_bbb_join_url($order, sanitize_text_field((string) $req->get_param('name')), true);
+                if (is_wp_error($url)) {
+                    return $url;
+                }
+                wp_redirect($url);
+                exit;
+            }
+            $secret = trim((string) $req->get_param('secret'));
+            $name = sanitize_text_field((string) $req->get_param('name'));
+            if ($secret === '') {
+                return new WP_Error('bad', 'Secret fehlt.', array('status' => 400));
+            }
+            $orders = wc_get_orders(array(
+                'limit' => 1,
+                'status' => array('processing', 'completed'),
+                'meta_key' => '_esg_unlock_secret',
+                'meta_value' => $secret,
+            ));
+            if (!$orders) {
+                return new WP_Error('unpaid', 'Keine bezahlte Bestellung zu diesem Secret.', array('status' => 402));
+            }
+            $url = rosary_bbb_join_url($orders[0], $name, false);
+            if (is_wp_error($url)) {
+                return $url;
+            }
+            return array('ok' => true, 'url' => $url);
         },
     ));
 });
