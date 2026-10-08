@@ -177,8 +177,11 @@ function rosary_esg_on_paid($order_id) {
             . "Status: " . $status . "\n"
             . "Secret: " . $secret . "\n"
             . "Freischalten: " . $return . "\n\n"
-            . "90 Minuten: auf der Freischalt-Seite einen Wunschtermin nennen, dann Raum öffnen.\n"
-            . "Der Client ohne Meeting-Token ist kein Raum.\n";
+            . "90 Minuten, ohne Zeitlimit.\n"
+            . "Raum: https://mxoa230012.rna1.blindsidenetworks.com/html5client/\n"
+            . "Gast mit Gmail: https://holyrosarychurch.moodlecloud.com/\n"
+            . "Kurs SpaceX, Raum Live Kommunikation.\n"
+            . "Wunschtermin auf der Freischalt-Seite nennen.\n";
         wp_mail(
             rosary_esg_mail_to($order),
             'ESG Kette freigeschaltet #' . $order->get_id(),
@@ -313,20 +316,7 @@ add_action('rest_api_init', function () {
             $order->update_meta_data('_esg_session_when', $when);
             $order->update_meta_data('_esg_session_name', $name);
             $order->update_meta_data('_esg_session_email', $email);
-            $token = (string) $order->get_meta('_esg_bbb_mod_token');
-            if ($token === '') {
-                $token = wp_generate_password(24, false, false);
-                $order->update_meta_data('_esg_bbb_mod_token', $token);
-            }
             $order->save();
-            $mod = add_query_arg(
-                array(
-                    'order' => $order->get_id(),
-                    'mod' => $token,
-                    'name' => 'Moderator',
-                ),
-                rest_url('rosary/v1/esg-session-join')
-            );
             wp_mail(
                 rosary_esg_mail_to($order),
                 '90-Minuten-Termin #' . $order->get_id(),
@@ -334,13 +324,10 @@ add_action('rest_api_init', function () {
                 . "\nName: " . $name
                 . "\nE-Mail: " . $email
                 . "\nWunschtermin (Europe/Berlin): " . $when
-                . "\n\nTeilnehmer öffnet den Raum auf der Freischalt-Seite mit Raum öffnen.\n"
-                . "Der Termin ist erst bestätigt, wenn ihr antwortet.\n"
-            );
-            wp_mail(
-                array('eurobitz@Jesus.tips', 'uwe.rosenkranz@gmail.com'),
-                'Moderator-Raum #' . $order->get_id(),
-                "Moderator-Link, erst zur Terminzeit öffnen:\n" . $mod . "\n"
+                . "\nRaum, ohne Zeitlimit: https://mxoa230012.rna1.blindsidenetworks.com/html5client/"
+                . "\nGast mit Gmail: https://holyrosarychurch.moodlecloud.com/"
+                . "\nKurs SpaceX, Raum Live Kommunikation."
+                . "\n\nBestätigt wird der Termin per Antwort.\n"
             );
             return array('ok' => true, 'order' => $order->get_id(), 'when' => $when);
         },

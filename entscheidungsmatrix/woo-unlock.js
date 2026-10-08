@@ -57,28 +57,12 @@
 
   window.openSessionRoom = function () {
     var secret = localStorage.getItem("esg_secret") || "";
-    var name = (document.getElementById("session-name") || {}).value || "";
     var st = document.getElementById("session-status");
     if (!secret) {
       if (st) st.textContent = "Erst freischalten.";
       return;
     }
-    if (st) st.textContent = "Raum wird angelegt…";
-    fetch("https://rosary.health/wp-json/rosary/v1/esg-session-join", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ secret: secret, name: String(name).trim() })
-    }).then(function (res) { return res.json().then(function (data) { return data; }); })
-      .then(function (data) {
-        if (data && data.ok && data.url) {
-          window.location.href = data.url;
-          return;
-        }
-        if (st) st.textContent = (data && data.message) || "Raum nicht erzeugt. BBB-Salt im Snippet eintragen.";
-      })
-      .catch(function () {
-        if (st) st.textContent = "Rosary Health nicht erreichbar.";
-      });
+    window.open("https://mxoa230012.rna1.blindsidenetworks.com/html5client/", "_blank", "noopener");
   };
 
   window.requestSession = function () {
