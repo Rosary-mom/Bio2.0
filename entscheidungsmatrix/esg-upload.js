@@ -65,6 +65,22 @@
     });
     var data = await res.json();
     if (!res.ok || !data.ok) throw new Error((data && data.message) || "Abgelehnt");
+    data.packed = packed;
     return data;
+  };
+
+  window.rosaryOpenSecureLetter = function (packed) {
+    if (!packed || !packed.data) throw new Error("Keine Datei zum Sichern.");
+    var bin = atob(packed.data);
+    var bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    var blob = new Blob([bytes], { type: packed.mime || "application/octet-stream" });
+    var link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = packed.name || "esg-datei";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.open("https://www.secureletterservice.com/", "_blank", "noopener");
   };
 })();

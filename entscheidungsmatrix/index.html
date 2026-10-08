@@ -97,7 +97,13 @@ async function sendToWebhook(field, textId, fileId) {
   if (!localStorage.getItem('esg_secret')) { alert('Erst nach bezahlter Bestellung. Secret aus der Mail eintragen und freischalten.'); return; }
   try {
     const result = await rosarySendEsg(field, text, file);
-    if (logEl) logEl.innerHTML = '[' + new Date().toLocaleTimeString() + '] ' + field + ' gespeichert #' + (result.order || '') + '\n' + logEl.innerHTML;
+    let extra = '';
+    if (result.packed) {
+      window.__esgPacked = window.__esgPacked || {};
+      window.__esgPacked[field] = result.packed;
+      extra = ' <button type="button" onclick="rosaryOpenSecureLetter(window.__esgPacked[\'' + field.replace(/'/g, '') + '\'])">Bei SecureLetterService sichern</button>';
+    }
+    if (logEl) logEl.innerHTML = '[' + new Date().toLocaleTimeString() + '] ' + field + ' gespeichert #' + (result.order || '') + extra + '\n' + logEl.innerHTML;
   } catch (e) {
     if (logEl) logEl.innerHTML = 'ERROR: ' + e.message + '\n' + logEl.innerHTML;
   }
