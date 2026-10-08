@@ -28,7 +28,6 @@
     .webhook-log { background: #111; border: 1px solid var(--gold); padding: 1rem; margin-top: 1rem; max-height: 300px; overflow-y: auto; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; }
     .status-ok { color: #D4AF37; font-weight: bold; }
     .status-err { color: #ff6b6b; }
-    .test-btn { background: #4A1F24; border-color: var(--gold); }
   </style>
 </head>
 <body>
@@ -36,330 +35,74 @@
     <h1 class="magnifica">Entscheidungsmatrix</h1>
     <p style="color: var(--sand); margin: 0.3rem 0 0;">rosary.esg.chain • Magnifica Humanitas • Bio 2.0 • mit Webhook + /api/webhook</p>
   </div>
-
   <div class="container">
     <div class="nav">
       <button onclick="showTab('esg-kette')" class="active" id="tab-esg-kette">ESG Kette (Paywall + Webhook)</button>
       <button onclick="showTab('phase5')" id="tab-phase5">Phase 5 Piloten Matrix</button>
     </div>
-
-    <!-- ESG Kette with full Webhook -->
     <div id="esg-kette" class="section active">
       <h2 class="magnifica" style="color: var(--gold);">ESG Kette • rosary.esg.chain</h2>
-      <p>Secret-Unlock + <strong>echter Vercel /api/webhook</strong> + Woo-Felder + Email-Benachrichtigung (wie dein altes PHP-Snippet).</p>
-            <!-- FORSCHER BESTELL-SIMULATOR (clean) -->
-      <div class="simulator-box" style="background:#1A1611; border:3px dashed var(--gold); padding:1.3rem; margin:1rem 0; border-radius:6px;">
-        <h3 style="margin:0 0 0.5rem 0; color:var(--gold);">🧪 Forscher-Simulation: Bestellung + Secret (2–3 Klicks)</h3>
-        <p style="margin:0 0 0.8rem 0; font-size:0.9rem;">Als versierter Forscher: Wähle dein Paket, „bezahle“, erhalte Secret und nutze sofort die Tools.</p>
-        
-        <select id="sim-product" style="width:auto; display:inline-block; margin-right:0.5rem;">
-          <option value="stufe3-pandamie-flug">Stufe 3 – Pandämie + Flug DF1073</option>
-          <option value="stufe4-imk-911">Stufe 4 – Regeländerung IMK + 9/11</option>
-          <option value="full-fivefold">Full Five-Fold ESG Kette</option>
-        </select>
-        <button onclick="simulatePurchase()" style="width:auto; display:inline-block;">Jetzt bezahlen (Simulation)</button>
-        
-        <div id="sim-result" style="margin-top:1rem; display:none;"></div>
+      <p>Freischalten nur nach bezahlter Woo-Bestellung. Die Mail versendet das Snippet auf rosary.health.</p>
+      <div class="simulator-box" style="background:#1A1611; border:3px solid var(--gold); padding:1rem; margin:1rem 0;">
+        <h4 style="margin:0 0 0.4rem;">Bezahlen über WooCommerce</h4>
+        <p>Harter Checkout. Freischaltung erst bei Status processing oder completed.</p>
+        <p><a href="https://rosary.health/cart/?add-to-cart=1594"><strong>90 Minuten mit Decision-Engine</strong> — 1.490 EUR</a></p>
+        <p><a href="https://rosary.health/cart/?add-to-cart=1595"><strong>Decision-Engine inkl. Token-Minting</strong> — 2.490 EUR</a></p>
+        <p style="color:#A38A5C;font-size:0.85rem;">Snippet Rosary ESG Unlock sendet das Secret per wp_mail an eurobitz@Jesus.tips und uwe.rosenkranz@gmail.com.</p>
       </div>
-
       <div class="secret-box" style="background:#2C2520; border:3px solid var(--gold); padding:1rem; margin:1rem 0;">
-        <label><strong>Webhook URL</strong> (dein Woo-Setup oder die neue Vercel /api/webhook)</label>
-        <input type="text" id="webhook-url" value="/api/webhook" placeholder="https://deine-app.vercel.app/api/webhook oder dein Woo Endpoint">
-        
+        <label><strong>Webhook URL</strong></label>
+        <input type="text" id="webhook-url" value="/api/webhook">
         <br><br>
-        <input type="text" id="secret-input" placeholder="ESG-UNLOCK-XXXXXXXX oder HUMAN-SECRET-ROSARY-2026">
-        <button onclick="unlockWithSecret()">Freischalten + Webhook aktivieren</button>
+        <input type="text" id="secret-input" placeholder="Secret aus der Zahlungsmail">
+        <button onclick="unlockWithSecret()">Freischalten</button>
         <div id="unlock-status" style="margin-top:0.5rem; font-size:0.9rem;"></div>
       </div>
-
       <div id="fields">
-        <div class="field">
-          <h3>🦠 Pandämie</h3>
-          <div class="upload-form">
-            <textarea id="text-pandamie" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="2"></textarea>
-            <input type="file" id="file-pandamie">
-            <button onclick="sendToWebhook('Pandämie', 'text-pandamie', 'file-pandamie')">Anonym an Webhook senden</button>
-          </div>
-        </div>
-        <div class="field">
-          <h3>✈️ Flug DF1073</h3>
-          <div class="upload-form">
-            <textarea id="text-flug" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="2"></textarea>
-            <input type="file" id="file-flug">
-            <button onclick="sendToWebhook('Flug DF1073', 'text-flug', 'file-flug')">Anonym an Webhook senden</button>
-          </div>
-        </div>
-        <div class="field">
-          <h3>📜 Regeländerung IMK</h3>
-          <div class="upload-form">
-            <textarea id="text-imk" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="2"></textarea>
-            <input type="file" id="file-imk">
-            <button onclick="sendToWebhook('Regeländerung IMK', 'text-imk', 'file-imk')">Anonym an Webhook senden</button>
-          </div>
-        </div>
-        <div class="field">
-          <h3>🗓️ 9/11</h3>
-          <div class="upload-form">
-            <textarea id="text-911" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="2"></textarea>
-            <input type="file" id="file-911">
-            <button onclick="sendToWebhook('9/11', 'text-911', 'file-911')">Anonym an Webhook senden</button>
-          </div>
-        </div>
+        <div class="field"><h3>Pandämie</h3><div class="upload-form"><textarea id="text-pandamie" rows="2"></textarea><input type="file" id="file-pandamie"><button onclick="sendToWebhook('Pandämie', 'text-pandamie', 'file-pandamie')">Anonym an Webhook senden</button></div></div>
+        <div class="field"><h3>Flug DF1073</h3><div class="upload-form"><textarea id="text-flug" rows="2"></textarea><input type="file" id="file-flug"><button onclick="sendToWebhook('Flug DF1073', 'text-flug', 'file-flug')">Anonym an Webhook senden</button></div></div>
+        <div class="field"><h3>Regeländerung IMK</h3><div class="upload-form"><textarea id="text-imk" rows="2"></textarea><input type="file" id="file-imk"><button onclick="sendToWebhook('Regeländerung IMK', 'text-imk', 'file-imk')">Anonym an Webhook senden</button></div></div>
+        <div class="field"><h3>9/11</h3><div class="upload-form"><textarea id="text-911" rows="2"></textarea><input type="file" id="file-911"><button onclick="sendToWebhook('9/11', 'text-911', 'file-911')">Anonym an Webhook senden</button></div></div>
       </div>
-
-      <div style="margin-top: 1.5rem;">
-        <button class="test-btn" onclick="testWooSetup()">🧪 Test-Button: Direkt an aktuelles Woo-Setup senden (mit erweiterter Payload)</button>
-        <div id="test-status" style="margin-top:0.5rem; font-size:0.9rem;"></div>
-      </div>
-
-      <div>
-        <h4>Webhook Log (inkl. Email & Woo-Felder aus /api/webhook)</h4>
-        <div id="webhook-log" class="webhook-log"></div>
-      </div>
-
-      <p><a href="esg-kette.html" target="_blank">Vollständige ESG Kette Seite öffnen</a></p>
+      <div><h4>Webhook Log</h4><div id="webhook-log" class="webhook-log"></div></div>
+      <p><a href="esg-kette.html">Vollständige ESG Kette öffnen</a></p>
     </div>
-
-    <!-- Phase 5 Section -->
     <div id="phase5" class="section">
       <h2 class="magnifica" style="color: var(--gold);">Phase 5 Piloten Entscheidungsmatrix</h2>
-      <p>Sehen / Sagen / Sühnen mit Live-Telemetry. Webhook-fähig über Chain-Validation.</p>
-      <div class="pilot-card">
-        <h3>🌱 Landwirtschaft Pilot</h3>
-        <div class="score">Score: 0.8722</div>
-        <div class="sehen"><strong>Sehen:</strong> Landknappheit 0.15, ESG 0.94</div>
-        <div class="sagen"><strong>Sagen:</strong> Fraktale Doppelnutzung + AlphaFold</div>
-        <div class="suehnen"><strong>Sühnen:</strong> ROI +20%, Resilience 0.89</div>
-      </div>
-      <div class="pilot-card">
-        <h3>⚖️ Politik Pilot</h3>
-        <div class="score">Score: 0.9434</div>
-        <div class="sehen"><strong>Sehen:</strong> Vertical Thesis 0.95</div>
-        <div class="sagen"><strong>Sagen:</strong> Konstitutionelle Synthese</div>
-        <div class="suehnen"><strong>Sühnen:</strong> Policy Draft + Multi-PC</div>
-      </div>
-      <p><a href="phase5-matrix.html" target="_blank">Vollständige Phase 5 Dashboard öffnen</a></p>
+      <div class="pilot-card"><h3>Landwirtschaft Pilot</h3><div class="score">Score: 0.8722</div></div>
+      <div class="pilot-card"><h3>Politik Pilot</h3><div class="score">Score: 0.9434</div></div>
+      <p><a href="phase5-matrix.html">Phase 5 Dashboard öffnen</a></p>
     </div>
-
-    <footer>
-      Magnifica Humanitas • Commit 593e86a6 + /api/webhook • rosary.esg.chain.v1 • Beide Matrizen + Woo-Email-Webhook<br>
-      Payload enthält jetzt: field, text, file, timestamp, wooFields (_esg_level, _esg_fivefold_fields, stufe), emailNotification
-    </footer>
+    <footer>Magnifica Humanitas • Woo-Checkout statt Simulation • rosary.esg.chain.v1</footer>
   </div>
-
-  
+<script src="/woo-unlock.js"></script>
 <script src="/vault-widget.js"></script>
 </body>
 </html>
-
-
-
-
 <script>
-    function showTab(tab) {
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
-      var sec = document.getElementById(tab);
-      if (sec) sec.classList.add('active');
-      var btn = document.getElementById('tab-' + tab);
-      if (btn) btn.classList.add('active');
-    }
-
-        function simulatePurchase() {
-      var sel = document.getElementById("sim-product");
-      var product = sel ? sel.value : "full-fivefold";
-      var orderId = "SIM-" + Date.now().toString(36).slice(-6).toUpperCase();
-      var secret = "ESG-UNLOCK-" + Math.random().toString(36).substring(2, 10).toUpperCase();
-      
-      var resultDiv = document.getElementById("sim-result");
-      if (!resultDiv) return;
-      resultDiv.style.display = "block";
-      
-      var label = product;
-      if (product === "stufe3-pandamie-flug") label = "Stufe 3 – Pandämie + Flug DF1073";
-      else if (product === "stufe4-imk-911") label = "Stufe 4 – Regeländerung IMK + 9/11";
-      else if (product === "full-fivefold") label = "Full Five-Fold ESG Kette";
-      
-      var fullUnlock = "document.getElementById('secret-input').value='" + secret + "';" +
-        "localStorage.setItem('esg_unlock','true');" +
-        "localStorage.setItem('esg_webhook', document.getElementById('webhook-url').value || '/api/webhook');" +
-        "var st=document.getElementById('unlock-status'); if(st) st.innerHTML='<span style=color:#D4AF37>Freigeschaltet! Webhook aktiv.</span>';" +
-        "document.querySelectorAll('#esg-kette .upload-form button, .upload-form button, #esg-kette button').forEach(function(el){el.disabled=false; el.style.border='2px solid #D4AF37'; el.style.opacity='1';});" +
-        "console.log('Simulator full unlock done for: " + secret + "');";
-      
-      resultDiv.innerHTML = 
-        '<div style="background:#2C2520;padding:12px;border:1px solid #D4AF37;font-size:0.9rem;">' +
-        '<strong>✅ Bestellung #' + orderId + ' abgeschlossen</strong><br>' +
-        'Produkt: ' + label + '<br>' +
-        'Secret: <b>' + secret + '</b><br><br>' +
-        '<button onclick="' + fullUnlock + '" style="width:auto;">Secret kopieren & Freischalten</button>' +
-        '</div>';
-    }
-
-
-        function unlockWithSecret() {
-      var input = document.getElementById("secret-input");
-      if (!input) return;
-      var val = input.value.trim().toUpperCase();
-      var status = document.getElementById("unlock-status");
-      var webhookInput = document.getElementById("webhook-url").value.trim();
-
-      if (val.startsWith("ESG-UNLOCK-") || val === "HUMAN-SECRET-ROSARY-2026") {
-        localStorage.setItem("esg_unlock", "true");
-        localStorage.setItem("esg_webhook", webhookInput);
-        
-        var buttons = document.querySelectorAll("#esg-kette .upload-form button, .upload-form button, #esg-kette button");
-        buttons.forEach(function(el) {
-          el.disabled = false;
-          el.style.border = "2px solid #D4AF37";
-          el.style.opacity = "1";
-        });
-        
-        if (status) status.innerHTML = "<span style=\"color:#D4AF37\">Freigeschaltet! Webhook aktiv.</span>";
-      } else if (status) {
-        status.innerHTML = "<span style=\"color:#ff6b6b\">Ungültiger Secret.</span>";
-      }
-    }
-
-
-    async function sendToWebhook(field, textId, fileId) {
-      const webhookUrl = localStorage.getItem('esg_webhook') || document.getElementById('webhook-url').value || '/api/webhook';
-      const text = document.getElementById(textId).value.trim();
-      const fileInput = document.getElementById(fileId);
-      const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'no-file';
-
-      if (!localStorage.getItem('esg_unlock')) {
-        alert('Bitte zuerst mit Secret freischalten!');
-        return;
-      }
-
-      const payload = {
-        source: "entscheidungsmatrix-vercel",
-        schema: "rosary.esg.chain.v1",
-        field: field,
-        text: text,
-        fileName: fileName,
-        timestamp: new Date().toISOString(),
-        unlocked: true,
-        secret_used: "yes"
-      };
-
-      await postToWebhook(webhookUrl, payload, field);
-    }
-
-    async function postToWebhook(webhookUrl, payload, label = "") {
-      const logEl = document.getElementById('webhook-log');
-      logEl.innerHTML = `→ Sende an ${webhookUrl} ...\n` + logEl.innerHTML;
-
-      try {
-        const res = await fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        const result = await res.json();
-
-        let logEntry = `[${new Date().toLocaleTimeString()}] ${label || payload.field} → ${res.status}\n`;
-
-        if (result.wooFields) {
-          logEntry += `Woo-Felder: ${JSON.stringify(result.wooFields)}\n`;
-        }
-        if (result.emailNotification) {
-          logEntry += `Email: ${result.emailNotification.subject}\n${result.emailNotification.body.substring(0, 200)}...\n`;
-        }
-        if (result.secret) {
-          logEntry += `Neues Secret: ${result.secret}\n`;
-        }
-
-        logEntry += `Response: ${JSON.stringify(result).slice(0, 150)}...\n---\n`;
-        logEl.innerHTML = logEntry + logEl.innerHTML;
-
-        if (res.ok) {
-          alert(`Webhook OK für ${label || payload.field}. Email-Benachrichtigung vorbereitet.`);
-        }
-      } catch (e) {
-        logEl.innerHTML = `[${new Date().toLocaleTimeString()}] ERROR: ${e.message}\n` + logEl.innerHTML;
-      }
-    }
-
-    async function testWooSetup() {
-      const webhookUrl = document.getElementById('webhook-url').value.trim() || '/api/webhook';
-      const statusEl = document.getElementById('test-status');
-
-      const testPayload = {
-        source: "entscheidungsmatrix-vercel-test",
-        schema: "rosary.esg.chain.v1",
-        field: "Test-Feld (IMK + 9/11)",
-        text: "Test-Upload für Woo Webhook + Email-Benachrichtigung. Human Review angefordert.",
-        fileName: "test-leak-2026.json",
-        timestamp: new Date().toISOString(),
-        unlocked: true,
-        secret_used: "test",
-        woo_extra: {
-          order_id: "TEST-" + Date.now(),
-          _esg_schranke_paid: true,
-          _esg_level: "full",
-          _esg_fivefold_fields: ["Pandämie", "Flug DF1073", "Regeländerung IMK", "9/11"],
-          _esg_paid_date: new Date().toISOString(),
-          stufe: "test_imk_911"
-        }
-      };
-
-      if (statusEl) statusEl.innerHTML = "Sende Test...";
-
-      try {
-        const res = await fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(testPayload)
-        });
-        const result = await res.json();
-        if (statusEl) statusEl.innerHTML = "Test erfolgreich! Siehe Log.";
-        const logEl = document.getElementById('webhook-log');
-        if (logEl) logEl.innerHTML = `[TEST] ${JSON.stringify(result).slice(0,200)}...\n` + logEl.innerHTML;
-      } catch (e) {
-        if (statusEl) statusEl.innerHTML = "Fehler: " + e.message;
-      }
-    }
-
-    window.addEventListener('load', function() {
-      if (localStorage.getItem('esg_unlock')) {
-        document.querySelectorAll('#esg-kette .upload-form button').forEach(el => el.disabled = false);
-        var st = document.getElementById('unlock-status');
-        if (st) st.innerHTML = '<span style="color:#D4AF37">Bereits freigeschaltet (aus vorheriger Session).</span>';
-      }
-    });
-</script>
-
-<script>
-  // Override for better unlock behavior
-  window.unlockWithSecret = function() {
-    var input = document.getElementById('secret-input');
-    if (!input) return;
-    var val = input.value.trim().toUpperCase();
-    var status = document.getElementById('unlock-status');
-    var webhookInput = document.getElementById('webhook-url').value.trim();
-
-    if (val.startsWith('ESG-UNLOCK-') || val === 'HUMAN-SECRET-ROSARY-2026') {
-      localStorage.setItem('esg_unlock', 'true');
-      localStorage.setItem('esg_webhook', webhookInput);
-      
-      // Force enable all send buttons
-      document.querySelectorAll('button').forEach(function(btn) {
-        if (btn.textContent.includes('Anonym') || btn.textContent.includes('senden') || btn.onclick && btn.onclick.toString().includes('sendToWebhook')) {
-          btn.disabled = false;
-          btn.style.opacity = '1';
-          btn.style.border = '2px solid #D4AF37';
-        }
-      });
-      
-      if (status) status.innerHTML = '<span style="color:#D4AF37">Freigeschaltet! Webhook aktiv.</span>';
-    } else if (status) {
-      status.innerHTML = '<span style="color:#ff6b6b">Ungültiger Secret.</span>';
-    }
-  };
-
-  // Make simulator button stronger if needed
-  console.log('Override loaded - try clicking Freischalten again');
+function showTab(tab) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+  var sec = document.getElementById(tab);
+  if (sec) sec.classList.add('active');
+  var btn = document.getElementById('tab-' + tab);
+  if (btn) btn.classList.add('active');
+}
+async function sendToWebhook(field, textId, fileId) {
+  const webhookUrl = localStorage.getItem('esg_webhook') || document.getElementById('webhook-url').value || '/api/webhook';
+  const text = document.getElementById(textId).value.trim();
+  const fileInput = document.getElementById(fileId);
+  const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'no-file';
+  const paidSecret = localStorage.getItem('esg_secret') || '';
+  if (!paidSecret) { alert('Erst nach bezahlter Bestellung. Secret aus der Mail eintragen und freischalten.'); return; }
+  const payload = { source: 'entscheidungsmatrix-vercel', schema: 'rosary.esg.chain.v1', field: field, text: text, fileName: fileName, timestamp: new Date().toISOString(), unlocked: true, secret: paidSecret };
+  const logEl = document.getElementById('webhook-log');
+  try {
+    const res = await fetch(webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    const result = await res.json();
+    if (logEl) logEl.innerHTML = '[' + new Date().toLocaleTimeString() + '] ' + field + ' -> ' + res.status + '\n' + (result.message || '') + '\n' + logEl.innerHTML;
+  } catch (e) {
+    if (logEl) logEl.innerHTML = 'ERROR: ' + e.message + '\n' + logEl.innerHTML;
+  }
+}
 </script>
