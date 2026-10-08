@@ -75,6 +75,7 @@
     </div>
     <footer>Magnifica Humanitas • Woo-Checkout statt Simulation • rosary.esg.chain.v1</footer>
   </div>
+<script src="/esg-upload.js"></script>
 <script src="/woo-unlock.js"></script>
 <script src="/vault-widget.js"></script>
 </body>
@@ -89,18 +90,14 @@ function showTab(tab) {
   if (btn) btn.classList.add('active');
 }
 async function sendToWebhook(field, textId, fileId) {
-  const webhookUrl = localStorage.getItem('esg_webhook') || document.getElementById('webhook-url').value || '/api/webhook';
   const text = document.getElementById(textId).value.trim();
   const fileInput = document.getElementById(fileId);
-  const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'no-file';
-  const paidSecret = localStorage.getItem('esg_secret') || '';
-  if (!paidSecret) { alert('Erst nach bezahlter Bestellung. Secret aus der Mail eintragen und freischalten.'); return; }
-  const payload = { source: 'entscheidungsmatrix-vercel', schema: 'rosary.esg.chain.v1', field: field, text: text, fileName: fileName, timestamp: new Date().toISOString(), unlocked: true, secret: paidSecret };
+  const file = fileInput && fileInput.files.length > 0 ? fileInput.files[0] : null;
   const logEl = document.getElementById('webhook-log');
+  if (!localStorage.getItem('esg_secret')) { alert('Erst nach bezahlter Bestellung. Secret aus der Mail eintragen und freischalten.'); return; }
   try {
-    const res = await fetch(webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-    const result = await res.json();
-    if (logEl) logEl.innerHTML = '[' + new Date().toLocaleTimeString() + '] ' + field + ' -> ' + res.status + '\n' + (result.message || '') + '\n' + logEl.innerHTML;
+    const result = await rosarySendEsg(field, text, file);
+    if (logEl) logEl.innerHTML = '[' + new Date().toLocaleTimeString() + '] ' + field + ' gespeichert #' + (result.order || '') + '\n' + logEl.innerHTML;
   } catch (e) {
     if (logEl) logEl.innerHTML = 'ERROR: ' + e.message + '\n' + logEl.innerHTML;
   }

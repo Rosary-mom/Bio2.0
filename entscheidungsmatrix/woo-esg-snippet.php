@@ -30,6 +30,17 @@ if (!defined('ROSARY_BBB_SALT')) {
     define('ROSARY_BBB_SALT', '');
 }
 
+add_action('init', function () {
+    register_post_type('esg_upload', array(
+        'labels' => array('name' => 'ESG-Eingänge', 'singular_name' => 'ESG-Eingang'),
+        'public' => false,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'supports' => array('title', 'editor'),
+        'capability_type' => 'post',
+    ));
+});
+
 function rosary_esg_product_ids() {
     return array(1594, 1595);
 }
@@ -330,6 +341,100 @@ add_action('rest_api_init', function () {
                 . "\n\nBestätigt wird der Termin per Antwort.\n"
             );
             return array('ok' => true, 'order' => $order->get_id(), 'when' => $when);
+        },
+    ));
+});
+
+add_action('rest_api_init', function () {
+    register_rest_route('rosary/v1', '/esg-upload', array(
+        'methods' => array('POST', 'OPTIONS'),
+        'permission_callback' => '__return_true',
+        'callback' => function ($req) {
+            if ($req->get_method() === 'OPTIONS') {
+                return array('ok' => true);
+            }
+            $secret = trim((string) $req->get_param('secret'));
+            $field = sanitize_text_field((string) $req->get_param('field'));
+            $text = sanitize_textarea_field((string) $req->get_param('text'));
+            $file_name = sanitize_file_name((string) $req->get_param('fileName'));
+            $mime = sanitize_text_field((string) $req->get_param('mime'));
+            $data = (string) $req->get_param('data');
+            if ($secret === '' || ($text === '' && $data === '')) {
+                return new WP_Error('bad', 'Text oder Datei fehlt.', array('status' => 400));
+            }
+            $orders = wc_get_orders(array(
+                'limit' => 1,
+                'status' => array('processing', 'completed'),
+                'meta_key' => '_esg_unlock_secret',
+                'meta_value' => $secret,
+            ));
+            if (!$orders) {
+                return new WP_Error('unpaid', 'Keine bezahlte Bestellung zu diesem Secret.', array('status' => 402));
+            }
+            $order = $orders[0];
+            $allowed = array(
+                'image/jpeg' => 'jpg',
+                'image/png' => 'png',
+                'image/webp' => 'webp',
+                'image/gif' => 'gif',
+                'application/pdf' => 'pdf',
+                'text/plain' => 'txt',
+                'text/csv' => 'csv',
+            );
+            $attachment_id = 0;
+            $file_url = '';
+            if ($data !== '') {
+                if (!isset($allowed[$mime])) {
+                    return new WP_Error('bad', 'Dateityp nicht erlaubt.', array('status' => 400));
+                }
+                $raw = base64_decode($data, true);
+                if ($raw === false || strlen($raw) > 8 * 1024 * 1024) {
+                    return new WP_Error('bad', 'Datei fehlt oder ist größer als 8 MB.', array('status' => 400));
+                }
+                if ($file_name === '') {
+                    $file_name = 'esg-' . $order->get_id() . '.' . $allowed[$mime];
+                }
+                $upload = wp_upload_bits($file_name, null, $raw);
+                if (!empty($upload['error'])) {
+                    return new WP_Error('upload', $upload['error'], array('status' => 500));
+                }
+                $file_url = $upload['url'];
+            }
+            $post_id = wp_insert_post(array(
+                'post_type' => 'esg_upload',
+                'post_status' => 'private',
+                'post_title' => $field . ' #' . $order->get_id(),
+                'post_content' => $text,
+            ), true);
+            if (is_wp_error($post_id)) {
+                return $post_id;
+            }
+            update_post_meta($post_id, '_esg_order', $order->get_id());
+            update_post_meta($post_id, '_esg_field', $field);
+            if ($file_url !== '') {
+                require_once ABSPATH . 'wp-admin/includes/image.php';
+                $attachment_id = wp_insert_attachment(array(
+                    'post_mime_type' => $mime,
+                    'post_title' => $file_name,
+                    'post_status' => 'inherit',
+                    'post_parent' => $post_id,
+                ), $upload['file'], $post_id);
+                if (!is_wp_error($attachment_id)) {
+                    wp_update_attachment_metadata($attachment_id, wp_generate_attachment_metadata($attachment_id, $upload['file']));
+                    update_post_meta($post_id, '_esg_file', $attachment_id);
+                }
+            }
+            wp_mail(
+                array('eurobitz@Jesus.tips', 'uwe.rosenkranz@gmail.com'),
+                'ESG Eingang ' . $field . ' #' . $order->get_id(),
+                "ESG-Eingang, anonym zum Käufer.\n\nFeld: " . $field
+                . "\nBestellung #" . $order->get_id()
+                . "\nDatei: " . $file_name
+                . "\n" . $file_url
+                . "\n\n" . $text
+                . "\n\nIm Admin: " . admin_url('post.php?post=' . $post_id . '&action=edit') . "\n"
+            );
+            return array('ok' => true, 'order' => $order->get_id(), 'post' => $post_id);
         },
     ));
 });

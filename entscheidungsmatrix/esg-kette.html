@@ -50,7 +50,7 @@
     <p style="color: var(--sand); margin: 0.5rem 0 0; font-size: 1.1rem;">rosary.esg.chain — Deutsche Übersetzung von ESG Chain<br>Magnifica Humanitas Paywall | Bio20</p>
   </div>
   <div class="container">
-    <p><strong>Freischalten</strong> nur nach abgeschlossener Woo-Zahlung. Uploads gehen an /api/webhook, die Mail versendet WordPress.</p>
+    <p><strong>Freischalten</strong> nur nach abgeschlossener Woo-Zahlung. Dateien gehen nach der Freischaltung an rosary.health, Bilder proportional auf höchstens 1600 Pixel.</p>
 <div class="simulator-box" style="background:#1A1611; border:3px solid var(--gold); padding:1rem; margin:1rem 0;">
       <h4 style="margin:0 0 0.4rem;">Bezahlen über WooCommerce</h4>
       <p style="margin:0 0 0.6rem;font-size:0.92rem;">Harter Checkout auf rosary.health. Freischaltung erst, wenn die Bestellung Status processing oder completed hat. Keine Simulation.</p>
@@ -126,10 +126,11 @@
     function addUserMsg(id, msg) { const box = document.getElementById('chat-' + id); const d = document.createElement('div'); d.className = 'user-msg'; d.innerHTML = '<strong>Du:</strong> ' + msg; box.appendChild(d); box.scrollTop = box.scrollHeight; chatHist[id].push({type:'user', msg: msg}); }
     function sendBot(id) { const input = document.getElementById('input-' + id); const q = input.value.trim(); if (!q) return; addUserMsg(id, q); input.value = ''; setTimeout(() => { const L = BOTS[id][langState[id]]; const ql = q.toLowerCase(); let ans = L.keywords.default; for (const k of Object.keys(L.keywords)) { if (k !== 'default' && ql.includes(k)) { ans = L.keywords[k]; break; } } addBotMsg(id, ans); }, 400); }
     function clearBot(id) { document.getElementById('chat-' + id).innerHTML = ''; chatHist[id] = []; addBotMsg(id, BOTS[id][langState[id]].greet); }
-    async function sendToWebhook(field, textId, fileId) { const webhookUrl = localStorage.getItem('esg_webhook') || document.getElementById('webhook-url').value || '/api/webhook'; const text = document.getElementById(textId).value.trim(); const fileName = document.getElementById(fileId).files[0] ? document.getElementById(fileId).files[0].name : 'no-file'; const paidSecret = localStorage.getItem('esg_secret') || ''; if (!paidSecret) { alert('Erst nach bezahlter Bestellung. Secret aus der Mail eintragen und freischalten.'); return; } const payload = { source: 'esg-kette-vercel', schema: 'rosary.esg.chain.v1', field: field, text: text, fileName: fileName, timestamp: new Date().toISOString(), unlocked: true, secret: paidSecret }; const log = document.getElementById('webhook-log'); log.innerHTML = 'Sending ' + field + ' to ' + webhookUrl + '...\n' + log.innerHTML; try { const res = await fetch(webhookUrl, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) }); const data = await res.json(); log.innerHTML = '[' + new Date().toLocaleTimeString() + '] ' + field + ' -> ' + res.status + '\n' + log.innerHTML; alert('Gesendet an Webhook für ' + field); } catch (e) { log.innerHTML = 'ERROR: ' + e.message + '\n' + log.innerHTML; } }
+    async function sendToWebhook(field, textId, fileId) { const text = document.getElementById(textId).value.trim(); const file = document.getElementById(fileId).files[0] || null; const log = document.getElementById('webhook-log'); if (!localStorage.getItem('esg_secret')) { alert('Erst nach bezahlter Bestellung. Secret aus der Mail eintragen und freischalten.'); return; } log.innerHTML = 'Sende ' + field + ' inklusive Datei...\n' + log.innerHTML; try { const data = await rosarySendEsg(field, text, file); log.innerHTML = '[' + new Date().toLocaleTimeString() + '] ' + field + ' gespeichert #' + (data.order || '') + '\n' + log.innerHTML; alert('Gespeichert auf rosary.health für ' + field); } catch (e) { log.innerHTML = 'ERROR: ' + e.message + '\n' + log.innerHTML; alert(e.message); } }
     window.onclick = function(e) { document.querySelectorAll('.modal').forEach(m => { if (e.target === m) m.style.display = 'none'; }); };
     window.onload = function() { const saved = localStorage.getItem('esg_webhook'); if (saved) document.getElementById('webhook-url').value = saved; };
   </script>
+<script src="/esg-upload.js"></script>
 <script src="/woo-unlock.js"></script>
 <script src="/vault-widget.js"></script>
 </body>
