@@ -1,0 +1,207 @@
+<?php
+/**
+ * Snippet-Name: Rosary ESG Unlock
+ * Plugin: Code Snippets (rosary.health -> Snippets -> Neu)
+ * Run: Everywhere (Frontend + Admin)
+ *
+ * Wirkt nur auf diese Woo-Produkte:
+ *   1594  90 Minuten mit Decision-Engine            1.490 EUR
+ *   1595  Decision-Engine inkl. Token-Minting       2.490 EUR
+ *
+ * Ablauf:
+ *   1. Kunde oeffnet https://rosary.health/cart/?add-to-cart=1594 (oder 1595)
+ *   2. Bezahlt im Woo-Checkout. Status muss processing oder completed sein.
+ *   3. Dieses Snippet speichert _esg_unlock_secret an der Bestellung.
+ *   4. wp_mail an eurobitz@Jesus.tips und uwe.rosenkranz@gmail.com
+ *      plus die Rechnungs-E-Mail des Kunden.
+ *   5. POST an https://durchblicker-app.rosary.eu.com/api/webhook
+ *   6. Rueckkehr: https://durchblicker-app.rosary.eu.com/esg-kette.html?order=ID&key=wc_order_...
+ *      Die Seite fragt GET /wp-json/rosary/v1/esg-unlock ab und schaltet erst dann frei.
+ *
+ * WooPayments im Shop-Admin ist noch nicht fertig eingerichtet.
+ * Ohne aktives Zahlungs-Gateway endet der Checkout vor diesem Hook.
+ */
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+function rosary_esg_product_ids() {
+    return array(1594, 1595);
+}
+
+function rosary_esg_mail_to($order) {
+    $to = array('eurobitz@Jesus.tips', 'uwe.rosenkranz@gmail.com');
+    $buyer = $order->get_billing_email();
+    if ($buyer) {
+        $to[] = $buyer;
+    }
+    return array_values(array_unique($to));
+}
+
+function rosary_esg_order_matches($order) {
+    if (!$order) {
+        return false;
+    }
+    foreach ($order->get_items() as $item) {
+        $pid = (int) $item->get_product_id();
+        $vid = (int) $item->get_variation_id();
+        if (in_array($pid, rosary_esg_product_ids(), true) || in_array($vid, rosary_esg_product_ids(), true)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function rosary_esg_on_paid($order_id) {
+    if (!function_exists('wc_get_order')) {
+        return;
+    }
+    $order = wc_get_order($order_id);
+    if (!$order || !rosary_esg_order_matches($order)) {
+        return;
+    }
+    $status = $order->get_status();
+    if (!in_array($status, array('processing', 'completed'), true)) {
+        return;
+    }
+
+    $secret = (string) $order->get_meta('_esg_unlock_secret');
+    if ($secret === '') {
+        $secret = 'ESG-UNLOCK-' . strtoupper(wp_generate_password(10, false, false));
+        $order->update_meta_data('_esg_unlock_secret', $secret);
+        $order->update_meta_data('_esg_schranke_paid', 'yes');
+        $order->update_meta_data('_esg_paid_date', gmdate('c'));
+        $order->save();
+
+        $return = add_query_arg(
+            array(
+                'order' => $order->get_id(),
+                'key' => $order->get_order_key(),
+            ),
+            'https://durchblicker-app.rosary.eu.com/esg-kette.html'
+        );
+        $body = "ESG-Kette bezahlt.\n\n"
+            . "Bestellung #" . $order->get_id() . "\n"
+            . "Status: " . $status . "\n"
+            . "Secret: " . $secret . "\n"
+            . "Freischalten: " . $return . "\n";
+        wp_mail(
+            rosary_esg_mail_to($order),
+            'ESG Kette freigeschaltet #' . $order->get_id(),
+            $body
+        );
+
+        wp_remote_post(
+            'https://durchblicker-app.rosary.eu.com/api/webhook',
+            array(
+                'timeout' => 8,
+                'headers' => array('Content-Type' => 'application/json'),
+                'body' => wp_json_encode(array(
+                    'id' => $order->get_id(),
+                    'status' => $status,
+                    'order_key' => $order->get_order_key(),
+                    'billing' => array('email' => $order->get_billing_email()),
+                    'secret' => $secret,
+                    'source' => 'rosary-health-snippet',
+                )),
+            )
+        );
+    }
+}
+add_action('woocommerce_order_status_processing', 'rosary_esg_on_paid', 10, 1);
+add_action('woocommerce_order_status_completed', 'rosary_esg_on_paid', 10, 1);
+
+function rosary_esg_return_url($url, $order) {
+    if (!rosary_esg_order_matches($order)) {
+        return $url;
+    }
+    return add_query_arg(
+        array(
+            'order' => $order->get_id(),
+            'key' => $order->get_order_key(),
+        ),
+        'https://durchblicker-app.rosary.eu.com/esg-kette.html'
+    );
+}
+add_filter('woocommerce_get_return_url', 'rosary_esg_return_url', 10, 2);
+
+add_action('rest_api_init', function () {
+    register_rest_route('rosary/v1', '/esg-unlock', array(
+        'methods' => array('GET', 'OPTIONS'),
+        'permission_callback' => '__return_true',
+        'callback' => function ($req) {
+            if ($req->get_method() === 'OPTIONS') {
+                return array('ok' => true);
+            }
+            if (!function_exists('wc_get_order')) {
+                return new WP_Error('woo', 'WooCommerce fehlt', array('status' => 500));
+            }
+
+            $secret = trim((string) $req->get_param('secret'));
+            if ($secret !== '') {
+                $orders = wc_get_orders(array(
+                    'limit' => 1,
+                    'status' => array('processing', 'completed'),
+                    'meta_key' => '_esg_unlock_secret',
+                    'meta_value' => $secret,
+                ));
+                if (!$orders) {
+                    return new WP_Error('unpaid', 'Secret gehoert zu keiner bezahlten Bestellung.', array('status' => 402));
+                }
+                $order = $orders[0];
+                return array(
+                    'ok' => true,
+                    'order' => $order->get_id(),
+                    'status' => $order->get_status(),
+                    'secret' => $secret,
+                );
+            }
+
+            $order = wc_get_order(absint($req->get_param('order')));
+            $key = (string) $req->get_param('key');
+            if (!$order || $key === '' || !hash_equals($order->get_order_key(), $key)) {
+                return new WP_Error('forbidden', 'Bestellung nicht bestaetigt.', array('status' => 403));
+            }
+            if (!in_array($order->get_status(), array('processing', 'completed'), true)) {
+                return array(
+                    'ok' => false,
+                    'status' => $order->get_status(),
+                    'message' => 'Zahlung noch nicht abgeschlossen.',
+                );
+            }
+            $stored = (string) $order->get_meta('_esg_unlock_secret');
+            if ($stored === '') {
+                rosary_esg_on_paid($order->get_id());
+                $order = wc_get_order($order->get_id());
+                $stored = (string) $order->get_meta('_esg_unlock_secret');
+            }
+            if ($stored === '') {
+                return array('ok' => false, 'message' => 'Diese Bestellung ist kein ESG-Produkt.');
+            }
+            return array(
+                'ok' => true,
+                'order' => $order->get_id(),
+                'status' => $order->get_status(),
+                'secret' => $stored,
+            );
+        },
+    ));
+});
+
+add_filter('rest_pre_serve_request', function ($served, $result, $request) {
+    if (strpos($request->get_route(), '/rosary/v1/esg-unlock') === false) {
+        return $served;
+    }
+    $origin = get_http_origin();
+    $allowed = array(
+        'https://durchblicker-app.rosary.eu.com',
+        'https://entscheidungsmatrix.vercel.app',
+    );
+    if (in_array($origin, $allowed, true)) {
+        header('Access-Control-Allow-Origin: ' . $origin);
+        header('Access-Control-Allow-Methods: GET, OPTIONS');
+        header('Vary: Origin');
+    }
+    return $served;
+}, 15, 3);
