@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESG Kette • rosary.esg.chain | Magnifica Humanitas Paywall | Bio20</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Rosario:wght@400;700&display=swap);
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700\u0026family=Rosario:wght@400;700\u0026display=swap');
     :root {
       --bordeaux: #722F37;
       --gold: #D4AF37;
@@ -198,7 +198,7 @@
 
     <div class="simulator-box" style="background:#1A1611; border:3px dashed var(--gold); padding:1rem; margin:1rem 0;">
       <h4 style="margin:0 0 0.4rem;">🧪 Schnelltest: Bestellung simulieren</h4>
-      <button onclick="simulatePurchaseKette()" style="width:auto;">Bezahlen &amp; Secret erhalten (Simulation)</button>
+      <button onclick="simulatePurchaseKette()" style="width:auto;">Bezahlen \u0026amp; Secret erhalten (Simulation)</button>
       <div id="sim-kette-result" style="margin-top:0.5rem; display:none;"></div>
     </div>
 
@@ -283,7 +283,7 @@
   <!-- ===== BOT MODALS ===== -->
   <div id="bot-landwirtschaft" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeBot('landwirtschaft')">&times;</span>
+      <span class="close" onclick="closeBot('landwirtschaft')">\u0026times;</span>
       <h2>🌱 Landwirtschaft Bot</h2>
       <p style="font-size:0.9rem;color:#A38A5C;">Agrarwissenschaft • Fraktale Agrivoltaik • Landknappheit • Score <span class="pilot-score">0.8722</span></p>
       <div class="lang-toggle">
@@ -299,7 +299,7 @@
 
   <div id="bot-politik" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeBot('politik')">&times;</span>
+      <span class="close" onclick="closeBot('politik')">\u0026times;</span>
       <h2>⚖️ Politik Bot</h2>
       <p style="font-size:0.9rem;color:#A38A5C;">Konstitutionelle Synthese • Rosenkranz Staatsphilosophie • Score <span class="pilot-score">0.9434</span></p>
       <div class="lang-toggle">
@@ -315,7 +315,7 @@
 
   <div id="bot-handel" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeBot('handel')">&times;</span>
+      <span class="close" onclick="closeBot('handel')">\u0026times;</span>
       <h2>💰 Handel Bot</h2>
       <p style="font-size:0.9rem;color:#A38A5C;">ESG-Assetklasse • Freedom Engine • Asset-Backed Vouchers • Score <span class="pilot-score">0.9528</span></p>
       <div class="lang-toggle">
@@ -331,7 +331,7 @@
 
   <div id="bot-education" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeBot('education')">&times;</span>
+      <span class="close" onclick="closeBot('education')">\u0026times;</span>
       <h2>📚 Education Bot</h2>
       <p style="font-size:0.9rem;color:#A38A5C;">Drei-S-Formel • Epistemologie (measured-only) • Templeroffenbarung • Score <span class="pilot-score">0.9398</span></p>
       <div class="lang-toggle">
@@ -347,7 +347,7 @@
 
   <div id="bot-remigration" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeBot('remigration')">&times;</span>
+      <span class="close" onclick="closeBot('remigration')">\u0026times;</span>
       <h2>🔄 Remigration Bot</h2>
       <p style="font-size:0.9rem;color:#A38A5C;">Ethnic Divergences • US-Remigration-Modell • Bio2.0 Synthese • Score <span class="pilot-score">0.8871</span></p>
       <div class="lang-toggle">
@@ -494,7 +494,7 @@
     }
     function addBotMsg(id, msg) {
       const box = document.getElementById('chat-' + id);
-      const d = document.createElement('div);
+      const d = document.createElement('div');
       d.className = 'bot-msg';
       d.innerHTML = '<strong>' + BOTS[id].icon + ' ' + BOTS[id].name + ':</strong> ' + msg;
       box.appendChild(d);
@@ -503,7 +503,7 @@
     }
     function addUserMsg(id, msg) {
       const box = document.getElementById('chat-' + id);
-      const d = document.createElement('div);
+      const d = document.createElement('div');
       d.className = 'user-msg';
       d.innerHTML = '<strong>Du:</strong> ' + msg;
       box.appendChild(d);
@@ -521,7 +521,7 @@
         const ql = q.toLowerCase();
         let ans = L.keywords.default;
         for (const k of Object.keys(L.keywords)) {
-          if (k !== 'default' && ql.includes(k)) { ans = L.keywords[k]; break; }
+          if (k !== 'default' \u0026\u0026 ql.includes(k)) { ans = L.keywords[k]; break; }
         }
         addBotMsg(id, ans);
       }, 400);
@@ -536,22 +536,22 @@
     function simulatePurchaseKette() {
       const orderId = 'SIM-' + Date.now().toString(36).slice(-6).toUpperCase();
       const secret = 'ESG-UNLOCK-' + Math.random().toString(36).substring(2, 10).toUpperCase();
-      const res = document.getElementById('sim-kette-result);
+      const res = document.getElementById('sim-kette-result');
       res.style.display = 'block';
       res.innerHTML = `
         <div style="background:#2C2520;padding:8px;border:1px solid var(--gold);font-size:0.85rem;">
           Bestellung ${orderId} simuliert.<br>
           Secret: <strong>${secret}</strong><br>
-          <button onclick="document.getElementById('secret-input').value='${secret}'; unlockWithSecret();" style="width:auto;">Secret übernehmen &amp; freischalten</button>
+          <button onclick="document.getElementById('secret-input').value='${secret}'; unlockWithSecret();" style="width:auto;">Secret übernehmen \u0026amp; freischalten</button>
         </div>`;
     }
 
     function unlockWithSecret() {
       const input = document.getElementById('secret-input').value.trim().toUpperCase();
-      const status = document.getElementById('unlock-status);
+      const status = document.getElementById('unlock-status');
       const webhook = document.getElementById('webhook-url').value.trim();
       if (input.startsWith('ESG-UNLOCK-') || input === 'HUMAN-SECRET-ROSARY-2026') {
-        localStorage.setItem('esg_unlock', 'true);
+        localStorage.setItem('esg_unlock', 'true');
         localStorage.setItem('esg_webhook', webhook);
         status.innerHTML = '<span class="status-ok">Freigeschaltet! Webhook aktiv.</span>';
       } else {
@@ -568,7 +568,7 @@
         source: "esg-kette-vercel", schema: "rosary.esg.chain.v1", field: field,
         text: text, fileName: fileName, timestamp: new Date().toISOString(), unlocked: true
       };
-      const log = document.getElementById('webhook-log);
+      const log = document.getElementById('webhook-log');
       log.innerHTML = `Sending ${field} to ${webhookUrl}...\n` + log.innerHTML;
       try {
         const res = await fetch(webhookUrl, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
@@ -591,7 +591,7 @@
         timestamp: new Date().toISOString(), unlocked: true,
         woo_extra: { _esg_level: "full", _esg_fivefold_fields: ["Pandämie","Flug DF1073","Regeländerung IMK","9/11"] }
       };
-      const log = document.getElementById('webhook-log);
+      const log = document.getElementById('webhook-log');
       log.innerHTML = `Test to ${webhookUrl}...\n` + log.innerHTML;
       try {
         const res = await fetch(webhookUrl, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
@@ -607,9 +607,10 @@
     };
 
     window.onload = function() {
-      const saved = localStorage.getItem('esg_webhook);
+      const saved = localStorage.getItem('esg_webhook');
       if (saved) document.getElementById('webhook-url').value = saved;
     };
   </script>
+<script src="/vault-widget.js"></script>
 </body>
 </html>
