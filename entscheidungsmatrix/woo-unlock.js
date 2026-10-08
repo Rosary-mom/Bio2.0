@@ -20,6 +20,8 @@
         + (orderId ? " #" + orderId : "")
         + " ist bezahlt.</span>";
     }
+    var box = document.getElementById("session-box");
+    if (box) box.style.display = "block";
   }
 
   async function verify(query) {
@@ -51,6 +53,43 @@
     var secret = input ? input.value.trim() : "";
     if (!secret) return;
     verify("secret=" + encodeURIComponent(secret));
+  };
+
+  window.requestSession = function () {
+    var secret = localStorage.getItem("esg_secret") || "";
+    var name = (document.getElementById("session-name") || {}).value || "";
+    var email = (document.getElementById("session-email") || {}).value || "";
+    var when = (document.getElementById("session-when") || {}).value || "";
+    var st = document.getElementById("session-status");
+    if (!secret) {
+      if (st) st.textContent = "Erst freischalten.";
+      return;
+    }
+    if (!when) {
+      if (st) st.textContent = "Wunschtermin fehlt.";
+      return;
+    }
+    if (st) st.textContent = "Sende Terminanfrage…";
+    fetch("https://rosary.health/wp-json/rosary/v1/esg-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        secret: secret,
+        name: String(name).trim(),
+        email: String(email).trim(),
+        when: String(when).trim()
+      })
+    }).then(function (res) { return res.json().then(function (data) { return { res: res, data: data }; }); })
+      .then(function (out) {
+        if (st) {
+          st.textContent = (out.data && out.data.ok)
+            ? "Termin angefragt. Die Mail geht an beide Adressen. Der Raum ist noch nicht automatisch reserviert."
+            : ((out.data && (out.data.message || (out.data.data && out.data.data.status))) || "Anfrage abgelehnt.");
+        }
+      })
+      .catch(function () {
+        if (st) st.textContent = "Rosary Health nicht erreichbar. Snippet Rosary ESG Unlock neu einfügen.";
+      });
   };
 
   window.addEventListener("load", function () {

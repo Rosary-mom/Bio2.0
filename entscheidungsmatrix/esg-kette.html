@@ -67,6 +67,19 @@
       <button onclick="unlockWithSecret()">Freischalten</button>
       <div id="unlock-status" style="margin-top:0.5rem;"></div>
     </div>
+    <div id="session-box" style="display:none;background:#1A1611;border:3px solid var(--gold);padding:1rem;margin:1rem 0;">
+      <h4 style="margin:0 0 0.4rem;">90 Minuten — Termin</h4>
+      <p style="margin:0 0 0.6rem;font-size:0.92rem;">Nach der Freischaltung einen Wunschtermin nennen. Die Anfrage geht an eurobitz@Jesus.tips und uwe.rosenkranz@gmail.com. Der Raum ist BigBlueButton, 90 Minuten.</p>
+      <p style="margin:0.4rem 0;"><a href="https://mxoa230012.rna1.blindsidenetworks.com/html5client/" target="_blank" rel="noopener">Session-Raum öffnen</a></p>
+      <label>Name</label><br>
+      <input id="session-name" type="text" style="width:100%;max-width:420px;margin:0.3rem 0;"><br>
+      <label>E-Mail</label><br>
+      <input id="session-email" type="email" style="width:100%;max-width:420px;margin:0.3rem 0;"><br>
+      <label>Wunschtermin (Europe/Berlin)</label><br>
+      <input id="session-when" type="datetime-local" style="margin:0.3rem 0;"><br>
+      <button type="button" onclick="requestSession()">Termin anfragen</button>
+      <div id="session-status" style="margin-top:0.5rem;"></div>
+    </div>
     <div class="field"><h3>🦠 Pandämie</h3><div class="upload-form"><textarea id="text-pandamie" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="3"></textarea><input type="file" id="file-pandamie"><button onclick="sendToWebhook('Pandämie', 'text-pandamie', 'file-pandamie')">Anonym an Webhook senden (human review)</button></div></div>
     <div class="field"><h3>✈️ Flug DF1073</h3><div class="upload-form"><textarea id="text-flug" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="3"></textarea><input type="file" id="file-flug"><button onclick="sendToWebhook('Flug DF1073', 'text-flug', 'file-flug')">Anonym an Webhook senden (human review)</button></div></div>
     <div class="field"><h3>📜 Regeländerung IMK</h3><div class="upload-form"><textarea id="text-imk" placeholder="Beschreibung / Metrik / Leak (anonym)" rows="3"></textarea><input type="file" id="file-imk"><button onclick="sendToWebhook('Regeländerung IMK', 'text-imk', 'file-imk')">Anonym an Webhook senden (human review)</button></div></div>

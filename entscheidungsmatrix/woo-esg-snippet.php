@@ -85,7 +85,9 @@ function rosary_esg_on_paid($order_id) {
             . "Bestellung #" . $order->get_id() . "\n"
             . "Status: " . $status . "\n"
             . "Secret: " . $secret . "\n"
-            . "Freischalten: " . $return . "\n";
+            . "Freischalten: " . $return . "\n\n"
+            . "90 Minuten: auf der Freischalt-Seite einen Wunschtermin nennen.\n"
+            . "Raum: https://mxoa230012.rna1.blindsidenetworks.com/html5client/\n";
         wp_mail(
             rosary_esg_mail_to($order),
             'ESG Kette freigeschaltet #' . $order->get_id(),
@@ -189,8 +191,58 @@ add_action('rest_api_init', function () {
     ));
 });
 
+add_action('rest_api_init', function () {
+    register_rest_route('rosary/v1', '/esg-session', array(
+        'methods' => array('POST', 'OPTIONS'),
+        'permission_callback' => '__return_true',
+        'callback' => function ($req) {
+            if ($req->get_method() === 'OPTIONS') {
+                return array('ok' => true);
+            }
+            if (!function_exists('wc_get_orders')) {
+                return new WP_Error('woo', 'WooCommerce fehlt', array('status' => 500));
+            }
+            $secret = trim((string) $req->get_param('secret'));
+            $when = trim((string) $req->get_param('when'));
+            $name = sanitize_text_field((string) $req->get_param('name'));
+            $email = sanitize_email((string) $req->get_param('email'));
+            if ($secret === '' || $when === '' || strlen($when) > 40) {
+                return new WP_Error('bad', 'Termin oder Secret fehlt.', array('status' => 400));
+            }
+            $orders = wc_get_orders(array(
+                'limit' => 1,
+                'status' => array('processing', 'completed'),
+                'meta_key' => '_esg_unlock_secret',
+                'meta_value' => $secret,
+            ));
+            if (!$orders) {
+                return new WP_Error('unpaid', 'Keine bezahlte Bestellung zu diesem Secret.', array('status' => 402));
+            }
+            $order = $orders[0];
+            $order->update_meta_data('_esg_session_when', $when);
+            $order->update_meta_data('_esg_session_name', $name);
+            $order->update_meta_data('_esg_session_email', $email);
+            $order->save();
+            $room = 'https://mxoa230012.rna1.blindsidenetworks.com/html5client/';
+            $body = "90-Minuten-Termin angefragt.\n\n"
+                . "Bestellung #" . $order->get_id() . "\n"
+                . "Name: " . $name . "\n"
+                . "E-Mail: " . $email . "\n"
+                . "Wunschtermin (Europe/Berlin): " . $when . "\n"
+                . "Raum: " . $room . "\n\n"
+                . "Der Raum ist damit nicht reserviert. Termin per Antwort bestätigen.\n";
+            wp_mail(
+                rosary_esg_mail_to($order),
+                '90-Minuten-Termin #' . $order->get_id(),
+                $body
+            );
+            return array('ok' => true, 'order' => $order->get_id(), 'when' => $when);
+        },
+    ));
+});
+
 add_filter('rest_pre_serve_request', function ($served, $result, $request) {
-    if (strpos($request->get_route(), '/rosary/v1/esg-unlock') === false) {
+    if (strpos($request->get_route(), '/rosary/v1/esg-') === false) {
         return $served;
     }
     $origin = get_http_origin();
@@ -200,7 +252,8 @@ add_filter('rest_pre_serve_request', function ($served, $result, $request) {
     );
     if (in_array($origin, $allowed, true)) {
         header('Access-Control-Allow-Origin: ' . $origin);
-        header('Access-Control-Allow-Methods: GET, OPTIONS');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type');
         header('Vary: Origin');
     }
     return $served;
