@@ -6,7 +6,7 @@
     <title>ROSENKRANZ©®™ PRIME | Warteliste</title>
     <meta name="description" content="[AUSFÜLLEN: ein Satz – Kunde, Schmerz, Wert]">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@800;900&display=swap');
+        @import url('/fonts/fonts.css'); /* selbst gehostet, keine Google-Anfrage */
         :root {
             --bordeaux: #5C0A1A; --bordeaux-2: #800020; --bordeaux-dark: #3D0611;
             --sand: #E8D9B5; --sand-light: #F5ECD7; --gold: #C9A227; --gold-light: #E3C35A;
@@ -125,16 +125,20 @@
 </header>
 
 <section id="background-music" aria-label="Hintergrundmusik">
-    <iframe
-        id="yt-bg"
-        title="YouTube Hintergrundmusik WylTTS2wrAE"
-        src="https://www.youtube-nocookie.com/embed/WylTTS2wrAE?autoplay=1&mute=1&loop=1&playlist=WylTTS2wrAE&controls=0&modestbranding=1&rel=0"
-        style="position:fixed;right:16px;bottom:16px;width:320px;height:180px;border:1px solid #C9A227;border-radius:8px;z-index:20;"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-    </iframe>
+    <div id="yt-slot" style="position:fixed;right:16px;bottom:16px;width:320px;max-width:calc(100vw - 32px);z-index:20;">
+        <button type="button" id="yt-load" style="width:100%;padding:0.7rem 0.9rem;background:#5C0A1A;color:#E8D9B5;border:1px solid #C9A227;border-radius:8px;font-family:Palatino,'Palatino Linotype',serif;font-size:0.85rem;cursor:pointer;text-align:left;line-height:1.35;">&#9835; Musik/Video laden &ndash; dabei werden Daten an YouTube/Google übertragen. <a href="/datenschutz.html#youtube" style="color:#C9A227;" onclick="event.stopPropagation();">Datenschutz</a></button>
+    </div>
+    <script>
+    document.getElementById('yt-load').addEventListener('click', function () {
+        const f = document.createElement('iframe');
+        f.id = 'yt-bg'; f.title = 'YouTube Hintergrundmusik WylTTS2wrAE';
+        f.src = 'https://www.youtube-nocookie.com/embed/WylTTS2wrAE?autoplay=1&loop=1&playlist=WylTTS2wrAE&controls=1&modestbranding=1&rel=0';
+        f.style.cssText = 'width:320px;max-width:100%;height:180px;border:1px solid #C9A227;border-radius:8px;';
+        f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        f.referrerPolicy = 'strict-origin-when-cross-origin'; f.allowFullscreen = true;
+        const slot = document.getElementById('yt-slot'); slot.innerHTML = ''; slot.appendChild(f);
+    });
+    </script>
 </section>
 
 <div class="container">
@@ -164,7 +168,7 @@
             <input id="wl-machines" name="machines" type="number" min="1" max="99" placeholder="z.B. 3">
             <label for="wl-pain">Was kostet dich heute am meisten Zeit? (ein Satz)</label>
             <textarea id="wl-pain" name="pain" rows="3" required maxlength="1000" placeholder="A: z.B. Skills laufen zwischen den PCs auseinander · B: z.B. ESG-Entscheidung muss gegenüber der Bank begründet werden (mind. 20 Zeichen)"></textarea>
-            <label style="font-weight:400;"><input type="checkbox" id="wl-consent" required style="width:auto;"> Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden. <a href="[AUSFÜLLEN: Datenschutz-URL]">Datenschutz</a></label>
+            <label style="font-weight:400;"><input type="checkbox" id="wl-consent" required style="width:auto;"> Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden. <a href="/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a></label>
             <!-- Cloudflare Turnstile: Site-Key unten in TURNSTILE_SITEKEY eintragen -->
             <div id="wl-turnstile" class="cf-turnstile" style="margin:0.6rem 0;"></div>
             <button type="submit">EINTRAGEN</button>
@@ -326,6 +330,7 @@
         Optimiert aus http://rosenkranz.eu.com/ • Phase 5 Piloten + Emergent Spiral + True Words Regie • Commit-ready für github.com/rosary-mom/<br>
         <small>Stabilität vor Speed • ASK BEFORE SENDING • measured-only (Doktorarbeit Epistemologie) • Magnifica Humanitas Stil (Rosario, Paladin, Rockwell Extra Bold, hoher Kontrast) • Organigramm synced 2026-10-07</small>
     </footer>
+    <p class="legal-links" style="text-align:center;font-family:var(--font-accent);margin:1rem 0 2rem;"><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p>
 </div>
 
 <!-- TRUE WORDS POP-UP MODAL WITH REGIE (Deutsche Sprache, GROK 0.1 / 4.7+4.8 + HERMES) -->
