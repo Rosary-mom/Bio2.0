@@ -71,15 +71,33 @@ fs.writeFileSync(
   }, null, 2) + '\n'
 );
 
+const waitlistFunc = path.join(OUT, 'functions', 'api', 'waitlist.func');
+fs.mkdirSync(waitlistFunc, { recursive: true });
+fs.copyFileSync(
+  path.join(ROOT, 'scripts', 'waitlist-handler.js'),
+  path.join(waitlistFunc, 'index.js')
+);
+fs.writeFileSync(
+  path.join(waitlistFunc, '.vc-config.json'),
+  JSON.stringify({
+    runtime: 'nodejs22.x',
+    handler: 'index.js',
+    launcherType: 'Nodejs',
+    shouldAddHelpers: true,
+    maxDuration: 15,
+  }, null, 2) + '\n'
+);
+
 fs.writeFileSync(
   path.join(OUT, 'config.json'),
   JSON.stringify({
     version: 3,
     routes: [
       { src: '^/api/grok$', dest: '/api/grok' },
+      { src: '^/api/waitlist$', dest: '/api/waitlist' },
       { handle: 'filesystem' },
     ],
   }, null, 2) + '\n'
 );
 
-console.log('vercel-build: wrote static files and /api/grok to .vercel/output');
+console.log('vercel-build: wrote static files /api/grok and /api/waitlist to .vercel/output');

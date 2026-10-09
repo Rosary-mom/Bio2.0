@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROSENKRANZ©®™ PRIME | Emergent Spiral Governance - Optimized</title>
+    <title>ROSENKRANZ©®™ PRIME | Warteliste</title>
+    <meta name="description" content="[AUSFÜLLEN: ein Satz – Kunde, Schmerz, Wert]">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@800;900&display=swap');
         :root {
@@ -48,20 +49,79 @@
         .paladin { font-family: var(--font-accent); font-style: italic; }
         footer { color: var(--sand); font-family: var(--font-accent); }
     </style>
+    <style>
+        .hero { text-align:center; padding: 3rem 1.5rem 2.5rem; background: linear-gradient(135deg, var(--bordeaux-dark), var(--bordeaux-2)); border-bottom: 3px solid var(--gold); }
+        .hero .kicker { display:inline-block; background: var(--gold); color: var(--bordeaux-dark); font-weight:700; padding:0.25rem 0.8rem; border-radius:3px; font-size:0.85rem; letter-spacing:0.05em; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0.8rem 0 0.4rem; }
+        .frame { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1rem; max-width:1000px; margin:1.8rem auto 0; text-align:left; }
+        .frame div { background: rgba(0,0,0,0.25); border:1px solid var(--gold); border-radius:8px; padding:1rem 1.2rem; }
+        .frame b { display:block; font-family: var(--font-head); color: var(--gold); font-size:0.9rem; letter-spacing:0.08em; }
+        .todo { background: var(--sand); color: var(--bordeaux-dark); padding: 0 0.3rem; border-radius:2px; font-weight:700; font-size:0.85em; }
+        .choose { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:1.2rem; max-width:1000px; margin:1rem auto 0; text-align:left; }
+        .pick { display:block; position:relative; background: rgba(0,0,0,0.28); border:2px solid var(--gold); border-radius:10px; padding:1.2rem 1.4rem 1.4rem; color: var(--sand); text-decoration:none; transition: transform .15s, background .15s; }
+        .pick:hover, .pick:focus { transform: translateY(-3px); background: rgba(0,0,0,0.4); color: var(--sand); }
+        .pick h3 { margin:0.2rem 0 0.6rem; font-size:1.35rem; }
+        .pick p { margin:0.35rem 0; font-size:0.97rem; }
+        .pick b { color: var(--gold-light); }
+        .pick .tag { position:absolute; top:-14px; right:16px; background: var(--gold); color: var(--bordeaux-dark); font-family: var(--font-head); font-weight:900; width:32px; height:32px; line-height:32px; text-align:center; border-radius:50%; }
+        .pick .go { display:block; margin-top:0.9rem; font-family: var(--font-head); color: var(--gold); font-weight:900; }
+        .pick .sub-links { display:block; margin-top:0.5rem; font-size:0.9rem; }
+        .pick .lnk { color: var(--gold-light); text-decoration: underline; cursor:pointer; }
+        .aud { display:grid; grid-template-columns: 1fr 1fr; gap:0.6rem; }
+        .aud label { display:flex; gap:0.5rem; align-items:flex-start; background: var(--bordeaux-dark); border:2px solid var(--gold); border-radius:6px; padding:0.6rem 0.8rem; font-weight:400 !important; cursor:pointer; }
+        .aud input { width:auto !important; margin-top:0.25rem; }
+        @media (max-width: 600px) { .aud { grid-template-columns: 1fr; } }
+        .cta { display:inline-block; margin-top:1.6rem; font-size:1.15rem !important; padding:0.8rem 1.8rem !important; text-decoration:none; }
+        .waitlist { max-width: 640px; margin: 0 auto; }
+        .waitlist form { display:grid; gap:0.8rem; }
+        .waitlist label { font-weight:700; color: var(--sand-light); }
+        .waitlist input, .waitlist textarea { width:100%; box-sizing:border-box; padding:0.75rem 0.9rem; background: var(--sand-light); color: var(--bordeaux-dark); border:2px solid var(--gold); border-radius:4px; font-family: var(--font-body); font-size:1rem; }
+        .waitlist .hint { font-size:0.85rem; color: var(--sand); font-family: var(--font-accent); }
+        #wl-status { min-height:1.4rem; font-weight:700; color: var(--gold-light); }
+        .roster { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:1rem; }
+        .bot { background: var(--bordeaux-2); border:2px solid var(--gold); border-radius:8px; padding:1rem 1.2rem; }
+        .bot h3 { margin:0 0 0.3rem; font-size:1.1rem; }
+        .bot .needs { font-family: var(--font-accent); font-style: italic; font-size:0.92rem; color: var(--sand-light); border-top:1px dashed var(--gold); margin-top:0.6rem; padding-top:0.5rem; }
+        .bot.main { border-width:3px; box-shadow: 0 0 0 3px rgba(201,162,39,0.25); }
+        .rules { counter-reset: r; display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:1rem; padding:0; list-style:none; }
+        .rules li { background: var(--bordeaux-dark); border-left:6px solid var(--gold); padding:1rem 1.2rem; border-radius:4px; }
+        .rules li b { font-family: var(--font-head); color: var(--gold); display:block; letter-spacing:0.05em; }
+        section.block { margin-top: 3.2rem; }
+        details.archive { margin-top:3rem; border:2px solid var(--gold); border-radius:8px; padding:0.8rem 1.2rem; background: rgba(0,0,0,0.15); }
+        details.archive > summary { cursor:pointer; font-family: var(--font-head); color: var(--gold); font-size:1.2rem; }
+        @media (max-width: 600px) { .container { padding: 1rem; } .hero { padding: 2rem 1rem; } #yt-bg { width: 200px !important; height: 112px !important; } }
+    </style>
 </head>
 <body class="high-contrast">
 <header style="background:#3D0611; padding:8px 20px; border-bottom:3px solid #C9A227; text-align:center;">
   <img src="assets/Rosary LOGO 22.08.2025.png" alt="ROSARY Logo" style="max-height:70px; vertical-align:middle;">
   <span style="font-family:'Rockwell Extra Bold',Rockwell,'Roboto Slab',serif; font-weight:900; font-size:1.6rem; color:#C9A227; margin-left:12px; vertical-align:middle;">ROSARY</span>
 </header>
-<header>
-    <div class="badge" style="background:#C9A227;color:#3D0611;font-weight:bold;padding:0.3rem 0.8rem;display:inline-block;border-radius:3px;">TRL 9 + EMERGENT SPIRAL V1.0 | OPTIMIZED | GROK 0.1 / 4.7+4.8 + HERMES</div>
+
+<!-- 1. KUNDE VOR FEATURE: wer, welcher Schmerz, welcher Wert -->
+<header class="hero" id="top">
+    <span class="kicker">WARTELISTE OFFEN · PRODUKTNAME FOLGT</span>
     <h1>ROSENKRANZ©®™ PRIME</h1>
-    <p class="subtitle paladin">Emergent Spiral Governance • Bio 2.0 • Rosenkranz-Dialektik • Drei-S-Formel</p>
-    <p>Verschärfte Optimierung von rosenkranz.eu.com — Phase 5 Sektor-Piloten • Redundante Multi-PC Sync • Agenten-Orchestrierung</p>
-    <a href="#pilots" class="btn" style="padding:0.6rem 1.2rem;text-decoration:none;margin-top:1rem;display:inline-block;">SEKTOR-PILOTEN STARTEN</a>
-    <a href="#governance" class="btn btn-outline" style="padding:0.6rem 1.2rem;text-decoration:none;margin-top:1rem;display:inline-block;margin-left:0.5rem;">SPIRAL GOVERNANCE DASHBOARD</a>
-    <button class="btn-sand" onclick="openTrueWordsModal()" style="margin-top:1rem;margin-left:0.5rem;">TRUE WORDS (REGIE) ÖFFNEN</button>
+    <p class="subtitle paladin">[AUSFÜLLEN: ein Satz, der den Kunden und seinen Gewinn nennt – nicht das Feature.]</p>
+    <p style="margin-top:1.2rem;">Für wen ist das? Wähle, was auf dich zutrifft:</p>
+    <div class="choose">
+        <a class="pick" href="#waitlist" data-aud="A" id="pick-a">
+            <span class="tag">A</span><h3>Mehrere Agenten-PCs betreiben</h3>
+            <p><b>Wer:</b> Betreiber mehrerer Rechner mit Hermes- und Grok-Agenten, die Skills, Memory und Entscheidungen nicht verlieren dürfen.</p>
+            <p><b>Schmerz:</b> Drift zwischen Desktop, Laptop und Vercel-Apps; Kontext per Chat-Paste kostet Tokens und Zeit.</p>
+            <p><b>Wert:</b> Ein Ledger als Quelle der Wahrheit, Agenten mit Budget und Protokoll – der Sync-Master.</p>
+            <span class="todo">Entwurf aus hmpsm – bestätigen</span>
+            <span class="go">Auf die Warteliste (A) →</span>
+        </a>
+        <a class="pick" href="#waitlist" data-aud="B" id="pick-b">
+            <span class="tag">B</span><h3>ESG-Piloten &amp; Entscheidungsmatrix</h3>
+            <p><b>Wer:</b> [AUSFÜLLEN: Unternehmen/Organisation, die ESG-Entscheidungen begründen muss]</p>
+            <p><b>Schmerz:</b> [AUSFÜLLEN: z.B. Entscheidungen ohne nachvollziehbare Herleitung]</p>
+            <p><b>Wert:</b> Sektor-Piloten nach Sehen → Sagen → Sühnen und die ESG-Kette mit Decision-Engine (90 Minuten 1.490 €, Decision-Engine 2.490 € laut ESG-Kette).</p>
+            <span class="go">Auf die Warteliste (B) →</span>
+            <span class="sub-links"><span>Direkt ansehen:</span> <span class="lnk" data-href="https://durchblicker-app.rosary.eu.com/esg-kette.html">ESG-Kette</span> · <span class="lnk" data-href="#phase5">Sektor-Piloten</span></span>
+        </a>
+    </div>
 </header>
 
 <section id="background-music" aria-label="Hintergrundmusik">
@@ -78,6 +138,94 @@
 </section>
 
 <div class="container">
+
+    <!-- 2. EINZIGE MESSGRÖSSE AM TAG 1: WARTELISTE -->
+    <section id="waitlist" class="block waitlist">
+        <h2>Warteliste</h2>
+        <p>Trag dich ein, wenn du das Problem kennst. Wir melden uns persönlich – <strong>nie automatisch</strong>.</p>
+        <form id="wl-form" novalidate>
+            <fieldset class="aud" style="border:none;padding:0;margin:0;">
+                <legend style="font-weight:700;color:var(--sand-light);margin-bottom:0.4rem;">Was trifft auf dich zu?</legend>
+                <label><input type="radio" name="audience" value="A" id="aud-a" required> <span><b>A</b> · Ich betreibe mehrere Agenten-PCs (Sync-Master)</span></label>
+                <label><input type="radio" name="audience" value="B" id="aud-b"> <span><b>B</b> · ESG-Piloten &amp; Entscheidungsmatrix</span></label>
+            </fieldset>
+            <input type="hidden" name="src" id="wl-src" value="">
+            <label for="wl-name">Name (und Unternehmen)</label>
+            <input id="wl-name" name="name" type="text" required maxlength="100" autocomplete="name" placeholder="z.B. Maria Muster, Muster GmbH">
+            <!-- Spam-Schutz: Honeypot (für Menschen unsichtbar) + Startzeit -->
+            <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+                <label for="wl-website">Website (bitte leer lassen)</label>
+                <input id="wl-website" name="website" type="text" tabindex="-1" autocomplete="off" value="">
+            </div>
+            <input type="hidden" name="ts" id="wl-ts" value="">
+            <label for="wl-email">E-Mail</label>
+            <input id="wl-email" name="email" type="email" required autocomplete="email" placeholder="du@beispiel.de">
+            <label for="wl-machines" id="wl-machines-label">Wie viele Rechner betreibst du mit Agenten? (nur A)</label>
+            <input id="wl-machines" name="machines" type="number" min="1" max="99" placeholder="z.B. 3">
+            <label for="wl-pain">Was kostet dich heute am meisten Zeit? (ein Satz)</label>
+            <textarea id="wl-pain" name="pain" rows="3" required maxlength="1000" placeholder="A: z.B. Skills laufen zwischen den PCs auseinander · B: z.B. ESG-Entscheidung muss gegenüber der Bank begründet werden (mind. 20 Zeichen)"></textarea>
+            <label style="font-weight:400;"><input type="checkbox" id="wl-consent" required style="width:auto;"> Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden. <a href="[AUSFÜLLEN: Datenschutz-URL]">Datenschutz</a></label>
+            <!-- Cloudflare Turnstile: Site-Key unten in TURNSTILE_SITEKEY eintragen -->
+            <div id="wl-turnstile" class="cf-turnstile" style="margin:0.6rem 0;"></div>
+            <button type="submit">EINTRAGEN</button>
+            <div id="wl-status" role="status" aria-live="polite"></div>
+            <p class="hint">Bestätigung per E-Mail (Double-Opt-in) nach dem Eintragen. Kontakt: <a href="mailto:[AUSFÜLLEN: hello@domain]">[AUSFÜLLEN: hello@domain]</a></p>
+        </form>
+    </section>
+
+    <!-- 3. ROSTER: überwiegend Bots, je ein Satz Job + was sie noch vom Menschen brauchen -->
+    <section id="roster" class="block">
+        <h2>Wer arbeitet hier</h2>
+        <p>Ein Mensch entscheidet, Bots arbeiten zu. Jeder Bot hat genau einen Job – und braucht für einen Schritt noch dich.</p>
+        <div class="roster">
+            <div class="bot main"><h3>🎬 Regie</h3>Nimmt Aufträge an, verteilt sie an die Bots und legt Ergebnisse mit Belegen zur Freigabe vor.<div class="needs">Braucht vom Menschen: die Freigabe vor jedem Versand und Deploy.</div></div>
+            <div class="bot"><h3>🧭 Chief</h3>Hält die Kundenfrage und schneidet die Richtung.<div class="needs">Braucht vom Menschen: den Cut.</div></div>
+            <div class="bot"><h3>📖 Reader</h3>Liest Eingänge (X, Postfach, Warteliste) gegen Kunde, Schmerz, Wert.<div class="needs">Braucht vom Menschen: den Frame.</div></div>
+            <div class="bot"><h3>𝕏 X-Bot</h3>Zieht öffentliche Antworten, postet nichts ungefragt.<div class="needs">Braucht vom Menschen: welche Antworten zählen.</div></div>
+            <div class="bot"><h3>🛠️ Engineer</h3>Schreibt Sync-Code und Skills auf dem Haupt-Rechner.<div class="needs">Braucht vom Menschen: die Landeregel.</div></div>
+            <div class="bot"><h3>✅ Verifier</h3>Prüft jede Änderung; ohne Beleg (Diff, Screenshot) gilt nichts als fertig.<div class="needs">Braucht vom Menschen: den Merge.</div></div>
+            <div class="bot"><h3>🌐 Lander</h3>Hält diese Seite, die Warteliste und hello@.<div class="needs">Braucht vom Menschen: den Deploy.</div></div>
+            <div class="bot"><h3>🔄 Sync-Master</h3>Führt die Stände der Rechner zusammen, ohne etwas zu überschreiben.<div class="needs">Braucht vom Menschen: die Konfliktentscheidung.</div></div>
+        </div>
+        <p class="hint" style="font-family:var(--font-accent);margin-top:0.8rem;">Dazu die Pilot-Bots der Sektor-Piloten (Landwirtschaft, Politik, Handel, Education, Remigration) – siehe unten.</p>
+    </section>
+
+    <!-- 4. DREI REGELN -->
+    <section id="rules" class="block">
+        <h2>Drei Regeln</h2>
+        <ol class="rules">
+            <li><b>1 · SHIP TO MAIN</b>Alles landet auf einem Hauptzweig – keine Nebenstände, die keiner sieht.</li>
+            <li><b>2 · RESPECT THE REVIEW</b>Erst nach der Prüfung zählt etwas als erledigt.</li>
+            <li><b>3 · ASK BEFORE SENDING</b>Keine Mail und kein Post im Namen eines Menschen ohne dessen Freigabe.</li>
+        </ol>
+    </section>
+
+    <!-- 5. AGENTEN ZEIGEN IHRE ARBEIT -->
+    <section id="proof" class="block">
+        <h2>Belege statt Behauptungen</h2>
+        <p>Jeder Job endet mit einem Beleg, den du prüfen kannst.</p>
+        <div class="grid">
+            <div class="card"><h3>Öffentliche Commits</h3>Jede Änderung an dieser Seite ist nachvollziehbar: <a href="https://github.com/Rosary-mom/Bio2.0/commits/main">github.com/Rosary-mom/Bio2.0</a></div>
+            <div class="card"><h3>Vault-Graph</h3>Das Wissensnetz der Agenten, anonymisiert: <a href="https://monitor.rosenkranz.eu.com/rosary-atlas/vault-graph.html">Graph öffnen</a></div>
+            <div class="card"><h3>Screenshots & Videos</h3><span class="todo">[AUSFÜLLEN: 2–3 Bilder oder ein kurzes Video eines echten Agenten-Jobs mit Vorher/Nachher]</span></div>
+        </div>
+    </section>
+
+    <!-- 6. OFFENE FRAGEN / NÄCHSTER SCHRITT -->
+    <section id="next" class="block">
+        <h2>Was wir noch nicht wissen</h2>
+        <div class="card governance">
+            <p><strong>Ist der Schmerz echt genug?</strong> Bevor wir weiterbauen, sprechen wir mit je einem echten Kunden aus A und B.</p>
+            <p><strong>Hat das Produkt einen Namen?</strong> Noch nicht – mit Absicht. Die Hülle steht, der Name kommt, wenn die Richtung klar ist.</p>
+            <p><strong>Zeigen die Agenten ihre Arbeit?</strong> Ohne Beleg kein „fertig“.</p>
+            <p>Du erkennst dich in A oder B wieder? <a href="#waitlist">Trag dich ein</a> – oder sprich direkt mit Regie:</p>
+            <button class="btn-sand" onclick="openTrueWordsModal()">TRUE WORDS (REGIE) ÖFFNEN</button>
+        </div>
+    </section>
+
+    <!-- BESTEHENDE INHALTE (unverändert funktionsfähig, eingeklappt) -->
+    <details class="archive" id="phase5">
+        <summary>Sektor-Piloten, Governance-Dashboard und Sync-Status (Phase 5)</summary>
     <section id="pilots">
         <h2>Phase 5: Konkrete Sektor-Piloten (Emergent Spiral ausgeführt)</h2>
         <p>Basierend auf angepasstem SMOKE-Test (8-10 Iterationen, Avg Score 0.853+ PASSED). Drei S-Formel: Sehen → Sagen → Sühnen. Redundanz: Multi-PC (Home/Office/Vault) + Agent-Duplikate. Mit /DREAM + Suggestor/Supposer/Estimator/Exekutor/Exkursor im Stil Magnifica Humanitas (hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold). Organigramm: <a href="organigramm.json" style="color:#E3C35A;">organigramm.json</a> · <a href=".grok/skills/grok-sync-master-v3/references/organigramm.yaml" style="color:#E3C35A;">organigramm.yaml</a> (30 Agenten, 16 Subagenten, 5 Piloten).</p>
@@ -172,6 +320,8 @@
     </section>
 
     <p style="font-size:0.85rem;">ESG-Memory für Multi-PCs: <a href="memory/esg-multipc.json" style="color:#E3C35A;">esg-multipc.json</a> · Anweisung <a href="memory/GROK.md" style="color:#E3C35A;">GROK.md</a> · Organigramm <a href="organigramm.json" style="color:#E3C35A;">organigramm.json</a></p>
+    </details>
+
 <footer style="text-align:center;margin-top:3rem;opacity:0.7;">
         Optimiert aus http://rosenkranz.eu.com/ • Phase 5 Piloten + Emergent Spiral + True Words Regie • Commit-ready für github.com/rosary-mom/<br>
         <small>Stabilität vor Speed • ASK BEFORE SENDING • measured-only (Doktorarbeit Epistemologie) • Magnifica Humanitas Stil (Rosario, Paladin, Rockwell Extra Bold, hoher Kontrast) • Organigramm synced 2026-10-07</small>
@@ -309,6 +459,62 @@ function simulateOtherPCSync() {
 
 // Auto-log initial state
 console.log('%c[ROSENKRANZ Optimized Site] Phase 5 Pilots + Emergent Spiral + Organigramm 30/16 loaded. Syncs ready.', 'color:#d4af37');
+</script>
+<script>
+// Spam-Schutz: Startzeit + Turnstile (Site-Key ist öffentlich; Secret nur als Vercel-Env TURNSTILE_SECRET)
+const TURNSTILE_SITEKEY = '[AUSFÜLLEN: Turnstile Site Key]';
+document.getElementById('wl-ts').value = String(Date.now());
+if (/^0x/.test(TURNSTILE_SITEKEY)) {
+    window.onTurnstileLoad = function () { turnstile.render('#wl-turnstile', { sitekey: TURNSTILE_SITEKEY, language: 'de', theme: 'dark' }); };
+    const t = document.createElement('script');
+    t.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad&render=explicit'; t.async = true; t.defer = true;
+    document.head.appendChild(t);
+}
+// Rückmeldung nach Klick auf den Bestätigungslink (?waitlist=confirmed|expired|invalid|unsubscribed)
+(function () {
+    const w = new URLSearchParams(location.search).get('waitlist');
+    const msg = { confirmed: 'Danke – deine Anmeldung ist bestätigt.', expired: 'Der Bestätigungslink ist abgelaufen oder wurde schon benutzt. Bitte erneut eintragen.', invalid: 'Ungültiger Link.', unsubscribed: 'Du wurdest von der Warteliste abgemeldet.' }[w];
+    if (msg) { document.getElementById('wl-status').textContent = msg; }
+})();
+// Zielgruppe + Quelle: ?src=blog&aud=A|B (z.B. https://hmpsm-lander5787.vercel.app/?src=blog#waitlist)
+(function () {
+    const q = new URLSearchParams(location.search);
+    const src = (q.get('src') || q.get('utm_source') || '').replace(/[^a-z0-9_.-]/gi, '').slice(0, 40);
+    document.getElementById('wl-src').value = src;
+    const camp = (q.get('utm_campaign') || '').replace(/[^a-z0-9_.-]/gi, '').slice(0, 40);
+    if (camp) document.getElementById('wl-src').value = src + (src ? ':' : '') + camp;
+    function setAud(a) { const r = document.getElementById(a === 'B' ? 'aud-b' : 'aud-a'); if (r) r.checked = true; }
+    const aud = (q.get('aud') || '').toUpperCase(); if (aud === 'A' || aud === 'B') setAud(aud);
+    document.querySelectorAll('.pick').forEach(function (el) { el.addEventListener('click', function () { setAud(el.dataset.aud); }); });
+    document.querySelectorAll('.pick .lnk').forEach(function (el) { el.addEventListener('click', function (ev) { ev.preventDefault(); ev.stopPropagation(); const h = el.dataset.href; if (h === '#phase5') { document.getElementById('phase5').open = true; location.hash = 'phase5'; } else { window.open(h, '_blank', 'noopener'); } }); });
+})();
+// Warteliste: POST /api/waitlist (JSON: audience, name, email, machines, pain, src, source_app, consent, website[Honeypot], ts, cf-turnstile-response). Kein automatischer Versand im Namen eines Menschen.
+document.getElementById('wl-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const st = document.getElementById('wl-status');
+    const email = document.getElementById('wl-email').value.trim();
+    const pain = document.getElementById('wl-pain').value.trim();
+    const machines = document.getElementById('wl-machines').value;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { st.textContent = 'Bitte eine gültige E-Mail eingeben.'; return; }
+    if (!pain) { st.textContent = 'Bitte einen Satz zum Problem eingeben.'; return; }
+    if (document.getElementById('wl-name').value.trim().length < 2) { st.textContent = 'Bitte deinen Namen eingeben.'; return; }
+    const audEl = document.querySelector('input[name=audience]:checked');
+    if (!audEl) { st.textContent = 'Bitte A oder B wählen.'; return; }
+    if (audEl.value === 'B' && pain.length < 20) { st.textContent = 'Bitte beschreibe dein Anliegen in mindestens 20 Zeichen.'; return; }
+    const audience = audEl.value, name = document.getElementById('wl-name').value.trim(), src = document.getElementById('wl-src').value;
+    if (!document.getElementById('wl-consent').checked) { st.textContent = 'Bitte der Speicherung zustimmen.'; return; }
+    st.textContent = 'Wird gesendet …';
+    try {
+        const res = await fetch('/api/waitlist', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ audience, name, email, machines, pain, src, source_app: 'hmpsm-lander', consent: true,
+                website: document.getElementById('wl-website').value, ts: Number(document.getElementById('wl-ts').value),
+                'cf-turnstile-response': (document.querySelector('[name="cf-turnstile-response"]') || {}).value || '' }) });
+        const json = await res.json().catch(() => ({}));
+        if (res.ok && json.ok) { st.textContent = json.message || 'Danke! Bitte bestätige den Link in deiner E-Mail.'; e.target.reset(); document.getElementById('wl-ts').value = String(Date.now()); }
+        else if (json.error) { st.textContent = json.error; if (window.turnstile) turnstile.reset('#wl-turnstile'); }
+        else { st.textContent = 'Die Warteliste ist gerade nicht erreichbar. Bitte schreib uns per E-Mail.'; }
+    } catch (err) { st.textContent = 'Die Warteliste ist gerade nicht erreichbar. Bitte schreib uns per E-Mail.'; }
+});
 </script>
 </body>
 </html>
