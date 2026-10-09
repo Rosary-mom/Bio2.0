@@ -184,7 +184,9 @@ async function sendMail(env, fetchFn, { to, subject, html, text, headers }) {
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ from: env.MAIL_FROM, to: [to], subject, html, text, headers }),
   });
-  if (!r.ok) throw new Error('mail: ' + r.status);
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error('mail: ' + r.status + (j.message ? ' ' + j.message : ''));
+  return j.id || null;
 }
 
 function confirmMail(env, v, token) {
@@ -223,6 +225,9 @@ const SCHEMA = [
   `CREATE INDEX IF NOT EXISTS waitlist_signups_token_idx ON waitlist_signups (token_hash)`,
   `CREATE INDEX IF NOT EXISTS waitlist_signups_ip_idx ON waitlist_signups (ip_hash, created_at)`,
   `CREATE INDEX IF NOT EXISTS waitlist_signups_status_idx ON waitlist_signups (status, audience)`,
+  `ALTER TABLE waitlist_signups ADD COLUMN IF NOT EXISTS notify_id text`,
+  `ALTER TABLE waitlist_signups ADD COLUMN IF NOT EXISTS notify_error text`,
+  `ALTER TABLE waitlist_signups ADD COLUMN IF NOT EXISTS token_at timestamptz`,
 ];
 
 // ---------- HTTP ----------
@@ -252,7 +257,7 @@ function clientIp(req) {
 }
 
 const OK_MSG = 'Danke! Bitte bestätige deine Anmeldung über den Link in der E-Mail, die wir dir gerade geschickt haben.';
-const PENDING_MAIL_MSG = 'Danke! Du stehst auf der Warteliste. Die Bestätigungs-E-Mail schicken wir dir in Kürze.';
+const PENDING_MAIL_MSG = 'Danke! Du stehst auf der Warteliste. Wir melden uns persönlich.';
 const QUAR_MSG = 'Danke! Deine Anmeldung wird kurz manuell geprüft; danach bekommst du eine Bestätigungs-E-Mail.';
 
 function createHandler(deps = {}) {
@@ -268,11 +273,17 @@ function createHandler(deps = {}) {
     return rawSql(q, p);
   };
   const mailReady = Boolean(env.RESEND_API_KEY && env.MAIL_FROM);
+  // Double-Opt-in nur mit verifizierter Domain: Resend-Sandbox (@resend.dev) stellt nur an die Konto-Adresse zu
+  const confirmEnabled = mailReady && !/@resend\.dev>?\s*$/i.test(env.MAIL_FROM || '') && env.CONFIRM_MAIL !== 'off';
+  const okMsg = () => (confirmEnabled ? OK_MSG : PENDING_MAIL_MSG);
   const notify = async (subject, text) => {
-    if (!env.NOTIFY_EMAIL) return;
-    if (!mailReady) { log('notify skipped (kein Mailanbieter)', subject); return; }
-    await sendMail(env, fetchFn, { to: env.NOTIFY_EMAIL, subject, text, html: '<pre>' + esc(text) + '</pre>' })
-      .catch((e) => log('notify failed', e.message));
+    if (!env.NOTIFY_EMAIL) return { skipped: 'no NOTIFY_EMAIL' };
+    if (!mailReady) { log('notify skipped (kein Mailanbieter)', subject); return { skipped: 'no provider' }; }
+    try {
+      const id = await sendMail(env, fetchFn, { to: env.NOTIFY_EMAIL, subject, text, html: '<pre>' + esc(text) + '</pre>' });
+      log('notify sent', id);
+      return { id };
+    } catch (e) { log('notify failed', e.message); return { error: e.message }; }
   };
   const isAdmin = (req) => {
     const a = String((req.headers || {})['x-waitlist-admin'] || '');
@@ -294,8 +305,28 @@ function createHandler(deps = {}) {
         if (!isAdmin(req)) return reply(res, 404, { ok: false });
         if (req.method === 'GET' && admin === 'stats') {
           const rows = await sql(`SELECT audience, status, count(*)::int AS n FROM waitlist_signups GROUP BY 1,2 ORDER BY 1,2`, []);
-          const last = await sql(`SELECT id, audience, status, flags, created_at, (email LIKE '%@example.com') AS is_test FROM waitlist_signups ORDER BY id DESC LIMIT 5`, []);
-          return reply(res, 200, { ok: true, counts: rows, latest: last, mail: mailReady, turnstile: Boolean(env.TURNSTILE_SECRET) });
+          const last = await sql(`SELECT id, audience, status, flags, notify_id, notify_error, created_at, (email LIKE '%@example.com') AS is_test FROM waitlist_signups ORDER BY id DESC LIMIT 5`, []);
+          return reply(res, 200, { ok: true, counts: rows, latest: last, mail: mailReady, confirm: confirmEnabled, turnstile: Boolean(env.TURNSTILE_SECRET) });
+        }
+        if (req.method === 'POST' && admin === 'resend-confirmations') {
+          // Für später, wenn eine Absenderdomain verifiziert ist: pending_mail -> neue Tokens + Bestätigungsmail
+          if (!confirmEnabled) return reply(res, 409, { ok: false, error: 'Bestätigungsmail deaktiviert (MAIL_FROM ist Sandbox/@resend.dev oder fehlt)' });
+          const lim = Math.min(Number(url.searchParams.get('limit') || 50), 200);
+          const rows = await sql(`SELECT id, email, audience, name FROM waitlist_signups WHERE status='pending_mail' ORDER BY id LIMIT $1`, [lim]);
+          const out = { sent: [], failed: [] };
+          for (const r of rows) {
+            const tk = crypto.randomBytes(32).toString('hex');
+            try {
+              await sql(`UPDATE waitlist_signups SET token_hash=$2, token_at=now() WHERE id=$1`, [r.id, hash(tk)]);
+              await sendMail(env, fetchFn, confirmMail(env, r, tk));
+              await sql(`UPDATE waitlist_signups SET status='pending' WHERE id=$1`, [r.id]);
+              out.sent.push(r.id);
+            } catch (e) {
+              await sql(`UPDATE waitlist_signups SET status='mail_failed' WHERE id=$1`, [r.id]).catch(() => {});
+              out.failed.push(r.id);
+            }
+          }
+          return reply(res, 200, { ok: true, ...out });
         }
         if (req.method === 'DELETE' && admin === 'purge-test') {
           const rows = await sql(`DELETE FROM waitlist_signups WHERE email LIKE '%@example.com' RETURNING id`, []);
@@ -311,7 +342,7 @@ function createHandler(deps = {}) {
         if (confirm) {
           const rows = await sql(
             `UPDATE waitlist_signups SET status='confirmed', confirmed_at=now()
-             WHERE token_hash=$1 AND status='pending' AND created_at > now() - interval '48 hours' RETURNING id`, [hash(tok)]);
+             WHERE token_hash=$1 AND status='pending' AND coalesce(token_at, created_at) > now() - interval '48 hours' RETURNING id`, [hash(tok)]);
           return redirect(res, `${base}/?waitlist=${rows.length ? 'confirmed' : 'expired'}#waitlist`);
         }
         await sql(`UPDATE waitlist_signups SET status='unsubscribed', unsubscribed_at=now() WHERE token_hash=$1`, [hash(tok)]);
@@ -336,7 +367,7 @@ function createHandler(deps = {}) {
       const tooFast = !started || t - started < minFill || t - started > 24 * 3600e3;
       if ((body.website && String(body.website).trim()) || tooFast) {
         log('waitlist drop', { reason: body.website ? 'honeypot' : 'timing' });
-        return reply(res, 200, { ok: true, message: OK_MSG });
+        return reply(res, 200, { ok: true, message: okMsg() });
       }
 
       // 3) Validierung
@@ -355,7 +386,7 @@ function createHandler(deps = {}) {
       const decision = decide(v.audience, flags);
       if (decision === 'reject') {
         log('waitlist reject', { audience: v.audience, flags });
-        return reply(res, 200, { ok: true, message: OK_MSG }); // nichts speichern, nichts senden
+        return reply(res, 200, { ok: true, message: okMsg() }); // nichts speichern, nichts senden
       }
 
       // 6) DB-Rate-Limit + Speichern
@@ -363,7 +394,7 @@ function createHandler(deps = {}) {
       if (cnt[0] && cnt[0].n >= perHour) return reply(res, 429, { ok: false, error: 'Zu viele Versuche. Bitte später erneut.' });
 
       const token = crypto.randomBytes(32).toString('hex');
-      const status = decision === 'quarantine' ? 'quarantine' : (mailReady ? 'pending' : 'pending_mail');
+      const status = decision === 'quarantine' ? 'quarantine' : (confirmEnabled ? 'pending' : 'pending_mail');
       const ins = await sql(
         `INSERT INTO waitlist_signups (email, audience, name, machines, pain, src, source_app, status, token_hash, ip_hash, flags, consent_text, user_agent)
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11::jsonb,$12,$13)
@@ -371,12 +402,16 @@ function createHandler(deps = {}) {
         [v.email, v.audience, v.name, v.machines ? Number(v.machines) : null, v.pain || null, v.src || null,
           v.source_app || null, status, hash(token), ipHash, JSON.stringify(flags), 'Warteliste + Datenschutz akzeptiert (Lander)',
           clean((req.headers || {})['user-agent'], 200)]);
-      if (!ins.length) return reply(res, 200, { ok: true, message: OK_MSG }); // schon vorhanden: keine Enumeration
+      if (!ins.length) return reply(res, 200, { ok: true, message: okMsg() }); // schon vorhanden: keine Enumeration
 
-      await notify(
+      const nres = await notify(
         status === 'quarantine' ? `Warteliste ${v.audience}: manuelle Prüfung (#${ins[0].id})` : `Warteliste ${v.audience}: neue Anmeldung (#${ins[0].id})`,
         `Zielgruppe: ${v.audience}\nName: ${v.name}\nE-Mail: ${v.email}\nRechner: ${v.machines || '-'}\nAnliegen: ${v.pain || '-'}\nQuelle: ${v.src || '-'}\nStatus: ${status}\nFlags: ${[...flags.hard, ...flags.soft].join(', ') || '-'}`);
-      if (status === 'quarantine') return reply(res, 200, { ok: true, message: QUAR_MSG });
+      if (nres.id || nres.error) {
+        await sql(`UPDATE waitlist_signups SET notify_id=$2, notify_error=$3 WHERE id=$1`, [ins[0].id, nres.id || null, nres.error || null])
+          .catch((e) => log('notify store failed', e.message));
+      }
+      if (status === 'quarantine') return reply(res, 200, { ok: true, message: confirmEnabled ? QUAR_MSG : PENDING_MAIL_MSG });
       if (status === 'pending_mail') return reply(res, 200, { ok: true, message: PENDING_MAIL_MSG });
 
       // 7) Double-Opt-in-Mail
