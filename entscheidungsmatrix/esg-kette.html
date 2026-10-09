@@ -41,6 +41,9 @@
     .lang-toggle button.active { background: var(--bordeaux); border-color: var(--gold); }
     .bot-msg { margin: 6px 0; padding: 8px; background: #2C2520; border-left: 3px solid var(--gold); border-radius: 4px; font-size: 0.92rem; }
     .user-msg { margin: 6px 0; padding: 8px; text-align: right; background: #3a2a2a; border-radius: 4px; font-size: 0.92rem; }
+    .agent-icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.8rem; }
+    .agent-icons-label { color: var(--gold); font-weight: bold; margin-bottom: 0.4rem; }
+    .agent-icon { display: inline-block; font-size: 1.4rem; margin: 0.15rem; }
     .pilot-score { color: #27ae60; font-weight: bold; }
   </style>
 </head>
@@ -106,6 +109,27 @@
       <button class="bot-btn" onclick="openBot('education')">📚 Education Bot</button>
       <button class="bot-btn" onclick="openBot('remigration')">🔄 Remigration Bot</button>
     </div>
+
+    <h2 class="magnifica" style="margin-top:3rem;">🗂️ Agenten &amp; Bots</h2>
+    <p style="color:#A38A5C;">91 Agenten als Icons, nach Bereichen gruppiert, dazu die Bots mit Namen. Stand 09.10.2026. Der Button „VAULT Graph“ oben rechts zeigt die Verknüpfungen.</p>
+    <div class="agent-icon-grid">
+      <div class="field agent-icons"><div class="agent-icons-label">Excellenzen</div><div aria-hidden="true"><span class="agent-icon">🛡️</span><span class="agent-icon">🛡️</span><span class="agent-icon">🛡️</span><span class="agent-icon">🛡️</span><span class="agent-icon">🛡️</span></div></div>
+      <div class="field agent-icons"><div class="agent-icons-label">Office-Team</div><div aria-hidden="true"><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span><span class="agent-icon">💼</span></div></div>
+      <div class="field agent-icons"><div class="agent-icons-label">Dirigenten</div><div aria-hidden="true"><span class="agent-icon">🎼</span><span class="agent-icon">🎼</span></div></div>
+      <div class="field agent-icons"><div class="agent-icons-label">Steuerung</div><div aria-hidden="true"><span class="agent-icon">🧭</span><span class="agent-icon">🧭</span><span class="agent-icon">🧭</span><span class="agent-icon">🧭</span><span class="agent-icon">🧭</span><span class="agent-icon">🧭</span></div></div>
+      <div class="field agent-icons"><div class="agent-icons-label">Scouts</div><div aria-hidden="true"><span class="agent-icon">🔭</span><span class="agent-icon">🔭</span><span class="agent-icon">🔭</span><span class="agent-icon">🔭</span><span class="agent-icon">🔭</span></div></div>
+      <div class="field agent-icons"><div class="agent-icons-label">Mesh-Scouts</div><div aria-hidden="true"><span class="agent-icon">🛰️</span><span class="agent-icon">🛰️</span><span class="agent-icon">🛰️</span><span class="agent-icon">🛰️</span><span class="agent-icon">🛰️</span><span class="agent-icon">🛰️</span><span class="agent-icon">🛰️</span><span class="agent-icon">🛰️</span></div></div>
+      <div class="field agent-icons"><div class="agent-icons-label">Hermes-Team</div><div aria-hidden="true"><span class="agent-icon">⚙️</span><span class="agent-icon">⚙️</span><span class="agent-icon">⚙️</span><span class="agent-icon">⚙️</span><span class="agent-icon">⚙️</span><span class="agent-icon">⚙️</span><span class="agent-icon">⚙️</span><span class="agent-icon">⚙️</span><span class="agent-icon">⚙️</span></div></div>
+      <div class="field agent-icons"><div class="agent-icons-label">Prozesse</div><div aria-hidden="true"><span class="agent-icon">🏭</span><span class="agent-icon">🏭</span><span class="agent-icon">🏭</span><span class="agent-icon">🏭</span><span class="agent-icon">🏭</span><span class="agent-icon">🏭</span><span class="agent-icon">🏭</span><span class="agent-icon">🏭</span></div></div>
+      <div class="field agent-icons"><div class="agent-icons-label">Kanäle</div><div aria-hidden="true"><span class="agent-icon">📣</span><span class="agent-icon">📣</span><span class="agent-icon">📣</span><span class="agent-icon">📣</span><span class="agent-icon">📣</span><span class="agent-icon">📣</span></div></div>
+      <div class="field agent-icons"><div class="agent-icons-label">Angebote</div><div aria-hidden="true"><span class="agent-icon">🎁</span><span class="agent-icon">🎁</span><span class="agent-icon">🎁</span><span class="agent-icon">🎁</span><span class="agent-icon">🎁</span><span class="agent-icon">🎁</span><span class="agent-icon">🎁</span><span class="agent-icon">🎁</span></div></div>
+      <div class="field agent-icons"><div class="agent-icons-label">Erlösmodelle</div><div aria-hidden="true"><span class="agent-icon">💶</span><span class="agent-icon">💶</span><span class="agent-icon">💶</span><span class="agent-icon">💶</span></div></div>
+      <div class="field agent-icons"><div class="agent-icons-label">Wegweiser</div><div aria-hidden="true"><span class="agent-icon">🗺️</span><span class="agent-icon">🗺️</span><span class="agent-icon">🗺️</span><span class="agent-icon">🗺️</span><span class="agent-icon">🗺️</span><span class="agent-icon">🗺️</span><span class="agent-icon">🗺️</span></div></div>
+      <div class="field agent-icons"><div class="agent-icons-label">TechBio</div><div aria-hidden="true"><span class="agent-icon">🧬</span><span class="agent-icon">🧬</span><span class="agent-icon">🧬</span><span class="agent-icon">🧬</span><span class="agent-icon">🧬</span><span class="agent-icon">🧬</span><span class="agent-icon">🧬</span></div></div>
+    </div>
+    <h3 class="magnifica" style="margin-top:2rem;">🤖 Bots</h3>
+    <div class="field"><p style="margin:0 0 0.4rem;"><strong>Grok Bots</strong></p><p style="margin:0;">🤖 MeshGuardian • 🤖 StateForge • 🤖 BootstrapRunner • 🤖 SkillPropagator • 🤖 CostAuditor</p>
+      <p style="margin:0.8rem 0 0.4rem;"><strong>Pilot-Bots</strong> (oben zum Anklicken)</p><p style="margin:0;">🌱 Landwirtschaft Bot • ⚖️ Politik Bot • 💰 Handel Bot • 📚 Education Bot • 🔄 Remigration Bot</p></div>
     <p style="margin-top: 2rem;"><a href="index.html">Zurück zur kombinierten Entscheidungsmatrix</a></p>
   </div>
   <footer>Magnifica Humanitas • rosary.esg.chain.v1 • Grok Bots DE/EN • Organigramm 30/16<br>Deployed on Durchblicker-App.rosary.eu.com</footer>
