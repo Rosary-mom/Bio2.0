@@ -5,50 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROSENKRANZ©®™ PRIME | Emergent Spiral Governance - Optimized</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rosario:wght@400;700&family=Rockwell:wght@700&display=swap);
-        body { font-family: 'Rosario', 'Rockwell', serif; background: #0a0a0a; color: #d4af37; margin: 0; padding: 0; line-height: 1.6; }
-        header { background: linear-gradient(135deg, #1a1a1a, #2c3e50); padding: 2rem; text-align: center; border-bottom: 3px solid #d4af37; }
-        h1 { font-family: 'Rockwell', serif; font-size: 3rem; margin: 0; text-shadow: 2px 2px #000; }
-        .subtitle { font-size: 1.2rem; opacity: 0.8; }
+        @import url('https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@800;900&display=swap');
+        :root {
+            --bordeaux: #5C0A1A; --bordeaux-2: #800020; --bordeaux-dark: #3D0611;
+            --sand: #E8D9B5; --sand-light: #F5ECD7; --gold: #C9A227; --gold-light: #E3C35A;
+            --font-body: 'Rosario', 'Segoe UI', Arial, sans-serif;
+            --font-head: 'Rockwell Extra Bold', 'Rockwell', 'Roboto Slab', Georgia, serif;
+            --font-accent: 'Palatino Linotype', Palatino, 'Book Antiqua', 'Palatino', serif;
+        }
+        html { background: var(--bordeaux); }
+        body { font-family: var(--font-body); background: var(--bordeaux); color: var(--sand); margin: 0; padding: 0; line-height: 1.6; font-size: 1.05rem; }
+        a { color: var(--gold-light); }
+        a:hover { color: var(--sand-light); }
+        h1, h2, h3 { font-family: var(--font-head); font-weight: 900; color: var(--gold); letter-spacing: 0.01em; }
+        h2 { border-bottom: 2px solid var(--gold); padding-bottom: 0.4rem; }
+        header { background: linear-gradient(135deg, var(--bordeaux-dark), var(--bordeaux-2)); padding: 2rem; text-align: center; border-bottom: 3px solid var(--gold); color: var(--sand); }
+        h1 { font-size: 3rem; margin: 0; text-shadow: 2px 2px 0 #000; color: var(--gold); }
+        .subtitle { font-size: 1.25rem; color: var(--sand-light); }
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .card { background: #1a1a1a; border: 1px solid #d4af37; padding: 1.5rem; border-radius: 8px; box-shadow: 0 0 10px rgba(212,175,55,0.1); }
-        .pilot { border-left: 5px solid #4a90e2; }
-        .governance { border-left: 5px solid #27ae60; }
-        .spiral { background: #112; padding: 1rem; margin: 1rem 0; font-size: 0.9rem; border: 1px dashed #d4af37; }
-        button { background: #d4af37; color: #0a0a0a; border: none; padding: 0.5rem 1rem; cursor: pointer; font-family: 'Rockwell', serif; font-weight: bold; }
-        button:hover { background: #f4d03f; transform: scale(1.02); }
-        .metric { font-size: 1.1rem; color: #27ae60; font-weight: bold; }
-        .score { font-weight: bold; color: #e74c3c; }
-        .status { padding: 0.2rem 0.5rem; background: #27ae60; color: white; border-radius: 3px; font-size: 0.8rem; }
-        .sync-log { background: #111; padding: 1rem; font-size: 0.8rem; white-space: pre-wrap; border: 1px dashed #d4af37; font-family: monospace; }
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
-        .modal-content { background: #1a1a1a; margin: 5% auto; padding: 20px; border: 2px solid #d4af37; width: 80%; max-width: 600px; border-radius: 8px; color: #d4af37; font-family: 'Rosario', serif; }
-        .close { color: #d4af37; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-        .close:hover { color: #f4d03f; }
-        .chat-box { height: 300px; overflow-y: auto; border: 1px solid #d4af37; padding: 10px; margin-bottom: 10px; background: #0a0a0a; }
-        .chat-input { width: 80%; padding: 8px; background: #112; color: #d4af37; border: 1px solid #d4af37; }
-        .high-contrast { filter: contrast(1.2); }
-        .paladin { font-family: 'Palatino Linotype', 'Rockwell', serif; }
+        .card { background: var(--bordeaux-2); color: var(--sand); border: 2px solid var(--gold); padding: 1.5rem; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+        .card strong { color: var(--sand-light); }
+        .pilot { border-left: 8px solid var(--gold); }
+        .governance { border-left: 8px solid var(--sand); }
+        .spiral { background: var(--bordeaux-dark); color: var(--sand); padding: 1rem; margin: 1rem 0; font-size: 0.95rem; border: 1px dashed var(--gold); font-family: var(--font-accent); }
+        button, .btn { background: var(--gold); color: var(--bordeaux-dark); border: 2px solid var(--gold); padding: 0.55rem 1.1rem; cursor: pointer; font-family: var(--font-head); font-weight: 900; border-radius: 4px; }
+        button:hover, .btn:hover { background: var(--gold-light); transform: scale(1.02); }
+        header .btn, header button { font-size: 1rem; padding: 0.6rem 1.2rem; }
+        .btn-sand { background: var(--sand) !important; color: var(--bordeaux-dark) !important; border-color: var(--sand) !important; }
+        .btn-outline { background: transparent !important; color: var(--gold) !important; border: 2px solid var(--gold) !important; }
+        .metric { font-size: 1.1rem; color: var(--sand-light); font-weight: bold; }
+        .score { font-weight: bold; color: var(--gold-light); }
+        .status { padding: 0.2rem 0.5rem; background: var(--gold); color: var(--bordeaux-dark); border-radius: 3px; font-size: 0.8rem; font-weight: bold; }
+        .sync-log { background: var(--bordeaux-dark); color: var(--sand); padding: 1rem; font-size: 0.85rem; white-space: pre-wrap; border: 1px dashed var(--gold); font-family: Consolas, 'Courier New', monospace; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(20,0,5,0.85); }
+        .modal-content { background: var(--bordeaux); margin: 5% auto; padding: 20px; border: 2px solid var(--gold); width: 80%; max-width: 600px; border-radius: 8px; color: var(--sand); font-family: var(--font-body); }
+        .close { color: var(--gold); float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close:hover { color: var(--sand-light); }
+        .chat-box { height: 300px; overflow-y: auto; border: 1px solid var(--gold); padding: 10px; margin-bottom: 10px; background: var(--bordeaux-dark); color: var(--sand); }
+        .chat-input { width: 80%; padding: 8px; background: var(--sand-light); color: var(--bordeaux-dark); border: 2px solid var(--gold); font-family: var(--font-body); }
+        .high-contrast { filter: none; }
+        .paladin { font-family: var(--font-accent); font-style: italic; }
+        footer { color: var(--sand); font-family: var(--font-accent); }
     </style>
 </head>
 <body class="high-contrast">
-<header style="background:#0a0a0a; padding:8px 20px; border-bottom:3px solid #d4af37; text-align:center;">
+<header style="background:#3D0611; padding:8px 20px; border-bottom:3px solid #C9A227; text-align:center;">
   <img src="assets/Rosary LOGO 22.08.2025.png" alt="ROSARY Logo" style="max-height:70px; vertical-align:middle;">
-  <span style="font-family:Rockwell,serif; font-size:1.6rem; color:#d4af37; margin-left:12px; vertical-align:middle;">ROSARY</span>
-</header>
-<header style="background:#0a0a0a; padding:8px 20px; border-bottom:3px solid #d4af37; text-align:center;">
-  <img src="assets/Rosary LOGO 22.08.2025.png" alt="ROSARY Logo" style="max-height:70px; vertical-align:middle;">
-  <span style="font-family:Rockwell,serif; font-size:1.6rem; color:#d4af37; margin-left:12px; vertical-align:middle;">ROSARY</span>
+  <span style="font-family:'Rockwell Extra Bold',Rockwell,'Roboto Slab',serif; font-weight:900; font-size:1.6rem; color:#C9A227; margin-left:12px; vertical-align:middle;">ROSARY</span>
 </header>
 <header>
-    <div class="badge" style="background:#d4af37;color:#0a0a0a;padding:0.3rem 0.8rem;display:inline-block;border-radius:3px;">TRL 9 + EMERGENT SPIRAL V1.0 | OPTIMIZED | GROK 0.1 / 4.7+4.8 + HERMES</div>
+    <div class="badge" style="background:#C9A227;color:#3D0611;font-weight:bold;padding:0.3rem 0.8rem;display:inline-block;border-radius:3px;">TRL 9 + EMERGENT SPIRAL V1.0 | OPTIMIZED | GROK 0.1 / 4.7+4.8 + HERMES</div>
     <h1>ROSENKRANZ©®™ PRIME</h1>
     <p class="subtitle paladin">Emergent Spiral Governance • Bio 2.0 • Rosenkranz-Dialektik • Drei-S-Formel</p>
     <p>Verschärfte Optimierung von rosenkranz.eu.com — Phase 5 Sektor-Piloten • Redundante Multi-PC Sync • Agenten-Orchestrierung</p>
-    <a href="#pilots" class="btn" style="background:#d4af37;color:#0a0a0a;padding:0.6rem 1.2rem;text-decoration:none;margin-top:1rem;display:inline-block;">SEKTOR-PILOTEN STARTEN</a>
-    <a href="#governance" class="btn" style="background:#27ae60;color:white;padding:0.6rem 1.2rem;text-decoration:none;margin-top:1rem;display:inline-block;margin-left:0.5rem;">SPIRAL GOVERNANCE DASHBOARD</a>
-    <button onclick="openTrueWordsModal()" style="background:#4a90e2;color:white;margin-top:1rem;">TRUE WORDS (GROK BOT) ÖFFNEN</button>
+    <a href="#pilots" class="btn" style="padding:0.6rem 1.2rem;text-decoration:none;margin-top:1rem;display:inline-block;">SEKTOR-PILOTEN STARTEN</a>
+    <a href="#governance" class="btn btn-outline" style="padding:0.6rem 1.2rem;text-decoration:none;margin-top:1rem;display:inline-block;margin-left:0.5rem;">SPIRAL GOVERNANCE DASHBOARD</a>
+    <button class="btn-sand" onclick="openTrueWordsModal()" style="margin-top:1rem;margin-left:0.5rem;">TRUE WORDS (REGIE) ÖFFNEN</button>
 </header>
 
 <section id="background-music" aria-label="Hintergrundmusik">
@@ -56,7 +69,7 @@
         id="yt-bg"
         title="YouTube Hintergrundmusik WylTTS2wrAE"
         src="https://www.youtube-nocookie.com/embed/WylTTS2wrAE?autoplay=1&mute=1&loop=1&playlist=WylTTS2wrAE&controls=0&modestbranding=1&rel=0"
-        style="position:fixed;right:16px;bottom:16px;width:320px;height:180px;border:1px solid #d4af37;border-radius:8px;z-index:20;"
+        style="position:fixed;right:16px;bottom:16px;width:320px;height:180px;border:1px solid #C9A227;border-radius:8px;z-index:20;"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
         referrerpolicy="strict-origin-when-cross-origin"
@@ -67,7 +80,7 @@
 <div class="container">
     <section id="pilots">
         <h2>Phase 5: Konkrete Sektor-Piloten (Emergent Spiral ausgeführt)</h2>
-        <p>Basierend auf angepasstem SMOKE-Test (8-10 Iterationen, Avg Score 0.853+ PASSED). Drei S-Formel: Sehen → Sagen → Sühnen. Redundanz: Multi-PC (Home/Office/Vault) + Agent-Duplikate. Mit /DREAM + Suggestor/Supposer/Estimator/Exekutor/Exkursor im Stil Magnifica Humanitas (hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold). Organigramm: <a href="organigramm.json" style="color:#d4af37;">organigramm.json</a> · <a href=".grok/skills/grok-sync-master-v3/references/organigramm.yaml" style="color:#d4af37;">organigramm.yaml</a> (30 Agenten, 16 Subagenten, 5 Piloten).</p>
+        <p>Basierend auf angepasstem SMOKE-Test (8-10 Iterationen, Avg Score 0.853+ PASSED). Drei S-Formel: Sehen → Sagen → Sühnen. Redundanz: Multi-PC (Home/Office/Vault) + Agent-Duplikate. Mit /DREAM + Suggestor/Supposer/Estimator/Exekutor/Exkursor im Stil Magnifica Humanitas (hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold). Organigramm: <a href="organigramm.json" style="color:#E3C35A;">organigramm.json</a> · <a href=".grok/skills/grok-sync-master-v3/references/organigramm.yaml" style="color:#E3C35A;">organigramm.yaml</a> (30 Agenten, 16 Subagenten, 5 Piloten).</p>
         
         <div class="grid">
             <div class="card pilot">
@@ -133,13 +146,13 @@
                 Sühnen: Agent Enzymes (Dschungelbuch, Cockpit, Landknappheit, ESG/Vault, EDUCATION, Suggestor/Supposer/Estimator/Exekutor/Exkursor) + Multi-PC<br>
                 /DREAM: Magnifica Humanitas Stil – Hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold, Inkludierte Ableitungen.
             </div>
-            <p><strong>Agenten aktiviert (Merged Organigramm, 30 Agenten / 16 Subagenten):</strong> Dschungelbuch (Wegweiser), Cockpit (L1), Landknappheit (BIO1.0), ESG/Vault (TECH2.0), EDUCATION, Fraktale, Baloo, Mogli, Monie, Auctionator, GURU, What-Dr.Son, GrokSyncMaster, Emergent Freedom + /DREAM Bots (Suggestor, Supposer, Estimator, Exekutor, Exkursor). Kanonisch: <a href="organigramm.json" style="color:#d4af37;">organigramm.json</a>.</p>
+            <p><strong>Agenten aktiviert (Merged Organigramm, 30 Agenten / 16 Subagenten):</strong> Dschungelbuch (Wegweiser), Cockpit (L1), Landknappheit (BIO1.0), ESG/Vault (TECH2.0), EDUCATION, Fraktale, Baloo, Mogli, Monie, Auctionator, GURU, What-Dr.Son, GrokSyncMaster, Emergent Freedom + /DREAM Bots (Suggestor, Supposer, Estimator, Exekutor, Exkursor). Kanonisch: <a href="organigramm.json" style="color:#E3C35A;">organigramm.json</a>.</p>
             
             <div id="esg-memory" class="sync-log" style="margin-top:1rem;">
                 <strong>ESG-Memory (Multi-PC, kanonisch):</strong> wird geladen…<br>
                 <span style="opacity:0.8;">Andere Grok-Instanzen lesen diese Datei, statt die Scores neu zu verhandeln.</span>
             </div>
-            <p style="font-size:0.85rem;"><a href="memory/esg-multipc.json" style="color:#d4af37;">memory/esg-multipc.json</a> · <a href="organigramm.json" style="color:#d4af37;">organigramm.json</a> · <a href="obsidian-combined-graph.json" style="color:#d4af37;">obsidian-combined-graph.json</a> · <a href="fault-graph.json" style="color:#d4af37;">fault-graph.json</a> · LAN <code>http://<home-ip>:8787/esg-multipc.json</code></p>
+            <p style="font-size:0.85rem;"><a href="memory/esg-multipc.json" style="color:#E3C35A;">memory/esg-multipc.json</a> · <a href="organigramm.json" style="color:#E3C35A;">organigramm.json</a> · <a href="obsidian-combined-graph.json" style="color:#E3C35A;">obsidian-combined-graph.json</a> · <a href="fault-graph.json" style="color:#E3C35A;">fault-graph.json</a> · LAN <code>http://<home-ip>:8787/esg-multipc.json</code></p>
             <button onclick="simulateSpiral()">SPIRALE ITERIEREN + /DREAM (Live Sim)</button>
             <div id="spiral-output" class="sync-log" style="margin-top:1rem;display:none;"></div>
         </div>
@@ -158,38 +171,38 @@
         <div id="sync-output" class="sync-log" style="margin-top:1rem;display:none;"></div>
     </section>
 
-    <p style="font-size:0.85rem;">ESG-Memory für Multi-PCs: <a href="memory/esg-multipc.json" style="color:#d4af37;">esg-multipc.json</a> · Anweisung <a href="memory/GROK.md" style="color:#d4af37;">GROK.md</a> · Organigramm <a href="organigramm.json" style="color:#d4af37;">organigramm.json</a></p>
+    <p style="font-size:0.85rem;">ESG-Memory für Multi-PCs: <a href="memory/esg-multipc.json" style="color:#E3C35A;">esg-multipc.json</a> · Anweisung <a href="memory/GROK.md" style="color:#E3C35A;">GROK.md</a> · Organigramm <a href="organigramm.json" style="color:#E3C35A;">organigramm.json</a></p>
 <footer style="text-align:center;margin-top:3rem;opacity:0.7;">
-        Optimiert aus http://rosenkranz.eu.com/ • Phase 5 Piloten + Emergent Spiral + True Words GROK Bot • Commit-ready für github.com/rosary-mom/<br>
+        Optimiert aus http://rosenkranz.eu.com/ • Phase 5 Piloten + Emergent Spiral + True Words Regie • Commit-ready für github.com/rosary-mom/<br>
         <small>Stabilität vor Speed • ASK BEFORE SENDING • measured-only (Doktorarbeit Epistemologie) • Magnifica Humanitas Stil (Rosario, Paladin, Rockwell Extra Bold, hoher Kontrast) • Organigramm synced 2026-10-07</small>
     </footer>
 </div>
 
-<!-- TRUE WORDS POP-UP MODAL WITH GROK BOT (Deutsche Sprache, GROK 0.1 / 4.7+4.8 + HERMES) -->
+<!-- TRUE WORDS POP-UP MODAL WITH REGIE (Deutsche Sprache, GROK 0.1 / 4.7+4.8 + HERMES) -->
 <div id="trueWordsModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeTrueWordsModal()">&times;</span>
-        <h2 style="font-family: 'Rockwell', serif; color: #d4af37;">TRUE WORDS (Wahre Worte) – GROK Bot</h2>
+        <h2>TRUE WORDS (Wahre Worte) – Regie</h2>
         <p style="font-size:0.9rem;">GROK Build 0.1 | GROK 4.7 + 4.8 | Hermes Agent (Nous Research). Analysiert explizit & implizit den gesamten Kontext (Rosenkranz Reorg, Phase 5, Emergent Spiral, Bio 2.0, Drei S, Piloten, Syncs, Multi-PC, US-Model, Templeroffenbarung). Herzuleitungen im Stil Magnifica Humanitas (hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold).</p>
         
-        <div id="chatBox" class="chat-box" style="font-family: 'Rosario', serif;"></div>
+        <div id="chatBox" class="chat-box" ></div>
         
         <input type="text" id="userInput" class="chat-input" placeholder="Frage stellen (z.B. 'Analysiere Phase 5 Piloten' oder 'Leite Emergent Spiral her')..." onkeypress="if(event.key==='Enter') sendMessage()">
-        <button onclick="sendMessage()" style="margin-left:5px;">Senden (GROK/Hermes)</button>
-        <button onclick="clearChat()" style="background:#e74c3c;color:white;margin-left:5px;">Chat löschen</button>
+        <button onclick="sendMessage()" style="margin-left:5px;">Senden (Regie)</button>
+        <button class="btn-outline" onclick="clearChat()" style="margin-left:5px;">Chat löschen</button>
         
         <p style="font-size:0.7rem; margin-top:10px;">Kontext: Vollständiger Rosenkranz-Kontext (1805-1879, Hegelianer der Mitte, Friedensverhandler-Claim, Staatsphilosophie für EU/NATO/Eurasien/Ukraine, Migration seit 1960, US-Remigration 98% Modell, Bio2.0, Agenten-Organigramm, Drei S, SMOKE 0.853+, Phase 5 Scores). /DREAM: Weitere Iterationen mit Suggestor/Supposer/Estimator/Exekutor/Exkursor aus Blogbeiträgen.</p>
     </div>
 </div>
 
 <script>
-// True Words GROK Bot - Pop-Up (Deutsche Sprache, kontextbasiert)
+// True Words Regie - Pop-Up (Deutsche Sprache, kontextbasiert)
 let chatHistory = [];
 
 function openTrueWordsModal() {
     document.getElementById('trueWordsModal').style.display = 'block';
     if (chatHistory.length === 0) {
-        addBotMessage("Hallo! Ich bin der GROK Bot (Build 0.1 / 4.7+4.8 + Hermes). Ich analysiere den vollständigen Kontext der Rosenkranz-Reorg, Emergent Spiral Governance, Phase 5 Sektor-Piloten, Bio 2.0, Drei S-Formel, Multi-PC Syncs und leite explizit/implizit ab. Stelle eine Frage – z.B. zu Piloten, Spiral oder Ableitungen im Magnifica Humanitas Stil.");
+        addBotMessage("Hallo! Ich bin Regie (Build 0.1 / 4.7+4.8 + Hermes). Ich analysiere den vollständigen Kontext der Rosenkranz-Reorg, Emergent Spiral Governance, Phase 5 Sektor-Piloten, Bio 2.0, Drei S-Formel, Multi-PC Syncs und leite explizit/implizit ab. Stelle eine Frage – z.B. zu Piloten, Spiral oder Ableitungen im Magnifica Humanitas Stil.");
     }
 }
 
@@ -198,21 +211,21 @@ function closeTrueWordsModal() {
 }
 
 function addBotMessage(msg) {
-    const chatBox = document.getElementById('chatBox);
-    const msgDiv = document.createElement('div);
+    const chatBox = document.getElementById('chatBox');
+    const msgDiv = document.createElement('div');
     msgDiv.style.margin = '5px 0';
     msgDiv.style.padding = '8px';
-    msgDiv.style.background = '#112';
-    msgDiv.style.borderLeft = '3px solid #d4af37';
-    msgDiv.innerHTML = `<strong>GROK/Hermes:</strong> ${msg}`;
+    msgDiv.style.background = '#800020';
+    msgDiv.style.borderLeft = '3px solid #C9A227';
+    msgDiv.innerHTML = `<strong>Regie:</strong> ${msg}`;
     chatBox.appendChild(msgDiv);
     chatBox.scrollTop = chatBox.scrollHeight;
     chatHistory.push({type: 'bot', msg: msg});
 }
 
 function addUserMessage(msg) {
-    const chatBox = document.getElementById('chatBox);
-    const msgDiv = document.createElement('div);
+    const chatBox = document.getElementById('chatBox');
+    const msgDiv = document.createElement('div');
     msgDiv.style.margin = '5px 0';
     msgDiv.style.textAlign = 'right';
     msgDiv.innerHTML = `<strong>Du:</strong> ${msg}`;
@@ -222,7 +235,7 @@ function addUserMessage(msg) {
 }
 
 function sendMessage() {
-    const input = document.getElementById('userInput);
+    const input = document.getElementById('userInput');
     const question = input.value.trim();
     if (!question) return;
     
@@ -295,7 +308,7 @@ function simulateOtherPCSync() {
 }
 
 // Auto-log initial state
-console.log('%c[ROSENKRANZ Optimized Site] Phase 5 Pilots + Emergent Spiral + Organigramm 30/16 loaded. Syncs ready.', 'color:#d4af37);
+console.log('%c[ROSENKRANZ Optimized Site] Phase 5 Pilots + Emergent Spiral + Organigramm 30/16 loaded. Syncs ready.', 'color:#d4af37');
 </script>
 </body>
 </html>
