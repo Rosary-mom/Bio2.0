@@ -92,6 +92,8 @@ fs.writeFileSync(
   path.join(OUT, 'config.json'),
   JSON.stringify({
     version: 3,
+    // Tägliche Löschfristen-Prüfung (Datenschutz), 03:17 UTC; Vercel sendet Authorization: Bearer CRON_SECRET
+    crons: [{ path: '/api/waitlist?admin=retention', schedule: '17 3 * * *' }],
     routes: [
       { src: '^/api/grok$', dest: '/api/grok' },
       { src: '^/api/waitlist$', dest: '/api/waitlist' },

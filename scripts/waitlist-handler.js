@@ -228,7 +228,26 @@ const SCHEMA = [
   `ALTER TABLE waitlist_signups ADD COLUMN IF NOT EXISTS notify_id text`,
   `ALTER TABLE waitlist_signups ADD COLUMN IF NOT EXISTS notify_error text`,
   `ALTER TABLE waitlist_signups ADD COLUMN IF NOT EXISTS token_at timestamptz`,
+  `ALTER TABLE waitlist_signups ALTER COLUMN token_hash DROP NOT NULL`,
 ];
+
+// ---------- Löschfristen (wie in der Datenschutzerklärung veröffentlicht) ----------
+// - unbestätigt (pending, pending_mail, mail_failed) und Quarantäne: 90 Tage nach Eintragung
+// - alle übrigen (z. B. confirmed): 24 Monate nach Eintragung
+// - abgemeldete Einträge (Widerruf): sofort
+// - abgelaufene Bestätigungs-Tokens (> 48 h, Status pending) werden entwertet
+async function runRetention(sql) {
+  const n = (rows) => rows.length;
+  const unconfirmed = n(await sql(
+    `DELETE FROM waitlist_signups WHERE status IN ('pending','pending_mail','mail_failed','quarantine')
+       AND created_at < now() - interval '90 days' RETURNING id`, []));
+  const expired = n(await sql(`DELETE FROM waitlist_signups WHERE created_at < now() - interval '24 months' RETURNING id`, []));
+  const unsubscribed = n(await sql(`DELETE FROM waitlist_signups WHERE status = 'unsubscribed' RETURNING id`, []));
+  const tokens = n(await sql(
+    `UPDATE waitlist_signups SET token_hash = NULL WHERE status = 'pending' AND token_hash IS NOT NULL
+       AND coalesce(token_at, created_at) < now() - interval '48 hours' RETURNING id`, []));
+  return { deleted_unconfirmed_90d: unconfirmed, deleted_older_24m: expired, deleted_unsubscribed: unsubscribed, tokens_purged: tokens, at: new Date().toISOString() };
+}
 
 // ---------- HTTP ----------
 function reply(res, status, obj) {
@@ -285,6 +304,12 @@ function createHandler(deps = {}) {
       return { id };
     } catch (e) { log('notify failed', e.message); return { error: e.message }; }
   };
+  const isCron = (req) => {
+    const secret = String(env.CRON_SECRET || '');
+    const a = String((req.headers || {}).authorization || '');
+    const b = 'Bearer ' + secret;
+    return secret.length >= 16 && a.length === b.length && crypto.timingSafeEqual(Buffer.from(a), Buffer.from(b));
+  };
   const isAdmin = (req) => {
     const a = String((req.headers || {})['x-waitlist-admin'] || '');
     const b = String(env.WAITLIST_ADMIN_TOKEN || '');
@@ -301,6 +326,14 @@ function createHandler(deps = {}) {
     const url = new URL(req.url || '/', 'http://x');
     try {
       const admin = url.searchParams.get('admin');
+      if (admin === 'retention') {
+        // Vercel Cron (Authorization: Bearer CRON_SECRET) oder Admin-Token
+        if (!isCron(req) && !isAdmin(req)) return reply(res, 404, { ok: false });
+        if (req.method !== 'GET' && req.method !== 'POST') return reply(res, 405, { ok: false });
+        const result = await runRetention(sql);
+        log(JSON.stringify({ event: 'waitlist_retention', ...result })); // nur Zähler, keine personenbezogenen Daten
+        return reply(res, 200, { ok: true, ...result });
+      }
       if (admin) {
         if (!isAdmin(req)) return reply(res, 404, { ok: false });
         if (req.method === 'GET' && admin === 'stats') {
@@ -432,4 +465,4 @@ function createHandler(deps = {}) {
 
 module.exports = createHandler();
 module.exports.createHandler = createHandler;
-module.exports._internal = { analyze, decide, validate, neonSql, verifyTurnstile, hasMx, confirmMail, DISPOSABLE, KEYWORDS };
+module.exports._internal = { runRetention, analyze, decide, validate, neonSql, verifyTurnstile, hasMx, confirmMail, DISPOSABLE, KEYWORDS };
