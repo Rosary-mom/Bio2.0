@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gründer-Rohmodell – Vom Kleingewerbe zur GmbH · Blog</title>
+<meta name="description" content="Gründer-Rohmodell: Vom Kleingewerbe über die UG &amp; Co. KG zur GmbH – Leitfaden mit Checkliste, Simulatoren und Quellen (keine Rechts- oder Steuerberatung).">
+<link rel="canonical" href="https://hmpsm-lander5787.vercel.app/blog/gruender-rohmodell.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gründer-Rohmodell – Vom Kleingewerbe zur GmbH">
+<meta property="og:description" content="Gründer-Rohmodell: Vom Kleingewerbe über die UG &amp; Co. KG zur GmbH – Leitfaden mit Checkliste, Simulatoren und Quellen (keine Rechts- oder Steuerberatung).">
+<meta property="og:image" content="https://hmpsm-lander5787.vercel.app/blog/assets/entscheidungsdiagramm.png">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+:root{--bordeaux:#5C0A1A;--bordeaux-2:#800020;--bordeaux-dark:#3D0611;--gold:#C9A227;--gold-light:#E3C35A;--sand:#E8D9B5;--sand-light:#F5ECD7;
+--ink:#14100c;--bg:#FFFDF8;--card:#FFF8EA;--link:#0A3D62;--border:#d9c79b;
+--font-body:'Rosario','Segoe UI',Arial,sans-serif;--font-head:'Rockwell Extra Bold','Rockwell','Roboto Slab',Georgia,serif;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:1.08rem;line-height:1.65}
+body.hc{--bg:#fff;--ink:#000;--card:#fff;--link:#00264d;--border:#000}
+body.hc .callout,body.hc .card{border-width:2px}
+a{color:var(--link)} a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:#fff;padding:.5rem;z-index:9}
+.wrap{max-width:920px;margin:0 auto;padding:0 1.1rem}
+.mh{background:var(--bordeaux-dark);color:var(--sand);border-bottom:4px solid var(--gold)}
+.mh-inner{max-width:920px;margin:0 auto;padding:.6rem 1.1rem;display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.mh a{color:var(--sand)} .mh nav{font-size:.95rem}
+.logo img{display:block;height:40px;width:auto;background:var(--sand-light);border-radius:6px;padding:3px 6px}
+h1,h2,h3{font-family:var(--font-head);font-weight:800;color:var(--bordeaux-dark);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3rem);margin:.4rem 0}
+h2{font-size:1.65rem;margin-top:2.6rem;padding-top:.6rem;border-top:3px solid var(--gold)}
+h3{font-size:1.25rem;margin-top:1.8rem}
+.kicker{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--bordeaux-2);font-weight:700;margin:0}
+.hero{padding:1.4rem 0 .4rem}
+.lead{font-size:1.25rem;max-width:40em}
+.hero-img{width:100%;height:auto;border-radius:10px;display:block;margin:1rem 0}
+.btn{display:inline-block;font:inherit;font-size:.95rem;padding:.5rem .9rem;margin:.2rem .15rem;border-radius:8px;border:1px solid var(--bordeaux);background:var(--sand-light);color:var(--bordeaux-dark);text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--sand)}
+.btn-gold{background:var(--bordeaux);color:var(--sand-light);border-color:var(--gold)} .btn-gold:hover{background:var(--bordeaux-2)}
+.orient{display:inline-block;background:var(--bordeaux);color:#fff;font-weight:700;font-size:.8rem;padding:.1rem .5rem;border-radius:999px;margin-right:.3rem;white-space:nowrap}
+.badge{font-size:.95rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;margin:1.2rem 0}
+.toc ol{columns:2;column-gap:2rem;margin:.3rem 0;padding-left:1.3rem} .toc li{break-inside:avoid}
+@media(max-width:640px){.toc ol{columns:1}}
+.callout{border-left:6px solid var(--gold);background:var(--sand-light);border-radius:6px;padding:.7rem 1rem;margin:1.2rem 0}
+.callout p{margin:.35rem 0} .callout ul{margin:.3rem 0}
+.callout-title{font-family:var(--font-head);font-weight:800;color:var(--bordeaux-dark);margin:0 0 .3rem!important}
+.callout-warning,.callout-danger{border-left-color:var(--bordeaux-2)} .callout-danger{background:#fbe9ea}
+.callout-tip{border-left-color:#2e6b3a} .callout-info{border-left-color:var(--link)}
+.disclaimer{border:2px solid var(--bordeaux-2);border-left-width:8px}
+.tw{overflow-x:auto;margin:1rem 0} table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{border:1px solid var(--border);padding:.45rem .55rem;vertical-align:top;text-align:left} th{background:var(--sand)}
+tbody tr:nth-child(even){background:#fffaf0}
+pre{background:#211a14;color:#f5ecd7;padding:.8rem 1rem;border-radius:8px;overflow-x:auto;font-size:.9rem}
+.fig img{width:100%;height:auto;display:block} figcaption{font-size:.9rem;padding-top:.4rem}
+.sim{border:2px solid var(--gold)} .sim h3{margin-top:.3rem}
+.sim-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem 1rem}
+.sim label{display:flex;flex-direction:column;font-size:.92rem;font-weight:700}
+.sim label.chk{flex-direction:row;align-items:center;gap:.4rem;font-weight:400}
+.sim input[type=number]{font:inherit;padding:.35rem .5rem;border:1px solid var(--border);border-radius:6px;margin-top:.2rem;background:#fff}
+.formel{font-size:.92rem} .bsp{font-size:.9rem}
+.result{display:block;background:#fff;border:1px dashed var(--bordeaux);border-radius:8px;padding:.7rem .9rem;margin-top:.5rem}
+.result ol{margin:.3rem 0}
+.quote{background:var(--sand-light);border-left:4px solid var(--gold);padding:.6rem .9rem;border-radius:4px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.6rem}
+.btn.dream{text-align:left;white-space:normal;margin:0}
+.bar-wrap{background:var(--sand);border-radius:999px;height:14px;overflow:hidden} .bar{height:100%;width:0;background:linear-gradient(90deg,var(--bordeaux),var(--gold));transition:width .3s}
+.small{font-size:.9rem}
+#manifest{width:100%;font-family:monospace;font-size:.85rem}
+ul.tasks{list-style:none;padding-left:.2rem} .tl label{display:flex;gap:.5rem;align-items:flex-start;cursor:pointer}
+.tl input{margin-top:.35rem;transform:scale(1.2)} .tl.next{background:#fff3c4;outline:2px solid var(--gold);border-radius:6px}
+input.fill{font:inherit;width:100%;min-width:12rem;padding:.3rem .4rem;border:1px dashed var(--bordeaux);border-radius:4px;background:#fff}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.video{margin:0}.vframe{position:relative;aspect-ratio:16/9;background:var(--bordeaux-dark);border-radius:8px;overflow:hidden}
+.vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+button.yt{position:absolute;inset:0;width:100%;height:100%;border:1px solid var(--gold);background:linear-gradient(135deg,var(--bordeaux-dark),var(--bordeaux-2));color:var(--sand-light);font:inherit;font-size:1rem;text-align:left;padding:.8rem;display:flex;gap:.7rem;align-items:center;cursor:pointer;border-radius:8px}
+.play{font-size:2rem;color:var(--gold-light)}
+.foot{background:var(--bordeaux-dark);color:var(--sand);margin-top:3rem;padding:1.2rem 0;font-size:.92rem} .foot a{color:var(--gold-light)}
+@media print{.mh,.cta,.sim button,.dreambox button,#videos,.foot a{display:none}.card{break-inside:avoid}}
+.dreambox h2{margin-top:.3rem;border-top:0;padding-top:0}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<header class="mh"><div class="mh-inner">
+<a href="/" class="logo"><img src="assets/rosary-logo.png" width="181" height="45" alt="Rosary Logo"></a>
+<nav aria-label="Blog"><a href="/">Startseite</a> · <a href="../downloads/Gruender-Rohmodell.pdf" download>PDF</a> · <a href="#simulatoren-liste">Simulatoren</a> · <a href="#dream">/DREAM</a> · <a href="#videos">Videos</a></nav>
+</div></header>
+<main class="wrap" id="inhalt">
+<article>
+<header class="hero">
+<p class="kicker">Blog · Leitfaden · Stand 09.10.2026 · ca. 23 Min. Lesezeit</p>
+<h1>Gründer-Rohmodell</h1>
+<p class="lead">Vom Kleingewerbe über die UG &amp; Co. KG zur GmbH – ein wiederverwendbarer Leitfaden für Gründer:innen, die von der Bürokratie genervt sind.</p>
+<img class="hero-img" src="assets/hero-stufen.svg" width="1200" height="420" alt="Stufengrafik: Einzelunternehmen, e.K. (optional), UG bzw. UG &amp; Co. KG, GmbH">
+<p class="cta"><a class="btn btn-gold" href="../downloads/Gruender-Rohmodell.pdf" download>PDF herunterladen</a> <a class="btn" href="#checkliste">Checkliste</a> <a class="btn" href="#dream">/DREAM · EXECUTOR</a>
+<button type="button" class="btn" id="btn-contrast" aria-pressed="false">Kontrast verstärken</button></p>
+<p class="badge"><span class="orient">Orientierung, keine Beratung</span> Alle Ergebnisse der Rechner sind Orientierung, keine Rechts- oder Steuerberatung.</p>
+</header>
+<nav class="toc card" aria-label="Inhalt"><p class="callout-title">Inhalt</p><ol><li><a href="#abschnitt-0-wie-du-diesen-leitfaden-benutzt">0. Wie du diesen Leitfaden benutzt</a></li><li><a href="#abschnitt-1-das-stufenmodell">1. Das Stufenmodell</a></li><li><a href="#abschnitt-2-online-kurse-zfu-gilt-das-fernunterrichtsschutzgesetz">2. Online-Kurse &amp; ZFU: Gilt das Fernunterrichtsschutzgesetz?</a></li><li><a href="#abschnitt-3-nachweise-vertrauen">3. Nachweise &amp; Vertrauen</a></li><li><a href="#abschnitt-4-zahlungen">4. Zahlungen</a></li><li><a href="#abschnitt-5-förderung-beratung-in-baden-württemberg">5. Förderung &amp; Beratung in Baden-Württemberg</a></li><li><a href="#abschnitt-6-checklisten-entscheidungsdiagramm">6. Checklisten &amp; Entscheidungsdiagramm</a></li><li><a href="#abschnitt-7-vorlage-mein-eigenes-rohmodell-zum-ausfüllen">7. Vorlage: Mein eigenes Rohmodell (zum Ausfüllen)</a></li><li><a href="#abschnitt-8-quellen-geprüft-am-09102026">8. Quellen (geprüft am 09.10.2026)</a></li></ol>
+<p id="simulatoren-liste" class="small"><strong>Simulatoren:</strong> <a href="#sim-a">a) UG-Rücklage</a> · <a href="#sim-b">b) § 19 UStG</a> · <a href="#sim-c">c) ZFU-Gebühr</a> · <a href="#sim-d">d) Raten</a> · <a href="#sim-e">e) Asynchron-Anteil</a> · <a href="#sim-f">f) Live Learn &amp; Earn</a></p></nav>
+<aside class="callout callout-warning disclaimer" id="hinweis"><p class="callout-title">Wichtiger Hinweis – keine Rechts- oder Steuerberatung</p><p>Dieser Leitfaden ist eine <strong>allgemeine Orientierungshilfe</strong> und ersetzt <strong>keine Rechts- oder Steuerberatung</strong>. Gesetze, Grenzwerte und Förderprogramme ändern sich. Alle Angaben wurden am <strong>09.10.2026</strong> anhand der verlinkten offiziellen Quellen geprüft, können aber veraltet oder für deinen Einzelfall unpassend sein. Bevor du eine Rechtsform wählst, Verträge unterschreibst oder Kurse verkaufst: Sprich mit einer <strong>Steuerberaterin/einem Steuerberater</strong>, einer <strong>Rechtsanwältin/einem Rechtsanwalt</strong> und nutze die <strong>kostenlose Gründungsberatung deiner IHK</strong> (bzw. Handwerkskammer).</p></aside>
+
+<hr />
+<h2 id="abschnitt-0-wie-du-diesen-leitfaden-benutzt">0. Wie du diesen Leitfaden benutzt</h2>
+<ul>
+<li><strong>Rohmodell = Vorlage.</strong> Kopiere die Datei, ersetze die Platzhalter („…“-Felder in Abschnitt 7) durch deine Daten und hake die Checklisten ab.</li>
+<li><strong>Jeder Schritt hat eine offizielle Quelle.</strong> Wenn du unsicher bist: Link öffnen, Stand prüfen, Beratung fragen.</li>
+<li><strong>Ermutigung vorweg:</strong> Bürokratie wirkt riesig, ist aber eine Folge kleiner, machbarer Schritte. Niemand muss am ersten Tag eine GmbH gründen.</li>
+</ul>
+<h3 id="das-anonymisierte-praxisbeispiel">Das anonymisierte Praxisbeispiel</h3>
+<p>Eine Solo-Gründerin aus der Region Neckar-Alb (Name, Adresse und Registernummern bewusst weggelassen) bietet Online-Kurse und Beratungs-Services an – lokal und für Kund:innen weltweit. Ihr Weg:</p>
+<ol>
+<li><strong>Start als Einzelunternehmen („Kleingewerbe")</strong> mit Gewerbeanmeldung (§ 14 GewO; die Gemeinde bestätigt den Empfang nach § 15 GewO). Volle persönliche Haftung, Gewinnermittlung per vereinfachter <strong>Einnahmen-Überschuss-Rechnung (EÜR)</strong> statt Bilanz.</li>
+<li><strong>Geplante nächste Stufe:</strong> eine <strong>„UG (haftungsbeschränkt) &amp; Co. KG (i.Gr.)"</strong> als Holding-/Dachstruktur, an der sich Unterstützer:innen als <strong>atypisch stille Gesellschafter</strong> beteiligen sollen.</li>
+<li><strong>Später:</strong> Übergang zur <strong>GmbH</strong>.</li>
+<li><strong>Beratung:</strong> über öffentlich geförderte Programme – ein <strong>Gründungscoaching im Umfeld der Landesförderung (L-Bank/Land BW)</strong> und eine <strong>Innovationsberatung durch ein Steinbeis-Transferunternehmen</strong>.</li>
+<li><strong>Zahlungen:</strong> bevorzugt <strong>Vorkasse</strong>.</li>
+</ol>
+<p>Dieser Leitfaden zeigt, was an diesem Weg gut funktioniert – und wo die Fallstricke liegen (siehe die Kästen „⚠️ Prüfpunkt").</p>
+<hr />
+<h2 id="abschnitt-1-das-stufenmodell">1. Das Stufenmodell</h2>
+<pre class="stufen" title="Stufenmodell als Text"><code>Stufe 1               Stufe 1b (optional)      Stufe 2                    Stufe 3
+Einzelunternehmen  →  e.K. (eingetragener   →  UG (haftungsbeschr.)    →  GmbH
+&quot;Kleingewerbe&quot;        Kaufmann)                bzw. UG &amp; Co. KG
+</code></pre>
+<h3 id="abschnitt-11-überblick-in-einer-tabelle">1.1 Überblick in einer Tabelle</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Einzelunternehmen / Kleingewerbe</strong></th>
+<th><strong>e.K.</strong></th>
+<th><strong>UG (haftungsbeschränkt)</strong></th>
+<th><strong>UG &amp; Co. KG</strong></th>
+<th><strong>GmbH</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Haftung</strong></td>
+<td>unbeschränkt, mit Privatvermögen</td>
+<td>unbeschränkt, mit Privatvermögen</td>
+<td>auf Gesellschaftsvermögen beschränkt (Ausnahmen z. B. bei Pflichtverletzung der Geschäftsführung)</td>
+<td>Komplementär-UG haftet unbeschränkt, aber selbst nur mit ihrem Vermögen; Kommanditisten bis zur Einlage</td>
+<td>auf Gesellschaftsvermögen beschränkt</td>
+</tr>
+<tr>
+<td><strong>Gründung</strong></td>
+<td>Gewerbeanmeldung bzw. Anzeige beim Finanzamt (Fragebogen zur steuerlichen Erfassung)</td>
+<td>zusätzlich Eintragung ins Handelsregister über Notar</td>
+<td>Notar (Musterprotokoll möglich, auch Online-Beurkundung per Video), Handelsregister, Transparenzregister</td>
+<td>zwei Gesellschaften: UG gründen + KG-Vertrag + HR-Eintragung der KG</td>
+<td>Notar, Handelsregister, Transparenzregister</td>
+</tr>
+<tr>
+<td><strong>Mindestkapital</strong></td>
+<td>keins</td>
+<td>keins</td>
+<td>ab 1 €, <strong>voll bar</strong> einzuzahlen, keine Sacheinlagen (§ 5a Abs. 2 GmbHG)</td>
+<td>Kapital der UG + Kommanditeinlagen</td>
+<td>25.000 € Stammkapital, mind. 12.500 € bei Anmeldung eingezahlt (§ 5, § 7 Abs. 2 GmbHG)</td>
+</tr>
+<tr>
+<td><strong>Buchführung</strong></td>
+<td>EÜR (§ 4 Abs. 3 EStG), solange keine Buchführungspflicht</td>
+<td>HGB-Buchführung, <strong>befreit</strong> bis 800.000 € Umsatz / 80.000 € Jahresüberschuss (§ 241a HGB)</td>
+<td><strong>immer</strong> doppelte Buchführung + Bilanz (Kapitalgesellschaft)</td>
+<td><strong>immer</strong> doppelte Buchführung + Bilanz (Handelsgesellschaft; § 241a gilt nur für Einzelkaufleute)</td>
+<td><strong>immer</strong> doppelte Buchführung + Bilanz</td>
+</tr>
+<tr>
+<td><strong>Besonderheit</strong></td>
+<td>einfachster Start</td>
+<td>Firmenname frei wählbar mit Zusatz „e.K."</td>
+<td>Pflicht-Rücklage 25 % des Jahresüberschusses</td>
+<td>komplexe Struktur – nur mit Beratung</td>
+<td>Seriosität, Kapitalnachweis</td>
+</tr>
+</tbody>
+</table></div>
+<aside class="callout callout-info"><p class="callout-title">Woher die Zahlen stammen</p><ul>
+<li>Mindestkapital GmbH: <a href="https://www.gesetze-im-internet.de/gmbhg/__5.html" target="_blank" rel="noopener">§ 5 GmbHG</a>, Einzahlung bei Anmeldung: <a href="https://www.gesetze-im-internet.de/gmbhg/__7.html" target="_blank" rel="noopener">§ 7 GmbHG</a></li>
+<li>UG: <a href="https://www.gesetze-im-internet.de/gmbhg/__5a.html" target="_blank" rel="noopener">§ 5a GmbHG</a></li>
+<li>Online-Gründung/Videobeurkundung: <a href="https://www.gesetze-im-internet.de/gmbhg/__2.html" target="_blank" rel="noopener">§ 2 GmbHG</a></li>
+<li>Buchführungsbefreiung: <a href="https://www.gesetze-im-internet.de/hgb/__241a.html" target="_blank" rel="noopener">§ 241a HGB</a>, steuerlich <a href="https://www.gesetze-im-internet.de/ao_1977/__141.html" target="_blank" rel="noopener">§ 141 AO</a>, EÜR: <a href="https://www.gesetze-im-internet.de/estg/__4.html" target="_blank" rel="noopener">§ 4 EStG</a></li>
+<li>Transparenzregister: <a href="https://www.gesetze-im-internet.de/gwg_2017/__20.html" target="_blank" rel="noopener">§ 20 GwG</a></li>
+</ul></aside>
+
+<h3 id="abschnitt-12-stufe-1-einzelunternehmen-kleingewerbe">1.2 Stufe 1 – Einzelunternehmen („Kleingewerbe")</h3>
+<p><strong>Was es ist:</strong> „Kleingewerbe" ist <strong>keine eigene Rechtsform</strong>, sondern umgangssprachlich ein Einzelunternehmen, das (noch) <strong>kein kaufmännisches Gewerbe</strong> im Sinne des <a href="https://www.gesetze-im-internet.de/hgb/__1.html" target="_blank" rel="noopener">§ 1 Abs. 2 HGB</a> betreibt – also nicht im Handelsregister steht.</p>
+<p><strong>Schritte:</strong>
+1. <strong>Gewerbeanmeldung</strong> bei der Gemeinde, in BW meist online über das <a href="https://www.service-bw.de/zufi/leistungen/6021473" target="_blank" rel="noopener">Serviceportal service-bw („Gewerbe anmelden")</a>. Rechtsgrundlage: <a href="https://www.gesetze-im-internet.de/gewo/__14.html" target="_blank" rel="noopener">§ 14 GewO</a>, Empfangsbescheinigung: <a href="https://www.gesetze-im-internet.de/gewo/__15.html" target="_blank" rel="noopener">§ 15 GewO</a>.
+2. <strong>Fragebogen zur steuerlichen Erfassung</strong> über <a href="https://www.elster.de" target="_blank" rel="noopener">ELSTER</a> beim Finanzamt einreichen (Steuernummer, ggf. Kleinunternehmerregelung wählen).
+3. <strong>Geschäftskonto</strong> (empfohlen, trennt Privat und Geschäft).</p>
+<aside class="callout callout-tip"><p class="callout-title">⚠️ Prüfpunkt: Gewerbe oder freier Beruf?</p><p>Wer überwiegend <strong>unterrichtet</strong> (Kurse, Seminare), kann steuerlich <strong>freiberuflich</strong> sein – „unterrichtende Tätigkeit" ist in <a href="https://www.gesetze-im-internet.de/estg/__18.html" target="_blank" rel="noopener">§ 18 Abs. 1 Nr. 1 EStG</a> ausdrücklich genannt. Dann ist <strong>keine Gewerbeanmeldung</strong> und keine Gewerbesteuer nötig. Mischt man Unterricht mit gewerblichen Leistungen (z. B. Verkauf digitaler Produkte, Agentur-Services), kann das Ganze gewerblich werden. <strong>Das Finanzamt entscheidet – frag deine Steuerberatung.</strong></p>
+<p>Und: <strong>Selbstständige Lehrer:innen ohne versicherungspflichtige Angestellte sind rentenversicherungspflichtig</strong> (<a href="https://www.gesetze-im-internet.de/sgb_6/__2.html" target="_blank" rel="noopener">§ 2 Satz 1 Nr. 1 SGB VI</a>). Das betrifft oft auch Kursanbieter:innen und Coaches. Kläre das früh mit der <a href="https://www.deutsche-rentenversicherung.de" target="_blank" rel="noopener">Deutschen Rentenversicherung</a>.</p></aside>
+
+<p><strong>Haftung:</strong> voll und persönlich – auch mit Ersparnissen, Auto, Wohnung.</p>
+<p><strong>Buchführung:</strong> EÜR nach <a href="https://www.gesetze-im-internet.de/estg/__4.html" target="_blank" rel="noopener">§ 4 Abs. 3 EStG</a> – Einnahmen minus Ausgaben, kein Jahresabschluss. Die steuerliche Buchführungspflicht nach <a href="https://www.gesetze-im-internet.de/ao_1977/__141.html" target="_blank" rel="noopener">§ 141 AO</a> greift für Gewerbetreibende erst oberhalb von <strong>800.000 € Umsatz oder 80.000 € Gewinn</strong> im Jahr (und nach Aufforderung durch das Finanzamt).</p>
+<p><strong>Umsatzsteuer – Kleinunternehmerregelung (<a href="https://www.gesetze-im-internet.de/ustg_1980/__19.html" target="_blank" rel="noopener">§ 19 UStG</a>, Stand 2026):</strong></p>
+<ul>
+<li>Umsatz im <strong>Vorjahr ≤ 25.000 €</strong> <strong>und</strong> im <strong>laufenden Jahr ≤ 100.000 €</strong> → keine Umsatzsteuer auf Rechnungen.</li>
+<li>Wird im laufenden Jahr die 100.000-€-Grenze überschritten, ist <strong>bereits der Umsatz, mit dem die Grenze überschritten wird</strong>, steuerpflichtig (harte Grenze).</li>
+<li><strong>Im Gründungsjahr</strong> gilt laut BMF nur die 25.000-€-Grenze (siehe <a href="https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Umsatzsteuer/Umsatzsteuer-Anwendungserlass/2025-03-18-sonderregelung-kleinunternehmer.pdf?__blob=publicationFile" target="_blank" rel="noopener">BMF-Schreiben vom 18.03.2025</a>).</li>
+<li>Nachteil: kein Vorsteuerabzug. Bei vielen internationalen B2C-Kund:innen (digitale Leistungen, OSS) Steuerberatung einschalten.</li>
+</ul>
+<section class="card sim" id="sim-b" aria-labelledby="sim-b-h">
+<p class="kicker">ESTIMATOR b) · Simulator</p><h3 id="sim-b-h">Kleinunternehmerregelung (§ 19 UStG, Stand 2026)</h3>
+<p>Prüft die Umsatzgrenzen aus Abschnitt 1.2.</p><div class="sim-grid"><label>Umsatz Vorjahr (€)<input type="number" id="b-vj" value="18000" min="0" step="100" inputmode="decimal"></label><label>Umsatz laufendes Jahr (€)<input type="number" id="b-lj" value="60000" min="0" step="100" inputmode="decimal"></label><label class="chk"><input type="checkbox" id="b-gj"> Gründungsjahr</label></div>
+<p class="formel"><strong>Formel:</strong> Vorjahr ≤ 25.000 € <em>und</em> laufendes Jahr ≤ 100.000 €; im Gründungsjahr nur ≤ 25.000 € (BMF, 18.03.2025).</p>
+<p><button type="button" class="btn btn-gold" data-beispiel="{&quot;b-vj&quot;: 0, &quot;b-lj&quot;: 30000, &quot;b-gj&quot;: true}">Rechenbeispiel laden</button> <span class="bsp">Gründungsjahr mit 30.000 € → über 25.000 €, Regelung rechnerisch nicht möglich. Vorbelegt: 18.000 € / 60.000 € → möglich.</span></p>
+<output id="b-out" class="result" aria-live="polite"></output></section>
+
+<h3 id="abschnitt-13-stufe-1b-optional-eingetragener-kaufmann-ek">1.3 Stufe 1b (optional) – eingetragener Kaufmann (e.K.)</h3>
+<ul>
+<li>Freiwillige Eintragung ins Handelsregister ist für Kleingewerbetreibende möglich (<a href="https://www.gesetze-im-internet.de/hgb/__2.html" target="_blank" rel="noopener">§ 2 HGB</a>); Pflicht wird sie, wenn der Betrieb „nach Art oder Umfang einen in kaufmännischer Weise eingerichteten Geschäftsbetrieb erfordert" (<a href="https://www.gesetze-im-internet.de/hgb/__1.html" target="_blank" rel="noopener">§ 1 Abs. 2 HGB</a>).</li>
+<li><strong>Vorteil:</strong> frei wählbarer Firmenname, mehr Außenwirkung. <strong>Nachteil:</strong> HGB-Pflichten, Haftung bleibt <strong>unbeschränkt</strong>.</li>
+<li>Buchführung: befreit, solange an zwei aufeinanderfolgenden Abschlussstichtagen <strong>≤ 800.000 € Umsatzerlöse und ≤ 80.000 € Jahresüberschuss</strong> (<a href="https://www.gesetze-im-internet.de/hgb/__241a.html" target="_blank" rel="noopener">§ 241a HGB</a>; Neugründung: schon am ersten Stichtag).</li>
+<li>Für das Praxisbeispiel eher <strong>überspringbar</strong>: Wer Haftung begrenzen will, geht direkt zur UG/GmbH.</li>
+</ul>
+<h3 id="abschnitt-14-stufe-2-ug-haftungsbeschränkt-und-ug-co-kg">1.4 Stufe 2 – UG (haftungsbeschränkt) und UG &amp; Co. KG</h3>
+<p><strong>UG (haftungsbeschränkt)</strong> – die „Mini-GmbH" (<a href="https://www.gesetze-im-internet.de/gmbhg/__5a.html" target="_blank" rel="noopener">§ 5a GmbHG</a>):
+- Stammkapital ab 1 €, aber <strong>vollständig in bar</strong> vor der Anmeldung einzuzahlen; <strong>Sacheinlagen verboten</strong> (§ 5a Abs. 2).
+- <strong>Thesaurierungspflicht:</strong> Jedes Jahr muss <strong>ein Viertel (25 %) des Jahresüberschusses</strong> (gemindert um einen Verlustvortrag) in eine gesetzliche Rücklage (§ 5a Abs. 3). Diese Rücklage darf nur für eine Kapitalerhöhung aus Gesellschaftsmitteln oder zum Verlustausgleich verwendet werden.
+- Pflicht zur Einberufung der Gesellschafterversammlung bei <strong>drohender Zahlungsunfähigkeit</strong> (§ 5a Abs. 4).
+- Name muss „Unternehmergesellschaft (haftungsbeschränkt)" oder „UG (haftungsbeschränkt)" enthalten – nur diese beiden Schreibweisen nennt das Gesetz (§ 5a Abs. 1), also keine eigenen Abkürzungen wie „(hb)".
+- Praktisch zu wenig Kapital = schnelle Überschuldungsgefahr. Plane realistisches Kapital ein.</p>
+<p><strong>UG &amp; Co. KG</strong> (geplante Holding-/Beteiligungsstruktur im Beispiel):
+- Eine KG, deren einzige persönlich haftende Gesellschafterin (Komplementärin) die UG ist. Die KG ist eine Handelsgesellschaft → <strong>Handelsregister</strong> und <strong>doppelte Buchführung mit Bilanz</strong> (die EÜR endet hier).
+- <strong>Atypisch stille Gesellschafter:</strong> Eine stille Beteiligung (<a href="https://www.gesetze-im-internet.de/hgb/__230.html" target="_blank" rel="noopener">§§ 230 ff. HGB</a>) wird „atypisch", wenn die Stillen auch am Vermögen/an den stillen Reserven beteiligt sind und Mitspracherechte haben – steuerlich entsteht dann regelmäßig eine <strong>Mitunternehmerschaft</strong>. Das hat erhebliche steuerliche Folgen (gesonderte Gewinnfeststellung, Gewerbesteuer). <strong>Nur mit Steuerberatung gestalten.</strong></p>
+<aside class="callout callout-warning"><p class="callout-title">⚠️ Prüfpunkt: Kapital von Unterstützer:innen einsammeln</p><p>Wer Beteiligungen, die „eine Beteiligung am Ergebnis eines Unternehmens gewähren" (dazu zählen typischerweise stille Beteiligungen), oder Nachrangdarlehen <strong>öffentlich anbietet</strong> (Website, Social Media), kann unter das <a href="https://www.gesetze-im-internet.de/vermanlg/__1.html" target="_blank" rel="noopener">Vermögensanlagengesetz (§ 1 VermAnlG)</a> fallen – mit Prospekt- und Informationspflichten und Aufsicht durch die <a href="https://www.bafin.de" target="_blank" rel="noopener">BaFin</a>. Vor jeder Ansprache von Investor:innen: <strong>Anwalt fragen.</strong></p></aside>
+
+<p><strong>Namensregeln:</strong></p>
+<ul>
+<li><strong>„i.Gr." (in Gründung)</strong> darf nur in der Phase <strong>zwischen Gesellschaftsvertrag und Handelsregistereintragung</strong> geführt werden. Nach der Eintragung entfällt der Zusatz; vor Abschluss des Gesellschaftsvertrags gibt es noch keine Gesellschaft, die „in Gründung" sein könnte. Wer vor der Eintragung im Namen der Gesellschaft handelt, haftet persönlich (Handelndenhaftung, <a href="https://www.gesetze-im-internet.de/gmbhg/__11.html" target="_blank" rel="noopener">§ 11 Abs. 2 GmbHG</a>).</li>
+<li><strong>Geschützte Begriffe:</strong> In Baden-Württemberg dürfen nicht-staatliche Bildungsanbieter Bezeichnungen wie „Universität", „Fachhochschule", „Hochschule für angewandte Wissenschaften", „Duale Hochschule", „Studienakademie" – auch <strong>fremdsprachig</strong> (z. B. „University") oder <strong>verwechselbar ähnlich</strong> – nicht führen; „Hochschule" ist auch <strong>in Wortverbindungen</strong> geschützt (<a href="https://www.verwaltungshochschulen.de/recht-und-gesetze/baden-wuerttemberg/landeshochschulgesetz/baden_wuerttemberg_landeshochschulgesetz_paragraf_75" target="_blank" rel="noopener">§ 75 Landeshochschulgesetz BW</a>). Ebenfalls ordnungswidrig: akademische Grade (oder verwechselbar ähnliche) zu verleihen oder gegen Vergütung zu vermitteln. Bußgeld <strong>bis 100.000 €</strong>, zuständig ist das Wissenschaftsministerium. Kursmarken und Zertifikatsbezeichnungen daher vorab von der IHK prüfen lassen.</li>
+<li>Die IHK prüft im Eintragungsverfahren die Firmierung und gibt Stellungnahmen ab – nutze das <strong>vor</strong> dem Notartermin.</li>
+</ul>
+<h3 id="abschnitt-15-stufe-3-gmbh">1.5 Stufe 3 – GmbH</h3>
+<ul>
+<li><strong>25.000 € Stammkapital</strong>, bei Bargründung mind. die Hälfte (12.500 €) vor der Anmeldung eingezahlt (<a href="https://www.gesetze-im-internet.de/gmbhg/__5.html" target="_blank" rel="noopener">§ 5</a>, <a href="https://www.gesetze-im-internet.de/gmbhg/__7.html" target="_blank" rel="noopener">§ 7 GmbHG</a>).</li>
+<li>Notarielle Beurkundung, auch online per Video möglich (<a href="https://www.gesetze-im-internet.de/gmbhg/__2.html" target="_blank" rel="noopener">§ 2 Abs. 3 GmbHG</a>).</li>
+<li>Bilanzierung, Offenlegung des Jahresabschlusses, Eintragung im Transparenzregister.</li>
+</ul>
+<p><strong>Weg von der UG zur GmbH – so funktioniert es wirklich:</strong></p>
+<ul>
+<li>Es gibt <strong>keine automatische Umwandlung</strong>. Der Übergang erfolgt durch eine <strong>Kapitalerhöhung auf mindestens 25.000 €</strong>; erst ab dann gelten die UG-Sonderregeln (inkl. 25-%-Rücklage) nicht mehr (<a href="https://www.gesetze-im-internet.de/gmbhg/__5a.html" target="_blank" rel="noopener">§ 5a Abs. 5 GmbHG</a>). Die Bezeichnung „UG (haftungsbeschränkt)" <strong>darf</strong> sogar beibehalten werden.</li>
+<li>Maßgeblich ist die <strong>Eintragung der Kapitalerhöhung im Handelsregister</strong> (BGH, Beschl. v. 19.04.2011 – II ZB 25/10).</li>
+<li>Für diese Kapitalerhöhung sind <strong>Sacheinlagen erlaubt</strong> (BGH, a. a. O.) und es ist <strong>keine Volleinzahlung</strong> nötig – nach der Rechtsprechung (z. B. OLG Hamm, 05.05.2011 – I-27 W 24/11) müssen aber mindestens <strong>12.500 €</strong> auf das erhöhte Stammkapital eingezahlt sein.</li>
+<li>Die angesparte Rücklage kann über eine <strong>Kapitalerhöhung aus Gesellschaftsmitteln</strong> (§§ 57c ff. GmbHG) genutzt werden.</li>
+<li><strong>Es gibt keine Pflicht</strong>, irgendwann zur GmbH zu wechseln – die Thesaurierungspflicht läuft aber so lange weiter, bis das Stammkapital tatsächlich erhöht ist.</li>
+</ul>
+<section class="card sim" id="sim-a" aria-labelledby="sim-a-h">
+<p class="kicker">ESTIMATOR a) · Simulator</p><h3 id="sim-a-h">UG-Rücklage (§ 5a Abs. 3 GmbHG)</h3>
+<p>Wie schnell wächst die Pflicht-Rücklage Richtung 25.000 €?</p><div class="sim-grid"><label>Jahresüberschuss (€)<input type="number" id="a-jue" value="20000" min="0" step="100" inputmode="decimal"></label><label>Verlustvortrag (€)<input type="number" id="a-vv" value="0" min="0" step="100" inputmode="decimal"></label><label>Stammkapital der UG (€)<input type="number" id="a-stamm" value="1000" min="1" step="1" inputmode="decimal"></label><label>Rücklage bisher (€)<input type="number" id="a-bisher" value="0" min="0" step="100" inputmode="decimal"></label></div>
+<p class="formel"><strong>Formel:</strong> Rücklage = 25 % × (Jahresüberschuss − Verlustvortrag); GmbH-Status erst durch Kapitalerhöhung auf ≥ 25.000 € mit HR-Eintragung (§ 5a Abs. 5).</p>
+<p><button type="button" class="btn btn-gold" data-beispiel="{&quot;a-jue&quot;: 20000, &quot;a-vv&quot;: 0, &quot;a-stamm&quot;: 1000, &quot;a-bisher&quot;: 0}">Rechenbeispiel laden</button> <span class="bsp">20.000 € Überschuss → 5.000 € Rücklage; mit 1.000 € Stammkapital rechnerisch nach ca. 5 Jahren bei 25.000 €.</span></p>
+<output id="a-out" class="result" aria-live="polite"></output></section>
+
+<hr />
+<h2 id="abschnitt-2-online-kurse-zfu-gilt-das-fernunterrichtsschutzgesetz">2. Online-Kurse &amp; ZFU: Gilt das Fernunterrichtsschutzgesetz?</h2>
+<aside class="callout callout-danger"><p class="callout-title">Warum das so wichtig ist</p><p>Ein Fernlehrgang, der <strong>zulassungspflichtig</strong> ist, aber <strong>keine ZFU-Zulassung</strong> hat, führt zu <strong>nichtigen Verträgen</strong> (<a href="https://www.gesetze-im-internet.de/fernusg/__7.html" target="_blank" rel="noopener">§ 7 Abs. 1 FernUSG</a>) – Kund:innen können bereits gezahltes Geld grundsätzlich zurückfordern. Der <strong>BGH (Urt. v. 12.06.2025 – III ZR 109/24)</strong> hat entschieden, dass das FernUSG <strong>auch bei Verträgen mit Unternehmer:innen</strong> gilt (nicht nur mit Verbraucher:innen) und dass schon eine vertragliche Möglichkeit, Fragen zum Stoff zu stellen, als Lernerfolgskontrolle genügen kann. <a href="https://www.bundesgerichtshof.de/SharedDocs/Entscheidungen/DE/Zivilsenate/III_ZS/2024/III_ZR_109-24.pdf?__blob=publicationFile&amp;v=1" target="_blank" rel="noopener">Urteil (PDF, BGH)</a></p></aside>
+
+<h3 id="abschnitt-21-die-fünf-prüffragen-der-zfu">2.1 Die fünf Prüffragen der ZFU</h3>
+<p>Fernunterricht im Sinne von <a href="https://www.gesetze-im-internet.de/fernusg/__1.html" target="_blank" rel="noopener">§ 1 FernUSG</a> liegt nach dem <a href="https://zfu.de/veranstaltende/zulassung#fragebogen" target="_blank" rel="noopener">ZFU-Fragebogen „Überprüfung auf Antragspflicht"</a> vor, wenn <strong>alle</strong> Punkte zutreffen:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Kriterium</th>
+<th>Ja, wenn …</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Entgelt</strong></td>
+<td>Teilnehmende zahlen etwas.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Vertrag</strong></td>
+<td>Du (oder ein Dritter für dich) schließt einen Vertrag mit den Teilnehmenden.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Vermittlung von Kenntnissen/Fähigkeiten</strong></td>
+<td>auch Hinweise, Anleitungen, Ratschläge und die Weitergabe persönlicher Erfahrungen zählen.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Lernerfolgskontrolle</strong></td>
+<td>schon ein Live-Chat, telefonische Nachfragen oder fachlicher Austausch in WhatsApp-/Facebook-Gruppen genügt (reiner Technik-Support nicht; reine automatisierte Multiple-Choice-Tests in der Regel nicht).</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Überwiegende räumliche Trennung</strong></td>
+<td>mehr als <strong>50 %</strong> der Vermittlungszeit erfolgt <strong>asynchron</strong> (Videos, Skripte, Selbstlernphasen).</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Live-synchron-Ausnahme:</strong> Laut ZFU sind <strong>Live-Online-Seminare</strong>, bei denen jederzeit Interaktion möglich ist, <strong>keine</strong> räumliche Trennung – <strong>aber nur</strong>, wenn die Aufzeichnungen <strong>nicht zusätzlich</strong> abrufbar sind. Werden Live-Sessions grundsätzlich aufgezeichnet und bereitgestellt, zählen sie zur asynchronen Selbstlernphase.</p>
+<p><strong>Hobby-Lehrgänge</strong> (reine Freizeit/Unterhaltung, kein berufliches Ziel) sind nicht zulassungs-, aber <strong>registrierungspflichtig</strong>.</p>
+<section class="card sim" id="sim-e" aria-labelledby="sim-e-h">
+<p class="kicker">ESTIMATOR e) · Simulator</p><h3 id="sim-e-h">Asynchron-Anteil &amp; fünf ZFU-Prüffragen</h3>
+<p>Kriterium 5: mehr als 50 % der Vermittlungszeit asynchron. Aufgezeichnete, abrufbare Live-Sessions zählen asynchron.</p><div class="sim-grid"><label>Videos/Skripte (Std.)<input type="number" id="e-video" value="10" min="0" step="0.5" inputmode="decimal"></label><label>Selbstlernphasen (Std.)<input type="number" id="e-selbst" value="2" min="0" step="0.5" inputmode="decimal"></label><label>Live-Sessions (Std.)<input type="number" id="e-live" value="6" min="0" step="0.5" inputmode="decimal"></label><label class="chk"><input type="checkbox" id="e-rec"> Live-Aufzeichnungen abrufbar</label><label class="chk"><input type="checkbox" id="e-k1" checked> 1 Entgelt</label><label class="chk"><input type="checkbox" id="e-k2" checked> 2 Vertrag</label><label class="chk"><input type="checkbox" id="e-k3" checked> 3 Vermittlung von Kenntnissen</label><label class="chk"><input type="checkbox" id="e-k4" checked> 4 Lernerfolgskontrolle (z. B. Fragen per Chat)</label></div>
+<p class="formel"><strong>Formel:</strong> Anteil = asynchrone Stunden ÷ Gesamtstunden; Kriterium erfüllt, wenn Anteil &gt; 50 %.</p>
+<p><button type="button" class="btn btn-gold" data-beispiel="{&quot;e-video&quot;: 10, &quot;e-selbst&quot;: 2, &quot;e-live&quot;: 6, &quot;e-rec&quot;: true, &quot;e-k1&quot;: true, &quot;e-k2&quot;: true, &quot;e-k3&quot;: true, &quot;e-k4&quot;: true}">Rechenbeispiel laden</button> <span class="bsp">10 Std. Video + 2 Std. Selbstlernen + 6 Std. live ohne Aufzeichnung = 66,7 % asynchron; mit abrufbarer Aufzeichnung (Beispiel) 100 %.</span></p>
+<output id="e-out" class="result" aria-live="polite"></output></section>
+
+<h3 id="abschnitt-22-kosten-der-zulassung">2.2 Kosten der Zulassung</h3>
+<p>Nach der Gebührenordnung NRW (<a href="https://recht.nrw.de/system/files/BA/51994-52968-sgv_2011_20230808_1_anlage13.htm" target="_blank" rel="noopener">AVerwGebO NRW, Tarifstelle 13</a>; <a href="https://zfu.de/files/zulassung/Verwaltungsgebuehren_V1.2.pdf" target="_blank" rel="noopener">ZFU-Gebührenübersicht (PDF)</a>):
+- <strong>Zulassung (13.2.1):</strong> <strong>150 % des Verkaufspreises, mindestens 1.050 €</strong>
+- Vorläufige Zulassung (13.2.2): 200 % des Verkaufspreises, mindestens 1.050 €
+- Cafeteria-Lehrgang (13.2.3): 50 % der Gebühr nach 13.2.1
+- Bearbeitung: Antrag per E-Mail an die ZFU; laut ZFU gilt eine <strong>Dreimonatsfrist</strong> für die Bearbeitung.</p>
+<p><em>Rechenbeispiel:</em> Kurspreis 600 € → 150 % = 900 € → es gilt die <strong>Mindestgebühr 1.050 €</strong>.</p>
+<section class="card sim" id="sim-c" aria-labelledby="sim-c-h">
+<p class="kicker">ESTIMATOR c) · Simulator</p><h3 id="sim-c-h">ZFU-Zulassungsgebühr (Tarifstelle 13)</h3>
+<p>Gebühren nach AVerwGebO NRW, Abschnitt 2.2.</p><div class="sim-grid"><label>Kurspreis (€)<input type="number" id="c-preis" value="600" min="0" step="10" inputmode="decimal"></label></div>
+<p class="formel"><strong>Formel:</strong> Zulassung = max(150 % × Preis; 1.050 €) · vorläufig = max(200 % × Preis; 1.050 €) · Cafeteria = 50 % der Gebühr nach 13.2.1.</p>
+<p><button type="button" class="btn btn-gold" data-beispiel="{&quot;c-preis&quot;: 600}">Rechenbeispiel laden</button> <span class="bsp">Kurspreis 600 € → 150 % = 900 € → Mindestgebühr 1.050 €.</span></p>
+<output id="c-out" class="result" aria-live="polite"></output></section>
+
+<h3 id="abschnitt-23-vorkasse-verbot-bei-zulassungspflichtigem-fernunterricht">2.3 Vorkasse-Verbot bei zulassungspflichtigem Fernunterricht</h3>
+<p><a href="https://www.gesetze-im-internet.de/fernusg/__2.html" target="_blank" rel="noopener">§ 2 Abs. 2 FernUSG</a>: Die Vergütung ist in <strong>Teilleistungen für jeweils höchstens drei Monate</strong> zu zahlen; <strong>„Höhere Teilleistungen sowie Vorauszahlungen dürfen weder vereinbart noch gefordert werden."</strong> Außerdem sind z. B. Einschreibegebühren verboten (§ 2 Abs. 4).</p>
+<aside class="callout callout-warning"><p class="callout-title">⚠️ Prüfpunkt für das Praxisbeispiel</p><p>Die bevorzugte <strong>Vorkasse für den Gesamtpreis ist bei einem FernUSG-pflichtigen Kurs nicht zulässig.</strong> Lösungen: (a) Kurs so gestalten, dass er <strong>überwiegend live-synchron</strong> ist (ohne abrufbare Aufzeichnungen) – dann kein Fernunterricht, Vorkasse möglich; (b) ZFU-Zulassung + Zahlung in max. 3-Monats-Raten; (c) Angebot rechtlich prüfen lassen. Ergebnis des ZFU-Fragebogens als PDF/Screenshot <strong>dokumentieren</strong>.</p></aside>
+
+<section class="card sim" id="sim-d" aria-labelledby="sim-d-h">
+<p class="kicker">ESTIMATOR d) · Simulator</p><h3 id="sim-d-h">Teilzahlungen statt Vorkasse (§ 2 Abs. 2 FernUSG)</h3>
+<p>Bei zulassungspflichtigem Fernunterricht: Teilleistungen für jeweils höchstens drei Monate.</p><div class="sim-grid"><label>Gesamtpreis (€)<input type="number" id="d-preis" value="1800" min="0" step="10" inputmode="decimal"></label><label>Laufzeit (Monate)<input type="number" id="d-monate" value="12" min="1" step="1" inputmode="decimal"></label></div>
+<p class="formel"><strong>Formel:</strong> Abschnitte = aufgerundet(Monate ÷ 3); Betrag je Abschnitt anteilig nach Monaten.</p>
+<p><button type="button" class="btn btn-gold" data-beispiel="{&quot;d-preis&quot;: 1800, &quot;d-monate&quot;: 12}">Rechenbeispiel laden</button> <span class="bsp">1.800 € über 12 Monate → 4 Teilleistungen à 450 € (je 3 Monate).</span></p>
+<output id="d-out" class="result" aria-live="polite"></output></section>
+
+<h3 id="abschnitt-24-reform-in-sicht-aber-noch-nicht-in-kraft">2.4 Reform in Sicht – aber noch nicht in Kraft</h3>
+<ul>
+<li>Das Bundesbildungsministerium (BMBFSFJ) hat einen <strong>Referentenentwurf eines „Gesetzes zur Modernisierung und Entbürokratisierung des Fernunterrichts"</strong> vorgelegt (<a href="https://www.bmbfsfj.bund.de/bmbfsfj/ministerium/gesetze/gesetz-zur-modernisierung-und-entbuerokratisierung-des-fernunterrichts-293618" target="_blank" rel="noopener">Vorhabenseite, datiert 27.08.2026</a>; <a href="https://www.bmbfsfj.bund.de/resource/blob/293608/e8225cb64f73a15e50603a234651d42d/referentenentwurf-data.pdf" target="_blank" rel="noopener">Entwurf (PDF)</a>). Der Entwurf selbst bzw. die Verbändeanhörung trägt das Datum <strong>17.08.2026</strong>.</li>
+<li>Inhalt laut Entwurf: Aufhebung des Anzeige- und Zulassungsverfahrens (§§ 1–26 FernUSG), geplantes Inkrafttreten <strong>01.07.2027</strong>, Übergangs-Bescheinigungsverfahren, Außerkrafttreten des FernUSG mit Ablauf des <strong>30.06.2028</strong>.</li>
+<li><strong>Status (09.10.2026): nur Referentenentwurf</strong> – kein Kabinettsbeschluss, kein Bundestagsbeschluss. <strong>Bis zu einer Änderung gilt das FernUSG vollständig weiter</strong> (inkl. Nichtigkeitsfolge und Vorkasse-Verbot). Auch danach bleiben allgemeines Verbraucher-, AGB- und Wettbewerbsrecht.</li>
+</ul>
+<hr />
+<h2 id="abschnitt-3-nachweise-vertrauen">3. Nachweise &amp; Vertrauen</h2>
+<p>Kund:innen und Partner wollen wissen: „Gibt es dich wirklich, und bist du seriös?" So zeigst du das, ohne zu viel preiszugeben.</p>
+<h3 id="abschnitt-31-was-du-zeigen-kannstsolltest">3.1 Was du zeigen kannst/solltest</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Nachweis</th>
+<th>Wann</th>
+<th>Tipp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Impressum</strong> (Pflicht für geschäftsmäßige Websites)</td>
+<td>immer</td>
+<td>Name, <strong>ladungsfähige Anschrift</strong> (kein Postfach), E-Mail + weiterer schneller Kontaktweg, ggf. Rechtsform, Vertretungsberechtigte, Register + Registernummer, USt-IdNr. – <a href="https://www.gesetze-im-internet.de/ddg/__5.html" target="_blank" rel="noopener">§ 5 DDG</a>; Leitfaden der <a href="https://www.lfk.de/service/dokumente-rechtsgrundlagen/leitfaden-zur-impressumspflicht-im-internet" target="_blank" rel="noopener">LFK BW</a></td>
+</tr>
+<tr>
+<td><strong>Datenschutzerklärung</strong></td>
+<td>sobald du Daten verarbeitest (Kontaktformular, Newsletter, Kursplattform, Analytics)</td>
+<td>Informationspflichten nach <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32016R0679" target="_blank" rel="noopener">Art. 13 DSGVO</a>; Hilfe beim <a href="https://www.baden-wuerttemberg.datenschutz.de" target="_blank" rel="noopener">Landesbeauftragten für Datenschutz BW</a></td>
+</tr>
+<tr>
+<td><strong>Geschwärzte Gewerbeanmeldung</strong> bzw. Bestätigung des Finanzamts</td>
+<td>auf Nachfrage von Partnern, Plattformen, Banken</td>
+<td>Nur als PDF auf Anfrage, nicht öffentlich posten. Schwärzen: Geburtsdatum, Geburtsort, Privatadresse (falls abweichend), Staatsangehörigkeit, Steuer-/Registernummern, Unterschrift.</td>
+</tr>
+<tr>
+<td><strong>Handelsregisterauszug</strong> (ab e.K./UG/GmbH)</td>
+<td>Partner, Banken</td>
+<td>ist ohnehin öffentlich über das <a href="https://www.handelsregister.de" target="_blank" rel="noopener">Handelsregister</a></td>
+</tr>
+<tr>
+<td><strong>ZFU-Zulassungsnummer</strong></td>
+<td>bei zulassungspflichtigen Kursen</td>
+<td>im Kursangebot angeben</td>
+</tr>
+<tr>
+<td><strong>AGB, Widerrufsbelehrung, Leistungsbeschreibung</strong></td>
+<td>bei Verkauf an Verbraucher:innen</td>
+<td>klar und vollständig – das schafft mehr Vertrauen als jedes Siegel</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="abschnitt-32-was-du-nicht-veröffentlichen-solltest">3.2 Was du <strong>nicht</strong> veröffentlichen solltest</h3>
+<ul>
+<li><strong>Geburtsdatum, Geburtsort</strong>, Ausweis- oder Passkopien</li>
+<li><strong>Steuer-ID / Steuernummer</strong> (die USt-IdNr. gehört ins Impressum, die persönliche Steuer-ID nie)</li>
+<li><strong>Private Wohnadresse</strong>, wenn eine geschäftliche ladungsfähige Anschrift möglich ist (z. B. Büro, Coworking mit Zustellmöglichkeit – vorher rechtlich prüfen)</li>
+<li><strong>Unterschriften</strong> (Scans) und vollständige Bankdaten außerhalb von Rechnungen</li>
+<li>Ungeschwärzte Behördendokumente</li>
+</ul>
+<hr />
+<h2 id="abschnitt-4-zahlungen">4. Zahlungen</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Zahlungsweg</th>
+<th>Vorteile</th>
+<th>Haken</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Vorkasse per Überweisung</strong></td>
+<td>kein Ausfallrisiko, einfach</td>
+<td><strong>unzulässig bei zulassungspflichtigem Fernunterricht</strong> (§ 2 Abs. 2 FernUSG); bei Verbraucher:innen Widerrufsrecht beachten</td>
+</tr>
+<tr>
+<td><strong>Rechnung nach Leistung</strong></td>
+<td>kundenfreundlich</td>
+<td>Ausfallrisiko, Mahnwesen</td>
+</tr>
+<tr>
+<td><strong>Raten / Abo</strong></td>
+<td>passt zu FernUSG (max. 3-Monats-Abschnitte)</td>
+<td>Verwaltung</td>
+</tr>
+<tr>
+<td><strong>Zahlungsdienstleister</strong> (PayPal, Stripe, Kursplattform)</td>
+<td>schnell, international</td>
+<td>Gebühren, Kontosperrungen möglich, Datenschutz</td>
+</tr>
+<tr>
+<td><strong>Kryptowerte</strong></td>
+<td>international, schnell</td>
+<td>siehe unten</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rechnungen:</strong> Pflichtangaben nach <a href="https://www.gesetze-im-internet.de/ustg_1980/__14.html" target="_blank" rel="noopener">§ 14 UStG</a>; als Kleinunternehmer Hinweis auf die Steuerbefreiung nach § 19 UStG. Seit 2025 müssen inländische Unternehmen <strong>E-Rechnungen empfangen</strong> können (B2B) – Details mit Steuerberatung klären.</p>
+<aside class="callout callout-warning"><p class="callout-title">Krypto-Zahlungen – Vorsicht</p><ul>
+<li>Seit <strong>30.12.2024</strong> gilt die EU-Geldtransferverordnung <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32023R1113" target="_blank" rel="noopener">(EU) 2023/1113</a> („Travel Rule") auch für Kryptowerte-Transfers: Kryptowerte-Dienstleister müssen Angaben zu Absender und Empfänger übermitteln – <strong>ohne Mindestbetrag</strong>; bei Transfers <strong>über 1.000 €</strong> von/zu selbst gehosteten Wallets sind zusätzliche Prüfungen vorgesehen. Hinweise der <a href="https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Auslegungsentscheidung/A/ae_181220_hinweise_geldtvo_gw.html" target="_blank" rel="noopener">BaFin</a>.</li>
+<li>Steuerlich: Zahlungseingang in Krypto ist Betriebseinnahme zum Wert am Zufluss; spätere Kursgewinne/-verluste sind gesondert zu behandeln. <strong>Unbedingt mit Steuerberatung klären</strong>, bevor du Krypto annimmst.</li>
+<li>Wer selbst Kryptowerte für andere verwahrt, tauscht oder überträgt, kann erlaubnispflichtig werden (MiCA-Verordnung <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32023R1114" target="_blank" rel="noopener">(EU) 2023/1114</a>).</li>
+</ul></aside>
+
+<section class="card sim" id="sim-f" aria-labelledby="sim-f-h">
+<p class="kicker">ESTIMATOR f) · Simulator</p><h3 id="sim-f-h">Live Learn &amp; Earn – Mikro-Einkommen aus Live-Sessions</h3>
+<p>Rechnet Umsatz aus Live-Terminen und prüft ihn gegen § 19 UStG und die Live-synchron-Ausnahme (Abschnitt 2.1).</p><div class="sim-grid"><label>Teilnehmende pro Termin<input type="number" id="f-tn" value="8" min="0" step="1" inputmode="decimal"></label><label>Preis pro Person und Termin (€)<input type="number" id="f-preis" value="25" min="0" step="1" inputmode="decimal"></label><label>Termine pro Monat<input type="number" id="f-termine" value="4" min="0" step="1" inputmode="decimal"></label><label>Monate<input type="number" id="f-monate" value="12" min="1" step="1" inputmode="decimal"></label><label>Umsatz Vorjahr (€)<input type="number" id="f-vj" value="0" min="0" step="100" inputmode="decimal"></label><label class="chk"><input type="checkbox" id="f-gj" checked> Gründungsjahr</label><label class="chk"><input type="checkbox" id="f-rec"> Aufzeichnungen abrufbar</label></div>
+<p class="formel"><strong>Formel:</strong> Umsatz = Teilnehmende × Preis × Termine × Monate.</p>
+<p><button type="button" class="btn btn-gold" data-beispiel="{&quot;f-tn&quot;: 8, &quot;f-preis&quot;: 25, &quot;f-termine&quot;: 4, &quot;f-monate&quot;: 12, &quot;f-vj&quot;: 0, &quot;f-gj&quot;: true, &quot;f-rec&quot;: false}">Rechenbeispiel laden</button> <span class="bsp">8 × 25 € × 4 Termine × 12 Monate = 9.600 € → unter 25.000 €; live ohne Aufzeichnung → Vorkasse möglich (dokumentieren).</span></p>
+<output id="f-out" class="result" aria-live="polite"></output></section>
+
+<hr />
+<h2 id="abschnitt-5-förderung-beratung-in-baden-württemberg">5. Förderung &amp; Beratung in Baden-Württemberg</h2>
+<aside class="callout callout-info"><p class="callout-title">Merke</p><p>Fördermittel fast immer <strong>vor</strong> Beginn beantragen (vor Vertragsunterschrift, vor Gründung)! Viele Beratungsförderungen schließen <strong>bereits gegründete</strong> Unternehmen aus.</p></aside>
+
+<h3 id="abschnitt-51-beratung-vor-und-kurz-nach-der-gründung">5.1 Beratung vor und kurz nach der Gründung</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Angebot</th>
+<th>Für wen</th>
+<th>Was</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IHK-Gründungsberatung</strong> (für Albstadt/Zollernalbkreis: <strong>IHK Reutlingen</strong>, Geschäftsstelle Zollernalbkreis)</td>
+<td>alle Gründer:innen im IHK-Bezirk</td>
+<td>kostenlose Erstberatung, Firmenname, Businessplan-Check, Tragfähigkeit</td>
+<td><a href="https://www.reutlingen.ihk.de/gruendung/" target="_blank" rel="noopener">Gründung – IHK Reutlingen</a>, <a href="https://www.reutlingen.ihk.de/gruendung/gruendungsberatung-im-ueberblick/" target="_blank" rel="noopener">Beratung im Überblick</a>, <a href="https://www.reutlingen.ihk.de/ihre-ihk/ihk-geschaeftsstelle-zollernalbkreis/" target="_blank" rel="noopener">Geschäftsstelle Zollernalbkreis</a></td>
+</tr>
+<tr>
+<td><strong>Exi-Gründungsgutscheine</strong> (Land BW + ESF Plus)</td>
+<td>Personen, die in BW gründen/übernehmen wollen – <strong>nicht</strong> bereits gegründete Unternehmen</td>
+<td>kostenloser Einstieg (bis 4 Std.), vertiefende Beratung bis 6 Tage (+2 Tage für innovative Vorhaben/Übernahmen), Eigenanteil 240 €/Tag zzgl. MwSt. (RKW-Angabe)</td>
+<td><a href="https://www.rkw-bw.de/gruendung/existenzgruendungsberatung/" target="_blank" rel="noopener">RKW BW – Existenzgründungsberatung</a>, <a href="https://www.esf-bw.de/vom-esf-profitieren/existenzgruendung-und-unternehmensnachfolge/exi-gruendungsgutscheine" target="_blank" rel="noopener">ESF BW – Exi-Gründungsgutscheine</a>, <a href="https://www.reutlingen.ihk.de/gruendung/exi-gruendungsgutschein/" target="_blank" rel="noopener">IHK Reutlingen – Exi</a></td>
+</tr>
+<tr>
+<td><strong>Start-up BW</strong></td>
+<td>Gründer:innen und Start-ups in BW</td>
+<td>Landesportal, Vorgründungscoaching, regionale Ansprechpartner</td>
+<td><a href="https://www.startupbw.de/" target="_blank" rel="noopener">startupbw.de</a>, <a href="https://www.startupbw.de/beratung-coaching/vorgruendungscoaching/individuelle-beratung" target="_blank" rel="noopener">geförderte Beratung</a></td>
+</tr>
+<tr>
+<td><strong>BAFA – Förderung von Unternehmensberatungen für KMU</strong></td>
+<td>bestehende KMU (junge Unternehmen &lt; 1 Jahr: Pflicht-Informationsgespräch vorab)</td>
+<td>Zuschuss zu Beratungskosten (Bemessung bis 3.500 €, je nach Region 50 % oder 80 %); Programm läuft laut BAFA bis <strong>31.12.2026</strong> – Fortführung prüfen</td>
+<td><a href="https://www.bafa.de/DE/Wirtschaft/Beratung_Finanzierung/Unternehmensberatung/unternehmensberatung_node.html" target="_blank" rel="noopener">BAFA Unternehmensberatung</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="abschnitt-52-finanzierung-über-die-l-bank-förderbank-bw">5.2 Finanzierung über die L-Bank (Förderbank BW)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Programm</th>
+<th>Kurzbeschreibung</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Startfinanzierung 80</strong></td>
+<td>zinsgünstiges Darlehen für Gründungen und junge Unternehmen (bis 5 Jahre) mit 80-%-Bürgschaft der Bürgschaftsbank BW; Antrag <strong>vor Vorhabensbeginn über die Hausbank</strong></td>
+<td><a href="https://www.l-bank.de/produkte/wirtschaftsfoerderung/startfinanzierung-80.html" target="_blank" rel="noopener">L-Bank – Startfinanzierung 80</a></td>
+</tr>
+<tr>
+<td><strong>Gründungs- und Wachstumsfinanzierung (GuW-BW)</strong></td>
+<td>Förderdarlehen für Gründung und Wachstum</td>
+<td><a href="https://www.l-bank.de/produkte/wirtschaftsfoerderung/guw-bw.html" target="_blank" rel="noopener">L-Bank – GuW-BW</a></td>
+</tr>
+<tr>
+<td><strong>Innovationsgutscheine</strong> (Wirtschaftsministerium BW, abgewickelt über L-Bank)</td>
+<td>Zuschuss für externe Innovations-/FuE-Leistungen, z. B. durch Forschungseinrichtungen oder <strong>Steinbeis-Unternehmen</strong>; Linien u. a. „Innovationsgutschein BW", „Hightech", „Start-up", „Mittelstand trifft Start-ups"</td>
+<td><a href="https://www.l-bank.de/produkte/finanzhilfen/innovationsgutschein.html" target="_blank" rel="noopener">L-Bank – Innovationsgutschein</a>, <a href="https://wm.baden-wuerttemberg.de/de/innovation/innovationsgutscheine" target="_blank" rel="noopener">Wirtschaftsministerium BW</a></td>
+</tr>
+<tr>
+<td><strong>Start-up BW Pre-Seed</strong></td>
+<td>für innovative, skalierbare Start-ups (eher nicht für klassische Solo-Kursanbieter)</td>
+<td><a href="https://www.l-bank.de/produkte/unternehmensfinanzierung/start-up-bw-pre-seed.html" target="_blank" rel="noopener">L-Bank – Pre-Seed</a></td>
+</tr>
+</tbody>
+</table></div>
+<aside class="callout callout-tip"><p class="callout-title">Konditionen</p><p>Zinssätze, Höchstbeträge und Antragslinien ändern sich häufig – <strong>immer die aktuelle Programmseite und das Merkblatt der L-Bank lesen</strong> und mit Hausbank/IHK besprechen.</p></aside>
+
+<h3 id="abschnitt-53-innovations-und-transferberatung">5.3 Innovations- und Transferberatung</h3>
+<ul>
+<li><strong>Steinbeis</strong> – Verbund von Transferunternehmen für Wissens- und Technologietransfer sowie Gründungsbegleitung (Company Building): <a href="https://www.steinbeis.de/" target="_blank" rel="noopener">steinbeis.de</a>. Leistungen können je nach Vorhaben über die <strong>Innovationsgutscheine</strong> (s. o.) bezuschusst werden.</li>
+<li><strong>RKW Baden-Württemberg</strong> – Gründungs- und Unternehmensberatung, Partner des Landes für die Exi-Gutscheine: <a href="https://www.rkw-bw.de/" target="_blank" rel="noopener">rkw-bw.de</a>.</li>
+</ul>
+<h3 id="abschnitt-54-gründungszuschuss-bundesagentur-für-arbeit">5.4 Gründungszuschuss (Bundesagentur für Arbeit)</h3>
+<ul>
+<li>Für Personen, die <strong>Arbeitslosengeld beziehen</strong> und sich hauptberuflich selbstständig machen; Voraussetzungen u. a. <strong>mindestens 150 Tage Restanspruch</strong>, Nachweis der Tragfähigkeit durch eine fachkundige Stelle (z. B. IHK), Darlegung der Kenntnisse (<a href="https://www.gesetze-im-internet.de/sgb_3/__93.html" target="_blank" rel="noopener">§ 93 SGB III</a>).</li>
+<li>Leistung: <strong>6 Monate</strong> Arbeitslosengeld + <strong>300 €/Monat</strong>, danach ggf. weitere <strong>9 Monate 300 €/Monat</strong> (<a href="https://www.gesetze-im-internet.de/sgb_3/__94.html" target="_blank" rel="noopener">§ 94 SGB III</a>).</li>
+<li>Ermessensleistung – <strong>vor</strong> der Gründung bei der Agentur beantragen: <a href="https://www.arbeitsagentur.de/arbeitslos-arbeit-finden/arbeitslosengeld/gruendungszuschuss-beantragen" target="_blank" rel="noopener">arbeitsagentur.de – Gründungszuschuss</a>.</li>
+</ul>
+<hr />
+<h2 id="abschnitt-6-checklisten-entscheidungsdiagramm">6. Checklisten &amp; Entscheidungsdiagramm</h2>
+<h3 id="checkliste">6.1 One-Page-Checkliste</h3>
+<p><strong>A. Start (Stufe 1)</strong></p>
+<ul class="tasks"><li class="tl"><label><input type="checkbox" class="task" id="task-1"> Erstgespräch IHK-Gründungsberatung gebucht (vor der Gründung → Exi-Gutschein prüfen!)</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-2"> Gewerbe vs. freier Beruf mit Finanzamt/Steuerberatung geklärt (§ 18 EStG)</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-3"> Rentenversicherungspflicht als selbstständige Lehrkraft geprüft (§ 2 SGB VI)</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-4"> Gewerbeanmeldung (service-bw) – falls gewerblich</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-5"> Fragebogen zur steuerlichen Erfassung (ELSTER) inkl. Entscheidung Kleinunternehmerregelung</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-6"> Geschäftskonto eröffnet</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-7"> Krankenversicherung/Absicherung geklärt</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-8"> EÜR-Belegablage eingerichtet (digital, GoBD-konform)</label></li></ul>
+
+<p><strong>B. Online-Kurse</strong></p>
+<ul class="tasks"><li class="tl"><label><input type="checkbox" class="task" id="task-9"> ZFU-Fragebogen ausgefüllt, Ergebnis dokumentiert (<a href="https://zfu.de/veranstaltende/zulassung#fragebogen" target="_blank" rel="noopener">Link</a>)</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-10"> Anteil asynchron/synchron berechnet (Aufzeichnungen zählen asynchron!)</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-11"> Falls zulassungspflichtig: ZFU-Antrag, <strong>keine Vorkasse</strong>, Raten ≤ 3 Monate</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-12"> AGB, Widerrufsbelehrung, Leistungsbeschreibung</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-13"> Kursname frei von geschützten Begriffen (§ 75 LHG BW)</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-14"> FernUSG-Reform beobachten (frühestens 01.07.2027)</label></li></ul>
+
+<p><strong>C. Vertrauen &amp; Online-Auftritt</strong></p>
+<ul class="tasks"><li class="tl"><label><input type="checkbox" class="task" id="task-15"> Impressum nach § 5 DDG</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-16"> Datenschutzerklärung, Auftragsverarbeitungsverträge mit Tools</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-17"> Geschwärzte Gewerbeanmeldung als PDF für Anfragen bereit</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-18"> Keine privaten Daten (Geburtsdatum, Steuer-ID, Ausweis) veröffentlicht</label></li></ul>
+
+<p><strong>D. Zahlungen</strong></p>
+<ul class="tasks"><li class="tl"><label><input type="checkbox" class="task" id="task-19"> Rechnungsvorlage mit Pflichtangaben (§ 14 UStG)</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-20"> E-Rechnungs-Empfang (B2B) sichergestellt</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-21"> Zahlungsweg passend zum FernUSG-Status</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-22"> Krypto nur nach Rücksprache mit Steuerberatung</label></li></ul>
+
+<p><strong>E. Wachstum (Stufe 2/3)</strong></p>
+<ul class="tasks"><li class="tl"><label><input type="checkbox" class="task" id="task-23"> Haftungsrisiko bewertet (Verträge, Partner, Mitarbeitende)</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-24"> Rechtsform-Entscheidung mit Steuerberatung + Anwalt</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-25"> Firmenname mit IHK abgestimmt; „i.Gr." nur bis zur HR-Eintragung</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-26"> Bei Investor:innen/stillen Gesellschaftern: VermAnlG-Prüfung durch Anwalt</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-27"> UG: 25-%-Rücklage einplanen; GmbH-Übergang = Kapitalerhöhung ≥ 25.000 € + HR-Eintragung</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-28"> Transparenzregister-Eintragung (UG/GmbH/KG)</label></li><li class="tl"><label><input type="checkbox" class="task" id="task-29"> Fördermittel <strong>vor</strong> Vorhabensbeginn beantragt (L-Bank über Hausbank)</label></li></ul>
+
+<h3 id="abschnitt-62-entscheidungsdiagramm">6.2 Entscheidungsdiagramm</h3>
+<figure class="card fig"><picture><source srcset="assets/entscheidungsdiagramm.webp" type="image/webp"><img src="assets/entscheidungsdiagramm.png" width="1000" height="1906" loading="lazy" alt="Entscheidungsdiagramm: vom Start über Gewerbe oder freien Beruf, FernUSG-Prüfung und Haftungsfrage bis zu e.K., UG, UG &amp; Co. KG oder GmbH"></picture><figcaption>Entscheidungsdiagramm – <a href="assets/entscheidungsdiagramm.png">in voller Größe öffnen</a></figcaption></figure>
+
+<details class="card"><summary>Diagramm als Text (Mermaid-Quelltext)</summary><pre><code>flowchart TD
+    S([Start: Ich will selbstständig&lt;br/&gt;Kurse &amp; Services anbieten]) --&gt; A{{Unterrichtende Tätigkeit&lt;br/&gt;oder Gewerbe?}}
+    A -- &quot;eher Lehre/Unterricht&quot; --&gt; A1[Finanzamt: Freiberuf § 18 EStG?&lt;br/&gt;Rentenpflicht § 2 SGB VI prüfen]
+    A -- &quot;Gewerbe / gemischt&quot; --&gt; A2[Gewerbeanmeldung § 14 GewO&lt;br/&gt;über service-bw / Gemeinde]
+    A1 --&gt; K
+    A2 --&gt; K
+    K[Stufe 1: Einzelunternehmen&lt;br/&gt;volle persönliche Haftung · EÜR] --&gt; F{{Kurs überwiegend asynchron &amp;gt;50 %&lt;br/&gt;+ Entgelt + Vertrag + Lernkontrolle?}}
+    F -- ja --&gt; Z[ZFU-Zulassung nötig&lt;br/&gt;keine Vorkasse § 2 Abs. 2 FernUSG]
+    F -- &quot;nein / live-synchron&quot; --&gt; V[Vorkasse möglich&lt;br/&gt;Ergebnis dokumentieren]
+    Z --&gt; H
+    V --&gt; H
+    H{{Haftungsrisiko oder&lt;br/&gt;Partner/Investoren?}}
+    H -- nein --&gt; E{{Im Handelsregister&lt;br/&gt;auftreten?}}
+    E -- ja --&gt; EK[optional: e.K.&lt;br/&gt;HGB-Pflichten, § 241a-Grenzen]
+    E -- nein --&gt; K2[bleiben: Einzelunternehmen]
+    H -- ja --&gt; C{{25.000 € Stammkapital&lt;br/&gt;verfügbar? mind. 12.500 € einzahlen}}
+    C -- nein --&gt; UG[UG haftungsbeschränkt&lt;br/&gt;25 % Rücklage § 5a Abs. 3]
+    C -- ja --&gt; G[GmbH]
+    UG --&gt; P{{Mitunternehmer / stille&lt;br/&gt;Gesellschafter geplant?}}
+    P -- ja --&gt; KG[UG &amp; Co. KG&lt;br/&gt;+ ggf. atypisch still&lt;br/&gt;Anwalt + Steuerberater!]
+    P -- nein --&gt; UG2[UG weiterführen]
+    UG2 --&gt; X[Kapitalerhöhung auf ≥ 25.000 €&lt;br/&gt;+ HR-Eintragung = GmbH § 5a Abs. 5]
+    X --&gt; G
+</code></pre></details>
+
+<section class="card dreambox" id="dream" aria-labelledby="dream-h">
+<p class="kicker">Magnifica Humanitas · Rosary-Blog-Format</p>
+<h2 id="dream-h">/DREAM · ESTIMATOR · EXECUTOR</h2>
+<p>/DREAM ist das Simulator-Format der Rosary-Blogbeiträge (z. B. <a href="https://rosary-mom.github.io/blog/hoeren-im-multimediazeitalter-jak-1/hoeren-im-multimediazeitalter-jak-1-paladine.html#sim" target="_blank" rel="noopener">„Hören im Multimediazeitalter“</a>): <strong>/dream</strong>-Kernsätze, ein <strong>ESTIMATOR</strong> (die Rechner a–f oben und der Checklisten-Index hier) und ein <strong>EXECUTOR</strong>, der dich zum nächsten offenen Schritt führt. Die Kernsätze fassen nur den Leitfaden zusammen.</p>
+<div class="grid2"><button type="button" class="btn dream" data-dream="1" data-text="/dream 1: „Kleingewerbe“ ist umgangssprachlich ein Einzelunternehmen – volle persönliche Haftung, EÜR statt Bilanz (Abschnitt 1.2)."><strong>/dream 1</strong><br>Kleingewerbe ist keine Rechtsform.</button><button type="button" class="btn dream" data-dream="2" data-text="/dream 2: Jedes Jahr 25 % des Überschusses in die Rücklage – bis die Kapitalerhöhung auf ≥ 25.000 € im Handelsregister steht (Abschnitt 1.4/1.5)."><strong>/dream 2</strong><br>Die UG ist ein Sparplan.</button><button type="button" class="btn dream" data-dream="3" data-text="/dream 3: Live-Online-Seminare ohne abrufbare Aufzeichnung sind laut ZFU keine räumliche Trennung – Aufzeichnungen zählen asynchron (Abschnitt 2.1)."><strong>/dream 3</strong><br>Live bleibt live.</button><button type="button" class="btn dream" data-dream="4" data-text="/dream 4: Fördermittel fast immer vor Beginn beantragen – viele Beratungsförderungen schließen bereits Gegründete aus (Abschnitt 5)."><strong>/dream 4</strong><br>Erst fördern, dann gründen.</button></div>
+<p id="dream-out" class="quote" aria-live="polite">/dream bereit.</p>
+<p><strong>ESTIMATOR – Checklisten-Index: <span id="est-val">0,0 %</span></strong></p>
+<div class="bar-wrap"><div class="bar" id="est-bar"></div></div>
+<p id="est-msg" class="small"></p>
+<p><button type="button" class="btn btn-gold" id="btn-exec">EXECUTOR START</button>
+<button type="button" class="btn" id="btn-reset">Reset</button>
+<button type="button" class="btn" id="btn-manifest">Manifest</button>
+<a class="btn" href="#checkliste">Zur Checkliste</a></p>
+<p id="exec-out" class="quote" aria-live="polite">EXECUTOR bereit – hake die Punkte in 6.1 ab und starte.</p>
+<textarea id="manifest" rows="8" hidden aria-label="Manifest der Checkliste"></textarea>
+<p class="small"><span class="orient">Orientierung, keine Beratung</span> · Der Fortschritt bleibt nur in diesem Browserfenster und wird nicht gespeichert oder übertragen.</p>
+</section>
+
+<hr />
+<h2 id="abschnitt-7-vorlage-mein-eigenes-rohmodell-zum-ausfüllen">7. Vorlage: Mein eigenes Rohmodell (zum Ausfüllen)</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Mein Eintrag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tätigkeit (Kurse / Services / Produkte)</td>
+<td><input type="text" class="fill" aria-label="Eintrag 1" placeholder="…"></td>
+</tr>
+<tr>
+<td>Gewerbe oder freier Beruf? (Entscheid Finanzamt)</td>
+<td><input type="text" class="fill" aria-label="Eintrag 2" placeholder="…"></td>
+</tr>
+<tr>
+<td>Aktuelle Stufe</td>
+<td><input type="text" class="fill" aria-label="Eintrag 3" placeholder="Einzelunternehmen / e.K. / UG / UG &amp; Co. KG / GmbH"></td>
+</tr>
+<tr>
+<td>Umsatz Vorjahr / Prognose lfd. Jahr</td>
+<td><input type="text" class="fill" aria-label="Eintrag 4" placeholder="…"> / <input type="text" class="fill" aria-label="Eintrag 5" placeholder="…"></td>
+</tr>
+<tr>
+<td>Kleinunternehmer ja/nein</td>
+<td><input type="text" class="fill" aria-label="Eintrag 6" placeholder="…"></td>
+</tr>
+<tr>
+<td>FernUSG-Ergebnis (Datum ZFU-Fragebogen)</td>
+<td><input type="text" class="fill" aria-label="Eintrag 7" placeholder="…"></td>
+</tr>
+<tr>
+<td>Zahlungsweg</td>
+<td><input type="text" class="fill" aria-label="Eintrag 8" placeholder="…"></td>
+</tr>
+<tr>
+<td>Nächste Stufe + Auslöser (z. B. Haftungsrisiko, Partner)</td>
+<td><input type="text" class="fill" aria-label="Eintrag 9" placeholder="…"></td>
+</tr>
+<tr>
+<td>Meine Ansprechpartner (IHK, Steuerberatung, Anwalt)</td>
+<td><input type="text" class="fill" aria-label="Eintrag 10" placeholder="…"></td>
+</tr>
+<tr>
+<td>Beantragte Förderung + Datum</td>
+<td><input type="text" class="fill" aria-label="Eintrag 11" placeholder="…"></td>
+</tr>
+</tbody>
+</table></div>
+<section id="videos" aria-labelledby="videos-h"><h2 id="videos-h">Videos: offizielle IHK-Erklärfilme</h2>
+<p>Die Filme stammen vom YouTube-Kanal <strong>IHK24</strong> und sind auf der Seite „IHK einfach erklärt“ der IHK Lahn-Dill eingebunden. Sie sind allgemein und nicht speziell für Baden-Württemberg; deine Ansprechpartnerin bleibt die IHK vor Ort. Eigene Videos zum Rohmodell gibt es noch nicht.</p>
+<p class="small"><strong>Datenschutz:</strong> Die Videos werden erst nach Klick geladen. Erst dann wird eine Verbindung zu YouTube/Google (youtube-nocookie.com) aufgebaut; dabei werden u. a. deine IP-Adresse und Browserdaten übertragen. <a href="/datenschutz.html#youtube">Datenschutz</a> · <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutzerklärung von Google</a></p>
+<div class="videos"><figure class="video card"><div class="vframe"><button type="button" class="yt" data-id="tcpnPcdXHxc" data-title="Existenzgründungsberatung">
+<span class="play" aria-hidden="true">▶</span><span><strong>Existenzgründungsberatung</strong><br>Video laden (YouTube)</span></button></div>
+<figcaption>IHK-Erklärfilm: Was die IHK-Gründungsberatung leistet (passt zu Abschnitt 5.1). Quelle: Kanal IHK24 · <a href="https://www.youtube.com/watch?v=tcpnPcdXHxc" target="_blank" rel="noopener">auf YouTube ansehen</a> · <a href="https://www.ihk.de/lahn-dill/presse/videobeitraege/ihk-einfach-erklaert/existenzgruendungsberatung-1233502" target="_blank" rel="noopener">IHK Lahn-Dill „IHK einfach erklärt“</a></figcaption></figure><figure class="video card"><div class="vframe"><button type="button" class="yt" data-id="N-mN45tSQ4I" data-title="IHK24 – Eintragung ins Handelsregister">
+<span class="play" aria-hidden="true">▶</span><span><strong>IHK24 – Eintragung ins Handelsregister</strong><br>Video laden (YouTube)</span></button></div>
+<figcaption>IHK-Erklärfilm zum Handelsregister (passt zu e.K., UG, GmbH in Abschnitt 1). Quelle: Kanal IHK24 · <a href="https://www.youtube.com/watch?v=N-mN45tSQ4I" target="_blank" rel="noopener">auf YouTube ansehen</a> · <a href="https://www.ihk.de/lahn-dill/presse/videobeitraege/ihk-einfach-erklaert/eintragung-ins-handelsregister-2776080" target="_blank" rel="noopener">IHK Lahn-Dill „IHK einfach erklärt“</a></figcaption></figure><figure class="video card"><div class="vframe"><button type="button" class="yt" data-id="DZloRGxZ1_E" data-title="IHK24 – Businessplan">
+<span class="play" aria-hidden="true">▶</span><span><strong>IHK24 – Businessplan</strong><br>Video laden (YouTube)</span></button></div>
+<figcaption>IHK-Erklärfilm: Wozu ein Businessplan dient und wie er entsteht (Tragfähigkeit, Förderanträge). Quelle: Kanal IHK24 · <a href="https://www.youtube.com/watch?v=DZloRGxZ1_E" target="_blank" rel="noopener">auf YouTube ansehen</a> · <a href="https://www.ihk.de/lahn-dill/presse/videobeitraege/ihk-einfach-erklaert/businessplan-einfach-erklaert-1233512" target="_blank" rel="noopener">IHK Lahn-Dill „IHK einfach erklärt“</a></figcaption></figure></div></section>
+
+<hr />
+<h2 id="abschnitt-8-quellen-geprüft-am-09102026">8. Quellen (geprüft am 09.10.2026)</h2>
+<p><strong>Gesetze</strong></p>
+<ul>
+<li>GewO § 14: https://www.gesetze-im-internet.de/gewo/__14.html · § 15: https://www.gesetze-im-internet.de/gewo/__15.html</li>
+<li>HGB § 1: https://www.gesetze-im-internet.de/hgb/__1.html · § 2: https://www.gesetze-im-internet.de/hgb/__2.html · § 241a: https://www.gesetze-im-internet.de/hgb/__241a.html · §§ 230 ff.: https://www.gesetze-im-internet.de/hgb/__230.html</li>
+<li>EStG § 4: https://www.gesetze-im-internet.de/estg/__4.html · § 18: https://www.gesetze-im-internet.de/estg/__18.html</li>
+<li>AO § 141: https://www.gesetze-im-internet.de/ao_1977/__141.html</li>
+<li>UStG § 19: https://www.gesetze-im-internet.de/ustg_1980/__19.html · § 14: https://www.gesetze-im-internet.de/ustg_1980/__14.html</li>
+<li>BMF-Schreiben Kleinunternehmer (18.03.2025): https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Umsatzsteuer/Umsatzsteuer-Anwendungserlass/2025-03-18-sonderregelung-kleinunternehmer.pdf?__blob=publicationFile</li>
+<li>GmbHG §§ 2, 5, 5a, 7, 11: https://www.gesetze-im-internet.de/gmbhg/</li>
+<li>GwG § 20: https://www.gesetze-im-internet.de/gwg_2017/__20.html</li>
+<li>SGB VI § 2: https://www.gesetze-im-internet.de/sgb_6/__2.html</li>
+<li>SGB III §§ 93, 94: https://www.gesetze-im-internet.de/sgb_3/__93.html · https://www.gesetze-im-internet.de/sgb_3/__94.html</li>
+<li>FernUSG: https://www.gesetze-im-internet.de/fernusg/BJNR025250976.html · § 2: https://www.gesetze-im-internet.de/fernusg/__2.html</li>
+<li>DDG § 5: https://www.gesetze-im-internet.de/ddg/__5.html</li>
+<li>VermAnlG § 1: https://www.gesetze-im-internet.de/vermanlg/__1.html</li>
+<li>LHG BW § 75 (Volltext): https://www.verwaltungshochschulen.de/recht-und-gesetze/baden-wuerttemberg/landeshochschulgesetz/baden_wuerttemberg_landeshochschulgesetz_paragraf_75 · amtlich: https://www.landesrecht-bw.de</li>
+<li>VO (EU) 2023/1113: https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32023R1113 · VO (EU) 2023/1114 (MiCA): https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32023R1114</li>
+</ul>
+<p><strong>Rechtsprechung</strong></p>
+<ul>
+<li>BGH, Beschl. v. 19.04.2011 – II ZB 25/10 (UG → GmbH, Sacheinlage): https://recht.nulegal.eu/rechtsprechung/bgh/2011-04-19/ii-zb-25-10</li>
+<li>OLG Hamm, Beschl. v. 05.05.2011 – I-27 W 24/11 (keine Volleinzahlung, mind. 12.500 €): https://recht.nulegal.eu/rechtsprechung/olg-hamm/2011-05-05/i-27-w-24-11</li>
+<li>BGH, Urt. v. 12.06.2025 – III ZR 109/24 (FernUSG auch B2B): https://www.bundesgerichtshof.de/SharedDocs/Entscheidungen/DE/Zivilsenate/III_ZS/2024/III_ZR_109-24.pdf?__blob=publicationFile&amp;v=1</li>
+</ul>
+<p><strong>Behörden &amp; Programme</strong></p>
+<ul>
+<li>ZFU Zulassung &amp; Fragebogen: https://zfu.de/veranstaltende/zulassung#fragebogen · Gebühren: https://zfu.de/files/zulassung/Verwaltungsgebuehren_V1.2.pdf · AVerwGebO NRW Tarifstelle 13: https://recht.nrw.de/system/files/BA/51994-52968-sgv_2011_20230808_1_anlage13.htm</li>
+<li>BMBFSFJ FernUSG-Reform: https://www.bmbfsfj.bund.de/bmbfsfj/ministerium/gesetze/gesetz-zur-modernisierung-und-entbuerokratisierung-des-fernunterrichts-293618 · Referentenentwurf: https://www.bmbfsfj.bund.de/resource/blob/293608/e8225cb64f73a15e50603a234651d42d/referentenentwurf-data.pdf</li>
+<li>service-bw Gewerbe anmelden: https://www.service-bw.de/zufi/leistungen/6021473</li>
+<li>IHK Reutlingen Gründung: https://www.reutlingen.ihk.de/gruendung/</li>
+<li>RKW BW: https://www.rkw-bw.de/gruendung/existenzgruendungsberatung/</li>
+<li>ESF BW Exi-Gründungsgutscheine: https://www.esf-bw.de/vom-esf-profitieren/existenzgruendung-und-unternehmensnachfolge/exi-gruendungsgutscheine</li>
+<li>Start-up BW: https://www.startupbw.de/</li>
+<li>L-Bank Startfinanzierung 80: https://www.l-bank.de/produkte/wirtschaftsfoerderung/startfinanzierung-80.html · GuW-BW: https://www.l-bank.de/produkte/wirtschaftsfoerderung/guw-bw.html · Innovationsgutschein: https://www.l-bank.de/produkte/finanzhilfen/innovationsgutschein.html</li>
+<li>Wirtschaftsministerium BW Innovationsgutscheine: https://wm.baden-wuerttemberg.de/de/innovation/innovationsgutscheine</li>
+<li>Steinbeis: https://www.steinbeis.de/</li>
+<li>BAFA Unternehmensberatung: https://www.bafa.de/DE/Wirtschaft/Beratung_Finanzierung/Unternehmensberatung/unternehmensberatung_node.html</li>
+<li>Bundesagentur für Arbeit Gründungszuschuss: https://www.arbeitsagentur.de/arbeitslos-arbeit-finden/arbeitslosengeld/gruendungszuschuss-beantragen</li>
+<li>BaFin Geldtransferverordnung: https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Auslegungsentscheidung/A/ae_181220_hinweise_geldtvo_gw.html</li>
+<li>LFK BW Impressum-Leitfaden: https://www.lfk.de/service/dokumente-rechtsgrundlagen/leitfaden-zur-impressumspflicht-im-internet</li>
+</ul>
+<hr />
+<p><em>Gründer-Rohmodell v1.0 · Stand 09.10.2026 · Keine Rechts- oder Steuerberatung. Bitte Steuerberatung, Rechtsanwalt/-anwältin und IHK einbeziehen.</em></p>
+</article>
+</main>
+<footer class="foot"><div class="wrap">
+<p><strong>Gründer-Rohmodell v1.0</strong> · Stand 09.10.2026 · Keine Rechts- oder Steuerberatung. Bitte Steuerberatung, Rechtsanwalt/-anwältin und IHK einbeziehen.</p>
+<p>Schriften: Rosario (SIL OFL 1.1), Roboto Slab (Apache 2.0), selbst gehostet – keine Anfragen an Google Fonts. Videos laden erst nach Klick. · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p>
+</div></footer>
+<script src="assets/simulatoren.js"></script>
+</body>
+</html>
