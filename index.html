@@ -146,7 +146,7 @@
                 Sühnen: Agent Enzymes (Dschungelbuch, Cockpit, Landknappheit, ESG/Vault, EDUCATION, Suggestor/Supposer/Estimator/Exekutor/Exkursor) + Multi-PC<br>
                 /DREAM: Magnifica Humanitas Stil – Hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold, Inkludierte Ableitungen.
             </div>
-            <p><strong>Agenten aktiviert (Merged Organigramm, 30 Agenten / 16 Subagenten):</strong> Dschungelbuch (Wegweiser), Cockpit (L1), Landknappheit (BIO1.0), ESG/Vault (TECH2.0), EDUCATION, Fraktale, Baloo, Mogli, Monie, Auctionator, GURU, What-Dr.Son, GrokSyncMaster, Emergent Freedom + /DREAM Bots (Suggestor, Supposer, Estimator, Exekutor, Exkursor). Kanonisch: <a href="organigramm.json" style="color:#E3C35A;">organigramm.json</a>.</p>
+            <p><strong>Agenten aktiviert (Merged Organigramm, 30 Agenten / 16 Subagenten):</strong> Dschungelbuch (Wegweiser), Cockpit (L1), Landknappheit (BIO1.0), ESG/Vault (TECH2.0), EDUCATION, Fraktale, Baloo, Mogli, Monie, Auctionator, GURU, GrokSyncMaster, Emergent Freedom + /DREAM Bots (Suggestor, Supposer, Estimator, Exekutor, Exkursor). Kanonisch: <a href="organigramm.json" style="color:#E3C35A;">organigramm.json</a>.</p>
             
             <div id="esg-memory" class="sync-log" style="margin-top:1rem;">
                 <strong>ESG-Memory (Multi-PC, kanonisch):</strong> wird geladen…<br>
@@ -161,9 +161,9 @@
     <section style="margin-top:3rem;">
         <h2>Sync Status & Multi-PC Redundanz (Simuliert/Ausgeführt)</h2>
         <div class="sync-log">
-            Home ROSENKRANZ-PC (organigramm-builder): Export OK (organigramm.yaml, phase5 scripts, smoke results)
-            Office DESKTOP-K2JCAOI: Pull simuliert — Phase 5 artifacts synced. Redundancy confirmed.
-            Vault PORZELLAN-PC: Vault Graph backup + telemetry cross-verified.
+            Home-PC (organigramm-builder): Export OK (organigramm.yaml, phase5 scripts, smoke results)
+            Office-PC: Pull simuliert — Phase 5 artifacts synced. Redundancy confirmed.
+            Vault-PC: Vault Graph backup + telemetry cross-verified.
             grok-sync.ps1 FullSync: Memory mirrored, Agents synced (grok-sync-master, logos-master, hermes).
             Multi-PC Export: [OK] hermes_sync_master_LATEST.json | Phase 5 + Piloten + True Words Bot | Organigramm 30/16 synced.
         </div>
@@ -302,7 +302,7 @@ function simulateSpiral() {
 // Simulate other PC Syncs
 function simulateOtherPCSync() {
     const out = document.getElementById('sync-output');
-    out.innerHTML = `SYNC ON OTHER PCs EXECUTED:\nOffice (DESKTOP-K2JCAOI): Pull OK — Phase 5 scripts + smoke-adapted-results.md received. Emergent layer active. Organigramm 30/16 synced.\nVault (PORZELLAN-PC): Vault Graph backup + telemetry cross-verified. Redundancy 100%.\ngrok-sync.ps1 on all: Memory mirror complete. Manifest updated (hermes_sync_master_LATEST.json).\n[Total: 3 PCs synced | Organigramm: 30 Agenten / 16 Subagenten / 5 Piloten | Commit: github.com/rosary-mom/Bio2.0]`;
+    out.innerHTML = `SYNC ON OTHER PCs EXECUTED:\nOffice-PC: Pull OK — Phase 5 scripts + smoke-adapted-results.md received. Emergent layer active. Organigramm 30/16 synced.\nVault-PC: Vault Graph backup + telemetry cross-verified. Redundancy 100%.\ngrok-sync.ps1 on all: Memory mirror complete. Manifest updated (hermes_sync_master_LATEST.json).\n[Total: 3 PCs synced | Organigramm: 30 Agenten / 16 Subagenten / 5 Piloten | Commit: github.com/rosary-mom/Bio2.0]`;
     out.style.display = 'block';
     console.log('Multi-PC Syncs simulated and executed. Organigramm synced.');
 }
