@@ -193,23 +193,42 @@ function confirmMail(env, v, token) {
   const base = (env.PUBLIC_BASE_URL || '').replace(/\/$/, '');
   const confirmUrl = `${base}/api/waitlist?confirm=${token}`;
   const unsubUrl = `${base}/api/waitlist?unsubscribe=${token}`;
+  const privacyUrl = `${base}/datenschutz.html`;
   const label = v.audience === 'A' ? 'Grok Bot Galaxy (mehrere Agenten-PCs)' : 'ESG-Pilot / Entscheidungsmatrix';
+  const name = String(v.name || '').trim();
+  const greet = name ? `Hallo ${name},` : 'Hallo,';
+  const intro = `schön, dass du dich für die Warteliste „${label}“ eingetragen hast. Bitte bestätige deine Anmeldung mit einem Klick auf den Button.`;
+  const foot = 'Der Link ist 48 Stunden gültig. Wenn du dich nicht angemeldet hast, ignoriere diese E-Mail – ohne Bestätigung speichern wir nichts dauerhaft und schreiben dir nicht erneut.';
   const text = [
-    `Hallo ${v.name},`,
-    '',
-    `bitte bestätigen Sie Ihre Anmeldung zur Warteliste „${label}“:`,
-    confirmUrl,
-    '',
-    'Der Link ist 48 Stunden gültig. Wenn Sie sich nicht angemeldet haben, ignorieren Sie diese E-Mail – ohne Bestätigung speichern wir nichts dauerhaft und schreiben Ihnen nicht erneut.',
-    '',
-    `Abmelden: ${unsubUrl}`,
+    'Willkommen bei ROSARY', '', greet, '', intro, '',
+    `Anmeldung bestätigen: ${confirmUrl}`, '', foot, '',
+    'Lord Erzbischof Dr. (h.c. multi) Uwe A. E. Rosenkranz', 'ROSARY', 'Guckenbuehlstrasse 19 · 72475 Bitz · BW · Germany',
+    'Tel. +49 7431 8752 · mobil +49 15229584530', 'eurobitz@Jesus.tips', '',
+    `Datenschutz: ${privacyUrl}`, `Abmelden: ${unsubUrl}`,
   ].join('\n');
-  const html = `<p>Hallo ${esc(v.name)},</p><p>bitte bestätigen Sie Ihre Anmeldung zur Warteliste „${esc(label)}“:</p>`
-    + `<p><a href="${esc(confirmUrl)}" style="background:#800020;color:#E8D9B5;padding:10px 18px;text-decoration:none;border-radius:4px">Anmeldung bestätigen</a></p>`
-    + '<p>Der Link ist 48 Stunden gültig. Wenn Sie sich nicht angemeldet haben, ignorieren Sie diese E-Mail – ohne Bestätigung speichern wir nichts dauerhaft und schreiben Ihnen nicht erneut.</p>'
-    + `<p style="font-size:12px;color:#666"><a href="${esc(unsubUrl)}">Abmelden</a></p>`;
+  const G = '#D4AF37', B = '#5A0C16', S = '#F3E6CC';
+  const pal = "'Palatino Linotype',Palatino,'Book Antiqua',Rosario,Georgia,serif";
+  const rock = "'Rockwell Extra Bold',Rockwell,Rosario,Georgia,serif";
+  const html = `<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Willkommen bei ROSARY</title></head>`
+    + `<body style="margin:0;padding:0;background:${B};"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${B};"><tr><td align="center" style="padding:24px 12px;">`
+    + `<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;border:2px solid ${G};background:${B};">`
+    + `<tr><td align="center" style="padding:0;"><img src="https://hmpsm-lander5787.vercel.app/assets/Rosary%20LOGO%2022.08.2025.png" width="600" alt="ROSARY – Care 4 Life, Protect &amp; Heal" style="display:block;width:100%;max-width:600px;height:auto;border:0;"></td></tr>`
+    + `<tr><td style="padding:28px 36px 8px;font-family:${rock};font-weight:800;font-size:28px;line-height:1.25;color:${G};text-align:center;letter-spacing:1px;">Willkommen bei ROSARY</td></tr>`
+    + `<tr><td style="padding:0 36px;"><table role="presentation" width="100%"><tr><td style="border-top:1px solid ${G};font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>`
+    + `<tr><td style="padding:20px 24px 8px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${S};">`
+    + `<tr><td style="padding:28px 28px 8px;font-family:${pal};font-size:17px;line-height:1.6;color:#2B0A0F;"><p style="margin:0 0 16px;">${esc(greet)}</p><p style="margin:0 0 16px;">${esc(intro)}</p></td></tr>`
+    + `<tr><td align="center" style="padding:8px 28px 20px;"><table role="presentation" cellpadding="0" cellspacing="0"><tr><td bgcolor="${G}" style="border-radius:4px;background:${G};">`
+    + `<a href="${esc(confirmUrl)}" style="display:inline-block;padding:14px 32px;font-family:${rock};font-weight:800;font-size:16px;color:${B};text-decoration:none;letter-spacing:1px;">Anmeldung bestätigen</a></td></tr></table></td></tr>`
+    + `<tr><td style="padding:0 28px 24px;font-family:${pal};font-size:14px;line-height:1.5;color:#2B0A0F;">${esc(foot)}</td></tr></table></td></tr>`
+    + `<tr><td style="padding:20px 36px;"><table role="presentation" cellpadding="0" cellspacing="0"><tr>`
+    + `<td valign="middle" style="padding-right:16px;"><img src="https://rosary-mom.github.io/Bio2.0/assets/email/uwe-templer.jpg" width="80" height="80" alt="Uwe Rosenkranz" style="display:block;width:80px;height:80px;border-radius:50%;border:2px solid ${G};object-fit:cover;"></td>`
+    + `<td valign="middle" style="font-family:${pal};font-size:15px;line-height:1.5;color:${S};"><span style="font-family:${rock};font-weight:800;font-size:18px;color:${G};">Lord Erzbischof Dr. (h.c. multi) Uwe A. E. Rosenkranz</span><br>ROSARY<br>Guckenbuehlstrasse 19 · 72475 Bitz · BW · Germany<br>`
+    + `Tel. <a href="tel:+4974318752" style="color:${G};">+49 7431 8752</a> · mobil <a href="tel:+4915229584530" style="color:${G};">+49 15229584530</a><br><a href="mailto:eurobitz@Jesus.tips" style="color:${G};">eurobitz@Jesus.tips</a></td></tr></table></td></tr>`
+    + `<tr><td style="padding:16px 36px 24px;border-top:1px solid ${G};font-family:Georgia,serif;font-size:12px;line-height:1.5;color:${S};text-align:center;">Du erhältst diese E-Mail, weil du dich auf der ROSARY-Warteliste eingetragen hast. Absender: warteliste@rosary.eu.com.<br>`
+    + `<a href="${esc(privacyUrl)}" style="color:${G};">Datenschutz</a> &nbsp;·&nbsp; <a href="${esc(unsubUrl)}" style="color:${G};">Abmelden</a></td></tr>`
+    + `</table></td></tr></table></body></html>`;
   return {
-    to: v.email, subject: 'Bitte bestätigen: Warteliste ROSARY', text, html,
+    to: v.email, subject: 'Willkommen bei ROSARY – bitte Anmeldung bestätigen', text, html,
     headers: { 'List-Unsubscribe': `<${unsubUrl}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' },
   };
 }
