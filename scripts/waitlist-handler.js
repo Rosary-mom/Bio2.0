@@ -380,6 +380,12 @@ function createHandler(deps = {}) {
           }
           return reply(res, 200, { ok: true, ...out });
         }
+        if (req.method === 'DELETE' && admin === 'delete-ids') {
+          const ids = String(url.searchParams.get('ids') || '').split(',').map((x) => x.trim()).filter((x) => /^\d+$/.test(x)).slice(0, 50);
+          if (!ids.length) return reply(res, 400, { ok: false });
+          const rows = await sql(`DELETE FROM waitlist_signups WHERE id = ANY($1::bigint[]) RETURNING id`, ['{' + ids.join(',') + '}']);
+          return reply(res, 200, { ok: true, deleted: rows.map((r) => r.id) });
+        }
         if (req.method === 'DELETE' && admin === 'purge-test') {
           const rows = await sql(`DELETE FROM waitlist_signups WHERE email LIKE '%@example.com' RETURNING id`, []);
           return reply(res, 200, { ok: true, deleted: rows.map((r) => r.id) });
