@@ -15,7 +15,7 @@
  *   PUBLIC_BASE_URL                   z. B. https://hmpsm-lander5787.vercel.app
  *   IP_HASH_SALT                      zufälliger String (IP wird nur gehasht gespeichert)
  *   optional: MIN_FILL_MS (3000), RATE_LIMIT_PER_HOUR (5), TURNSTILE_HOSTNAMES (kommagetrennt),
- *             NOTIFY_EMAIL (Hinweis bei Quarantäne), REQUIRE_TURNSTILE ("0" nur für lokale Tests)
+ *             REPLY_TO (Antwortadresse), NOTIFY_EMAIL (Hinweis bei Quarantäne), REQUIRE_TURNSTILE ("0" nur für lokale Tests)
  */
 const crypto = require('crypto');
 
@@ -182,7 +182,7 @@ async function sendMail(env, fetchFn, { to, subject, html, text, headers }) {
   const r = await fetchFn('https://api.resend.com/emails', {
     method: 'POST',
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from: env.MAIL_FROM, to: [to], subject, html, text, headers }),
+    body: JSON.stringify({ from: env.MAIL_FROM, to: [to], subject, html, text, headers, ...(env.REPLY_TO ? { reply_to: env.REPLY_TO } : {}) }),
   });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error('mail: ' + r.status + (j.message ? ' ' + j.message : ''));
