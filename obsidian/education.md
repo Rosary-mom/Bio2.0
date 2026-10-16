@@ -1,25 +1,28 @@
-# Education Pilot
+# Bildung · Mündig lernen & weitergeben – Pilot
 
-**Score:** 0.9398
+**³S-Score (Startwert Europa):** 19/45 = 0.42 · Baseline Indien 31/45 = 0.69
+
+| ³S \ Dimension | Autonomie | Kultur | Reife |
+|---|---|---|---|
+| Selbst-Verwaltet | 2 | 3 | 2 |
+| Selbst-Versorgend | 1 | 2 | 2 |
+| Selbst-Ausbreitend | 2 | 3 | 2 |
 
 ## Selbst-Verwaltet
-Social Policy 0.9160, Religion Stab 0.9559
+Lerngruppen werden von lokalen Lehrenden geleitet und nicht von außen gesteuert. Messung: Anteil lokaler Lehrender %.
 
 ## Selbst-Versorgend
-Doktorarbeit Epistemologie (measured-only) + Rosenkranz-Templeroffenbarung + Drei S
+Lernmaterial entsteht vor Ort, in Landessprache und aus eigenen Mitteln. Messung: Zahl eigener Titel, Kostendeckung %.
 
 ## Selbst-Ausbreitend
-Training Modules + Spiral Governance 0.9456, Final Score 0.9398
+Absolventen bilden selbst aus (2. Generation). Das schließt den Zugang zur Bibel und die Praxis am Hügelbeet ein. Messung: Ausbilder der 2. Generation.
 
-## Agenten
-- EDUCATION
-- Dschungelbuch
-- Cockpit
-- What-Dr.Son
+## AGENDA-Ziele (Kap. 19)
+G1 Gebet · G5 Zugang zur Bibel · G6 gesunde Mittelschicht
 
 ## Quellen
-- MODULE_04_EPISTEMOLOGY_TO_GROUND.md
-- 04_epistemology_and_governance.ipynb
-- Magnifica Humanitas Stil
+- Thesis zur Mission „Ich sah einen Neuen Himmel und eine Neue Erde“, Kap. 16/19 (academia.edu/72084374)
+- Patent DE10307771 (ROSARY RIDGEBED ROUNDABOUT® / Life-Circle)
+- UNFCCC Momentum for Change 2019, UN-Projektnr. A-6855949784 (academia.edu/32064949)
 
-Tags: #phase5 #education #rkw #dschungel #obsidian
+Tags: #phase5 #drei-s #metrik #obsidian
