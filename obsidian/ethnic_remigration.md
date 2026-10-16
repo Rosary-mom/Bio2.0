@@ -1,6 +1,6 @@
 # Wiederaufbau & Integration · Neues Land unter den Pflug – Pilot
 
-**³S-Score (Startwert Europa):** 13/45 = 0.29 · Baseline Indien 31/45 = 0.69
+**³S-Score (Startwerte, noch zu erforschen):** 13/45 = 0.29 · Baseline Indien 31/45 = 0.69
 
 | ³S \ Dimension | Autonomie | Kultur | Reife |
 |---|---|---|---|

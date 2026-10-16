@@ -1,6 +1,6 @@
 # Landwirtschaft · Boden & Wasser (Hügelbeet ROSARY RIDGEBED ROUNDABOUT®) – Pilot
 
-**³S-Score (Startwert Europa):** 20/45 = 0.44 · Baseline Indien 31/45 = 0.69
+**³S-Score (Startwerte, noch zu erforschen):** 20/45 = 0.44 · Baseline Indien 31/45 = 0.69
 
 | ³S \ Dimension | Autonomie | Kultur | Reife |
 |---|---|---|---|

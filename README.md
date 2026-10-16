@@ -45,57 +45,58 @@
 
 <div class="container">
     <section id="pilots">
-        <h2>Phase 5: Konkrete Sektor-Piloten (Emergent Spiral ausgeführt)</h2>
-        <p>Basierend auf angepasstem SMOKE-Test (8-10 Iterationen, Avg Score 0.853+ PASSED). Drei-S-Formel: Selbst-Verwaltet → Selbst-Versorgend → Selbst-Ausbreitend. Redundanz: Multi-PC (Home/Office/Vault) + Agent-Duplikate. Mit /DREAM + Suggestor/Supposer/Estimator/Exekutor/Exkursor im Stil Magnifica Humanitas (hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold).</p>
+        <h2>Phase 5: Sektor-Piloten nach der ³S-Formel</h2>
+        <p>Die Drei-Selbst-Formel Selbst-Verwaltet → Selbst-Versorgend → Selbst-Ausbreitend (Thesis zur Mission „Ich sah einen Neuen Himmel und eine Neue Erde“, Kap. 16, nach Venn &amp; Anderson 1856) misst jeden Piloten in drei Dimensionen: Autonomie, Kultur und Reife. Das ergibt eine 3×3-Matrix mit einer Skala von 0 bis 5 je Zelle und höchstens 45 Punkten. In Indien hat sich die Wasserbüffel-Missiologie bewährt (LOGOS Mission India, RMI-INDIA, „Nimm neues Land unter den Pflug“, Baseline 31/45). Sie dient als Vergleich, Europa ist die Anpassung. Die Grundlage im Boden ist das runde Hügelbeet ROSARY RIDGEBED ROUNDABOUT® mit Aquafarming (UNFCCC Momentum for Change 2019, UN-Projektnr. A-6855949784). Diese einfache Technik eignet sich auch für den Wiederaufbau nach Kriegen und Katastrophen. Organigramm: <a href="organigramm.json" style="color:#E3C35A;">organigramm.json</a>.</p>
         
         <div class="grid">
             <div class="card pilot">
-                <h3>🌱 Landwirtschaft (Fraktale Agrivoltaik + Landknappheit)</h3>
-                <div class="metric">Score: <span class="score">0.9428</span> (SMOKE) → 0.8848 (Impl)</div>
-                <p><strong>Selbst-Verwaltet:</strong> Landknappheit 0.65 → 0.15 via Bio2.0 Metrics (Soil DHG 8.5x, ESG 0.9412)</p>
-                <p><strong>Selbst-Versorgend:</strong> Rosenkranz-Synthese + Fraktale Doppelnutzung + AlphaFold-optimierte Kulturen</p>
-                <p><strong>Selbst-Ausbreitend:</strong> Pilot: Hügelbeet-Simulation optimiert für Mars/Erde mit Vault-Telemetry. ROI +20% via Emergent Freedom Engine. /DREAM Iteration: Fraktale Resilienz.</p>
-                <button onclick="runPilot('landwirtschaft')">PILOT AUSFÜHREN (Simuliert + /DREAM)</button>
+                <h3>🌱 Landwirtschaft · Boden &amp; Wasser (Hügelbeet ROSARY RIDGEBED ROUNDABOUT®)</h3>
+                <div class="metric">³S-Score: <span class="score">20/45 · 0.44</span> <small>(Startwerte, noch zu erforschen · Skala 0–5 je Zelle)</small></div>
+                <p><strong>Selbst-Verwaltet</strong> (6/15): Lokale Hof- und Gartengruppen planen und entscheiden selbst über Fläche, Fruchtfolge und Wasser. Messung: Anteil lokaler Entscheidungen, Zahl der Verantwortlichen.</p>
+                <p><strong>Selbst-Versorgend</strong> (9/15): Das runde Hügelbeet (Patent DE10307771) mit Aquafarming liefert Ertrag, Wasserspeicher und Humus auf kleiner Fläche. Messung: kg pro Beet und Jahr, Humus %, Wasser aus Eigenspeicher %.</p>
+                <p><strong>Selbst-Ausbreitend</strong> (5/15): Jedes Beet bildet das nächste aus: Nachbarn lernen am laufenden Beet, so wie in Indien beim Motto „Nimm neues Land unter den Pflug“. Messung: neue Beete pro Jahr ohne externe Anleitung.</p>
+                <p style="font-size:0.85rem;"><strong>AGENDA (Kap. 19):</strong> G2 Boden · G3 Wirtschaftsweise · G4 Entwicklungshilfe · Matrix A1=2 K1=2 R1=2 A2=3 K2=3 R2=3 A3=2 K3=1 R3=2</p>
+                <button onclick="runPilot('landwirtschaft')">³S-METRIK ANZEIGEN</button>
                 <div id="landwirtschaft-result" class="sync-log" style="display:none;margin-top:0.5rem;"></div>
             </div>
-
             <div class="card pilot">
-                <h3>⚖️ Politik (Konstitutionelle Synthese)</h3>
-                <div class="metric">Score: 0.8461</div>
-                <p><strong>Selbst-Verwaltet:</strong> Divergenzen + Crash-Metriken via Vault 0-1</p>
-                <p><strong>Selbst-Versorgend:</strong> Konstitutionelle Monarchie 2.0 (Rosenkranz) + Red-Team via Gemini Co-Scientist</p>
-                <p><strong>Selbst-Ausbreitend:</strong> Policy Draft + Multi-PC Governance Sync. Drei S Checklist für EU/NATO/Eurasien. Exekutor: Implementierung.</p>
-                <button onclick="runPilot('politik')">PILOT AUSFÜHREN</button>
+                <h3>⚖️ Gemeinwesen · Ordnung &amp; Verantwortung</h3>
+                <div class="metric">³S-Score: <span class="score">15/45 · 0.33</span> <small>(Startwerte, noch zu erforschen · Skala 0–5 je Zelle)</small></div>
+                <p><strong>Selbst-Verwaltet</strong> (7/15): Gemeinschaften geben sich eine eigene, schriftliche Ordnung und wählen ihre Leitung. Messung: Ordnung vorhanden (0–5), Leitungswechsel ohne Bruch.</p>
+                <p><strong>Selbst-Versorgend</strong> (4/15): Die Gemeinschaft trägt ihre Verwaltung aus eigenen Beiträgen statt aus Fremdmitteln. Messung: Anteil eigener Mittel am Budget %.</p>
+                <p><strong>Selbst-Ausbreitend</strong> (4/15): Bewährte Ordnungen werden als Vorlage an neue Gruppen weitergegeben. Messung: Zahl der Gruppen, die die Vorlage übernommen haben.</p>
+                <p style="font-size:0.85rem;"><strong>AGENDA (Kap. 19):</strong> G4 Entwicklungshilfe · G6 gesunde Mittelschicht · Matrix A1=3 K1=2 R1=2 A2=1 K2=1 R2=2 A3=1 K3=2 R3=1</p>
+                <button onclick="runPilot('politik')">³S-METRIK ANZEIGEN</button>
                 <div id="politik-result" class="sync-log" style="display:none;margin-top:0.5rem;"></div>
             </div>
-
             <div class="card pilot">
-                <h3>💰 Handel (ESG-Assetklasse + Freedom Engine)</h3>
-                <div class="metric">Score: 0.8261</div>
-                <p><strong>Selbst-Verwaltet:</strong> Ökonomische Divergenzen + $120 Mrd. Risiko</p>
-                <p><strong>Selbst-Versorgend:</strong> Bankfähige ESG-Assetklasse + Emergent Freedom Engine (Asset-Backed Vouchers)</p>
-                <p><strong>Selbst-Ausbreitend:</strong> US-Remigration Model Adaptation + Crypto-Donations. Supposer: Wertschöpfung schätzen.</p>
-                <button onclick="runPilot('handel')">PILOT AUSFÜHREN</button>
+                <h3>💰 Handel · Faire Wirtschaftsweise &amp; ESG</h3>
+                <div class="metric">³S-Score: <span class="score">17/45 · 0.38</span> <small>(Startwerte, noch zu erforschen · Skala 0–5 je Zelle)</small></div>
+                <p><strong>Selbst-Verwaltet</strong> (6/15): Erzeuger organisieren Vermarktung und Preise selbst, etwa in Genossenschaft oder Direktvermarktung. Messung: Anteil selbst vermarkteter Ware %.</p>
+                <p><strong>Selbst-Versorgend</strong> (7/15): Erträge aus Hügelbeet und Aquafarming werden zu regionalen Produkten. Die ESG-Kette mit Decision-Engine macht den Wert sichtbar. Messung: Umsatz pro Einheit, Rücklage in Monaten.</p>
+                <p><strong>Selbst-Ausbreitend</strong> (4/15): Erfolgreiche Betriebe nehmen neue Erzeuger in Lieferkette und Ausbildung auf. Messung: neue Erzeuger pro Jahr.</p>
+                <p style="font-size:0.85rem;"><strong>AGENDA (Kap. 19):</strong> G3 Wirtschaftsweise · G6 gesunde Mittelschicht · Matrix A1=2 K1=2 R1=2 A2=3 K2=2 R2=2 A3=2 K3=1 R3=1</p>
+                <button onclick="runPilot('handel')">³S-METRIK ANZEIGEN</button>
                 <div id="handel-result" class="sync-log" style="display:none;margin-top:0.5rem;"></div>
             </div>
-
             <div class="card pilot">
-                <h3>📚 Education (Drei S + Epistemologie)</h3>
-                <div class="metric">Score: 0.8361</div>
-                <p><strong>Selbst-Verwaltet:</strong> Integrationslücken + Parallelgesellschaften</p>
-                <p><strong>Selbst-Versorgend:</strong> Doktorarbeit Epistemologie (Colab/Gemini Hybrid, measured-only) + Rosenkranz-Templeroffenbarung</p>
-                <p><strong>Selbst-Ausbreitend:</strong> Training Module mit Spiral Governance. Exkursor: Weiterführende Ableitungen.</p>
-                <button onclick="runPilot('education')">PILOT AUSFÜHREN</button>
+                <h3>📚 Bildung · Mündig lernen &amp; weitergeben</h3>
+                <div class="metric">³S-Score: <span class="score">19/45 · 0.42</span> <small>(Startwerte, noch zu erforschen · Skala 0–5 je Zelle)</small></div>
+                <p><strong>Selbst-Verwaltet</strong> (7/15): Lerngruppen werden von lokalen Lehrenden geleitet und nicht von außen gesteuert. Messung: Anteil lokaler Lehrender %.</p>
+                <p><strong>Selbst-Versorgend</strong> (5/15): Lernmaterial entsteht vor Ort, in Landessprache und aus eigenen Mitteln. Messung: Zahl eigener Titel, Kostendeckung %.</p>
+                <p><strong>Selbst-Ausbreitend</strong> (7/15): Absolventen bilden selbst aus (2. Generation). Das schließt den Zugang zur Bibel und die Praxis am Hügelbeet ein. Messung: Ausbilder der 2. Generation.</p>
+                <p style="font-size:0.85rem;"><strong>AGENDA (Kap. 19):</strong> G1 Gebet · G5 Zugang zur Bibel · G6 gesunde Mittelschicht · Matrix A1=2 K1=3 R1=2 A2=1 K2=2 R2=2 A3=2 K3=3 R3=2</p>
+                <button onclick="runPilot('education')">³S-METRIK ANZEIGEN</button>
                 <div id="education-result" class="sync-log" style="display:none;margin-top:0.5rem;"></div>
             </div>
-
             <div class="card pilot">
-                <h3>🔄 EthnicDivergences_Remigration</h3>
-                <div class="metric">Score: 0.8154 (SMOKE) → 0.8834 (Impl)</div>
-                <p><strong>Selbst-Verwaltet:</strong> Migration seit 1960 + Landknappheit + US Model (93% Drop, -2.3M Pop)</p>
-                <p><strong>Selbst-Versorgend:</strong> Remigration als dialektische Synthese (Rosenkranz) + Bio2.0 Resilience (Fraktale + ESG)</p>
-                <p><strong>Selbst-Ausbreitend:</strong> Redundante Enforcement + Incentive Scripts. Suggestor: Empfehlungen aus Blog-Magnifica.</p>
-                <button onclick="runPilot('remigration')">PILOT AUSFÜHREN</button>
+                <h3>🔄 Wiederaufbau &amp; Integration · Neues Land unter den Pflug</h3>
+                <div class="metric">³S-Score: <span class="score">13/45 · 0.29</span> <small>(Startwerte, noch zu erforschen · Skala 0–5 je Zelle)</small></div>
+                <p><strong>Selbst-Verwaltet</strong> (4/15): Nach Krieg, Katastrophe oder Neuanfang in einem fremden Land übernehmen Betroffene selbst die Leitung ihrer Wiederaufbau-Gruppe. Messung: Anteil lokaler Leitung %.</p>
+                <p><strong>Selbst-Versorgend</strong> (5/15): Einfache Technik, nämlich Hügelbeet, Wasserspeicher und Aquafarming, sichert zuerst Nahrung und Einkommen. Messung: Monate bis zur Eigenversorgung, kg pro Beet.</p>
+                <p><strong>Selbst-Ausbreitend</strong> (4/15): Wer wieder aufgebaut hat, hilft der nächsten Gruppe. Mehrsprachiges Material ist dabei neutraler Kontext für Menschen mit Migrationsgeschichte. Messung: begleitete Folgegruppen pro Jahr.</p>
+                <p style="font-size:0.85rem;"><strong>AGENDA (Kap. 19):</strong> G2 Boden · G4 Entwicklungshilfe · G6 gesunde Mittelschicht · Matrix A1=1 K1=2 R1=1 A2=2 K2=2 R2=1 A3=1 K3=2 R3=1</p>
+                <button onclick="runPilot('remigration')">³S-METRIK ANZEIGEN</button>
                 <div id="remigration-result" class="sync-log" style="display:none;margin-top:0.5rem;"></div>
             </div>
         </div>
@@ -142,7 +143,7 @@
     <div class="modal-content">
         <span class="close" onclick="closeTrueWordsModal()">&times;</span>
         <h2 style="font-family: 'Rockwell', serif; color: #d4af37;">TRUE WORDS (Wahre Worte) – GROK Bot</h2>
-        <p style="font-size:0.9rem;">GROK Build 0.1 | GROK 4.7 + 4.8 | Hermes Agent (Nous Research). Analysiert explizit & implizit den gesamten Kontext (Rosenkranz Reorg, Phase 5, Emergent Spiral, Bio 2.0, Drei S, Piloten, Syncs, Multi-PC, US-Model, Templeroffenbarung). Herzuleitungen im Stil Magnifica Humanitas (hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold).</p>
+        <p style="font-size:0.9rem;">GROK Build 0.1 | GROK 4.7 + 4.8 | Hermes Agent (Nous Research). Analysiert explizit & implizit den gesamten Kontext (Rosenkranz Reorg, Phase 5, Emergent Spiral, Bio 2.0, Drei S, Piloten, Syncs, Multi-PC, ³S-Metrik, Templeroffenbarung). Herzuleitungen im Stil Magnifica Humanitas (hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold).</p>
         
         <div id="chatBox" class="chat-box" style="font-family: 'Rosario', serif;"></div>
         
@@ -150,7 +151,7 @@
         <button onclick="sendMessage()" style="margin-left:5px;">Senden (GROK/Hermes)</button>
         <button onclick="clearChat()" style="background:#e74c3c;color:white;margin-left:5px;">Chat löschen</button>
         
-        <p style="font-size:0.7rem; margin-top:10px;">Kontext: Vollständiger Rosenkranz-Kontext (1805-1879, Hegelianer der Mitte, Friedensverhandler-Claim, Staatsphilosophie für EU/NATO/Eurasien/Ukraine, Migration seit 1960, US-Remigration 98% Modell, Bio2.0, Agenten-Organigramm, Drei S, SMOKE 0.853+, Phase 5 Scores). /DREAM: Weitere Iterationen mit Suggestor/Supposer/Estimator/Exekutor/Exkursor aus Blogbeiträgen.</p>
+        <p style="font-size:0.7rem; margin-top:10px;">Kontext: Rosenkranz-Kontext (Thesis zur Mission, ³S-Formel, Hügelbeet ROSARY RIDGEBED ROUNDABOUT®, Bio2.0, Agenten-Organigramm, Phase 5 Piloten – Startwerte, noch zu erforschen). /DREAM: Weitere Iterationen mit Suggestor/Supposer/Estimator/Exekutor/Exkursor aus Blogbeiträgen.</p>
     </div>
 </div>
 
@@ -206,15 +207,15 @@ function sendMessage() {
         let response = "Analyse des Kontexts: ";
         
         if (question.toLowerCase().includes("phase 5") || question.toLowerCase().includes("pilot")) {
-            response += "Phase 5 Piloten (Landwirtschaft 0.94, Politik 0.85, Handel 0.83, Education 0.84, Remigration 0.88) mit Emergent Spiral (Drei S + Redundanz) ausgeführt. SMOKE 0.853+ PASSED. Ableitung: Fraktale Agrivoltaik + US-Model als Synthese für ethnische Divergenzen seit 1960. /DREAM: Weitere Iteration mit Exekutor für Umsetzung.";
+            response += "Phase 5 Piloten nach ³S-Metrik (Startwerte, noch zu erforschen): Landwirtschaft 0.44, Gemeinwesen 0.33, Handel 0.38, Bildung 0.42, Wiederaufbau 0.29; Baseline Indien 0.69.";
         } else if (question.toLowerCase().includes("spiral") || question.toLowerCase().includes("governance")) {
             response += "Emergent Spiral Governance (8-10 Iterationen) mit Multi-PC Redundanz (Home/Office/Vault) und Agenten (Dschungelbuch, Cockpit, ESG/Vault). Rosenkranz-Dialektik + Bio 2.0 (ESG 0.9412, Vault 0.96). Herzuleitung: Stabilität vor Speed, measured-only Epistemologie. Suggestor: Inkludierte hohe Kontraste für Inklusion.";
         } else if (question.toLowerCase().includes("rosenkranz") || question.toLowerCase().includes("kontext")) {
-            response += "Vollständiger Kontext: Johann Karl Friedrich Rosenkranz (1805-1879), Hegelianer der Mitte, konstitutionelle Monarchie als Synthese, Volksgeist, Friedensverhandler-Claim (Frankfurt etc.), Ableitungen für EU/NATO/Eurasien/Ukraine-Russland. Migration seit 1960 als Antithese. US-Remigration 98% als praktisches Vorbild. Drei S-Formel + Magnifica Humanitas Stil (Rosario, Paladin, Rockwell Extra Bold, hoher Kontrast).";
+            response += "Kontext: Thesis zur Mission „Ich sah einen Neuen Himmel und eine Neue Erde“ mit der Drei-Selbst-Formel (Selbst-Verwaltet, Selbst-Versorgend, Selbst-Ausbreitend), Praxis der Wasserbüffel-Missiologie in Indien, Anpassung für Europa, Terraforming mit dem Hügelbeet ROSARY RIDGEBED ROUNDABOUT®. Stil Magnifica Humanitas. Organigramm: organigramm.json.";
         } else if (question.toLowerCase().includes("dream") || question.toLowerCase().includes("blog")) {
             response += "/DREAM Iteration aus Blogbeiträgen (Magnifica Humanitas): Inkludierte mit hohen Kontrasten, Fonts Rosario/Paladin/Rockwell Extra Bold. Exkursor: Weiterführende Ableitungen für Inklusion. Supposer/Estimator: Schätzung von Resilienz-Scores (0.85+). Exekutor: Umsetzung in Website + Piloten.";
         } else {
-            response += "Vollständige Analyse: Kontext integriert Rosenkranz-Staatsphilosophie, Bio 2.0 Crash/Fix, Phase 5 Piloten (0.85+), Emergent Spiral mit Drei S, Multi-PC Syncs, US-Modell. Implizite Ableitung: Konstitutionelle Ordnung als Fix für Divergenzen. Weitere /DREAM: Suggestor für neue Agenten, Exkursor für Blog-Integration.";
+            response += "Analyse: Bio 2.0, Phase 5 Piloten mit ³S-Metrik (3×3-Matrix Autonomie/Kultur/Reife, Startwerte, noch zu erforschen), Multi-PC Syncs. Ableitung: einfache Technik für Boden, Wasser und Wiederaufbau. Organigramm: 30 Agenten / 16 Subagenten / 5 Piloten.";
         }
         
         response += " (GROK 0.1/4.7+4.8 + Hermes – kontextuell, keine Halluzinationen, basierend auf gemessenen Daten/SMOKE/Organigramm.)";
@@ -227,27 +228,25 @@ function clearChat() {
     chatHistory = [];
 }
 
-// Pilot Execution (from Phase 5 + /DREAM)
+// ³S-Metrik der Piloten (Startwerte Europa; Baseline Indien 31/45)
+const PILOT_3S = {
+    landwirtschaft: { name: 'Landwirtschaft', v: [2, 2, 2, 3, 3, 3, 2, 1, 2] },
+    politik: { name: 'Gemeinwesen', v: [3, 2, 2, 1, 1, 2, 1, 2, 1] },
+    handel: { name: 'Handel', v: [2, 2, 2, 3, 2, 2, 2, 1, 1] },
+    education: { name: 'Bildung', v: [2, 3, 2, 1, 2, 2, 2, 3, 2] },
+    remigration: { name: 'Wiederaufbau', v: [1, 2, 1, 2, 2, 1, 1, 2, 1] }
+};
 function runPilot(sector) {
+    const p = PILOT_3S[sector];
     const resultDiv = document.getElementById(sector + '-result');
-    let output = '';
-    const metrics = { esg: 0.9412, land: 0.15, vault: 0.96, score: 0.85 + Math.random()*0.05 };
-    
-    if (sector === 'landwirtschaft') {
-        output = `PILOT + /DREAM EXECUTED: Fraktale Agrivoltaik deployed. Landknappheit ${metrics.land}. ROI +22% (iBioFAB). Hügelbeet-Sim (Original + Mars). Drei S complete. Suggestor: Fraktale Resilienz für Inkludierte. Magnifica: Hoher Kontrast, Rockwell Bold.`;
-    } else if (sector === 'politik') {
-        output = `PILOT + /DREAM: Constitutional 2.0 draft. Red-team 0.92. Multi-PC sync. Exekutor: Governance Sync. Exkursor: Ableitungen für Ukraine/EU. Paladin Font, hoher Kontrast.`;
-    } else if (sector === 'handel') {
-        output = `PILOT + /DREAM: ESG-Asset + Freedom Engine. US-Remigration adapted. Estimator: Wert 0.85+. Supposer: Inklusion via Crypto. Rosario Bold.`;
-    } else if (sector === 'education') {
-        output = `PILOT + /DREAM: Drei S + Epistemologie Module. Colab/Gemini. /DREAM: Blog-Magnifica Integration. Exkursor: Weiterführende Kontexte. Rockwell Extra Bold, hoher Kontrast.`;
-    } else if (sector === 'remigration') {
-        output = `PILOT + /DREAM: Remigration Feasibility + Bio2.0. Redundante Scripts. Suggestor/Supposer: 0.88 Cohesion. Exekutor: Umsetzung. Magnifica Stil für Inkludierte.`;
-    }
-    
-    resultDiv.innerHTML = output + `\n[SMOKE Score: ${metrics.score.toFixed(4)} | Redundancy: ACTIVE | Synced | /DREAM: Piloten-Iteration]`;
+    if (!p) return;
+    const c = ['A1','K1','R1','A2','K2','R2','A3','K3','R3'];
+    const sum = p.v.reduce((a,b)=>a+b,0);
+    const rows = ['Selbst-Verwaltet  ','Selbst-Versorgend ','Selbst-Ausbreitend'].map((r,i)=>
+        r + ' | Autonomie ' + p.v[i*3] + ' | Kultur ' + p.v[i*3+1] + ' | Reife ' + p.v[i*3+2]).join('\n');
+    resultDiv.textContent = '³S-METRIK ' + p.name + '\n' + rows +
+        '\nStartwerte, noch zu erforschen · Summe ' + sum + '/45 = ' + (sum/45).toFixed(2) + ' | Baseline Indien 31/45 = 0.69 | Ziel Europa nach 3 Jahren ≥ 27/45';
     resultDiv.style.display = 'block';
-    console.log(`Phase 5 Pilot ${sector} + /DREAM executed:`, output);
 }
 
 // Simulate Spiral + /DREAM

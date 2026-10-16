@@ -1,6 +1,6 @@
 # Bildung · Mündig lernen & weitergeben – Pilot
 
-**³S-Score (Startwert Europa):** 19/45 = 0.42 · Baseline Indien 31/45 = 0.69
+**³S-Score (Startwerte, noch zu erforschen):** 19/45 = 0.42 · Baseline Indien 31/45 = 0.69
 
 | ³S \ Dimension | Autonomie | Kultur | Reife |
 |---|---|---|---|

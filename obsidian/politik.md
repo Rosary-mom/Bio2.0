@@ -1,6 +1,6 @@
 # Gemeinwesen · Ordnung & Verantwortung – Pilot
 
-**³S-Score (Startwert Europa):** 15/45 = 0.33 · Baseline Indien 31/45 = 0.69
+**³S-Score (Startwerte, noch zu erforschen):** 15/45 = 0.33 · Baseline Indien 31/45 = 0.69
 
 | ³S \ Dimension | Autonomie | Kultur | Reife |
 |---|---|---|---|

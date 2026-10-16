@@ -1,6 +1,6 @@
 # Handel · Faire Wirtschaftsweise & ESG – Pilot
 
-**³S-Score (Startwert Europa):** 17/45 = 0.38 · Baseline Indien 31/45 = 0.69
+**³S-Score (Startwerte, noch zu erforschen):** 17/45 = 0.38 · Baseline Indien 31/45 = 0.69
 
 | ³S \ Dimension | Autonomie | Kultur | Reife |
 |---|---|---|---|
