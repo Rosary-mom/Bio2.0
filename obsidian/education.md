@@ -2,13 +2,13 @@
 
 **Score:** 0.9398
 
-## Sehen
+## Selbst-Verwaltet
 Social Policy 0.9160, Religion Stab 0.9559
 
-## Sagen
+## Selbst-Versorgend
 Doktorarbeit Epistemologie (measured-only) + Rosenkranz-Templeroffenbarung + Drei S
 
-## Sühnnen
+## Selbst-Ausbreitend
 Training Modules + Spiral Governance 0.9456, Final Score 0.9398
 
 ## Agenten

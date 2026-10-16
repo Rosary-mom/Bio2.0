@@ -2,13 +2,13 @@
 
 **Score:** 0.8871
 
-## Sehen
+## Selbst-Verwaltet
 Landknappheit 0.15, Social Policy 0.9160, Migration + US Model (93% Drop ref)
 
-## Sagen
+## Selbst-Versorgend
 Remigration als Rosenkranz dialektische Synthese + Bio2.0 (Fraktale + ESG)
 
-## Sühnnen
+## Selbst-Ausbreitend
 Redundante Enforcement + Incentive Scripts, Enforcement 0.8947, Final Score 0.8871
 
 ## Agenten

@@ -46,15 +46,15 @@
 <div class="container">
     <section id="pilots">
         <h2>Phase 5: Konkrete Sektor-Piloten (Emergent Spiral ausgeführt)</h2>
-        <p>Basierend auf angepasstem SMOKE-Test (8-10 Iterationen, Avg Score 0.853+ PASSED). Drei S-Formel: Sehen → Sagen → Sühnen. Redundanz: Multi-PC (Home/Office/Vault) + Agent-Duplikate. Mit /DREAM + Suggestor/Supposer/Estimator/Exekutor/Exkursor im Stil Magnifica Humanitas (hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold).</p>
+        <p>Basierend auf angepasstem SMOKE-Test (8-10 Iterationen, Avg Score 0.853+ PASSED). Drei-S-Formel: Selbst-Verwaltet → Selbst-Versorgend → Selbst-Ausbreitend. Redundanz: Multi-PC (Home/Office/Vault) + Agent-Duplikate. Mit /DREAM + Suggestor/Supposer/Estimator/Exekutor/Exkursor im Stil Magnifica Humanitas (hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold).</p>
         
         <div class="grid">
             <div class="card pilot">
                 <h3>🌱 Landwirtschaft (Fraktale Agrivoltaik + Landknappheit)</h3>
                 <div class="metric">Score: <span class="score">0.9428</span> (SMOKE) → 0.8848 (Impl)</div>
-                <p><strong>Sehen:</strong> Landknappheit 0.65 → 0.15 via Bio2.0 Metrics (Soil DHG 8.5x, ESG 0.9412)</p>
-                <p><strong>Sagen:</strong> Rosenkranz-Synthese + Fraktale Doppelnutzung + AlphaFold-optimierte Kulturen</p>
-                <p><strong>Sühnen:</strong> Pilot: Hügelbeet-Simulation optimiert für Mars/Erde mit Vault-Telemetry. ROI +20% via Emergent Freedom Engine. /DREAM Iteration: Fraktale Resilienz.</p>
+                <p><strong>Selbst-Verwaltet:</strong> Landknappheit 0.65 → 0.15 via Bio2.0 Metrics (Soil DHG 8.5x, ESG 0.9412)</p>
+                <p><strong>Selbst-Versorgend:</strong> Rosenkranz-Synthese + Fraktale Doppelnutzung + AlphaFold-optimierte Kulturen</p>
+                <p><strong>Selbst-Ausbreitend:</strong> Pilot: Hügelbeet-Simulation optimiert für Mars/Erde mit Vault-Telemetry. ROI +20% via Emergent Freedom Engine. /DREAM Iteration: Fraktale Resilienz.</p>
                 <button onclick="runPilot('landwirtschaft')">PILOT AUSFÜHREN (Simuliert + /DREAM)</button>
                 <div id="landwirtschaft-result" class="sync-log" style="display:none;margin-top:0.5rem;"></div>
             </div>
@@ -62,9 +62,9 @@
             <div class="card pilot">
                 <h3>⚖️ Politik (Konstitutionelle Synthese)</h3>
                 <div class="metric">Score: 0.8461</div>
-                <p><strong>Sehen:</strong> Divergenzen + Crash-Metriken via Vault 0-1</p>
-                <p><strong>Sagen:</strong> Konstitutionelle Monarchie 2.0 (Rosenkranz) + Red-Team via Gemini Co-Scientist</p>
-                <p><strong>Sühnen:</strong> Policy Draft + Multi-PC Governance Sync. Drei S Checklist für EU/NATO/Eurasien. Exekutor: Implementierung.</p>
+                <p><strong>Selbst-Verwaltet:</strong> Divergenzen + Crash-Metriken via Vault 0-1</p>
+                <p><strong>Selbst-Versorgend:</strong> Konstitutionelle Monarchie 2.0 (Rosenkranz) + Red-Team via Gemini Co-Scientist</p>
+                <p><strong>Selbst-Ausbreitend:</strong> Policy Draft + Multi-PC Governance Sync. Drei S Checklist für EU/NATO/Eurasien. Exekutor: Implementierung.</p>
                 <button onclick="runPilot('politik')">PILOT AUSFÜHREN</button>
                 <div id="politik-result" class="sync-log" style="display:none;margin-top:0.5rem;"></div>
             </div>
@@ -72,9 +72,9 @@
             <div class="card pilot">
                 <h3>💰 Handel (ESG-Assetklasse + Freedom Engine)</h3>
                 <div class="metric">Score: 0.8261</div>
-                <p><strong>Sehen:</strong> Ökonomische Divergenzen + $120 Mrd. Risiko</p>
-                <p><strong>Sagen:</strong> Bankfähige ESG-Assetklasse + Emergent Freedom Engine (Asset-Backed Vouchers)</p>
-                <p><strong>Sühnen:</strong> US-Remigration Model Adaptation + Crypto-Donations. Supposer: Wertschöpfung schätzen.</p>
+                <p><strong>Selbst-Verwaltet:</strong> Ökonomische Divergenzen + $120 Mrd. Risiko</p>
+                <p><strong>Selbst-Versorgend:</strong> Bankfähige ESG-Assetklasse + Emergent Freedom Engine (Asset-Backed Vouchers)</p>
+                <p><strong>Selbst-Ausbreitend:</strong> US-Remigration Model Adaptation + Crypto-Donations. Supposer: Wertschöpfung schätzen.</p>
                 <button onclick="runPilot('handel')">PILOT AUSFÜHREN</button>
                 <div id="handel-result" class="sync-log" style="display:none;margin-top:0.5rem;"></div>
             </div>
@@ -82,9 +82,9 @@
             <div class="card pilot">
                 <h3>📚 Education (Drei S + Epistemologie)</h3>
                 <div class="metric">Score: 0.8361</div>
-                <p><strong>Sehen:</strong> Integrationslücken + Parallelgesellschaften</p>
-                <p><strong>Sagen:</strong> Doktorarbeit Epistemologie (Colab/Gemini Hybrid, measured-only) + Rosenkranz-Templeroffenbarung</p>
-                <p><strong>Sühnen:</strong> Training Module mit Spiral Governance. Exkursor: Weiterführende Ableitungen.</p>
+                <p><strong>Selbst-Verwaltet:</strong> Integrationslücken + Parallelgesellschaften</p>
+                <p><strong>Selbst-Versorgend:</strong> Doktorarbeit Epistemologie (Colab/Gemini Hybrid, measured-only) + Rosenkranz-Templeroffenbarung</p>
+                <p><strong>Selbst-Ausbreitend:</strong> Training Module mit Spiral Governance. Exkursor: Weiterführende Ableitungen.</p>
                 <button onclick="runPilot('education')">PILOT AUSFÜHREN</button>
                 <div id="education-result" class="sync-log" style="display:none;margin-top:0.5rem;"></div>
             </div>
@@ -92,9 +92,9 @@
             <div class="card pilot">
                 <h3>🔄 EthnicDivergences_Remigration</h3>
                 <div class="metric">Score: 0.8154 (SMOKE) → 0.8834 (Impl)</div>
-                <p><strong>Sehen:</strong> Migration seit 1960 + Landknappheit + US Model (93% Drop, -2.3M Pop)</p>
-                <p><strong>Sagen:</strong> Remigration als dialektische Synthese (Rosenkranz) + Bio2.0 Resilience (Fraktale + ESG)</p>
-                <p><strong>Sühnen:</strong> Redundante Enforcement + Incentive Scripts. Suggestor: Empfehlungen aus Blog-Magnifica.</p>
+                <p><strong>Selbst-Verwaltet:</strong> Migration seit 1960 + Landknappheit + US Model (93% Drop, -2.3M Pop)</p>
+                <p><strong>Selbst-Versorgend:</strong> Remigration als dialektische Synthese (Rosenkranz) + Bio2.0 Resilience (Fraktale + ESG)</p>
+                <p><strong>Selbst-Ausbreitend:</strong> Redundante Enforcement + Incentive Scripts. Suggestor: Empfehlungen aus Blog-Magnifica.</p>
                 <button onclick="runPilot('remigration')">PILOT AUSFÜHREN</button>
                 <div id="remigration-result" class="sync-log" style="display:none;margin-top:0.5rem;"></div>
             </div>
@@ -107,9 +107,9 @@
             <p><strong>Overall Score:</strong> <span class="score">0.853+</span> (PASSED) | Redundancy: <span class="status">ACTIVE</span> (Home/Office/Vault)</p>
             <div class="spiral">
                 <strong>Letzte Spirale (8-10 Iterationen, Multi-Sektor + /DREAM):</strong><br>
-                Sehen: Landknappheit 0.65→0.15, ESG 0.9412, Vault 0.88→0.96<br>
-                Sagen: Rosenkranz + TECH-BIO 2.0 Fix (Fraktale, AlphaFold, Emergent Engine)<br>
-                Sühnen: Agent Enzymes (Dschungelbuch, Cockpit, Landknappheit, ESG/Vault, EDUCATION, Suggestor/Supposer/Estimator/Exekutor/Exkursor) + Multi-PC<br>
+                Selbst-Verwaltet: Landknappheit 0.65→0.15, ESG 0.9412, Vault 0.88→0.96<br>
+                Selbst-Versorgend: Rosenkranz + TECH-BIO 2.0 Fix (Fraktale, AlphaFold, Emergent Engine)<br>
+                Selbst-Ausbreitend: Agent Enzymes (Dschungelbuch, Cockpit, Landknappheit, ESG/Vault, EDUCATION, Suggestor/Supposer/Estimator/Exekutor/Exkursor) + Multi-PC<br>
                 /DREAM: Magnifica Humanitas Stil – Hoher Kontrast, Rosario/Paladin/Rockwell Extra Bold, Inkludierte Ableitungen.
             </div>
             <p><strong>Agenten aktiviert (Merged Organigramm):</strong> Dschungelbuch (Wegweiser), Cockpit (L1), Landknappheit (BIO1.0), ESG/Vault (TECH2.0), EDUCATION, Fraktale, Baloo, Mogli + Emergent Layer + /DREAM Bots.</p>
@@ -254,7 +254,7 @@ function runPilot(sector) {
 function simulateSpiral() {
     const out = document.getElementById('spiral-output');
     const iter = Math.floor(Math.random()*3) + 8;
-    out.innerHTML = `SPIRAL ITERATION ${iter} + /DREAM (Emergent, Magnifica Humanitas Stil):\nSehen: Landknappheit ${ (0.15 + Math.random()*0.1).toFixed(2) }, ESG 0.9412, Vault ${(0.96 + Math.random()*0.03).toFixed(2)}\nSagen: Rosenkranz + Bio2.0 Fix (Fraktale + Emergent Engine) + Suggestor/Supposer\nSühnen: Agent Orchestration (Exekutor/Exkursor) + Redundancy + Hoher Kontrast (Rosario/Paladin/Rockwell Extra Bold)\nOverall: ${ (0.85 + Math.random()*0.1).toFixed(4) } PASSED\n/DREAM: Weitere Iterationen aus Blogbeiträgen für Inkludierte.`;
+    out.innerHTML = `SPIRAL ITERATION ${iter} + /DREAM (Emergent, Magnifica Humanitas Stil):\nSelbst-Verwaltet: Landknappheit ${ (0.15 + Math.random()*0.1).toFixed(2) }, ESG 0.9412, Vault ${(0.96 + Math.random()*0.03).toFixed(2)}\nSelbst-Versorgend: Rosenkranz + Bio2.0 Fix (Fraktale + Emergent Engine) + Suggestor/Supposer\nSelbst-Ausbreitend: Agent Orchestration (Exekutor/Exkursor) + Redundancy + Hoher Kontrast (Rosario/Paladin/Rockwell Extra Bold)\nOverall: ${ (0.85 + Math.random()*0.1).toFixed(4) } PASSED\n/DREAM: Weitere Iterationen aus Blogbeiträgen für Inkludierte.`;
     out.style.display = 'block';
 }
 

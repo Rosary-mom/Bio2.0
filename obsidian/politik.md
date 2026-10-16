@@ -2,13 +2,13 @@
 
 **Score:** 0.9434
 
-## Sehen
+## Selbst-Verwaltet
 Vertical Thesis 0.9507, Social Policy 0.9160, Religion Stab 0.9559
 
-## Sagen
+## Selbst-Versorgend
 Konstitutionelle Monarchie 2.0 (Rosenkranz) + Red-Team + Drei-S-Checklist
 
-## Sühnnen
+## Selbst-Ausbreitend
 Policy Draft + Multi-PC Governance Sync, Drei-S Checklist 0.9533, Final Score 0.9434
 
 ## Agenten

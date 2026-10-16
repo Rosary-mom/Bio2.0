@@ -2,13 +2,13 @@
 
 **Score:** 0.9528
 
-## Sehen
+## Selbst-Verwaltet
 ESG 0.9406, Aggregate Stability 0.9350, smoke 0.853
 
-## Sagen
+## Selbst-Versorgend
 Bankfaehige ESG-Assetklasse + Emergent Freedom Engine (Asset-Backed Vouchers) + Crypto
 
-## Sühnnen
+## Selbst-Ausbreitend
 Asset-Backed Vouchers 0.9877, Final Score 0.9528
 
 ## Agenten

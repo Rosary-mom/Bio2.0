@@ -2,13 +2,13 @@
 
 **Score:** 0.8722
 
-## Sehen
+## Selbst-Verwaltet
 Landknappheit 0.15 (from 0.65), ESG 0.9406, Climate Stab 0.9337
 
-## Sagen
+## Selbst-Versorgend
 Rosenkranz-Synthese + Fraktale Doppelnutzung + AlphaFold-optimierte Kulturen
 
-## Sühnnen
+## Selbst-Ausbreitend
 ROI +20%, Resilience 0.8918, Final Score 0.8722
 
 ## Agenten

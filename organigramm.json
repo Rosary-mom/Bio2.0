@@ -90,7 +90,7 @@
       "files": ["graph.json", "vault-graph.json", "vault-graph-export.json", "rosary-atlas/vault-graph.html"]
     }
   ],
-  "drei_s": ["Sehen", "Sagen", "Sühnnen"],
+  "drei_s": ["Selbst-Verwaltet", "Selbst-Versorgend", "Selbst-Ausbreitend"],
   "smoke_overall": 0.853,
   "status": "MERGED_AND_SYNCED",
   "bots": {
