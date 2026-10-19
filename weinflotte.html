@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Die Weinflotte: Bordeaux – England (12.–15. Jh.) · Interaktive Karte</title>
+<meta name="description" content="Schematische interaktive Karte der mittelalterlichen Weinflotte von Bordeaux nach England und der angevinischen Gebiete um 1189.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+:root{--bordeaux:#6B0F1F;--bordeaux-d:#4A0814;--gold:#9A7414;--gold-l:#C9A227;--sand:#EAD9B3;--sand-l:#F6EEDB;--ink:#1A120C;
+--f-body:"Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L",P052,Georgia,serif;
+--f-head:Rockwell,"Rockwell Nova","Roboto Slab","Zilla Slab","Courier New",serif}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--sand);color:var(--ink);font-family:var(--f-body)}
+body{display:flex;flex-direction:column;min-height:100%}
+header{background:var(--bordeaux);color:#FFF6E0;border-bottom:4px solid var(--gold-l);padding:.55rem 1rem}
+header h1{margin:0;font-family:var(--f-head);font-size:clamp(1rem,2.6vw,1.45rem);line-height:1.25}
+header p{margin:.15rem 0 0;font-size:clamp(.78rem,1.8vw,.92rem);color:#F3DB8E;font-style:italic}
+#map{flex:1 1 auto;min-height:320px;width:100%;border-bottom:3px solid var(--gold-l)}
+footer{background:var(--sand-l);padding:.45rem 1rem;font-size:.82rem;line-height:1.45}
+footer a{color:var(--bordeaux)}
+.leaflet-container{font-family:var(--f-body);background:#DCE3DA}
+.leaflet-popup-content-wrapper{background:var(--sand-l);border:2px solid var(--gold-l);border-radius:4px;color:var(--ink)}
+.leaflet-popup-tip{background:var(--sand-l)}
+.leaflet-popup-content{margin:.7rem .9rem;font-size:.92rem;line-height:1.45}
+.leaflet-popup-content h3{margin:0 0 .3rem;font-family:var(--f-head);color:var(--bordeaux);font-size:1rem}
+.legend{background:var(--sand-l);border:2px solid var(--gold);padding:.5rem .7rem;font-size:.82rem;line-height:1.5;max-width:250px;box-shadow:0 2px 0 rgba(0,0,0,.12)}
+.legend b{font-family:var(--f-head);color:var(--bordeaux)}
+.legend i{display:inline-block;vertical-align:middle;margin-right:.4rem}
+.legend .ln{width:26px;height:0;border-top:4px solid var(--bordeaux)}
+.legend .ln2{width:26px;height:0;border-top:3px dashed var(--bordeaux)}
+.legend .ar{width:18px;height:12px;background:rgba(201,162,39,.35);border:2px dashed var(--bordeaux)}
+.legend .pt{width:12px;height:12px;border-radius:50%;background:var(--gold-l);border:2px solid var(--bordeaux)}
+.legend small{display:block;margin-top:.3rem;font-style:italic}
+.terr-label{background:none;border:none;box-shadow:none;color:var(--bordeaux);font-family:var(--f-head);font-weight:700;font-size:.8rem;text-align:center;text-shadow:0 0 3px #fff,0 0 3px #fff}
+.terr-label:before{display:none}
+@media (max-width:560px){.legend{max-width:180px;font-size:.74rem}.legend small{display:none}footer{font-size:.74rem}}
+</style>
+</head>
+<body>
+<header>
+ <h1>Die Weinflotte: Bordeaux – England (12.–15. Jh.)</h1>
+ <p>Schematische Darstellung · Routen und Grenzen vereinfacht · Punkte anklicken für Erläuterungen</p>
+</header>
+<div id="map" role="region" aria-label="Interaktive Karte der Weinrouten von Bordeaux nach England"></div>
+<footer>
+ <strong>Schematische Darstellung:</strong> Seewege und die angevinischen Gebiete um 1189 sind stark vereinfacht und nicht als genaue Grenzen zu verstehen.
+ Zum Beitrag: <a href="https://rosary.health/blog-2/" target="_top">rosary.health Blog</a> ·
+ <a href="sommelier.html" target="_top">Digital Molecular Sommelier</a> ·
+ Kartendaten © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap-Mitwirkende</a>
+</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function(){
+  var BORD='#6B0F1F', GOLD='#C9A227';
+  var map=L.map('map',{scrollWheelZoom:false,zoomSnap:0.25}).setView([48.2,-2.2],5.5);
+  map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>');
+  map.on('click',function(){map.scrollWheelZoom.enable();});
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,minZoom:3,
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-Mitwirkende'}).addTo(map);
+
+  // Angevinische Festlandgebiete um 1189 (schematisch, [lat,lon])
+  var terr=[
+   {n:'Normandie',l:[49.2,-0.45],c:[[48.6,-1.95],[49.75,-1.7],[49.75,0.2],[50.1,1.4],[49.7,1.8],[49.1,1.7],[48.8,0.9],[48.45,0.1],[48.5,-1.0]]},
+   {n:'Anjou, Maine, Touraine',l:[47.85,0.0],c:[[47.1,-1.3],[48.45,-1.0],[48.45,0.1],[48.0,0.9],[47.3,1.2],[46.9,0.6],[46.95,-0.3]]},
+   {n:'Aquitanien (Poitou, Gascogne)',l:[45.55,1.45],c:[[47.0,-2.2],[47.1,-1.3],[46.95,-0.3],[46.9,0.6],[47.2,1.2],[46.3,2.3],[45.3,2.4],[44.4,1.7],[43.6,1.0],[42.95,0.3],[42.9,-1.0],[43.35,-1.75],[44.5,-1.3],[45.9,-1.25]]}
+  ];
+  terr.forEach(function(t){
+    L.polygon(t.c,{color:BORD,weight:1.5,dashArray:'6 5',fillColor:GOLD,fillOpacity:.22})
+     .bindPopup('<h3>'+t.n+'</h3>Teil der Festlandbesitzungen Heinrichs II. und Richards I. um 1189. <em>Schematische, vereinfachte Abgrenzung.</em>')
+     .addTo(map);
+    L.tooltip({permanent:true,direction:'center',className:'terr-label',interactive:false})
+     .setLatLng(t.l).setContent(t.n+'<br><span style="font-weight:400;font-style:italic">schematisch, um 1189</span>').addTo(map);
+  });
+
+  // Routen (schematisch)
+  var main=[[44.84,-0.58],[45.13,-0.66],[45.45,-0.95],[45.62,-1.08],[46.05,-1.75],[46.75,-2.9],[47.45,-4.3],[48.1,-5.35],[48.6,-5.6]];
+  var london=[[48.6,-5.6],[49.3,-4.6],[49.95,-2.6],[50.35,-0.6],[50.7,1.0],[51.05,1.65],[51.42,1.65],[51.5,1.2],[51.5,0.4],[51.51,-0.12]];
+  var south=[[49.95,-2.6],[50.45,-1.6],[50.88,-1.40]];
+  var bristol=[[48.6,-5.6],[49.95,-6.3],[50.75,-5.5],[51.3,-4.4],[51.42,-3.2],[51.45,-2.59]];
+  var opt={color:BORD,weight:4,opacity:.9,lineCap:'round'};
+  L.polyline(main,opt).bindPopup('<h3>Hauptroute</h3>Von Bordeaux die Gironde hinab, über den Golf von Biskaya und um die Bretagne. <em>Schematisch.</em>').addTo(map);
+  L.polyline(london,opt).bindPopup('<h3>Durch den Ärmelkanal nach London</h3>London war der größte Abnehmer des Gascogner Weins. <em>Schematisch.</em>').addTo(map);
+  L.polyline(south,L.extend({},opt,{weight:3})).addTo(map);
+  L.polyline(bristol,L.extend({},opt,{weight:3,dashArray:'8 6'})).bindPopup('<h3>Abzweig nach Bristol</h3>Um Cornwall in den Bristolkanal. <em>Schematisch.</em>').addTo(map);
+
+  var pts=[
+   ['Bordeaux',44.84,-0.58,'Hauptweinhafen der englischen Krone. 1214 befreite Johann ohne Land die Bürger vom Ausfuhrzoll auf ihren Wein („Privileg von Bordeaux“). Anfang des 14. Jh. verließen im Schnitt rund 80.000 Fass im Jahr den Hafen, im Rekordjahr 1308/09 über 100.000. Im Oktober 1453 ergab sich die Stadt dem französischen König.'],
+   ['Blaye / Gironde',45.13,-0.66,'Etappe an der Gironde: Zweimal im Jahr fuhren die Weinflotten den Mündungstrichter hinab aufs offene Meer, im Herbst mit dem jungen Wein, im Frühjahr mit dem Rest.'],
+   ['La Rochelle',46.16,-1.15,'Bis 1224 ein wichtiger Weinhafen der Plantagenets. Danach fiel es an Frankreich, und Bordeaux übernahm die führende Rolle.'],
+   ['Southampton',50.90,-1.40,'Wichtiger Weinhafen an der Südküste, zeitweise königliches Weindepot.'],
+   ['London',51.51,-0.12,'Größter Abnehmer des Gascogner Weins. Der hellrote Wein hieß hier <em>claret</em>, von französisch <em>clairet</em>.'],
+   ['Bristol',51.45,-2.59,'Neben Hull das wichtigste Weinzentrum außerhalb Londons. Um 1300 lag etwa die Hälfte des Weinhandels in den Händen gascognischer Kaufleute. Vor 1337 kamen jährlich rund 3.000 Fass an.'],
+   ['Rouen',49.44,1.09,'Hauptstadt der Normandie. Bis 1204 war es der wichtigste Weinhafen nach England. Im Dom ruht das Herz Richards Löwenherz, untersucht 2013 (Charlier u. a.).'],
+   ['Fontevraud',47.18,0.05,'Abtei und Grablege der Plantagenets: Die Liegefiguren von Heinrich II., Eleonore von Aquitanien und Richard I. sind erhalten, ihre Gebeine dagegen verschollen.'],
+   ['Castillon (1453)',44.85,-0.04,'Am 17. Juli 1453 endete hier mit der Schlacht von Castillon die englische Herrschaft in Aquitanien, rund 300 Jahre nach Eleonores Heirat mit Heinrich (1152).']
+  ];
+  pts.forEach(function(p){
+    L.circleMarker([p[1],p[2]],{radius:7,color:BORD,weight:2,fillColor:GOLD,fillOpacity:1})
+     .bindPopup('<h3>'+p[0]+'</h3>'+p[3]).bindTooltip(p[0],{direction:'right',offset:[8,0]}).addTo(map);
+  });
+
+  var lg=L.control({position:'bottomleft'});
+  lg.onAdd=function(){var d=L.DomUtil.create('div','legend');
+    d.innerHTML='<b>Legende</b><br><i class="ln"></i>Weinflotte, Hauptrouten<br><i class="ln2"></i>Abzweig Bristol<br><i class="ar"></i>Angevinische Gebiete um 1189<br><i class="pt"></i>Häfen und Orte<small>Schematische Darstellung, nicht maßstabsgetreu.</small>';
+    L.DomEvent.disableClickPropagation(d);return d;};
+  lg.addTo(map);
+  function fit(){map.fitBounds([[43.0,-6.6],[51.9,2.4]],{padding:[10,10]});}
+  fit(); window.addEventListener('resize',function(){map.invalidateSize();});
+})();
+</script>
+</body>
+</html>
