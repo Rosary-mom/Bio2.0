@@ -105,8 +105,21 @@ footer a{color:var(--bordeaux)}
     d.innerHTML='<b>Legende</b><br><i class="ln"></i>Weinflotte, Hauptrouten<br><i class="ln2"></i>Abzweig Bristol<br><i class="ar"></i>Angevinische Gebiete um 1189<br><i class="pt"></i>Häfen und Orte<small>Schematische Darstellung, nicht maßstabsgetreu.</small>';
     L.DomEvent.disableClickPropagation(d);return d;};
   lg.addTo(map);
-  function fit(){map.fitBounds([[43.0,-6.6],[51.9,2.4]],{padding:[10,10]});}
-  fit(); window.addEventListener('resize',function(){map.invalidateSize();});
+  var touched=false;
+  map.on('zoomstart movestart',function(e){ if(e && e.hard!==true && map._loaded && map._userAction) touched=true; });
+  map.getContainer().addEventListener('pointerdown',function(){touched=true;map._userAction=true;});
+  map.getContainer().addEventListener('wheel',function(){touched=true;},{passive:true});
+  function fit(){
+    var el=map.getContainer();
+    if(el.clientWidth<50||el.clientHeight<50) return;
+    map.invalidateSize();
+    if(!touched) map.fitBounds([[43.0,-6.6],[51.9,2.4]],{padding:[10,10],animate:false});
+  }
+  fit();
+  window.addEventListener('load',fit);
+  window.addEventListener('resize',fit);
+  if(window.ResizeObserver){ new ResizeObserver(fit).observe(map.getContainer()); }
+  setTimeout(fit,300); setTimeout(fit,1200);
 })();
 </script>
 </body>
