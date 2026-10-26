@@ -5,3 +5,6 @@ node_modules/
 .vercel/
 .env
 memory/private/
+
+# privat, nie veröffentlichen
+hermes_sync_master*.json
