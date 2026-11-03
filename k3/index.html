@@ -3,34 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ESG-Cockpit · Bio2.0/k3 · EKIR</title>
-  <meta name="description" content="ESG-Cockpit Modellrechnung (Colab T4) im Rosary Bio2.0-Projekt.">
+  <title>ESG-Cockpit · Bio2.0/k3 · Magnifica Humanitas</title>
+  <meta name="description" content="ESG-Cockpit Modellrechnung (Colab T4) im Magnifica-Humanitas-Stil – Rosary Bio2.0.">
+  <link rel="stylesheet" href="/fonts/fonts.css">
   <style>
-    :root { --bordeaux:#5C0A1A; --sand:#E8D9B5; --gold:#C9A227; --gold-l:#E3C35A; }
-    body { margin:0; font-family: Georgia, 'Palatino Linotype', serif; background:var(--bordeaux); color:var(--sand); line-height:1.55; }
-    main { max-width:720px; margin:0 auto; padding:2rem 1.25rem; }
-    h1 { color:var(--gold); font-size:1.7rem; margin:0 0 0.5rem; }
-    .card { border:2px solid var(--gold); border-radius:8px; padding:1.2rem; background:rgba(0,0,0,0.25); }
-    img { max-width:100%; height:auto; border:1px solid var(--gold); border-radius:4px; margin:0.8rem 0; }
-    .btn { display:inline-block; background:var(--gold); color:#3D0611; font-weight:700; text-decoration:none; padding:0.5rem 1rem; border-radius:4px; margin:0.25rem 0.35rem 0.25rem 0; }
-    .btn:hover { background:var(--gold-l); }
-    a { color:var(--gold-l); }
-    .note { font-size:0.9rem; opacity:0.95; }
+    :root {
+      --bordeaux: #5C0A1A; --bordeaux-2: #800020; --bordeaux-dark: #3D0611;
+      --sand: #E8D9B5; --sand-light: #F5ECD7; --gold: #C9A227; --gold-light: #E3C35A;
+      --font-body: 'Rosario', 'Segoe UI', Arial, sans-serif;
+      --font-head: 'Rockwell Extra Bold', 'Rockwell', 'Roboto Slab', Georgia, serif;
+      --font-paladin: 'Palatino Linotype', Palatino, 'Book Antiqua', Palladio, serif;
+    }
+    html { background: var(--bordeaux); }
+    body { margin:0; font-family: var(--font-body); background: var(--bordeaux); color: var(--sand); line-height:1.65; font-size:1.25rem; }
+    a { color: var(--gold-light); text-decoration-thickness:2px; text-underline-offset:3px; }
+    a:hover { color: var(--sand-light); }
+    a:focus-visible, .btn:focus-visible { outline:3px solid var(--gold-light); outline-offset:3px; }
+    .brand { display:flex; align-items:center; justify-content:center; gap:0.85rem; padding:1.2rem 1rem; background:var(--bordeaux-dark); border-bottom:3px solid var(--gold); }
+    .brand img { max-height:72px; width:auto; }
+    .brand .name { font-family:var(--font-head); font-weight:900; font-size:clamp(1.5rem,4vw,2rem); color:var(--gold); }
+    header.hero { text-align:center; padding:2.4rem 1.25rem 2rem; background:linear-gradient(135deg,var(--bordeaux-dark),var(--bordeaux-2)); border-bottom:3px solid var(--gold); }
+    .kicker { display:inline-block; background:var(--gold); color:var(--bordeaux-dark); font-family:var(--font-head); font-weight:900; padding:0.35rem 0.9rem; border-radius:3px; font-size:1rem; letter-spacing:0.04em; }
+    h1 { font-family:var(--font-head); font-weight:900; color:var(--gold); font-size:clamp(2rem,5.5vw,3rem); margin:0.9rem 0 0.5rem; text-shadow:2px 2px 0 #000; }
+    .paladin { font-family:var(--font-paladin); font-style:italic; font-size:1.35rem; color:var(--sand-light); max-width:42rem; margin:0.6rem auto 0; }
+    main { max-width:860px; margin:0 auto; padding:2rem 1.25rem 3rem; }
+    h2 { font-family:var(--font-head); font-weight:900; color:var(--gold); font-size:clamp(1.45rem,3vw,1.85rem); border-bottom:2px solid var(--gold); padding-bottom:0.35rem; }
+    .card { background:var(--bordeaux-2); border:2px solid var(--gold); border-radius:8px; padding:1.5rem; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
+    .card img { display:block; width:100%; max-width:640px; height:auto; margin:0.9rem auto; border:2px solid var(--gold); border-radius:6px; }
+    .btn { display:inline-block; background:var(--gold); color:var(--bordeaux-dark)!important; border:3px solid var(--gold); padding:0.85rem 1.35rem; margin:0.35rem 0.45rem 0.35rem 0; font-family:var(--font-head); font-weight:900; font-size:1.15rem; text-decoration:none!important; border-radius:4px; }
+    .btn:hover { background:var(--gold-light); border-color:var(--gold-light); transform:scale(1.02); }
+    .btn-outline { background:transparent!important; color:var(--gold)!important; }
+    .note { font-family:var(--font-paladin); font-size:1.15rem; }
+    footer { text-align:center; padding:1.6rem 1rem 2.2rem; border-top:2px solid var(--gold); font-family:var(--font-paladin); font-size:1.05rem; }
+    @media (max-width:600px){ .btn{display:block;width:100%;box-sizing:border-box;text-align:center;margin:0.45rem 0;} }
   </style>
 </head>
 <body>
-<main>
-  <h1>ESG-Cockpit · EKIR / EAIR</h1>
-  <p class="note">Modellrechnung zur Essay-Fassung <em>Emergente KI-Forschung</em> — Colab Free / T4. Ordner <code>k3/</code> im Repo Bio2.0.</p>
-  <div class="card">
-    <img src="dashboard_main.png" width="640" height="360" alt="ESG-Cockpit Dashboard – Vorschau der Modellrechnung">
-    <p>
-      <a class="btn" href="https://colab.research.google.com/github/Rosary-mom/Bio2.0/blob/main/k3/ESG_Cockpit.ipynb">In Colab öffnen</a>
-      <a class="btn" href="https://github.com/Rosary-mom/Bio2.0/tree/main/k3">Dateien auf GitHub</a>
-      <a class="btn" href="README_de.md">README (DE)</a>
-    </p>
-    <p class="note">Zurück zur Projektseite: <a href="https://rosary-mom.github.io/Bio2.0/">rosary-mom.github.io/Bio2.0</a></p>
+  <div class="brand" role="banner">
+    <img src="/assets/Rosary%20LOGO%2022.08.2025.png" width="72" height="72" alt="ROSARY Logo – Rosenkranz">
+    <span class="name">ROSARY</span>
   </div>
-</main>
+  <header class="hero">
+    <span class="kicker">MAGNIFICA HUMANITAS · ROSARY</span>
+    <h1>ESG-Cockpit · EKIR / EAIR</h1>
+    <p class="paladin">Modellrechnung zur Essay-Fassung <em>Emergente KI-Forschung</em> — Colab Free / T4. Ordner <code>k3/</code> im Repo Bio2.0.</p>
+  </header>
+  <main>
+    <section class="card" aria-labelledby="dash">
+      <h2 id="dash">Dashboard &amp; Start</h2>
+      <img src="dashboard_main.png" width="640" height="360" alt="ESG-Cockpit Dashboard – Vorschau der Modellrechnung">
+      <p>
+        <a class="btn" href="https://colab.research.google.com/github/Rosary-mom/Bio2.0/blob/main/k3/ESG_Cockpit.ipynb">In Colab öffnen</a>
+        <a class="btn btn-outline" href="https://github.com/Rosary-mom/Bio2.0/tree/main/k3">Dateien auf GitHub</a>
+        <a class="btn btn-outline" href="README_de.md">README (DE)</a>
+        <a class="btn btn-outline" href="https://rosary-mom.github.io/Bio2.0/">Zur Projektseite</a>
+      </p>
+      <p class="note">Stil: Magnifica Humanitas · Rockwell Extra Bold · Paladin (Palatino) · hoher Kontrast · inkludiert lesbar.</p>
+    </section>
+  </main>
+  <footer>ROSARY · Bio2.0 / k3 · Magnifica Humanitas</footer>
 </body>
 </html>
