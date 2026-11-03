@@ -1,0 +1,109 @@
+{
+  "schema": "notebook_register_v1",
+  "created_utc": "2026-11-03T11:30:00Z",
+  "source": "Essay Emergente-KI-Forschung_v2 §2 Einheitliche Architektur der sieben Notebooks",
+  "readme_raw": "https://raw.githubusercontent.com/Rosary-mom/Bio2.0/main/k3/notebooks/README.md",
+  "readme_blob": "https://github.com/Rosary-mom/Bio2.0/blob/main/k3/notebooks/README.md",
+  "privacy_note": "Doktorarbeit-Anhang und GPU_Test_Setup werden nicht nach GitHub hochgeladen; Status nur als Proxy/privat markiert.",
+  "stages": [
+    {
+      "nr": "01",
+      "essay_name": "AlphaFold/Protease",
+      "funktion": "Provenienz, Modell- und Assayregister",
+      "essay_status": "Gerüst; Eingangsdaten teilweise",
+      "status": "vorhanden",
+      "dateiname": "01_AlphaFold_Protease_Test.ipynb",
+      "github_blob": "https://github.com/Rosary-mom/7gaben-hugel/blob/main/01_AlphaFold_Protease_Test.ipynb",
+      "github_raw": "https://raw.githubusercontent.com/Rosary-mom/7gaben-hugel/main/01_AlphaFold_Protease_Test.ipynb",
+      "colab": "https://colab.research.google.com/github/Rosary-mom/7gaben-hugel/blob/main/01_AlphaFold_Protease_Test.ipynb",
+      "kopien": [
+        "https://github.com/Rosary-mom/Bio2.0/blob/main/notebooks/01_AlphaFold_Protease_Test.ipynb",
+        "https://github.com/Rosary-mom/Rosary-mom.github.io/blob/main/01_AlphaFold_Protease_Test.ipynb"
+      ],
+      "variante": {
+        "dateiname": "01_AlphaFold_Protease_Limits.ipynb",
+        "github_blob": "https://github.com/Rosary-mom/7gaben-hugel/blob/main/01_AlphaFold_Protease_Limits.ipynb",
+        "colab": "https://colab.research.google.com/github/Rosary-mom/7gaben-hugel/blob/main/01_AlphaFold_Protease_Limits.ipynb"
+      },
+      "hinweis": null
+    },
+    {
+      "nr": "02",
+      "essay_name": "CDH/Glycinbetain",
+      "funktion": "Hypothesen und falsifizierbare Endpunkte",
+      "essay_status": "literaturgestützte Allgemeinhypothese",
+      "status": "fehlt",
+      "dateiname": null,
+      "github_blob": null,
+      "github_raw": null,
+      "colab": null,
+      "hinweis": "Kein dediziertes 02_*.ipynb in GitHub/Drive; CDH-Hypothese teilweise in 01 enthalten."
+    },
+    {
+      "nr": "03",
+      "essay_name": "Hügelbeet",
+      "funktion": "Simulation und Sensitivität",
+      "essay_status": "hypothetisch / modellhaft",
+      "status": "Proxy",
+      "dateiname": "03_Commercial_Validation.py",
+      "github_blob": "https://github.com/Rosary-mom/7gaben-hugel/blob/main/03_Commercial_Validation.py",
+      "github_raw": "https://raw.githubusercontent.com/Rosary-mom/7gaben-hugel/main/03_Commercial_Validation.py",
+      "colab": null,
+      "hinweis": "Proxy, liegt als .py (kein .ipynb) in 7gaben-hugel — Q-Hebel/Hügelbeet-Simulation."
+    },
+    {
+      "nr": "04",
+      "essay_name": "Governance",
+      "funktion": "Evidenzmatrix und Ausschlussregeln",
+      "essay_status": "operational",
+      "status": "vorhanden",
+      "dateiname": "04_epistemology_and_governance.ipynb",
+      "github_blob": "https://github.com/Rosary-mom/Bio2.0/blob/main/04_epistemology_and_governance.ipynb",
+      "github_raw": "https://raw.githubusercontent.com/Rosary-mom/Bio2.0/main/04_epistemology_and_governance.ipynb",
+      "colab": "https://colab.research.google.com/github/Rosary-mom/Bio2.0/blob/main/04_epistemology_and_governance.ipynb",
+      "hinweis": null
+    },
+    {
+      "nr": "05",
+      "essay_name": "DHG/TPF",
+      "funktion": "Messdaten, Einheiten und eta-Trennung",
+      "essay_status": "teilweise datengestützt",
+      "status": "Proxy",
+      "dateiname": null,
+      "github_blob": null,
+      "github_raw": null,
+      "colab": null,
+      "hinweis": "Proxy, liegt privat (Drive/Box) — Doktorarbeit-Anhang; Messwerte DHG/TPF auch im Cockpit-REGISTER (Essay §3.2)."
+    },
+    {
+      "nr": "06",
+      "essay_name": "GPU",
+      "funktion": "Umgebung, Seeds und Prüfsummen",
+      "essay_status": "reproduzierbar",
+      "status": "Proxy",
+      "dateiname": "GPU_Test_Setup.ipynb",
+      "github_blob": null,
+      "github_raw": null,
+      "colab": "https://colab.research.google.com/drive/1ZBf6n53oxl1pJ3Aw1Bb1kMyLshsokj9Z",
+      "hinweis": "Proxy, liegt privat (Drive/Box) — GPU_Test_Setup.ipynb; Inhalt wird nicht nach GitHub gespiegelt."
+    },
+    {
+      "nr": "07",
+      "essay_name": "Graffiti 284",
+      "funktion": "exaktes Integer-Zertifikat",
+      "essay_status": "mathematisch verifiziert",
+      "status": "Proxy",
+      "dateiname": null,
+      "github_blob": null,
+      "github_raw": null,
+      "colab": null,
+      "hinweis": "Proxy, liegt privat (Drive/Box) — Doktorarbeit-Anhang (Graffiti-284-Falsifikation); kein 07_*.ipynb auf GitHub."
+    }
+  ],
+  "counts": {
+    "vorhanden": 2,
+    "Proxy": 4,
+    "fehlt": 1,
+    "gesamt": 7
+  }
+}
