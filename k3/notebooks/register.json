@@ -32,12 +32,12 @@
       "essay_name": "CDH/Glycinbetain",
       "funktion": "Hypothesen und falsifizierbare Endpunkte",
       "essay_status": "literaturgestützte Allgemeinhypothese",
-      "status": "fehlt",
-      "dateiname": null,
-      "github_blob": null,
-      "github_raw": null,
-      "colab": null,
-      "hinweis": "Kein dediziertes 02_*.ipynb in GitHub/Drive; CDH-Hypothese teilweise in 01 enthalten."
+      "status": "vorhanden",
+      "dateiname": "02_CDH_Glycinbetain.ipynb",
+      "github_blob": "https://github.com/Rosary-mom/Bio2.0/blob/main/k3/notebooks/02_CDH_Glycinbetain.ipynb",
+      "github_raw": "https://raw.githubusercontent.com/Rosary-mom/Bio2.0/main/k3/notebooks/02_CDH_Glycinbetain.ipynb",
+      "colab": "https://colab.research.google.com/github/Rosary-mom/Bio2.0/blob/main/k3/notebooks/02_CDH_Glycinbetain.ipynb",
+      "hinweis": "Extrahiert aus 01_AlphaFold_Protease_Test.ipynb (7gaben-hugel, Zellen 3+5; Commit ecda2bbff0e5532f7c7a3b3d136fb5e2399950ad). Drive-Upload in „Colab Notebooks“ stand aus: Connector ohne Schreib-Scope (ACCESS_TOKEN_SCOPE_INSUFFICIENT) — Datei vorerst öffentlich in Bio2.0/k3/notebooks (kein privater Inhalt). Nach Drive-Reconnect kann private Kopie nachgezogen werden."
     },
     {
       "nr": "03",
@@ -101,9 +101,10 @@
     }
   ],
   "counts": {
-    "vorhanden": 2,
+    "vorhanden": 3,
     "Proxy": 4,
-    "fehlt": 1,
+    "fehlt": 0,
     "gesamt": 7
-  }
+  },
+  "updated_utc": "2026-11-03T11:49:59Z"
 }
