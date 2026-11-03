@@ -1,0 +1,90 @@
+{
+  "schema": "alphafold_archive_snapshot_v1",
+  "created_utc": "2026-11-03T11:20:35Z",
+  "source_stage": "stufige Entscheidungsmatrix — Stufe AlphaFold/Enzym-Archiv (vor ESG-Scoring)",
+  "engine": {
+    "page_url": "https://rosary-mom.github.io/Bio2.0/engine/",
+    "repo_path": "engine/index.html",
+    "alphafold_viewer": {
+      "label": "Glutamat-Dehydrogenase",
+      "uniprot": "P00367",
+      "molstar_url": "https://molstar.org/viewer/?afdb=P00367",
+      "note": "AlphaFold-vorhersagte Proteinstruktur (Viewer); kein Assay-Zahlenwert auf der Engine-Seite"
+    },
+    "colab_embed_url": "https://colab.research.google.com/github/Rosary-mom/7gaben-hugel/blob/main/01_AlphaFold_Protease_Test.ipynb",
+    "colab_button_url": "https://colab.research.google.com/github/Rosary-mom/7gaben-hugel/blob/main/01_AlphaFold_Protease_Test.ipynb",
+    "q_hebel_params_present": {
+      "qNebelFaktor_expression": "30.0 * 200",
+      "charcoalStability_expression": "0.62 * 200",
+      "dehydrogenaseFactor_range": "0.8-1.0 random",
+      "comment": "Holistische Enzyme / Skelett-Stabilität — Modellkurve, keine Feldmessung"
+    }
+  },
+  "notebook": {
+    "notebook_name": "01_AlphaFold_Protease_Test.ipynb",
+    "github_raw": "https://raw.githubusercontent.com/Rosary-mom/7gaben-hugel/main/01_AlphaFold_Protease_Test.ipynb",
+    "github_blob": "https://github.com/Rosary-mom/7gaben-hugel/blob/main/01_AlphaFold_Protease_Test.ipynb",
+    "colab": "https://colab.research.google.com/github/Rosary-mom/7gaben-hugel/blob/main/01_AlphaFold_Protease_Test.ipynb",
+    "bio2_spiegel": "https://github.com/Rosary-mom/Bio2.0/blob/main/notebooks/01_AlphaFold_Protease_Test.ipynb",
+    "sha256_16": "9ff2d619a4e64d62",
+    "n_cells": 8,
+    "values": [
+      {
+        "key": "schutz_faktor",
+        "value": 0.8,
+        "unit": "–",
+        "klasse": "simulation",
+        "beschreibung": "CDH/Glycinbetain-Sensitivität: 80% des Stresses abgepuffert (Annahme, kein Assay)",
+        "cell_hint": "Hypothese Cholin-Dehydrogenase"
+      },
+      {
+        "key": "pdb_protease",
+        "value": "1SCJ",
+        "unit": "PDB ID",
+        "klasse": "simulation / Strukturarchiv",
+        "beschreibung": "Boden-Protease Demo: Subtilisin Carlsberg (PDB), 3D-Viewer; kein Aktivitätsassay",
+        "cell_hint": "view_protein('1SCJ')"
+      },
+      {
+        "key": "enzym_label_cdh",
+        "value": "Cholin-Dehydrogenase (CDH)",
+        "unit": "Label",
+        "klasse": "simulation",
+        "beschreibung": "Notebook-Hypothese: CDH produziert Glycinbetain als Puffer",
+        "cell_hint": "Titel/Kommentar Simulation"
+      }
+    ],
+    "not_present": [
+      "kein pLDDT-Zahlenwert im Notebook",
+      "kein UniProt P00367 im Notebook selbst (nur auf Engine-Viewer)",
+      "kein eta_claim/30000 im Notebook",
+      "kein Chitinase/Invertase-ID in dieser Datei (nur in _alt)"
+    ]
+  },
+  "register_rows": [
+    {
+      "Variable": "AF/CDH Schutzfaktor",
+      "Wert": 0.8,
+      "Einheit": "–",
+      "Klasse": "simulation",
+      "Provenienz": "01_AlphaFold_Protease_Test.ipynb (7gaben-hugel) via engine Colab-Embed",
+      "Regel": "Sensitivity; nicht mit eta_claim mischen"
+    },
+    {
+      "Variable": "AF/Protease Struktur",
+      "Wert": "PDB 1SCJ",
+      "Einheit": "ID",
+      "Klasse": "simulation / Strukturarchiv",
+      "Provenienz": "01_AlphaFold_Protease_Test.ipynb view_protein('1SCJ')",
+      "Regel": "Strukturanzeige, kein Assay"
+    },
+    {
+      "Variable": "AF/Glutamat-DH Viewer",
+      "Wert": "UniProt P00367",
+      "Einheit": "ID",
+      "Klasse": "simulation / Strukturarchiv",
+      "Provenienz": "engine/index.html Mol* afdb=P00367 · https://rosary-mom.github.io/Bio2.0/engine/",
+      "Regel": "Viewer auf Engine-Seite; kein Assay-Zahlenwert"
+    }
+  ]
+}
