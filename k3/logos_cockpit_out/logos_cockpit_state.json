@@ -1,0 +1,118 @@
+{
+  "projekt": "LOGOS-Cockpit / UniCampus",
+  "seed": 42,
+  "corpus_dir": "logos_corpus",
+  "corpus_policy": "own_logos_exports_ok; licensed_library_fulltext_only_short_quotes_with_citation",
+  "docs": [
+    {
+      "doc_id": "2026-11-03-gottes-schoepferkraft-heute",
+      "title": "Gottes Schöpferkraft heute",
+      "rank": "eigene Deutung",
+      "klasse": "eigene Deutung / Blog (Magnifica Humanitas)",
+      "beleg": "",
+      "source_url": "https://rosary-mom.github.io/blog/2026-11-03-gottes-schoepferkraft-heute/",
+      "author": "Uwe Rosenkranz (mit ARCHY)",
+      "date": "2026-11-03",
+      "sha1": "088b27aea5e2",
+      "corpus_policy": "only_own_or_free",
+      "path": "logos_corpus/2026-11-03-gottes-schoepferkraft-heute.md"
+    }
+  ],
+  "demo_q": "Was sagt Ps 139 über Gottes Schöpferkraft heute?",
+  "hits": [
+    {
+      "score": 2.5933,
+      "mode": "bm25",
+      "chunk_id": "2026-11-03-gottes-schoepferkraft-heute#3",
+      "title": "Gottes Schöpferkraft heute",
+      "rank": "eigene Deutung",
+      "refs": [
+        "Psalm 139"
+      ],
+      "source_url": "https://rosary-mom.github.io/blog/2026-11-03-gottes-schoepferkraft-heute/",
+      "text": "Du bist keine Zufallsmischung. Gott hat dich so zusammengesetzt, dass Persönlichkeit, Talente und Gaben eine einzigartige Gestalt ergeben – vorbereitet für seinen Zweck in deinem Leben.[2] Diese Kraft bleibt nicht abstrakt: Gott ist konkret und vollständig in das Leben jedes Menschen involviert.[3] Er ist gegenwärtig bei dem, was du schon erfährst – und bei dem, was noch kommt. Näher als du dir selbst sein kannst.[4]\n\nPsalm 139 macht das greifbar: Gottes Gedanken über dich sind zahlreich und tie…"
+    },
+    {
+      "score": 2.4615,
+      "mode": "bm25",
+      "chunk_id": "2026-11-03-gottes-schoepferkraft-heute#2",
+      "title": "Gottes Schöpferkraft heute",
+      "rank": "eigene Deutung",
+      "refs": [
+        "Eph 2,10",
+        "Ps 139"
+      ],
+      "source_url": "https://rosary-mom.github.io/blog/2026-11-03-gottes-schoepferkraft-heute/",
+      "text": "Geschaffeneinzigartig (Ps 139)\nBegleitetintim nah (Ps 139)\nBereitetgute Werke (Eph 2,10)\n\n„Wunderbar sind deine Werke, und meine Seele erkennt es sehr wohl.“\n\n## Wie wirkt Gottes Schöpferkraft heute?\n\nSchöpfung ist nicht nur ein Kapitel am Anfang der Bibel. Gottes schöpferisches Handeln beschränkt sich nicht auf einen einmaligen Akt – er schafft jeden einzelnen Menschen. Das ist eine gegenwärtige theologische Wahrheit, nicht bloß eine historische Erinnerung.[1]"
+    },
+    {
+      "score": 1.8386,
+      "mode": "bm25",
+      "chunk_id": "2026-11-03-gottes-schoepferkraft-heute#5",
+      "title": "Gottes Schöpferkraft heute",
+      "rank": "eigene Deutung",
+      "refs": [
+        "Eph 2,10",
+        "Ps 139,14",
+        "Ps 139,17"
+      ],
+      "source_url": "https://rosary-mom.github.io/blog/2026-11-03-gottes-schoepferkraft-heute/",
+      "text": "Wir sind Gottes Gebilde, in Christus Jesus geschaffen zu guten Werken, die Gott vorher bereitet hat, damit wir in ihnen wandeln.\n\nElberfelder Bibel 2016, Eph 2,10.\n\nTrotz Unvollkommenheit kann Gott sich durch dich verherrlichen – für Generationen und in Ewigkeit. Du wurdest geschaffen, Gott die Ehre zu geben. Dein Zweck und deine Erfüllung wachsen dort, wo seine Ehre in dir Gestalt gewinnt.[3]\n\nNeuer Tag – Gottes Gedanken über dich sind „gewaltig in ihren Summen“ (Ps 139,17). Foto: Dace Kiršpile…"
+    },
+    {
+      "score": 1.5774,
+      "mode": "bm25",
+      "chunk_id": "2026-11-03-gottes-schoepferkraft-heute#7",
+      "title": "Gottes Schöpferkraft heute",
+      "rank": "eigene Deutung",
+      "refs": [
+        "Ps 139,14–17",
+        "Psalm 139"
+      ],
+      "source_url": "https://rosary-mom.github.io/blog/2026-11-03-gottes-schoepferkraft-heute/",
+      "text": "- Lies Ps 139,14–17 laut – langsam, als Gebet.\n- Schreib einen Satz: „Ich danke dir, dass du …“\n- Tu heute eine gute Arbeit, die Gott schon bereitet hat – klein, konkret, ohne Show.\n\n### Video: Von allen Seiten umgibst du mich\n\n„LYRA – Von allen Seiten umgibst du mich – Lyra live“ (YouTube). Liedimpuls zu Psalm 139.\n\n## Rosenkranz-Impuls\n\nBete heute ein Gesätz der Freudigen Geheimnisse – besonders die Menschwerdung. Bei jedem Ave: „Danke, dass du mich wunderbar gemacht hast.“\n\nHerr, du bist mein…"
+    }
+  ],
+  "S_axis": 0.5848,
+  "weights": {
+    "w_ex": 0.4,
+    "w_le": 0.3,
+    "w_pr": 0.3
+  },
+  "gates": {
+    "gates": {
+      "Beleg vorhanden": true,
+      "Quellen angegeben": true,
+      "Deutung markiert": true,
+      "Bibelstelle erkannt": true,
+      "Selbstkontrolle ≥ 67%": false
+    },
+    "status": "REFINEMENT REQUIRED",
+    "refs": [
+      "Eph 2,10",
+      "Jer 18",
+      "Jes 64,7",
+      "Ps 139",
+      "Ps 139,14",
+      "Ps 139,14–17",
+      "Ps 139,16",
+      "Ps 139,17",
+      "Psalm 139"
+    ],
+    "belege": [
+      "2026-11-03-gottes-schoepferkraft-heute#3",
+      "2026-11-03-gottes-schoepferkraft-heute#2",
+      "2026-11-03-gottes-schoepferkraft-heute#5",
+      "2026-11-03-gottes-schoepferkraft-heute#7",
+      "2026-11-03-gottes-schoepferkraft-heute#6"
+    ]
+  },
+  "answer_preview": "[Stub — SKIP_LLM=1 — Stub aktiv.]\nFrage: Was sagt Ps 139 über Gottes Schöpferkraft heute?\nBeleg 2026-11-03-gottes-schoepferkraft-heute#3 (Rang eigene Deutung): Du bist keine Zufallsmischung. Gott hat dich so zusammengesetzt, dass Persönlichkeit, Talente und Gaben eine einzigartige Gestalt ergeben – vorbereitet für seinen Zweck in deinem Leben.[2] Diese Kraft bleibt nicht abstrakt: Gott ist konkret und vollständig in das Leben jedes Menschen involviert.[3] Er ist gegenwärtig b\nBibelstellen: Eph 2,10, Ps 139, Ps 139,14, Ps 139,14–17, Ps 139,17, Psalm 139\nStatus: REFINEMENT REQUIRED | Deutung als Deutung. Genutzte Chunks: ['2026-11-03-gottes-schoepferkraft-heute#3', '2026-11-03-gottes-schoepferkraft-heute#2', '2026-11-03-gottes-schoepferkraft-heute#5', '2026-11-03-gottes-schoepferkraft-heute#7'].",
+  "llm": {
+    "ready": false,
+    "name": "STUB",
+    "error": "SKIP_LLM=1 — Stub aktiv."
+  },
+  "leitsatz": "Verstehen schlägt bloße Größe",
+  "seestern": "Logos Max bleibt das menschliche Werkzeug; Cockpit nur eigenes/freies Material"
+}
