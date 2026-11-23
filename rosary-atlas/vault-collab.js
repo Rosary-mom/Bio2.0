@@ -6,7 +6,7 @@
 
   var NS = "http://www.w3.org/2000/svg";
   var XLINK = "http://www.w3.org/1999/xlink";
-  var VIEW = { w: 1100, h: 720 };
+  var VIEW = { w: 1100, h: 1180 };
   var SLOTS = {
     "SC-06": [550, 78],
     "GB-RDIR": [380, 230],
@@ -21,7 +21,19 @@
     "MT-ERN": [350, 650],
     "MT-BEW": [530, 650],
     "MT-SCHLAF": [710, 650],
-    "MT-EVI": [910, 650]
+    "MT-EVI": [910, 650],
+    "WW-COCKPIT": [350, 820],
+    "WW-DSCHUNGEL": [750, 820],
+    "WW-BALOO": [110, 955],
+    "WW-MOGLI": [330, 955],
+    "WW-MONIE": [550, 955],
+    "WW-EDU": [770, 955],
+    "WW-OPTI": [990, 955],
+    "RKW-RI": [110, 1095],
+    "RKW-UC": [330, 1095],
+    "RKW-LLE": [550, 1095],
+    "RKW-SAL": [770, 1095],
+    "RKW-ML": [990, 1095]
   };
   var reduced = false;
   try {
@@ -82,7 +94,7 @@
 
   function avatarSize(agent) {
     if (agent.cluster === "leitung") return 64;
-    if (agent.kind === "subagent" || agent.kind === "briefing") return 48;
+    if (agent.kind === "subagent" || agent.kind === "briefing" || agent.cluster === "rkw") return 48;
     return 56;
   }
 
@@ -164,9 +176,28 @@
       orient: "auto-start-reverse"
     }, defs).appendChild(el("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: "#F0C14B" }));
 
+    el("clipPath", { id: "collab-particle-clip" }, defs).appendChild(
+      el("circle", { cx: "11", cy: "11", r: "11" })
+    );
     var edgeLayer = el("g", { "class": "collab-edges" }, svg);
     var partLayer = el("g", { "class": "collab-particles", "aria-hidden": "true" }, svg);
     var nodeLayer = el("g", { "class": "collab-nodes" }, svg);
+    var title1 = el("text", {
+      x: "550", y: "28", "text-anchor": "middle",
+      fill: "#F0C14B", "font-size": "20", "font-weight": "700"
+    }, nodeLayer);
+    textNode("Grok-Bot Team", title1);
+    var title2 = el("text", {
+      x: "550", y: "745", "text-anchor": "middle",
+      fill: "#F0C14B", "font-size": "20", "font-weight": "700"
+    }, nodeLayer);
+    textNode("Wegweiser durch den digitalen Dschungel", title2);
+    var title3 = el("text", {
+      x: "550", y: "1048", "text-anchor": "middle",
+      fill: "#E6D7B3", "font-size": "16", "font-weight": "700"
+    }, nodeLayer);
+    textNode("RKW-Scouts (Codes)", title3);
+
 
     pathsByKey = {};
     particles = [];
@@ -197,7 +228,13 @@
           "GB-REGIE->GB-RDIR": [500, 200],
           "SC-06->GB-REGIE": [760, 100],
           "GB-DATEN->M4": [680, 470],
-          "GB-REGIE->GB-MARVIN": [880, 310]
+          "GB-REGIE->GB-MARVIN": [880, 310],
+          "WW-COCKPIT->WW-DSCHUNGEL": [550, 790],
+          "WW-DSCHUNGEL->WW-BALOO": [430, 880],
+          "WW-DSCHUNGEL->WW-MOGLI": [620, 900],
+          "WW-DSCHUNGEL->WW-MONIE": [650, 880],
+          "WW-DSCHUNGEL->WW-EDU": [820, 880],
+          "WW-DSCHUNGEL->WW-OPTI": [960, 880]
         };
         var posL = LABEL_POS[ix.from + "->" + ix.to];
         if (!posL) {
@@ -222,6 +259,7 @@
           href: a.avatar,
           width: 22,
           height: 22,
+          "clip-path": "url(#collab-particle-clip)",
           "aria-hidden": "true"
         }, partLayer);
         el("circle", {
@@ -275,12 +313,16 @@
           }, glow);
         }
       }
+      var clipId = "collab-clip-" + agent.id;
+      var cp = el("clipPath", { id: clipId, clipPathUnits: "userSpaceOnUse" }, defs);
+      el("circle", { r: String(size / 2) }, cp);
       el("image", {
         href: agent.avatar,
         x: -size / 2,
         y: -size / 2,
         width: size,
         height: size,
+        "clip-path": "url(#" + clipId + ")",
         "aria-label": agent.label
       }, g);
       var name = el("text", {
@@ -308,7 +350,8 @@
       ["schlaf", "schläft"],
       ["handoff", "Übergabe (Avatar wandert)"],
       ["watch", "Wachhund"],
-      ["sub", "Subagent"]
+      ["sub", "Subagent"],
+      ["scout", "RKW-Scout"]
     ].forEach(function (row) {
       var li = document.createElement("li");
       var sw = document.createElement("span");

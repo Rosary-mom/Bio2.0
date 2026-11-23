@@ -80,8 +80,8 @@
   display: block;
   width: 100%;
   height: auto;
-  min-height: 280px;
-  max-height: 62vh;
+  min-height: 860px;
+  max-height: none;
 }
 
 .collab-legend {
@@ -115,6 +115,7 @@
 .collab-swatch.handoff { background: var(--collab-handoff); border-radius: 3px; }
 .collab-swatch.watch { background: var(--collab-watch); border-radius: 3px; }
 .collab-swatch.sub { background: #6EA8C9; }
+.collab-swatch.scout { background: #3D7A4A; }
 
 .collab-list {
   margin: 10px 0 0;
@@ -202,7 +203,7 @@
     bottom: 8px;
     max-height: 48%;
   }
-  .collab-stage svg { min-height: 220px; max-height: 40vh; }
+  .collab-stage svg { min-height: 640px; max-height: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
