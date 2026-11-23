@@ -2,10 +2,48 @@
 <html lang="de">
 <head>
   <meta charset="utf-8"/>
-  <title>rosary-vault graph</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>rosary-atlas · Vault-Graph</title>
+  <link rel="stylesheet" href="./vault-collab.css"/>
   <style>
-    body { font-family: sans-serif; margin: 1rem; background: #111; color: #eee; }
-    svg { width: 100%; height: 80vh; background: #1a1a1a; border: 1px solid #333; }
+    body {
+      font-family: "Rosario", "Segoe UI", system-ui, sans-serif;
+      margin: 0;
+      background: #1A1611;
+      color: #FFF8E8;
+    }
+    header.atlas-head, section.farm {
+      padding: 16px 18px 8px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header.atlas-head h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+      line-height: 1.2;
+      color: #F0C14B;
+      font-family: Palatino, "Palatino Linotype", "Times New Roman", serif;
+    }
+    header.atlas-head p, #meta {
+      margin: 0 0 12px;
+      font-size: 16px;
+      line-height: 1.4;
+      color: #E6D7B3;
+    }
+    section.farm h2 {
+      margin: 8px 0 8px;
+      font-size: 22px;
+      color: #F0C14B;
+    }
+    #g {
+      width: 100%;
+      height: 70vh;
+      min-height: 420px;
+      background: #120F0C;
+      border: 2px solid #D4AF37;
+      border-radius: 12px;
+    }
     .source { fill: #4ea1ff; }
     .crop { fill: #7dce82; }
     .factor { fill: #e6b800; }
@@ -13,23 +51,31 @@
     .geo { fill: #5ec8e8; }
     .metric { fill: #ff8a4e; }
     .agent { fill: #d0d0d0; }
-    line { stroke: #555; }
-    text { fill: #ddd; font-size: 11px; }
-    #meta { color: #aaa; margin-bottom: 0.5rem; }
+    line { stroke: #8A6A22; stroke-width: 1.4; }
+    #collab-root { margin: 8px 18px 16px; max-width: 1200px; width: calc(100% - 36px); margin-left: auto; margin-right: auto; }
   </style>
 </head>
 <body>
-  <h1>rosary-atlas</h1>
-  <div id="meta">lade /rosary-atlas/vault-graph.json …</div>
-  <svg id="g"></svg>
+  <header class="atlas-head">
+    <h1>rosary-atlas</h1>
+    <p>Anonymisierter Vault-Graph. Darunter der Hügelbeet-Graph. Oben die Zusammenarbeit erweckter Agenten, Subagents und Bots (statischer Snapshot, keine Klarnamen).</p>
+  </header>
+  <div id="collab-root" class="collab-root collab-page-block"></div>
+  <section class="farm">
+    <h2>Hügelbeet-Graph</h2>
+    <div id="meta">lade /rosary-atlas/vault-graph.json …</div>
+    <svg id="g" role="img" aria-label="Hügelbeet-Vault-Graph"></svg>
+  </section>
+  <script>window.TEAM_SNAPSHOT = {"generated":"2026-11-23","timezone":"Europe/Berlin","title":"Zusammenarbeit","note":"Statischer Snapshot vom 23.11.2026 (Europe/Berlin). Simulierte Übergaben erweckter Rollen, Subagents und Bots. Keine Klarnamen, keine Schlüssel.","agents":[{"id":"GB-RDIR","label":"Regiedirektor","role":"Koordination","kind":"agent","status":"wach","avatar":"./avatars/avatar-koordination.svg","vaultId":"Koordination/Grok-Regiedirektor.md","cluster":"leitung"},{"id":"GB-REGIE","label":"Regie","role":"Team-Koordination","kind":"agent","status":"wach","avatar":"./avatars/avatar-koordination.svg","vaultId":"Koordination/Regie.md","cluster":"leitung"},{"id":"GB-FIDELIO","label":"Fidelio","role":"Musik und Ton","kind":"bot","status":"wach","avatar":"./avatars/avatar-wissen.svg","vaultId":"Koordination/Fidelio.md","cluster":"team"},{"id":"GB-ARCHY","label":"ARCHY","role":"Bildung und Quellen","kind":"bot","status":"wach","avatar":"./avatars/avatar-wissen.svg","vaultId":"Koordination/ARCHY.md","cluster":"team"},{"id":"GB-DATEN","label":"Daten-Scout","role":"Datenanalysen","kind":"scout","status":"wach","avatar":"./avatars/avatar-scout.svg","vaultId":"Koordination/Daten-Scout.md","cluster":"team"},{"id":"GB-BUECHER","label":"Bücher-Scout","role":"Lese-Impulse","kind":"scout","status":"wach","avatar":"./avatars/avatar-scout.svg","vaultId":"Koordination/Buecher-Scout.md","cluster":"team"},{"id":"GB-MARVIN","label":"Marvin","role":"ROSARYX","kind":"bot","status":"wach","avatar":"./avatars/avatar-bot.svg","vaultId":"Koordination/Marvin.md","cluster":"team"},{"id":"GB-DOC","label":"DOC","role":"MediTeam-Koordination","kind":"agent","status":"wach","avatar":"./avatars/avatar-koordination.svg","vaultId":"MediTeam/DOC.md","cluster":"mediteam"},{"id":"MT-ERN","label":"Ernährung","role":"MediTeam","kind":"subagent","status":"wach","avatar":"./avatars/avatar-tech.svg","vaultId":"MediTeam/Ernaehrung.md","cluster":"mediteam"},{"id":"MT-BEW","label":"Bewegung & Gelenke","role":"MediTeam","kind":"subagent","status":"wach","avatar":"./avatars/avatar-tech.svg","vaultId":"MediTeam/Bewegung-Gelenke.md","cluster":"mediteam"},{"id":"MT-SCHLAF","label":"Schlaf","role":"MediTeam","kind":"subagent","status":"wach","avatar":"./avatars/avatar-tech.svg","vaultId":"MediTeam/Schlaf.md","cluster":"mediteam"},{"id":"MT-EVI","label":"Evidenzprüfer","role":"MediTeam","kind":"subagent","status":"wach","avatar":"./avatars/avatar-tech.svg","vaultId":"MediTeam/Evidenzpruefer.md","cluster":"mediteam"},{"id":"SC-06","label":"SC-06","role":"Routinen-Wachhund","kind":"scout","status":"wach","avatar":"./avatars/avatar-scout.svg","vaultId":"Scouts/SC-06.md","cluster":"watch"},{"id":"M4","label":"M4","role":"Briefing","kind":"briefing","status":"wach","avatar":"./avatars/avatar-wissen.svg","vaultId":"Karten/M4.md","cluster":"briefing"}],"interactions":[{"from":"GB-RDIR","to":"GB-FIDELIO","label":"Folge 1 v8 · Bild","kind":"handoff"},{"from":"GB-FIDELIO","to":"GB-ARCHY","label":"Folge 1 v8 · Ton-Mix","kind":"handoff"},{"from":"GB-ARCHY","to":"GB-RDIR","label":"Nachcheck v8b","kind":"handoff"},{"from":"GB-REGIE","to":"GB-RDIR","label":"Übergabe","kind":"handoff"},{"from":"SC-06","to":"GB-REGIE","label":"Wachhund","kind":"watch"},{"from":"GB-DATEN","to":"M4","label":"Bericht","kind":"handoff"},{"from":"GB-REGIE","to":"GB-MARVIN","label":"Abstimmung","kind":"handoff"},{"from":"GB-REGIE","to":"GB-FIDELIO","label":"Koordination","kind":"link"},{"from":"GB-REGIE","to":"GB-ARCHY","label":"Koordination","kind":"link"},{"from":"GB-REGIE","to":"GB-DATEN","label":"Koordination","kind":"link"},{"from":"GB-REGIE","to":"GB-BUECHER","label":"Koordination","kind":"link"},{"from":"GB-RDIR","to":"GB-DOC","label":"Abstimmung","kind":"link"},{"from":"GB-DOC","to":"MT-ERN","label":"MediTeam","kind":"link"},{"from":"GB-DOC","to":"MT-BEW","label":"MediTeam","kind":"link"},{"from":"GB-DOC","to":"MT-SCHLAF","label":"MediTeam","kind":"link"},{"from":"GB-DOC","to":"MT-EVI","label":"MediTeam","kind":"link"}]};</script>
+  <script src="./vault-collab.js"></script>
   <script>
     function draw(data) {
       const svg = document.getElementById("g");
       while (svg.firstChild) svg.removeChild(svg.firstChild);
       const st = data.stats || {};
       document.getElementById("meta").textContent =
-        (data.public_view || "") + "  nodes " + (st.n_nodes || data.nodes.length) +
-        "  edges " + (st.n_edges || data.edges.length) + "  loop_token_budget " + (st.loop_token_budget ?? 0);
+        (data.public_view || "") + "  Knoten " + (st.n_nodes || data.nodes.length) +
+        "  Kanten " + (st.n_edges || data.edges.length);
       const W = svg.clientWidth || 900, H = svg.clientHeight || 600;
       const nodes = data.nodes || [];
       const idx = {};
@@ -40,7 +86,7 @@
         const ring = ringOf(n);
         const same = nodes.filter(x => ringOf(x) === ring);
         const k = same.indexOf(n);
-        const r = 50 + ring * 120;
+        const r = 70 + ring * 145;
         const a = (2 * Math.PI * k) / Math.max(same.length, 1) - Math.PI / 2;
         return { x: W / 2 + r * Math.cos(a), y: H / 2 + r * Math.sin(a) };
       });
@@ -63,21 +109,28 @@
           const img = document.createElementNS("http://www.w3.org/2000/svg", "image");
           img.setAttribute("href", av);
           img.setAttributeNS("http://www.w3.org/1999/xlink", "href", av);
-          img.setAttribute("x", pos[i].x - 12);
-          img.setAttribute("y", pos[i].y - 12);
-          img.setAttribute("width", 24);
-          img.setAttribute("height", 24);
+          img.setAttribute("x", pos[i].x - 14);
+          img.setAttribute("y", pos[i].y - 14);
+          img.setAttribute("width", 28);
+          img.setAttribute("height", 28);
           img.setAttribute("aria-label", n.label || n.id);
           svg.appendChild(img);
         } else {
           const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
           c.setAttribute("cx", pos[i].x); c.setAttribute("cy", pos[i].y);
-          c.setAttribute("r", 8);
+          c.setAttribute("r", 9);
           c.setAttribute("class", n.group || n.type || "");
           svg.appendChild(c);
         }
         const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        t.setAttribute("x", pos[i].x + 14); t.setAttribute("y", pos[i].y + 4);
+        const dx = pos[i].x - W / 2, dy = pos[i].y - H / 2;
+        const ln = Math.hypot(dx, dy) || 1;
+        t.setAttribute("x", pos[i].x + (dx / ln) * 22);
+        t.setAttribute("y", pos[i].y + (dy / ln) * 16 + 5);
+        t.setAttribute("text-anchor", dx < 0 ? "end" : "start");
+        t.setAttribute("fill", "#FFF8E8");
+        t.setAttribute("font-size", "14");
+        t.setAttribute("font-weight", "600");
         t.textContent = n.label || n.id;
         svg.appendChild(t);
       });

@@ -1,0 +1,210 @@
+/* Zusammenarbeit: großer Kontrast, mobil tauglich, keine Schrifthöhe unter 16px im Panel. */
+:root {
+  --collab-bg: #1A1611;
+  --collab-bg-2: #2C2520;
+  --collab-ink: #FFF8E8;
+  --collab-muted: #E6D7B3;
+  --collab-gold: #F0C14B;
+  --collab-line: #8A6A22;
+  --collab-wach: #3DDC84;
+  --collab-schlaf: #8A8678;
+  --collab-handoff: #79C7FF;
+  --collab-watch: #F0C14B;
+  --collab-border: #D4AF37;
+}
+
+.collab-root {
+  font-family: "Rosario", "Segoe UI", system-ui, sans-serif;
+  color: var(--collab-ink);
+  background: var(--collab-bg);
+  border: 2px solid var(--collab-border);
+  border-radius: 12px;
+  padding: 12px 14px 14px;
+  box-sizing: border-box;
+}
+
+.collab-root * { box-sizing: border-box; }
+
+.collab-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 8px;
+}
+
+.collab-head h2 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--collab-gold);
+  font-family: Palatino, "Palatino Linotype", "Times New Roman", serif;
+  font-weight: 700;
+}
+
+.collab-note {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.35;
+  color: var(--collab-muted);
+  max-width: 62ch;
+}
+
+.collab-toggle {
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A1611;
+  background: var(--collab-gold);
+  border: 2px solid #FFF8E8;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.collab-toggle[aria-pressed="false"] {
+  background: transparent;
+  color: var(--collab-gold);
+}
+
+.collab-stage {
+  width: 100%;
+  overflow: auto;
+  background: #120F0C;
+  border-radius: 8px;
+  border: 1px solid #5A3E16;
+}
+
+.collab-stage svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 280px;
+  max-height: 62vh;
+}
+
+.collab-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--collab-ink);
+  list-style: none;
+  padding: 0;
+}
+
+.collab-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.collab-swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  flex: 0 0 18px;
+  border: 2px solid #FFF8E8;
+}
+
+.collab-swatch.wach { background: var(--collab-wach); }
+.collab-swatch.schlaf { background: var(--collab-schlaf); }
+.collab-swatch.handoff { background: var(--collab-handoff); border-radius: 3px; }
+.collab-swatch.watch { background: var(--collab-watch); border-radius: 3px; }
+.collab-swatch.sub { background: #6EA8C9; }
+
+.collab-list {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 6px 12px;
+}
+
+.collab-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--collab-ink);
+  min-height: 36px;
+}
+
+.collab-list img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex: 0 0 32px;
+  background: #2C2520;
+}
+
+.collab-pill {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 1px 8px;
+  border-radius: 999px;
+  border: 2px solid currentColor;
+  margin-left: auto;
+}
+
+.collab-pill.wach { color: var(--collab-wach); }
+.collab-pill.schlaf { color: var(--collab-schlaf); }
+
+.collab-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* Floating panel on the worldmonitor stage */
+.collab-floating {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: min(520px, calc(100% - 24px));
+  max-height: min(72vh, 640px);
+  overflow: auto;
+  z-index: 8;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+.collab-floating.is-expanded {
+  width: min(920px, calc(100% - 24px));
+  max-height: calc(100% - 24px);
+}
+
+.collab-page-block {
+  margin: 0 0 1.25rem;
+  width: 100%;
+}
+
+#vg-canvas { position: relative; }
+
+.collab-hidden { display: none !important; }
+
+@media (max-width: 720px) {
+  .collab-head h2 { font-size: 22px; }
+  .collab-note, .collab-legend, .collab-list li, .collab-toggle { font-size: 16px; }
+  .collab-floating {
+    right: 8px;
+    left: 8px;
+    width: auto;
+    bottom: 8px;
+    max-height: 48%;
+  }
+  .collab-stage svg { min-height: 220px; max-height: 40vh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collab-pulse { animation: none !important; }
+}

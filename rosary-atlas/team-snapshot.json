@@ -1,0 +1,246 @@
+{
+  "generated": "2026-11-23",
+  "timezone": "Europe/Berlin",
+  "title": "Zusammenarbeit",
+  "note": "Statischer Snapshot vom 23.11.2026 (Europe/Berlin). Simulierte Übergaben erweckter Rollen, Subagents und Bots. Keine Klarnamen, keine Schlüssel.",
+  "agents": [
+    {
+      "id": "GB-RDIR",
+      "label": "Regiedirektor",
+      "role": "Koordination",
+      "kind": "agent",
+      "status": "wach",
+      "avatar": "./avatars/avatar-koordination.svg",
+      "vaultId": "Koordination/Grok-Regiedirektor.md",
+      "cluster": "leitung"
+    },
+    {
+      "id": "GB-REGIE",
+      "label": "Regie",
+      "role": "Team-Koordination",
+      "kind": "agent",
+      "status": "wach",
+      "avatar": "./avatars/avatar-koordination.svg",
+      "vaultId": "Koordination/Regie.md",
+      "cluster": "leitung"
+    },
+    {
+      "id": "GB-FIDELIO",
+      "label": "Fidelio",
+      "role": "Musik und Ton",
+      "kind": "bot",
+      "status": "wach",
+      "avatar": "./avatars/avatar-wissen.svg",
+      "vaultId": "Koordination/Fidelio.md",
+      "cluster": "team"
+    },
+    {
+      "id": "GB-ARCHY",
+      "label": "ARCHY",
+      "role": "Bildung und Quellen",
+      "kind": "bot",
+      "status": "wach",
+      "avatar": "./avatars/avatar-wissen.svg",
+      "vaultId": "Koordination/ARCHY.md",
+      "cluster": "team"
+    },
+    {
+      "id": "GB-DATEN",
+      "label": "Daten-Scout",
+      "role": "Datenanalysen",
+      "kind": "scout",
+      "status": "wach",
+      "avatar": "./avatars/avatar-scout.svg",
+      "vaultId": "Koordination/Daten-Scout.md",
+      "cluster": "team"
+    },
+    {
+      "id": "GB-BUECHER",
+      "label": "Bücher-Scout",
+      "role": "Lese-Impulse",
+      "kind": "scout",
+      "status": "wach",
+      "avatar": "./avatars/avatar-scout.svg",
+      "vaultId": "Koordination/Buecher-Scout.md",
+      "cluster": "team"
+    },
+    {
+      "id": "GB-MARVIN",
+      "label": "Marvin",
+      "role": "ROSARYX",
+      "kind": "bot",
+      "status": "wach",
+      "avatar": "./avatars/avatar-bot.svg",
+      "vaultId": "Koordination/Marvin.md",
+      "cluster": "team"
+    },
+    {
+      "id": "GB-DOC",
+      "label": "DOC",
+      "role": "MediTeam-Koordination",
+      "kind": "agent",
+      "status": "wach",
+      "avatar": "./avatars/avatar-koordination.svg",
+      "vaultId": "MediTeam/DOC.md",
+      "cluster": "mediteam"
+    },
+    {
+      "id": "MT-ERN",
+      "label": "Ernährung",
+      "role": "MediTeam",
+      "kind": "subagent",
+      "status": "wach",
+      "avatar": "./avatars/avatar-tech.svg",
+      "vaultId": "MediTeam/Ernaehrung.md",
+      "cluster": "mediteam"
+    },
+    {
+      "id": "MT-BEW",
+      "label": "Bewegung & Gelenke",
+      "role": "MediTeam",
+      "kind": "subagent",
+      "status": "wach",
+      "avatar": "./avatars/avatar-tech.svg",
+      "vaultId": "MediTeam/Bewegung-Gelenke.md",
+      "cluster": "mediteam"
+    },
+    {
+      "id": "MT-SCHLAF",
+      "label": "Schlaf",
+      "role": "MediTeam",
+      "kind": "subagent",
+      "status": "wach",
+      "avatar": "./avatars/avatar-tech.svg",
+      "vaultId": "MediTeam/Schlaf.md",
+      "cluster": "mediteam"
+    },
+    {
+      "id": "MT-EVI",
+      "label": "Evidenzprüfer",
+      "role": "MediTeam",
+      "kind": "subagent",
+      "status": "wach",
+      "avatar": "./avatars/avatar-tech.svg",
+      "vaultId": "MediTeam/Evidenzpruefer.md",
+      "cluster": "mediteam"
+    },
+    {
+      "id": "SC-06",
+      "label": "SC-06",
+      "role": "Routinen-Wachhund",
+      "kind": "scout",
+      "status": "wach",
+      "avatar": "./avatars/avatar-scout.svg",
+      "vaultId": "Scouts/SC-06.md",
+      "cluster": "watch"
+    },
+    {
+      "id": "M4",
+      "label": "M4",
+      "role": "Briefing",
+      "kind": "briefing",
+      "status": "wach",
+      "avatar": "./avatars/avatar-wissen.svg",
+      "vaultId": "Karten/M4.md",
+      "cluster": "briefing"
+    }
+  ],
+  "interactions": [
+    {
+      "from": "GB-RDIR",
+      "to": "GB-FIDELIO",
+      "label": "Folge 1 v8 · Bild",
+      "kind": "handoff"
+    },
+    {
+      "from": "GB-FIDELIO",
+      "to": "GB-ARCHY",
+      "label": "Folge 1 v8 · Ton-Mix",
+      "kind": "handoff"
+    },
+    {
+      "from": "GB-ARCHY",
+      "to": "GB-RDIR",
+      "label": "Nachcheck v8b",
+      "kind": "handoff"
+    },
+    {
+      "from": "GB-REGIE",
+      "to": "GB-RDIR",
+      "label": "Übergabe",
+      "kind": "handoff"
+    },
+    {
+      "from": "SC-06",
+      "to": "GB-REGIE",
+      "label": "Wachhund",
+      "kind": "watch"
+    },
+    {
+      "from": "GB-DATEN",
+      "to": "M4",
+      "label": "Bericht",
+      "kind": "handoff"
+    },
+    {
+      "from": "GB-REGIE",
+      "to": "GB-MARVIN",
+      "label": "Abstimmung",
+      "kind": "handoff"
+    },
+    {
+      "from": "GB-REGIE",
+      "to": "GB-FIDELIO",
+      "label": "Koordination",
+      "kind": "link"
+    },
+    {
+      "from": "GB-REGIE",
+      "to": "GB-ARCHY",
+      "label": "Koordination",
+      "kind": "link"
+    },
+    {
+      "from": "GB-REGIE",
+      "to": "GB-DATEN",
+      "label": "Koordination",
+      "kind": "link"
+    },
+    {
+      "from": "GB-REGIE",
+      "to": "GB-BUECHER",
+      "label": "Koordination",
+      "kind": "link"
+    },
+    {
+      "from": "GB-RDIR",
+      "to": "GB-DOC",
+      "label": "Abstimmung",
+      "kind": "link"
+    },
+    {
+      "from": "GB-DOC",
+      "to": "MT-ERN",
+      "label": "MediTeam",
+      "kind": "link"
+    },
+    {
+      "from": "GB-DOC",
+      "to": "MT-BEW",
+      "label": "MediTeam",
+      "kind": "link"
+    },
+    {
+      "from": "GB-DOC",
+      "to": "MT-SCHLAF",
+      "label": "MediTeam",
+      "kind": "link"
+    },
+    {
+      "from": "GB-DOC",
+      "to": "MT-EVI",
+      "label": "MediTeam",
+      "kind": "link"
+    }
+  ]
+}
