@@ -2,7 +2,7 @@
 # Source of truth for the merged agent organigram. Multi-PC: Home (ROSENKRANZ-PC / organigramm-builder),
 # Office (DESKTOP-K2JCAOI), Vault (PORZELLAN-PC). Updated 2026-10-07 after 404-fixes + Obsidian notes.
 schema: rosary.organigramm.v1
-updated: "2026-10-07T13:55:00Z"
+updated: "2026-11-23T12:32:24Z"
 repo: Rosary-mom/Bio2.0
 roles:
   home: ROSENKRANZ-PC / organigramm-builder
@@ -61,6 +61,10 @@ layers:
     name: VAULT (PORZELLAN-PC)
     agents: [Vault Graph]
     files: [graph.json, vault-graph.json, vault-graph-export.json, rosary-atlas/vault-graph.html]
+  - id: L6_grok_team
+    name: Grok-Bot Team
+    agents: [GB-RDIR, GB-REGIE, GB-ARCHY, GB-FIDELIO, GB-DATEN, GB-BUECHER, GB-DOC, GB-MARVIN]
+    notes: "GB-MARVIN (Marvin ROSARYX): Raumfahrt-Robo-Bot, Ceres-Landeplätze, später Perry-Wiki/ASTRA. Aufgenommen 2026-11-23, Einordnung, keine Beförderung."
 drei_s: [Sehen, Sagen, Sühnnen]
 smoke_overall: 0.853
 status: MERGED_AND_SYNCED

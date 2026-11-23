@@ -1,6 +1,6 @@
 {
   "schema": "rosary.organigramm.v1",
-  "updated": "2026-10-07T14:30:00Z",
+  "updated": "2026-11-23T12:32:24Z",
   "repo": "Rosary-mom/Bio2.0",
   "canonical": ".grok/skills/grok-sync-master-v3/references/organigramm.yaml",
   "roles": {
@@ -88,6 +88,12 @@
       "name": "VAULT (PORZELLAN-PC)",
       "agents": ["Vault Graph"],
       "files": ["graph.json", "vault-graph.json", "vault-graph-export.json", "rosary-atlas/vault-graph.html"]
+    },
+    {
+      "id": "L6_grok_team",
+      "name": "Grok-Bot Team",
+      "agents": ["GB-RDIR", "GB-REGIE", "GB-ARCHY", "GB-FIDELIO", "GB-DATEN", "GB-BUECHER", "GB-DOC", "GB-MARVIN"],
+      "notes": "GB-MARVIN: Marvin ROSARYX, Raumfahrt-Robo-Bot (Ceres-Landeplätze; später Perry-Wiki/ASTRA). Aufgenommen 2026-11-23, Einordnung, keine Beförderung."
     }
   ],
   "drei_s": ["Selbst-Verwaltet", "Selbst-Versorgend", "Selbst-Ausbreitend"],
@@ -98,6 +104,14 @@
     "grok-bot-politik": {"pilot": "politik", "lang": ["de", "en"]},
     "grok-bot-handel": {"pilot": "handel", "lang": ["de", "en"]},
     "grok-bot-education": {"pilot": "education", "lang": ["de", "en"]},
-    "grok-bot-remigration": {"pilot": "ethnic_remigration", "lang": ["de", "en"]}
+    "grok-bot-remigration": {"pilot": "ethnic_remigration", "lang": ["de", "en"]},
+    "GB-MARVIN": {
+      "id": "6dbd455e-f55f-48b1-99e3-d4f2d0c5c83c",
+      "name": "Marvin ROSARYX",
+      "role": "Raumfahrt-Robo-Bot",
+      "focus": "Ceres-Landeplätze; später Perry-Wiki/ASTRA",
+      "lang": ["de", "en"],
+      "avatar": "brain/people/avatars/Marvin-ROSARYX.jpg"
+    }
   }
 }
