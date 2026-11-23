@@ -52,14 +52,32 @@
         l.setAttribute("x2", b.x); l.setAttribute("y2", b.y);
         svg.appendChild(l);
       });
+      const avatarFor = function (n) {
+        const g = n.group || n.type || "";
+        if (g === "agent") return "./avatars/avatar-agent.svg";
+        return null;
+      };
       nodes.forEach((n, i) => {
-        const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        c.setAttribute("cx", pos[i].x); c.setAttribute("cy", pos[i].y);
-        c.setAttribute("r", 8);
-        c.setAttribute("class", n.group || n.type || "");
-        svg.appendChild(c);
+        const av = avatarFor(n);
+        if (av) {
+          const img = document.createElementNS("http://www.w3.org/2000/svg", "image");
+          img.setAttribute("href", av);
+          img.setAttributeNS("http://www.w3.org/1999/xlink", "href", av);
+          img.setAttribute("x", pos[i].x - 12);
+          img.setAttribute("y", pos[i].y - 12);
+          img.setAttribute("width", 24);
+          img.setAttribute("height", 24);
+          img.setAttribute("aria-label", n.label || n.id);
+          svg.appendChild(img);
+        } else {
+          const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          c.setAttribute("cx", pos[i].x); c.setAttribute("cy", pos[i].y);
+          c.setAttribute("r", 8);
+          c.setAttribute("class", n.group || n.type || "");
+          svg.appendChild(c);
+        }
         const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        t.setAttribute("x", pos[i].x + 10); t.setAttribute("y", pos[i].y + 4);
+        t.setAttribute("x", pos[i].x + 14); t.setAttribute("y", pos[i].y + 4);
         t.textContent = n.label || n.id;
         svg.appendChild(t);
       });
