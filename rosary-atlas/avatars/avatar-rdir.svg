@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="avatar-rdir">
+  <circle cx="64" cy="64" r="64" fill="#2A4A6A"/>
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#F4EFE8" stroke-width="3" opacity="0.22"/>
+    <circle cx="64" cy="40" r="18" fill="#F4EFE8"/>
+  <ellipse cx="64" cy="86" rx="28" ry="20" fill="#F4EFE8"/>
+  <rect x="28" y="100" width="72" height="10" rx="2" fill="#F4EFE8"/>
+  <rect x="58" y="90" width="12" height="12" fill="#F4EFE8"/>
+  <polygon points="90,52 108,44 108,84 90,72" fill="#F4EFE8"/>
+</svg>

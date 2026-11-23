@@ -10,7 +10,7 @@
       "role": "Koordination",
       "kind": "agent",
       "status": "wach",
-      "avatar": "./avatars/avatar-koordination.svg",
+      "avatar": "./avatars/avatar-rdir.svg",
       "vaultId": "Koordination/Grok-Regiedirektor.md",
       "cluster": "leitung"
     },
@@ -20,7 +20,7 @@
       "role": "Team-Koordination",
       "kind": "agent",
       "status": "wach",
-      "avatar": "./avatars/avatar-koordination.svg",
+      "avatar": "./avatars/avatar-regie.svg",
       "vaultId": "Koordination/Regie.md",
       "cluster": "leitung"
     },
@@ -30,7 +30,7 @@
       "role": "Musik und Ton",
       "kind": "bot",
       "status": "wach",
-      "avatar": "./avatars/avatar-wissen.svg",
+      "avatar": "./avatars/avatar-fidelio.svg",
       "vaultId": "Koordination/Fidelio.md",
       "cluster": "team"
     },
@@ -40,7 +40,7 @@
       "role": "Bildung und Quellen",
       "kind": "bot",
       "status": "wach",
-      "avatar": "./avatars/avatar-wissen.svg",
+      "avatar": "./avatars/avatar-archy.svg",
       "vaultId": "Koordination/ARCHY.md",
       "cluster": "team"
     },
@@ -50,7 +50,7 @@
       "role": "Datenanalysen",
       "kind": "scout",
       "status": "wach",
-      "avatar": "./avatars/avatar-scout.svg",
+      "avatar": "./avatars/avatar-daten.svg",
       "vaultId": "Koordination/Daten-Scout.md",
       "cluster": "team"
     },
@@ -60,7 +60,7 @@
       "role": "Lese-Impulse",
       "kind": "scout",
       "status": "wach",
-      "avatar": "./avatars/avatar-scout.svg",
+      "avatar": "./avatars/avatar-buecher.svg",
       "vaultId": "Koordination/Buecher-Scout.md",
       "cluster": "team"
     },
@@ -80,7 +80,7 @@
       "role": "MediTeam-Koordination",
       "kind": "agent",
       "status": "wach",
-      "avatar": "./avatars/avatar-koordination.svg",
+      "avatar": "./avatars/avatar-doc.svg",
       "vaultId": "MediTeam/DOC.md",
       "cluster": "mediteam"
     },
@@ -90,7 +90,7 @@
       "role": "MediTeam",
       "kind": "subagent",
       "status": "wach",
-      "avatar": "./avatars/avatar-tech.svg",
+      "avatar": "./avatars/avatar-ernaehrung.svg",
       "vaultId": "MediTeam/Ernaehrung.md",
       "cluster": "mediteam"
     },
@@ -100,7 +100,7 @@
       "role": "MediTeam",
       "kind": "subagent",
       "status": "wach",
-      "avatar": "./avatars/avatar-tech.svg",
+      "avatar": "./avatars/avatar-bewegung.svg",
       "vaultId": "MediTeam/Bewegung-Gelenke.md",
       "cluster": "mediteam"
     },
@@ -110,7 +110,7 @@
       "role": "MediTeam",
       "kind": "subagent",
       "status": "wach",
-      "avatar": "./avatars/avatar-tech.svg",
+      "avatar": "./avatars/avatar-schlaf.svg",
       "vaultId": "MediTeam/Schlaf.md",
       "cluster": "mediteam"
     },
@@ -120,7 +120,7 @@
       "role": "MediTeam",
       "kind": "subagent",
       "status": "wach",
-      "avatar": "./avatars/avatar-tech.svg",
+      "avatar": "./avatars/avatar-evidenz.svg",
       "vaultId": "MediTeam/Evidenzpruefer.md",
       "cluster": "mediteam"
     },
@@ -130,7 +130,7 @@
       "role": "Routinen-Wachhund",
       "kind": "scout",
       "status": "wach",
-      "avatar": "./avatars/avatar-scout.svg",
+      "avatar": "./avatars/avatar-sc06.svg",
       "vaultId": "Scouts/SC-06.md",
       "cluster": "watch"
     },
@@ -140,7 +140,7 @@
       "role": "Briefing",
       "kind": "briefing",
       "status": "wach",
-      "avatar": "./avatars/avatar-wissen.svg",
+      "avatar": "./avatars/avatar-m4.svg",
       "vaultId": "Karten/M4.md",
       "cluster": "briefing"
     },

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="avatar-scout">
   <circle cx="64" cy="64" r="64" fill="#2F7D6D"/>
-  <circle cx="64" cy="64" r="60" fill="none" stroke="#F4EFE8" stroke-width="3" opacity="0.25"/>
-  <circle cx="64" cy="48" r="22" fill="#F4EFE8"/>
-  <ellipse cx="64" cy="112" rx="38" ry="32" fill="#F4EFE8"/>
-  <rect x="56" y="99" width="16" height="10" rx="1" fill="none" stroke="#F4EFE8" stroke-width="2.2"/>
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#F4EFE8" stroke-width="3" opacity="0.22"/>
+  <circle cx="64" cy="64" r="32" fill="none" stroke="#F4EFE8" stroke-width="5"/>
+  <path d="M64 28 L64 100 M28 64 L100 64" stroke="#F4EFE8" stroke-width="3.4"/>
+  <path d="M42 42 L86 86 M86 42 L42 86" stroke="#F4EFE8" stroke-width="2.2" opacity="0.85"/>
+  <polygon points="64,34 68,64 64,58 60,64" fill="#F4EFE8"/>
+  <circle cx="64" cy="64" r="5" fill="#F4EFE8"/>
 </svg>

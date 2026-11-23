@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="avatar-mitarbeiter-8">
+  <circle cx="64" cy="64" r="64" fill="#5E4638"/>
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#F4EFE8" stroke-width="3" opacity="0.22"/>
+  <circle cx="58" cy="44" r="20" fill="#F4EFE8"/>
+  <ellipse cx="58" cy="110" rx="36" ry="30" fill="#F4EFE8"/>
+  <path d="M76 44 Q84 48 76 56" fill="#F4EFE8"/>
+  <rect x="40" y="28" width="36" height="8" rx="2" fill="#F4EFE8"/>
+</svg>

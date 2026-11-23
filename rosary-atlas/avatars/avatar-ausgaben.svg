@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="avatar-ausgaben">
+  <circle cx="64" cy="64" r="64" fill="#8A4A32"/>
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#F4EFE8" stroke-width="3" opacity="0.22"/>
+  <rect x="36" y="28" width="56" height="74" rx="4" fill="#F4EFE8"/>
+  <polygon points="76,28 92,28 92,44" fill="#8A4A32"/>
+  <path d="M76 28 L92 44 L76 44 Z" fill="#C9A227"/>
+  <line x1="46" y1="54" x2="78" y2="54" stroke="#8A4A32" stroke-width="3.2" stroke-linecap="round"/>
+  <line x1="46" y1="66" x2="78" y2="66" stroke="#8A4A32" stroke-width="3.2" stroke-linecap="round"/>
+  <line x1="46" y1="78" x2="68" y2="78" stroke="#8A4A32" stroke-width="3.2" stroke-linecap="round"/>
+</svg>

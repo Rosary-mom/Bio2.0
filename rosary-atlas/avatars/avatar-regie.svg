@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="avatar-regie">
+  <circle cx="64" cy="64" r="64" fill="#3D5A7A"/>
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#F4EFE8" stroke-width="3" opacity="0.22"/>
+  <rect x="30" y="36" width="68" height="56" rx="4" fill="#F4EFE8"/>
+  <rect x="30" y="36" width="68" height="16" fill="#C9A227"/>
+  <rect x="38" y="60" width="22" height="22" fill="#3D5A7A"/>
+  <line x1="68" y1="66" x2="88" y2="66" stroke="#3D5A7A" stroke-width="4" stroke-linecap="round"/>
+  <line x1="68" y1="78" x2="84" y2="78" stroke="#3D5A7A" stroke-width="4" stroke-linecap="round"/>
+</svg>

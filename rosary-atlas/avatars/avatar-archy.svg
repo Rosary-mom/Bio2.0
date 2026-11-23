@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="avatar-archy">
+  <circle cx="64" cy="64" r="64" fill="#4A5A4A"/>
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#F4EFE8" stroke-width="3" opacity="0.22"/>
+  <rect x="22" y="78" width="16" height="28" fill="#F4EFE8"/>
+  <rect x="42" y="58" width="16" height="48" fill="#F4EFE8"/>
+  <rect x="62" y="38" width="16" height="68" fill="#F4EFE8"/>
+  <rect x="82" y="50" width="16" height="56" fill="#F4EFE8"/>
+  <path d="M20 32 L64 18 L108 32" fill="none" stroke="#F4EFE8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

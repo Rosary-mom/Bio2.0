@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="avatar-koordination">
   <circle cx="64" cy="64" r="64" fill="#3D6B8C"/>
-  <circle cx="64" cy="64" r="60" fill="none" stroke="#F4EFE8" stroke-width="3" opacity="0.25"/>
-  <circle cx="64" cy="48" r="22" fill="#F4EFE8"/>
-  <ellipse cx="64" cy="112" rx="38" ry="32" fill="#F4EFE8"/>
-  <circle cx="64" cy="104" r="5.5" fill="none" stroke="#F4EFE8" stroke-width="2.4"/>
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#F4EFE8" stroke-width="3" opacity="0.22"/>
+  <circle cx="64" cy="64" r="10" fill="#F4EFE8"/>
+  <circle cx="64" cy="28" r="12" fill="#F4EFE8"/>
+  <circle cx="30" cy="88" r="12" fill="#F4EFE8"/>
+  <circle cx="98" cy="88" r="12" fill="#F4EFE8"/>
+  <line x1="64" y1="54" x2="64" y2="40" stroke="#F4EFE8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="56" y1="70" x2="40" y2="80" stroke="#F4EFE8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="72" y1="70" x2="88" y2="80" stroke="#F4EFE8" stroke-width="4" stroke-linecap="round"/>
 </svg>

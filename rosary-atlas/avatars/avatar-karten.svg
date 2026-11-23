@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="avatar-karten">
+  <circle cx="64" cy="64" r="64" fill="#8A6A22"/>
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#F4EFE8" stroke-width="3" opacity="0.22"/>
+  <g transform="rotate(-14 58 64)">
+    <rect x="30" y="32" width="52" height="68" rx="6" fill="#F4EFE8" opacity="0.85"/>
+  </g>
+  <g transform="rotate(10 72 66)">
+    <rect x="46" y="30" width="52" height="68" rx="6" fill="#F4EFE8"/>
+    <circle cx="72" cy="64" r="8" fill="#8A6A22"/>
+  </g>
+</svg>

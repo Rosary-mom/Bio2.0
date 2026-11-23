@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="avatar-bewegung">
+  <circle cx="64" cy="64" r="64" fill="#2A6A5A"/>
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#F4EFE8" stroke-width="3" opacity="0.22"/>
+  <circle cx="78" cy="30" r="10" fill="#F4EFE8"/>
+  <path d="M78 40 L60 62 L44 58" fill="none" stroke="#F4EFE8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M60 62 L50 96" fill="none" stroke="#F4EFE8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M60 62 L84 72 L96 100" fill="none" stroke="#F4EFE8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M60 62 L86 52" fill="none" stroke="#F4EFE8" stroke-width="6" stroke-linecap="round"/>
+</svg>

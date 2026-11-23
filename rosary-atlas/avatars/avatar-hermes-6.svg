@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="avatar-hermes-6">
+  <circle cx="64" cy="64" r="64" fill="#207070"/>
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#F4EFE8" stroke-width="3" opacity="0.22"/>
+  <path d="M22 70 Q36 52 44 70 Q36 66 22 70Z" fill="#F4EFE8"/>
+  <path d="M106 70 Q92 52 84 70 Q92 66 106 70Z" fill="#F4EFE8"/>
+  <rect x="36" y="34" width="56" height="44" rx="10" fill="#F4EFE8"/>
+  <circle cx="52" cy="54" r="7" fill="#120F0C"/>
+  <circle cx="76" cy="54" r="7" fill="#120F0C"/>
+  <rect x="44" y="82" width="40" height="28" rx="6" fill="#F4EFE8"/>
+
+  <circle cx="64" cy="18" r="6" fill="#F4EFE8"/>
+</svg>
